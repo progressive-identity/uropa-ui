@@ -105,3 +105,6 @@ dist
 
 # Idea files
 .idea
+
+# Vue build output
+.output
