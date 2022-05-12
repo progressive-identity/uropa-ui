@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "pinia": "^2.0.14",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -16,6 +17,7 @@
     "@babel/eslint-parser": "^7.12.16",
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.6",
+    "@mdi/js": "^6.6.96",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
