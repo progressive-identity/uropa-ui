@@ -42,8 +42,14 @@
 import { CheckIcon } from '@heroicons/vue/solid'
 
 const steps = [
-  { id: '01', name: 'Job details', href: '#', status: 'complete' },
-  { id: '02', name: 'Application form', href: '#', status: 'current' },
-  { id: '03', name: 'Preview', href: '#', status: 'upcoming' },
+  { id: '01', name: 'General information', href: '#', status: 'complete' },
+  { id: '02', name: 'Legal person', href: '#', status: 'current' },
+  { id: '03', name: 'Representative', href: '#', status: 'upcoming' },
+  { id: '04', name: 'Joint controllers', href: '#', status: 'upcoming' },
+  { id: '05', name: 'Purposes', href: '#', status: 'upcoming' },
+  { id: '06', name: 'Recipients', href: '#', status: 'upcoming' },
+  { id: '07', name: 'Security measures', href: '#', status: 'upcoming' },
+  { id: '08', name: 'Data transfers', href: '#', status: 'upcoming' },
+  { id: '09', name: 'DPIA', href: '#', status: 'upcoming' },
 ]
 </script>
