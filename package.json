@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -30,7 +30,8 @@
     "postcss-import": "^14.1.0",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "vue-cli-plugin-pinia": "~0.1.2"
   },
   "eslintConfig": {
     "root": true,

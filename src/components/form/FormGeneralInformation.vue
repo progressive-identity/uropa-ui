@@ -1,7 +1,5 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <ProcessingRecordStepper/>
-  <div class="space-y-8 divide-y divide-gray-200">
+  <div v-if="current === 0" class="space-y-8 divide-y divide-gray-200">
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <div>
@@ -83,10 +81,13 @@
         </div>
       </div>
     </div>
-    <NavigationForm/>
   </div>
 </template>
 
 <script setup>
-import ProcessingRecordStepper from "@/components/ProcessingRecordStepper"
-import NavigationForm from "@/components/form/NavigationForm"</script>
+import {useStore} from '@/store/stepper'
+import {storeToRefs} from 'pinia'
+
+const store = useStore()
+const {current} = storeToRefs(store)
+</script>
