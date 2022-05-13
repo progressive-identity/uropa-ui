@@ -1,5 +1,4 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import UropaNavBar from "@/components/UropaNavBar"
 import UropaFooter from "@/components/UropaFooter"
 import Home from "@/views/Home"
@@ -10,7 +9,6 @@ export default {
     Home,
     UropaFooter,
     UropaNavBar,
-    HelloWorld
   }
 }
 </script>
