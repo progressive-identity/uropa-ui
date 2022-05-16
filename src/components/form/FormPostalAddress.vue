@@ -2,53 +2,46 @@
   <div v-if="current === 1" class="space-y-8 divide-y divide-gray-200">
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="space-y-6 sm:space-y-5">
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Address line
-            1</label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="lp-name" id="lp-name"
-                   class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
+        <div class="isolate -space-y-px rounded-md shadow-sm">
+          <div
+              class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+            <label for="name" class="block text-xs font-medium text-gray-900">Address line 1</label>
+            <input type="text" name="name" id="name"
+                   class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
+                   placeholder="Jane Doe"/>
           </div>
-        </div>
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Address line
-            2</label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="lp-email" id="lp-email"
-                   class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
+          <div
+              class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+            <label for="name" class="block text-xs font-medium text-gray-900">Address line 2</label>
+            <input type="text" name="name" id="name"
+                   class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
+                   placeholder="Jane Doe"/>
           </div>
-        </div>
-        <div class=" columns-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <div>
-            <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">City</label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" name="lp-email" id="lp-email"
-                     class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
+          <div class="columns-2">
+            <div
+                class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+              <label for="name" class="block text-xs font-medium text-gray-900">City</label>
+              <input type="text" name="name" id="name"
+                     class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"/>
+            </div>
+            <div
+                class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+              <label for="name" class="block text-xs font-medium text-gray-900">Zip / Postal code</label>
+              <input type="text" name="name" id="name"
+                     class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"/>
             </div>
           </div>
-          <div>
-            <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Zip / Postal
-              Code</label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" name="lp-email" id="lp-email"
-                     class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
+          <div class="columns-2">
+            <div
+                class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+              <label for="name" class="block text-xs font-medium text-gray-900">State / Province</label>
+              <input type="text" name="name" id="name"
+                     class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"/>
             </div>
-          </div>
-        </div>
-        <div class=" columns-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <div>
-            <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">State /
-              Province</label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" name="lp-email" id="lp-email"
-                     class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
-            </div>
-          </div>
-          <div>
-            <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Country</label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" name="lp-email" id="lp-email"
-                     class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
+            <div
+                class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+              <label for="name" class="block text-xs font-medium text-gray-900">Country</label>
+              <SelectCountry/>
             </div>
           </div>
         </div>
@@ -60,6 +53,7 @@
 <script setup>
 import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
+import SelectCountry from "@/components/SelectCountry"
 
 const store = useStore()
 const {current} = storeToRefs(store)
