@@ -1,5 +1,6 @@
 <template>
   <StepperProcessingRecord/>
+  <StepperNavigation/>
   <FormGeneralInformation/>
   <FormLegalPerson/>
   <FormRepresentative/>
@@ -8,7 +9,6 @@
   <FormRecipients/>
   <FormSecurityMeasures/>
   <FormDataTransfers/>
-  <StepperNavigation/>
 </template>
 
 <script setup>
