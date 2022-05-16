@@ -12,9 +12,9 @@
           <div
               class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
             <label for="name" class="block text-xs font-medium text-gray-900">Name</label>
-            <input type="text" name="name" id="name"
-                   class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
-                   placeholder="TODO"/>
+                        <input type="text" name="name" id="name" v-model="processingRecord.name"
+                               class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
+                               placeholder="TODO"/>
           </div>
           <div
               class="relative border border-gray-300 rounded-md rounded-t-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
@@ -30,8 +30,10 @@
 
 <script setup>
 import {useStore} from '@/store/stepper'
+import {useStoreData} from '@/store/data'
 import {storeToRefs} from 'pinia'
 
 const store = useStore()
+const {processingRecord} = useStoreData()
 const {current} = storeToRefs(store)
 </script>
