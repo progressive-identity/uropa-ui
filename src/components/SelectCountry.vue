@@ -1,3 +1,4 @@
+<!-- TODO use command palettes-->
 <template>
   <Listbox as="div" v-model="selected">
     <div class="mt-1 relative">
