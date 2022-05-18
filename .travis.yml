@@ -1,0 +1,24 @@
+language: node_js
+dist: focal
+os: linux
+node_js:
+  - v18.2.0
+branches:
+  only:
+    - main
+    - staging
+# Install npm dependencies
+install:
+  - npm ci
+services:
+  - docker
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash deploy_to_cc.sh
+  on:
+    all_branches: true
+    condition: "$TRAVIS_BRANCH =~ ^(main|staging)$"
+notifications:
+  webhooks:
+    - https://discord.com/api/webhooks/920972562526240829/zvimdFMk2RcRQ7otE7F56lhQUgkrgDdmO6z4E_z-ZzRHEXU9G65wXCOTB93gCOwwT8Tb
