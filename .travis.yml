@@ -10,8 +10,6 @@ branches:
 # Install npm dependencies
 install:
   - npm ci
-script:
-  - npm run test
 services:
   - docker
 deploy:
