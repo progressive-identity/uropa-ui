@@ -1,5 +1,4 @@
 <template>
-  {{ current }}
   <nav aria-label="Progress">
     <ol role="list" class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
       <li v-for="(step, stepIdx) in steps" :key="step.name" class="relative md:flex-1 md:flex">
