@@ -8,7 +8,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": ""
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.1",
