@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia'
-import processingRecord from '../../public/data/ProcessingRecordTemplate.json'
+import processingRecord from '../data/ProcessingRecordTemplate.json'
 
 export const useStoreData = defineStore('data', {
     state: () => {
