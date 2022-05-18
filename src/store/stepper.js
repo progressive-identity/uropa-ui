@@ -13,10 +13,10 @@ export const useStore = defineStore('stepper', {
                 // {id: 3, name: 'Data types', href: '#', status: 'upcoming'},
                 {id: 4, name: 'Recipients', href: '#', status: 'upcoming'},
                 {id: 5, name: 'Security measures', href: '#', status: 'upcoming'},
-                {id: 6, name: 'Data transfers', href: '#', status: 'upcoming'},
+                {id: 6, name: 'Data transfers', href: '#', status: 'upcoming'}
                 // {id: 8, name: 'DPIA', href: '#', status: 'upcoming'},
             ],
             current: 0
         }
-    },
+    }
 })

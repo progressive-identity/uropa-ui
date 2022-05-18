@@ -56,12 +56,12 @@ const storeForms = useStoreForms()
 const {current} = storeToRefs(store)
 const switchDpo = async () => {
   storeForms.$patch({
-    dpoVisible: !storeForms.dpoVisible,
+    dpoVisible: !storeForms.dpoVisible
   })
 }
 const switchCeo = async () => {
   storeForms.$patch({
-    ceoVisible: !storeForms.ceoVisible,
+    ceoVisible: !storeForms.ceoVisible
   })
 }
 </script>

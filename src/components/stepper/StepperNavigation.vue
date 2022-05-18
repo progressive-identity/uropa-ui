@@ -25,12 +25,12 @@ const {steps, current} = storeToRefs(store)
 
 const next = async () => {
   store.$patch({
-    current: store.current + 1,
+    current: store.current + 1
   })
 }
 const previous = async () => {
   store.$patch({
-    current: store.current - 1,
+    current: store.current - 1
   })
 }
 

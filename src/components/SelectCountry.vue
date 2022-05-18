@@ -36,7 +36,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
 const countries = [
   { id: 1, name: 'France' },
   { id: 2, name: 'Bulgaria' },
-  { id: 3, name: 'England' },
+  { id: 3, name: 'England' }
 ]
 
 const selected = ref(countries[2])

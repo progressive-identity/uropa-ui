@@ -44,7 +44,7 @@ const componentClass = computed(() => {
     'grow-0',
     'shrink-0',
     'relative',
-    'cursor-pointer',
+    'cursor-pointer'
   ]
 
   if (props.type === 'block') {

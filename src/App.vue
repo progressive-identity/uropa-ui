@@ -8,7 +8,7 @@ export default {
   components: {
     Home,
     UropaFooter,
-    UropaNavBar,
+    UropaNavBar
   }
 }
 </script>
