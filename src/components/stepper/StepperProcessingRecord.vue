@@ -1,9 +1,10 @@
 <template>
+  {{ current }}
   <nav aria-label="Progress">
     <ol role="list" class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
       <li v-for="(step, stepIdx) in steps" :key="step.name" class="relative md:flex-1 md:flex">
-        <a v-if="step.id < current" :href="step.href" class="group flex items-center w-full">
-          <span class="px-6 py-4 flex items-center text-sm font-medium">
+        <a v-if="step.id < current" v-on:click="changeStep(step.id)" class="group flex items-center w-full">
+          <span class="px-6 py-4 flex items-center text-sm font-medium cursor-pointer">
             <span
                 class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800">
               <CheckIcon class="w-6 h-6 text-white" aria-hidden="true"/>
@@ -11,15 +12,15 @@
             <span class="ml-4 text-sm font-medium text-gray-900">{{ step.name }}</span>
           </span>
         </a>
-        <a v-else-if="step.id === current" :href="step.href"
-           class="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
+        <a v-else-if="step.id === current" class="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
           <span
               class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
             <span class="text-indigo-600">{{ step.id }}</span>
           </span>
           <span class="ml-4 text-sm font-medium text-indigo-600">{{ step.name }}</span>
         </a>
-        <a v-else :href="step.href" class="group flex items-center">
+        <!-- Temporary help for development purposes, should be removed afterward-->
+        <a v-else v-on:click="changeStep(step.id)" class="group flex items-center">
           <span class="px-6 py-4 flex items-center text-sm font-medium">
             <span
                 class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
@@ -48,5 +49,13 @@ import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
 
 const store = useStore()
+
+function changeStep(stepNumber) {
+  store.$patch({
+    current: stepNumber
+  })
+}
+
 const {steps, current} = storeToRefs(store)
+
 </script>
