@@ -1,21 +1,38 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true,
-  },
-  globals: {
-    defineProps: "readonly",
-    defineEmits: "readonly",
-  },
-  extends: ["prettier"],
-  plugins: ["prettier"],
-  parser: "vue-eslint-parser",
-  parserOptions: {
-    parser: "@babel/eslint-parser",
-  },
-  rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    semi: [2, "never"],
-  },
+    "env": {
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "plugins": [
+        "prettier",
+        "import",
+        "jest"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "no-param-reassign": "off",
+        "camelcase": "off",
+        "consistent-return": "off",
+        "no-unused-vars": [
+            "error",
+            {
+                "vars": "local",
+                "args": "all",
+                "ignoreRestSiblings": false
+            }
+        ]
+    }
 }
