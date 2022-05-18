@@ -2,21 +2,18 @@ language: node_js
 dist: focal
 os: linux
 node_js:
-  - v14.17.0
-git:
-  depth: false
+  - v18.2.0
 branches:
   only:
     - main
     - staging
 # Install npm dependencies
 install:
-  - npm install
+  - npm ci
 script:
   - npm run test
 services:
   - docker
-  - postgresql
 deploy:
   provider: script
   skip_cleanup: true
