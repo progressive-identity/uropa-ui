@@ -1,7 +1,7 @@
 <template>
   <div
       class="relative border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600"
-      v-bind:class="{'rounded-t-lg': beginning, 'rounded-b-lg': end}">
+      v-bind:class="{'rounded-tl-lg': roundedTopLeft, 'rounded-tr-lg': roundedTopRight,  'rounded-bl-lg': roundedBottomLeft,  'rounded-br-lg': roundedBottomRight}">
     <label for="name" class="block text-xs font-medium text-gray-900">{{ label }}</label>
     <input type="text" name="todo" id="todo" :value="modelValue"
            @input="$emit('update:modelValue', $event.target.value)"
@@ -25,12 +25,22 @@ export default {
       type: String,
       required: false
     },
-    beginning: {
+    roundedTopLeft: {
       type: Boolean,
       required: false,
       default: false
     },
-    end: {
+    roundedTopRight: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    roundedBottomLeft: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    roundedBottomRight: {
       type: Boolean,
       required: false,
       default: false
