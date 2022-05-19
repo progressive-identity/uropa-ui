@@ -2,10 +2,10 @@
   <div v-if="current === 1" class="space-y-8 divide-y divide-gray-200">
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="isolate -space-y-px rounded-md shadow-sm">
-        <UInput :model="personalInformation.firstName" label="First name" :beginning="true"/>
-        <UInput :model="personalInformation.lastName" label="Last name"/>
-        <UInput :model="personalInformation.phoneNumber" label="Phone number"/>
-        <UInput :model="personalInformation.email" label="Email" :end="true"/>
+        <UInput v-model="personalInformation.firstName" label="First name" :beginning="true"/>
+        <UInput v-model="personalInformation.lastName" label="Last name"/>
+        <UInput v-model="personalInformation.phoneNumber" label="Phone number"/>
+        <UInput v-model="personalInformation.email" label="Email" :end="true"/>
       </div>
     </div>
   </div>

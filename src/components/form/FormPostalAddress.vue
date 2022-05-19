@@ -2,11 +2,11 @@
   <div class="space-y-8 divide-y divide-gray-200">
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="isolate -space-y-px rounded-md shadow-sm">
-        <UInput :model="postalAddress.address1" label="Address line 1" :beginning="true"/>
-        <UInput :model="postalAddress.address2" label="Address line 2"/>
-        <UInput :model="postalAddress.city" label="City"/>
-        <UInput :model="postalAddress.zipCode" label="Zip / Postal code"/>
-        <UInput :model="postalAddress.state" label="State / Province"/>
+        <UInput v-model="postalAddress.address1" label="Address line 1" :beginning="true"/>
+        <UInput v-model="postalAddress.address2" label="Address line 2"/>
+        <UInput v-model="postalAddress.city" label="City"/>
+        <UInput v-model="postalAddress.zipCode" label="Zip / Postal code"/>
+        <UInput v-model="postalAddress.state" label="State / Province"/>
         <SelectCountry :country="postalAddress.country"/>
       </div>
     </div>
