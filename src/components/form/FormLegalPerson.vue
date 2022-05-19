@@ -20,7 +20,7 @@
             </button>
           </div>
           <div class="pt-5">
-            <FormDpo :dpo="legalPerson.dpo"/>
+            <FormDpo v-if="dpoVisible" :dpo="legalPerson.dpo"/>
           </div>
           <div class="pt-5">
             <button type="button" v-on:click="switchCeo"
@@ -29,7 +29,7 @@
             </button>
           </div>
           <div class="pt-5">
-            <FormCeo :ceo="legalPerson.ceo"/>
+            <FormCeo v-if="ceoVisible" :ceo="legalPerson.ceo"/>
           </div>
         </div>
       </div>
@@ -50,6 +50,8 @@ import UInput from "@/components/UInput.vue"
 const {processingRecord: {legalPerson}} = useStoreData()
 const store = useStore()
 const storeForms = useStoreForms()
+const {ceoVisible, dpoVisible} = storeToRefs(storeForms)
+
 const {current} = storeToRefs(store)
 const switchDpo = async () => {
   storeForms.$patch({
