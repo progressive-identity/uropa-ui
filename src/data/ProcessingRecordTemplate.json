@@ -6,14 +6,32 @@
     "name": "CODE IS LAW",
     "email": "amazon@gmail.com",
     "dpo": {
-      "personalInformation": {},
+      "personalInformation": {
+        "firstName": "",
+        "lastName": "",
+        "phoneNumber": "",
+        "email": ""
+      },
       "postalAddress": {
-        "country": {}
+        "address1": "100 rue des Etoiles",
+        "address2": "string",
+        "city": "Paris",
+        "zipCode": "75001",
+        "state": "string",
+        "country": {
+          "name": "France",
+          "iso": "FRA"
+        }
       }
     },
     "ceo": {
       "professionalTitle": "CEO",
-      "personalInformation": {}
+      "personalInformation": {
+        "firstName": "",
+        "lastName": "",
+        "phoneNumber": "",
+        "email": ""
+      }
     },
     "postalAddress": {
       "address1": "100 rue des Etoiles",
@@ -43,15 +61,18 @@
       "city": "Paris",
       "zipCode": "75001",
       "state": "string",
-      "country": {}
+      "country": {
+      }
     }
   },
   "jointControllers": [
     {
       "legalPerson": {
         "dpo": {},
-        "ceo": {},
-        "postalAddress": {}
+        "ceo": {
+        },
+        "postalAddress": {
+        }
       },
       "legalAgreementPath": "string"
     }
@@ -62,7 +83,8 @@
       "description": "string",
       "isMain": true,
       "legalBasis": {
-        "legalBasisProof": {}
+        "legalBasisProof": {
+        }
       },
       "dataCategories": [
         {}
