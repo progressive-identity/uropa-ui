@@ -1,10 +1,10 @@
 {
-  "name": "Gestion de la trésorerie",
-  "internalId": "string",
-  "updatedAt": "2019-08-24T14:15:22Z",
+  "name": "",
+  "internalId": "",
+  "updatedAt": "",
   "legalPerson": {
-    "name": "CODE IS LAW",
-    "email": "amazon@gmail.com",
+    "name": "",
+    "email": "",
     "dpo": {
       "personalInformation": {
         "firstName": "",
@@ -13,19 +13,19 @@
         "email": ""
       },
       "postalAddress": {
-        "address1": "100 rue des Etoiles",
-        "address2": "string",
-        "city": "Paris",
-        "zipCode": "75001",
-        "state": "string",
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "zipCode": "",
+        "state": "",
         "country": {
-          "name": "France",
-          "iso": "FRA"
+          "name": "",
+          "iso": ""
         }
       }
     },
     "ceo": {
-      "professionalTitle": "CEO",
+      "professionalTitle": "",
       "personalInformation": {
         "firstName": "",
         "lastName": "",
@@ -34,33 +34,49 @@
       }
     },
     "postalAddress": {
-      "address1": "100 rue des Etoiles",
-      "address2": "string",
-      "city": "Paris",
-      "zipCode": "75001",
-      "state": "string",
-      "country": {}
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "zipCode": "",
+      "state": "",
+      "country": {
+        "name": "",
+        "iso": ""
+      }
     }
   },
   "representative": {
-    "name": "CODE IS LAW",
-    "email": "amazon@gmail.com",
+    "name": "",
+    "email": "",
     "dpo": {
-      "personalInformation": {},
+      "personalInformation": {
+        "firstName": "",
+        "lastName": "",
+        "phoneNumber": "",
+        "email": ""
+      },
       "postalAddress": {
-        "country": {}
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "zipCode": "",
+        "state": "",
+        "country": {
+          "name": "",
+          "iso": ""
+        }
       }
     },
     "ceo": {
-      "professionalTitle": "CEO",
+      "professionalTitle": "",
       "personalInformation": {}
     },
     "postalAddress": {
-      "address1": "100 rue des Etoiles",
-      "address2": "string",
-      "city": "Paris",
-      "zipCode": "75001",
-      "state": "string",
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "zipCode": "",
+      "state": "",
       "country": {
       }
     }
@@ -68,19 +84,55 @@
   "jointControllers": [
     {
       "legalPerson": {
-        "dpo": {},
+        "name": "",
+        "email": "",
+        "dpo": {
+          "personalInformation": {
+            "firstName": "",
+            "lastName": "",
+            "phoneNumber": "",
+            "email": ""
+          },
+          "postalAddress": {
+            "address1": "",
+            "address2": "",
+            "city": "",
+            "zipCode": "",
+            "state": "",
+            "country": {
+              "name": "",
+              "iso": ""
+            }
+          }
+        },
         "ceo": {
+          "professionalTitle": "",
+          "personalInformation": {
+            "firstName": "",
+            "lastName": "",
+            "phoneNumber": "",
+            "email": ""
+          }
         },
         "postalAddress": {
+          "address1": "",
+          "address2": "",
+          "city": "",
+          "zipCode": "",
+          "state": "",
+          "country": {
+            "name": "",
+            "iso": ""
+          }
         }
       },
-      "legalAgreementPath": "string"
+      "legalAgreementPath": ""
     }
   ],
   "purposes": [
     {
-      "name": "string",
-      "description": "string",
+      "name": "",
+      "description": "",
       "isMain": true,
       "legalBasis": {
         "legalBasisProof": {
@@ -91,7 +143,7 @@
       ]
     }
   ],
-  "recipents": {
+  "recipients": {
     "internalDepartments": [
       {
         "dataCategoriesDisclosed": []
@@ -112,24 +164,26 @@
   },
   "securityMeasures": [
     {
-      "name": "Reverse proxy",
-      "description": "DDOS mitigation technical asset",
-      "securityMeasureType": "technical"
+      "name": "",
+      "description": "",
+      "securityMeasureType": ""
     }
   ],
   "dataTransfers": [
     {
-      "description": "transfer operated in order to host the processed data",
-      "country": {},
+      "description": "",
+      "country": {
+        "name": "",
+        "iso": ""
+      },
       "DataTransferLegalBasis": {
         "recipient": {}
       }
     }
   ],
-  "hasDPIA": true,
   "DPIAInfos": {
-    "DPIADescription": "string",
-    "DPIADate": "string",
-    "DPIAPath": "string"
+    "DPIADescription": "",
+    "DPIADate": "",
+    "DPIAPath": ""
   }
 }
