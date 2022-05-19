@@ -9,8 +9,8 @@
             data in the controller system.</p>
         </div>
         <div class="isolate -space-y-px rounded-md shadow-sm">
-          <UInput :model="processingRecord.name" label="Name"/>
-          <UInput :model="processingRecord.internalId" label="Internal ID" placeholder="The reference of the processing record"/>
+          <UInput :model="processingRecord.name" label="Name" :beginning="true"/>
+          <UInput :model="processingRecord.internalId" label="Internal ID" placeholder="The reference of the processing record" :end="true"/>
         </div>
       </div>
     </div>
