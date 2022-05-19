@@ -9,8 +9,11 @@
             data in the controller system.</p>
         </div>
         <div class="isolate -space-y-px rounded-md shadow-sm">
-          <UInput v-model="processingRecord.name" label="Name" :beginning="true"/>
-          <UInput v-model="processingRecord.internalId" label="Internal ID" placeholder="The reference of the processing record" :end="true"/>
+          <div class="columns-2 gap-0">
+            <UInput v-model="processingRecord.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
+            <UInput v-model="processingRecord.internalId" label="Internal ID"
+                    placeholder="The reference of the processing record" :rounded-top-right="true" :rounded-bottom-right="true"/>
+          </div>
         </div>
       </div>
     </div>

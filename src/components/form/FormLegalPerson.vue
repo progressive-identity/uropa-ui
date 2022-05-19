@@ -8,8 +8,10 @@
             usually a company or an organization.</p>
         </div>
         <div class="isolate -space-y-px rounded-md shadow-sm">
-          <UInput v-model="legalPerson.name" label="Name" :beginning="true"/>
-          <UInput v-model="legalPerson.email" label="Email" :end="true"/>
+          <div class="columns-2 gap-0 py-2">
+            <UInput v-model="legalPerson.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
+            <UInput v-model="legalPerson.email" label="Email" :rounded-top-right="true" :rounded-bottom-right="true"/>
+          </div>
           <FormPostalAddress :postal-address="legalPerson.postalAddress"/>
           <div class="pt-5">
             <button type="button" v-on:click="switchDpo"
