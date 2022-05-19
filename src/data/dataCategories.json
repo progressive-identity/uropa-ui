@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Identity",
+    "order": 0,
+    "dataTypes": [
+      {
+        "name": "First name"
+      },
+      {
+        "name": "Last name"
+      },
+      {
+        "name": "Birthdate"
+      },
+      {
+        "name": "Postal address"
+      }
+    ]
+  },
+  {
+    "name": "Connection data",
+    "order": 1,
+    "dataTypes": [
+      {
+        "name": "IP address"
+      },
+      {
+        "name": "Timestamps"
+      },
+      {
+        "name": "Cookies"
+      }
+    ]
+  },
+  {
+    "name": "Personal life",
+    "dataTypes": [
+      {
+        "name": "Marital status"
+      },
+      {
+        "name": "Children"
+      },
+      {
+        "name": "Lifestyle information"
+      }
+    ]
+  }
+]
