@@ -129,20 +129,7 @@
       "legalAgreementPath": ""
     }
   ],
-  "purposes": [
-    {
-      "name": "",
-      "description": "",
-      "isMain": true,
-      "legalBasis": {
-        "legalBasisProof": {
-        }
-      },
-      "dataCategories": [
-        {}
-      ]
-    }
-  ],
+  "purposes": [],
   "recipients": {
     "internalDepartments": [
       {
