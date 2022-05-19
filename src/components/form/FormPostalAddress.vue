@@ -39,7 +39,7 @@
           </div>
           <div
               class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
-            <SelectCountry :model="model.country"/>
+            <SelectCountry :country="postalAddress.country"/>
           </div>
         </div>
       </div>
@@ -53,8 +53,8 @@ import {storeToRefs} from 'pinia'
 import SelectCountry from "@/components/SelectCountry"
 
 const props = defineProps({
-  model: {
-    type: String,
+  postalAddress: {
+    type: Object,
     required: true
   }
 })

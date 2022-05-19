@@ -40,8 +40,8 @@ import countries from './../data/countries.json'
 
 // TODO use the model
 const props = defineProps({
-  model: {
-    type: String,
+  country: {
+    type: Object,
     required: true
   }
 })

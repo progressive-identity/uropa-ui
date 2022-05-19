@@ -23,7 +23,7 @@
                    placeholder="myemail@example.com"/>
           </div>
         </div>
-        <FormPostalAddress :model="legalPerson.postalAddress"/>
+        <FormPostalAddress :postalAddress="legalPerson.postalAddress"/>
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <button type="button" v-on:click="switchDpo"
                   class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
