@@ -18,7 +18,7 @@
 <script setup>
 import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
-import UInput from "@/components/UInput.vue"
+import UInput from "@/components/basic/UInput.vue"
 
 const props = defineProps({
   personalInformation: {

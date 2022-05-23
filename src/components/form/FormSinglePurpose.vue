@@ -6,6 +6,9 @@
         <p class="mt-2 text-sm text-gray-700">The purpose of the processing describes what the reason why
           the controller processes the personal data.</p>
       </div>
+      <div>
+        <USwitch v-model="purpose.isMain"/>
+      </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
           <UInput v-model="purpose.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
@@ -27,7 +30,8 @@
 <script setup>
 import {useStoreData} from '@/store/data'
 import {useStoreForms} from "@/store/forms.js"
-import UInput from "@/components/UInput.vue"
+import UInput from "@/components/basic/UInput.vue"
+import USwitch from "@/components/basic/USwitch.vue"
 import FormLegalBasis from "@/components/form/FormLegalBasis.vue"
 
 const storeData = useStoreData()

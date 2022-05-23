@@ -45,7 +45,7 @@ import {storeToRefs} from 'pinia'
 import FormDpo from "@/components/form/FormDpo"
 import FormCeo from "@/components/form/FormCeo"
 import FormPostalAddress from "@/components/form/FormPostalAddress"
-import UInput from "@/components/UInput.vue"
+import UInput from "@/components/basic/UInput.vue"
 
 const {processingRecord: {legalPerson}} = useStoreData()
 const store = useStore()

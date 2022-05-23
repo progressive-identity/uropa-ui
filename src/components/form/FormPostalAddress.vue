@@ -23,7 +23,7 @@
 import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
 import SelectCountry from "@/components/SelectCountry"
-import UInput from "@/components/UInput.vue"
+import UInput from "@/components/basic/UInput.vue"
 
 const props = defineProps({
   postalAddress: {

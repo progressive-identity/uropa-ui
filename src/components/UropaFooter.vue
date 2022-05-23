@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Icon from '@/components/Icon.vue'
+import Icon from '@/components/basic/Icon.vue'
 import { mdiGithub, mdiTwitter, mdiLinkedin } from '@mdi/js'
 
 const navigation = [

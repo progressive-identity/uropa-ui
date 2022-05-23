@@ -8,7 +8,7 @@ import {
 } from '@mdi/js'
 import NavBarItem from '@/components/NavBarItem.vue'
 import NavBarItemLabel from '@/components/NavBarItemLabel.vue'
-import Icon from '@/components/Icon.vue'
+import Icon from '@/components/basic/Icon.vue'
 
 const isMenuNavBarActive = ref(false)
 

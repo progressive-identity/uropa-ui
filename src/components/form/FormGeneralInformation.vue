@@ -24,7 +24,7 @@
 import {useStore} from '@/store/stepper'
 import {useStoreData} from '@/store/data'
 import {storeToRefs} from 'pinia'
-import UInput from "@/components/UInput.vue"
+import UInput from "@/components/basic/UInput.vue"
 
 const store = useStore()
 const {processingRecord} = useStoreData()

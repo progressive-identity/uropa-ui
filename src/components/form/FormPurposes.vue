@@ -34,7 +34,9 @@
                   </td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ purpose.description }}</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ purpose.legalBasis.type }}</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ purpose.isMain }}</td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <icon v-if="purpose.isMain" :path="mdiCheck"/>
+                  </td>
                   <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                     <!--                    <a href="#" class="text-indigo-600 hover:text-indigo-900"-->
                     <!--                    >Edit<span class="sr-only">, {{ person.name }}</span></a-->
@@ -57,6 +59,8 @@ import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from '@/store/forms'
 import {storeToRefs} from 'pinia'
 import FormSinglePurpose from "@/components/form/FormSinglePurpose.vue"
+import Icon from "@/components/basic/Icon.vue"
+import {mdiCheck} from '@mdi/js'
 
 const store = useStore()
 const {current} = storeToRefs(store)

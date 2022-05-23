@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5 py-5">
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">Legal basis</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">A Legal person is an entity that process personal data. It's
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import UInput from "@/components/UInput.vue"
+import UInput from "@/components/basic/UInput.vue"
 
 const props = defineProps({
   legalBasis: {
