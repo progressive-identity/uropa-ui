@@ -4,7 +4,7 @@
       <div class="flex justify-center space-x-6 md:order-2">
         <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-gray-400 hover:text-gray-500">
           <span class="sr-only">{{ item.name }}</span>
-        <icon
+        <UIcon
           :path="item.icon" :size="24"/>
         </a>
       </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Icon from '@/components/basic/Icon.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 import { mdiGithub, mdiTwitter, mdiLinkedin } from '@mdi/js'
 
 const navigation = [

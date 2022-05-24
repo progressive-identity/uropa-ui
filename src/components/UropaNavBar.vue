@@ -8,7 +8,7 @@ import {
 } from '@mdi/js'
 import NavBarItem from '@/components/NavBarItem.vue'
 import NavBarItemLabel from '@/components/NavBarItemLabel.vue'
-import Icon from '@/components/basic/Icon.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 
 const isMenuNavBarActive = ref(false)
 
@@ -47,7 +47,7 @@ const menuNavBarToggle = () => {
     </div>
     <div class="flex-none items-stretch flex h-14 lg:hidden">
       <nav-bar-item @click.prevent="menuNavBarToggle">
-        <icon
+        <UIcon
           :path="menuNavBarToggleIcon"
           size="24"
         />

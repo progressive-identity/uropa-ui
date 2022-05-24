@@ -2,10 +2,7 @@
   <div v-if="current === 2" class="space-y-8 divide-y divide-gray-200">
     <div>
       <div>
-        <button type="button" v-on:click="displayPurpose"
-                class="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-white font-medium rounded-md text-gray-700 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          + Add purpose
-        </button>
+        <UButton label="New purpose" :action-on-click="displayPurpose" :icon="mdiPlusCircle"/>
       </div>
       <div>
         <FormSinglePurpose v-if="purposeVisible" :purpose="purposeTemplate"/>
@@ -35,12 +32,12 @@
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ purpose.description }}</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ purpose.legalBasis.type }}</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <icon v-if="purpose.isMain" :path="mdiCheck"/>
+                    <UIcon v-if="purpose.isMain" :path="mdiCheck"/>
                   </td>
                   <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <!--                    <a href="#" class="text-indigo-600 hover:text-indigo-900"-->
-                    <!--                    >Edit<span class="sr-only">, {{ person.name }}</span></a-->
-                    <!--                    >-->
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    >Edit<span class="sr-only">, {{  }}</span></a
+                    >
                   </td>
                 </tr>
                 </tbody>
@@ -59,8 +56,8 @@ import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from '@/store/forms'
 import {storeToRefs} from 'pinia'
 import FormSinglePurpose from "@/components/form/FormSinglePurpose.vue"
-import Icon from "@/components/basic/Icon.vue"
-import {mdiCheck} from '@mdi/js'
+import UButton from "@/components/basic/UButton.vue"
+import {mdiCheck, mdiPlusCircle} from '@mdi/js'
 
 const store = useStore()
 const {current} = storeToRefs(store)
