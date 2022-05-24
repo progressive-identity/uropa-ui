@@ -12,7 +12,7 @@
         </div>
         <div class="columns-2 gap-0">
           <UInput v-model="postalAddress.state" label="State / Province" :rounded-bottom-left="true"/>
-          <SelectCountry :country="postalAddress.country"/>
+          <USelect v-model="postalAddress.country" :list="countries" label="Country" :rounded-bottom-right="true"/>
         </div>
       </div>
     </div>
@@ -22,8 +22,9 @@
 <script setup>
 import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
-import SelectCountry from "@/components/SelectCountry"
 import UInput from "@/components/basic/UInput.vue"
+import USelect from "@/components/basic/USelect.vue"
+import countries from './../../data/countries.json'
 
 const props = defineProps({
   postalAddress: {
