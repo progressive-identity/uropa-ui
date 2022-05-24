@@ -7,7 +7,7 @@
           the controller processes the personal data.</p>
       </div>
       <div>
-        <USwitch v-model="purpose.isMain"/>
+        <USwitch v-model="purpose.isMain" label="main"/>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
