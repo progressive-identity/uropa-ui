@@ -169,8 +169,8 @@
     }
   ],
   "DPIAInfos": {
-    "DPIADescription": "",
-    "DPIADate": "",
-    "DPIAPath": ""
+    "description": "",
+    "date": "",
+    "path": ""
   }
 }
