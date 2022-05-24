@@ -15,6 +15,8 @@
                     placeholder="The reference of the processing record" :rounded-top-right="true" :rounded-bottom-right="true"/>
           </div>
         </div>
+        <USwitch v-model="options.DPIAVisible" label="DPIA"/>
+        <FormDPIA v-if="options.DPIAVisible"/>
       </div>
     </div>
   </div>
@@ -23,10 +25,14 @@
 <script setup>
 import {useStore} from '@/store/stepper'
 import {useStoreData} from '@/store/data'
+import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
 import UInput from "@/components/basic/UInput.vue"
+import FormDPIA from "@/components/form/FormDPIA.vue"
+import USwitch from "@/components/basic/USwitch.vue"
 
 const store = useStore()
 const {processingRecord} = useStoreData()
+const options = useStoreForms()
 const {current} = storeToRefs(store)
 </script>

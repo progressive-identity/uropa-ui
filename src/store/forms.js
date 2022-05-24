@@ -5,7 +5,8 @@ export const useStoreForms = defineStore('forms', {
         return {
             ceoVisible: false,
             dpoVisible: false,
-            purposeVisible: false
+            purposeVisible: false,
+            DPIAVisible: false
         }
     }
 })
