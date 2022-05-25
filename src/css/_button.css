@@ -1,0 +1,35 @@
+/* GENERAL BUTTON STYLE */
+
+.u-button {
+    @apply inline-flex items-center px-2 py-2 border border-transparent shadow-sm text-white font-medium rounded-md;
+}
+
+/* PRIMARY */
+
+.u-button--primary {
+    @apply bg-primary-600;
+}
+
+.u-button--primary:hover {
+    @apply bg-primary-700 outline-none;
+}
+
+/* WARNING */
+
+.u-button--warning {
+    @apply bg-yellow-600;
+}
+
+.u-button--warning:hover {
+    @apply bg-yellow-700 outline-none;
+}
+
+/* DANGER */
+
+.u-button--danger {
+    @apply bg-red-600;
+}
+
+.u-button--danger:hover {
+    @apply bg-red-700 outline-none;
+}
