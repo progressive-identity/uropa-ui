@@ -15,7 +15,10 @@
         <UInput v-model="securityMeasure.description" label="Description"
                 :rounded-bottom-left="true" :rounded-bottom-right="true"/>
       </div>
-      <UButton label="Save" :action-on-click="saveSecurityMeasure"/>
+      <div class="space-x-2">
+        <UButton label="Back" v-on:click="closeSecurityMeasure" type="secondary"/>
+        <UButton label="Save" v-on:click="saveSecurityMeasure"/>
+      </div>
     </div>
   </div>
 </template>
@@ -49,16 +52,22 @@ function emptySecurityMeasure() {
   props.securityMeasure.securityMeasureType = ''
 }
 
-const saveSecurityMeasure = async () => {
-  storeData.$patch((state) =>
-      state.processingRecord.securityMeasures.push({...props.securityMeasure})
-  )
+function saveSecurityMeasure() {
   storeForms.$patch({
     securityMeasureVisible: false
   })
   if (!props.edition) {
+    storeData.$patch((state) =>
+        state.processingRecord.securityMeasures.push({...props.securityMeasure}))
     emptySecurityMeasure()
   }
 }
+
+function closeSecurityMeasure() {
+  storeForms.$patch({
+    securityMeasureVisible: false
+  })
+}
+
 
 </script>
