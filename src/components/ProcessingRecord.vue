@@ -1,14 +1,16 @@
 <template>
-  <StepperProcessingRecord/>
-  <StepperNavigation/>
-  <FormGeneralInformation/>
-  <FormLegalPerson/>
-  <FormPurposes/>
-  <FormDataCategories/>
-  <FormRecipients/>
-  <FormSecurityMeasures/>
-  <FormDataTransfers/>
-  <JsonContent/>
+  <div class="h-screen">
+    <StepperProcessingRecord/>
+    <StepperNavigation/>
+    <FormGeneralInformation/>
+    <FormLegalPerson/>
+    <FormPurposes/>
+    <FormDataCategories/>
+    <FormRecipients/>
+    <FormSecurityMeasures/>
+    <FormDataTransfers/>
+    <JsonContent/>
+  </div>
 </template>
 
 <script setup>

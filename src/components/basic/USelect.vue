@@ -6,7 +6,8 @@
     <select id="select" name="select" :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
             class="block border-0 p-0 w-full pl-3 pr-10 text-base  sm:text-sm ring-0 focus:ring-0">
-      <option v-for="element in list">{{ element.name }}</option>
+      <option v-if="list[0].name" v-for="element in list">{{ element.name }}</option>
+      <option v-else v-for="element in list">{{ element }}</option>
     </select>
   </div>
 </template>
@@ -19,7 +20,7 @@ export default {
       required: false
     },
     modelValue: {
-      type: Object,
+      type: String,
       required: true
     },
     list: {

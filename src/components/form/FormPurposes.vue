@@ -57,6 +57,7 @@ import {useStoreForms} from '@/store/forms'
 import {storeToRefs} from 'pinia'
 import FormSinglePurpose from "@/components/form/FormSinglePurpose.vue"
 import UButton from "@/components/basic/UButton.vue"
+import UIcon from "@/components/basic/UIcon.vue"
 import {mdiCheck, mdiPlusCircle} from '@mdi/js'
 
 const store = useStore()
