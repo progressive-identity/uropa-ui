@@ -35,7 +35,8 @@ export default {
     classes() {
       return {
         "u-button": true,
-        [`u-button--${this.type}`]: true
+        [`u-button--${this.type}`]: true,
+        [`u-button--icon`]: (this.icon && !this.label)
       }
     }
   }

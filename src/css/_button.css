@@ -1,11 +1,15 @@
 /* GENERAL BUTTON STYLE */
 
 .u-button {
-    @apply inline-flex items-center px-2 py-2 border shadow-sm text-white font-medium text-sm rounded-md;
+    @apply inline-flex items-center px-5 py-2 border shadow-sm text-white font-medium text-sm rounded-md;
 }
 
 .u-button:focus {
     @apply ring-2 ring-offset-2;
+}
+
+.u-button--icon {
+    @apply px-2 py-2;
 }
 
 /* PRIMARY */
