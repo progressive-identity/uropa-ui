@@ -1,5 +1,5 @@
 <template>
-  <button type="button" v-on:click="actionOnClick"
+  <button type="button"
           :class="classes">
     <UIcon v-if="icon" :path="icon"/>
     {{ label }}
@@ -22,16 +22,12 @@ export default {
       type: String,
       required: false
     },
-    actionOnClick: {
-      type: Function,
-      required: false
-    },
     type: {
       type: String,
       required: false,
       default: 'primary',
       validator: function (value) {
-        return ["primary", "warning", "danger"].indexOf(value) !== -1
+        return ["primary", "secondary", "warning", "danger"].indexOf(value) !== -1
       }
     }
   },
