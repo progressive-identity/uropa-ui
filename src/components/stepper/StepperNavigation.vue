@@ -3,7 +3,7 @@
     <div class="flex justify-end space-x-2">
       <UButton type="secondary" v-on:click="previous" v-if="current > 0" label="Previous"/>
       <UButton type="primary" v-on:click="next" v-if="current < stepsProcessingRecord.length-1" label="Next"/>
-      <UButton type="primary" v-on:click="previous" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
+      <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
     </div>
   </div>
 </template>
