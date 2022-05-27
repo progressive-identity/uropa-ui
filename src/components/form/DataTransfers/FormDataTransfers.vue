@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper'
+import {useStore} from '@/store/stepper.js'
 import {storeToRefs} from 'pinia'
 
 const store = useStore()

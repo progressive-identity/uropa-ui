@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import FormPersonalInformation from "@/components/form/FormPersonalInformation"
-import FormPostalAddress from "@/components/form/FormPostalAddress"
+import FormPersonalInformation from "@/components/form/FormPersonalInformation.vue"
+import FormPostalAddress from "@/components/form/FormPostalAddress.vue"
 
 const props = defineProps({
   dpo: {

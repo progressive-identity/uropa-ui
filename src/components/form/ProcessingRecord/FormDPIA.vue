@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper'
-import {useStoreData} from '@/store/data'
+import {useStore} from '@/store/stepper.js'
+import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
 import UInput from "@/components/basic/UInput.vue"
 import UDatePicker from "@/components/basic/UDatePicker.vue"

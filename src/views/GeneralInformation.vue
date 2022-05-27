@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import FormGeneralInformation from "@/components/form/FormGeneralInformation.vue"
+import FormGeneralInformation from "@/components/form/ProcessingRecord/FormGeneralInformation.vue"
 </script>

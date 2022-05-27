@@ -35,12 +35,12 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper'
-import {useStoreForms} from '@/store/forms'
+import {useStore} from '@/store/stepper.js'
+import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
-import FormDpo from "@/components/form/FormDpo"
-import FormCeo from "@/components/form/FormCeo"
-import FormPostalAddress from "@/components/form/FormPostalAddress"
+import FormDpo from "@/components/form/LegalPerson/FormDpo.vue"
+import FormCeo from "@/components/form/LegalPerson/FormCeo.vue"
+import FormPostalAddress from "@/components/form/FormPostalAddress.vue"
 import UInput from "@/components/basic/UInput.vue"
 
 

@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import FormDataTransfers from "@/components/form/FormDataTransfers.vue"
+import FormDataTransfers from "@/components/form/DataTransfers/FormDataTransfers.vue"
 </script>

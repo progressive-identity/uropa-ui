@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import {useStoreData} from '@/store/data'
+import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from "@/store/forms.js"
 import UInput from "@/components/basic/UInput.vue"
 import UButton from "@/components/basic/UButton.vue"

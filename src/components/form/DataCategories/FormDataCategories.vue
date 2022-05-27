@@ -19,11 +19,11 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper'
+import {useStore} from '@/store/stepper.js'
 import {useStoreData} from "@/store/data.js"
 import {storeToRefs} from 'pinia'
 import StepperDataCategories from "@/components/stepper/StepperDataCategories.vue"
-import dataCategories from './../../data/dataCategories.json'
+import dataCategories from '../../../data/dataCategories.json'
 import TabDataCategory from "@/components/TabDataCategory.vue"
 
 const store = useStore()

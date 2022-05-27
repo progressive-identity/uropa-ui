@@ -28,11 +28,11 @@
 </template>
 
 <script setup>
-import {useStoreData} from '@/store/data'
+import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from "@/store/forms.js"
 import UInput from "@/components/basic/UInput.vue"
 import USwitch from "@/components/basic/USwitch.vue"
-import FormLegalBasis from "@/components/form/FormLegalBasis.vue"
+import FormLegalBasis from "@/components/form/Purposes/FormLegalBasis.vue"
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()

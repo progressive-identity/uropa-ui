@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import FormDataCategories from "@/components/form/FormDataCategories.vue"
+import FormDataCategories from "@/components/form/DataCategories/FormDataCategories.vue"
 </script>

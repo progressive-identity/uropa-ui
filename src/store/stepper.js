@@ -28,7 +28,13 @@ export const useStore = defineStore("stepper", {
         { id: 1, name: "Add a representative", optional:true },
         { id: 2, name: "Add joint controllers", optional:true }
       ],
-      currentLegalPerson: 0
+      currentLegalPerson: 0,
+      stepsRecipients: [
+        { id: 0, name: "Add internal departments", optional:true },
+        { id: 1, name: "Add external organizations", optional:true },
+        { id: 2, name: "Add data processors", optional:true }
+      ],
+      currentRecipients: 0
     }
   }
 })

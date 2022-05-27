@@ -27,14 +27,14 @@
 
 <script setup>
 import {reactive} from 'vue'
-import {useStore} from '@/store/stepper'
+import {useStore} from '@/store/stepper.js'
 import {useStoreData} from "@/store/data.js"
-import {useStoreForms} from '@/store/forms'
+import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
-import FormSecurityMeasure from "@/components/form/FormSecurityMeasure.vue"
+import FormSecurityMeasure from "@/components/form/SecurityMeasures/FormSecurityMeasure.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import securityMeasureTemplate from './../../data/SecurityMeasureTemplate.json'
+import securityMeasureTemplate from '../../../data/SecurityMeasureTemplate.json'
 
 const store = useStore()
 const {current} = storeToRefs(store)

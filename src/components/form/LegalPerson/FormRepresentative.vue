@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import FormLegalPerson from "@/components/form/FormLegalPerson.vue"
+import FormLegalPerson from "@/components/form/LegalPerson/FormLegalPerson.vue"
 
 const props = defineProps({
   modelValue: {
