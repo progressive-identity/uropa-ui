@@ -15,7 +15,7 @@ export const useStore = defineStore("stepper", {
       current: 0,
       stepsDataCategories: [
         { id: 0, name: "Select a purpose" },
-        { id: 1, name: "Add a data category" },
+        { id: 1, name: "Add data categories" },
         { id: 2, name: "Add data types" }
       ],
       currentDataCategories: 0,
