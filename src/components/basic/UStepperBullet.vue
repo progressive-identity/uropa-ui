@@ -4,13 +4,13 @@
       <UButton type="secondary" v-on:click="previous" v-if="modelValue === 0" label="Previous"/>
       <UButton type="secondary" v-on:click="emit('update:modelValue', modelValue-1)" v-if="modelValue > 0"
                label="Previous"/>
-      <UButton type="primary" v-on:click="emit('update:modelValue', modelValue+1)" v-if="modelValue < steps.length-1"
-               label="Next"/>
       <UButton type="primary" v-on:click="emit('update:modelValue', modelValue+1)"
                v-if="modelValue < steps.length-1 && steps[modelValue].optional"
                label="Skip"/>
-      <UButton type="primary" v-on:click="next" v-if="modelValue === steps.length-1" label="Next"/>
+      <UButton type="primary" v-on:click="emit('update:modelValue', modelValue+1)" v-if="modelValue < steps.length-1"
+               label="Next"/>
       <UButton type="primary" v-on:click="next" v-if="modelValue === steps.length-1" label="Skip"/>
+      <UButton type="primary" v-on:click="next" v-if="modelValue === steps.length-1" label="Next"/>
     </div>
   </div>
   <nav aria-label="Progress" class="flex items-center justify-center pt-5">
