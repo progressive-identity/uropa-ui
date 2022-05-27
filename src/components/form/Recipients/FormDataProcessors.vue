@@ -1,5 +1,5 @@
 <template>
-  <UButton label="New internal department" v-on:click="createDataProcessor" :icon="mdiPlusCircle"/>
+  <UButton label="New data processor" v-on:click="createDataProcessor" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <li v-for="(dataProcessor, index) in dataProcessors" :key="index"

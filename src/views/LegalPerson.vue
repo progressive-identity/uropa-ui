@@ -1,5 +1,5 @@
 <template>
-  <div v-if="current === 1" class="space-y-8 divide-y divide-gray-200">
+  <div v-if="current === 1">
     <UStepperBullet v-model="currentLegalPerson" :steps="stepsLegalPerson"/>
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">

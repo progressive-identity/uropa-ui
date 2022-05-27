@@ -2,12 +2,12 @@
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Security measure</h3>
-        <p class="mt-2 text-sm text-gray-700">A measure adopted by the controller to ensure the
-          confidentiality, integrity and availability of the processed personal data.</p>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Data processor</h3>
+        <p class="mt-2 text-sm text-gray-700">Information about the data processor that is a recipient of the data
+          processed. Useful to manage authorisations, contracts and other legal instruments.</p>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
-          <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" :rounded-top-left="true"/>
+        <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" :rounded-top-left="true"/>
       </div>
       <div class="space-x-2">
         <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>

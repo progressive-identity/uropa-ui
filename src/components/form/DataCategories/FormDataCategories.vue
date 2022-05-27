@@ -1,6 +1,6 @@
 <template>
-  <div v-if="current === 3" class="space-y-8">
-    <StepperDataCategories/>
+  <div v-if="current === 3">
+    <UStepperBullet v-model="currentDataCategories" :steps="stepsDataCategories"/>
     <div class=" py-5">
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <li v-for="purpose in purposes" :key="purpose.name"
@@ -25,9 +25,10 @@ import {storeToRefs} from 'pinia'
 import StepperDataCategories from "@/components/stepper/StepperDataCategories.vue"
 import dataCategories from '../../../data/dataCategories.json'
 import TabDataCategory from "@/components/TabDataCategory.vue"
+import UStepperBullet from "@/components/basic/UStepperBullet.vue"
 
 const store = useStore()
-const {current} = storeToRefs(store)
+const {current, stepsDataCategories, currentDataCategories} = storeToRefs(store)
 const {processingRecord: {purposes}} = useStoreData()
 
 purposes[0] = {
@@ -41,6 +42,5 @@ purposes[0] = {
   },
   dataCategories
 }
-
 
 </script>

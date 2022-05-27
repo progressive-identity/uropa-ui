@@ -2,14 +2,12 @@
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Security measure</h3>
-        <p class="mt-2 text-sm text-gray-700">A measure adopted by the controller to ensure the
-          confidentiality, integrity and availability of the processed personal data.</p>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Internal department</h3>
+        <p class="mt-2 text-sm text-gray-700">Information about the internal department that is a recipient of the data
+          processed. Useful to manage authorization at the level of the organization</p>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
-          <UInput v-model="internalDepartment.name" label="Name" :rounded-top-left="true"/>
-<!--          <USelect v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"-->
-<!--                   :rounded-top-right="true"/>-->
+        <UInput v-model="internalDepartment.name" label="Name" :rounded-top-left="true"/>
       </div>
       <div class="space-x-2">
         <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
