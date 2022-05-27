@@ -131,23 +131,9 @@
   ],
   "purposes": [],
   "recipients": {
-    "internalDepartments": [
-      {
-        "dataCategoriesDisclosed": []
-      }
-    ],
-    "externalOrganisations": [
-      {
-        "legalPerson": {},
-        "dataCategoriesDisclosed": []
-      }
-    ],
-    "dataProcessors": [
-      {
-        "legalPerson": {},
-        "dataCategoriesDisclosed": []
-      }
-    ]
+    "internalDepartments": [],
+    "externalOrganizations": [],
+    "dataProcessors": []
   },
   "securityMeasures": [],
   "dataTransfers": [

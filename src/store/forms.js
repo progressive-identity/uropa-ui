@@ -1,5 +1,4 @@
 import {defineStore} from 'pinia'
-import securityMeasureTemplate from './../data/SecurityMeasureTemplate.json'
 
 export const useStoreForms = defineStore('forms', {
     state: () => {
@@ -9,7 +8,9 @@ export const useStoreForms = defineStore('forms', {
             purposeVisible: false,
             DPIAVisible: false,
             securityMeasureVisible: false,
-            editSecurityMeasureData: securityMeasureTemplate
+            internalDepartmentVisible: false,
+            externalOrganizationVisible: false,
+            dataProcessorVisible: false
         }
     }
 })

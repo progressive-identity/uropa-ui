@@ -1,8 +1,70 @@
 <template>
-  <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-    EXTERNAL
+  <UButton label="New external organization" v-on:click="createExternalOrganization" :icon="mdiPlusCircle"/>
+  <div class=" py-5">
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <li v-for="(externalOrganization, index) in externalOrganizations" :key="index"
+          class="bg-white rounded-lg shadow border-2 px-5 text-sm">
+        <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
+          <p class="w-full truncate">{{ externalOrganization.name }}</p>
+        </div>
+        <div class="h-1/4 py-5 space-x-2 align-bottom">
+          <UButton v-on:click="editExternalOrganization(externalOrganization)" :icon="mdiPencil"/>
+          <UButton v-on:click="deleteExternalOrganization(index)" :icon="mdiDelete" type="danger"/>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div v-if="externalOrganizationVisible">
+    <FormExternalOrganization :external-organization="state.externalOrganization" :edition="state.edition"/>
   </div>
 </template>
 
 <script setup>
+import {reactive} from 'vue'
+import {useStore} from '@/store/stepper.js'
+import {useStoreData} from "@/store/data.js"
+import {useStoreForms} from '@/store/forms.js'
+import {storeToRefs} from 'pinia'
+import UButton from "@/components/basic/UButton.vue"
+import FormExternalOrganization from "@/components/form/Recipients/FormExternalOrganization.vue"
+import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import externalOrganizationTemplate from '../../../data/recipients/ExternalOrganizationTemplate.json'
+
+const store = useStore()
+const {current} = storeToRefs(store)
+const storeData = useStoreData()
+const {processingRecord} = storeToRefs(storeData)
+const storeForms = useStoreForms()
+const {externalOrganizationVisible} = storeToRefs(storeForms)
+const state = reactive({externalOrganization: externalOrganizationTemplate, edition: false})
+
+const props = defineProps({
+  externalOrganizations: {
+    type: Object,
+    required: true
+  }
+})
+
+function createExternalOrganization() {
+  state.externalOrganization = externalOrganizationTemplate
+  state.edition = false
+  storeForms.$patch({
+    externalOrganizationVisible: true
+  })
+}
+
+function editExternalOrganization(externalOrganization) {
+  state.externalOrganization = externalOrganization
+  state.edition = true
+  storeForms.$patch({
+    externalOrganizationVisible: true
+  })
+}
+
+function deleteExternalOrganization(index) {
+  storeData.$patch((state) => {
+    state.processingRecord.recipients.externalOrganizations.splice(index, 1)
+  })
+}
+
 </script>

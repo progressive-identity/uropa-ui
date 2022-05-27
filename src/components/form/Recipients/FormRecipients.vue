@@ -1,17 +1,12 @@
 <template>
-  <div v-if="current === 4" class="space-y-8 divide-y divide-gray-200">
+  <div v-if="current === 4" class="space-y-8">
     <UStepperBullet v-model="currentRecipients" :steps="stepsRecipients"/>
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-        <FormInternalDepartments v-if="currentRecipients===0" v-model="internalDepartments"/>
-        <FormExternalOrganizations v-if="currentRecipients===1" v-model="externalOrganisations"/>
-        <FormDataProcessors v-if="currentRecipients===2" v-model="dataProcessors"/>
+        <FormInternalDepartments v-if="currentRecipients===0" :internal-departments="internalDepartments"/>
+        <FormExternalOrganizations v-if="currentRecipients===1" :external-organizations="externalOrganizations"/>
+        <FormDataProcessors v-if="currentRecipients===2" :data-processors="dataProcessors"/>
       </div>
-    </div>
-  </div>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      REPRESENTATIVE
     </div>
   </div>
 </template>
@@ -25,7 +20,7 @@ import FormDataProcessors from "@/components/form/Recipients/FormDataProcessors.
 import FormExternalOrganizations from "@/components/form/Recipients/FormExternalOrganizations.vue"
 import FormInternalDepartments from "@/components/form/Recipients/FormInternalDepartments.vue"
 
-const {processingRecord: {internalDepartments, externalOrganisations, dataProcessors}} = useStoreData()
+const {processingRecord: {recipients: {internalDepartments, externalOrganizations, dataProcessors}}} = useStoreData()
 const store = useStore()
 const {current, stepsRecipients, currentRecipients} = storeToRefs(store)
 </script>
