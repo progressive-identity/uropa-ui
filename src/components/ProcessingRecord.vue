@@ -4,6 +4,8 @@
     <StepperNavigation/>
     <FormGeneralInformation/>
     <FormLegalPerson/>
+    <FormRepresentative/>
+    <FormJointControllers/>
     <FormPurposes/>
     <FormDataCategories/>
     <FormRecipients/>
@@ -27,6 +29,8 @@ import FormSecurityMeasures from "@/components/form/FormSecurityMeasures"
 import StepperProcessingRecord from "@/components/stepper/StepperProcessingRecord"
 import StepperNavigation from "@/components/stepper/StepperNavigation"
 import JsonContent from "@/components/JsonContent"
+import FormJointControllers from "@/components/form/FormJointControllers.vue"
+import FormRepresentative from "@/components/form/FormRepresentative.vue"
 
 const store = useStore()
 const {current} = storeToRefs(store)
