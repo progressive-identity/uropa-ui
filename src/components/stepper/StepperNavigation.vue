@@ -6,8 +6,8 @@
       <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
     </div>
   </div>
-  <div class="flex justify-end space-x-2 pt-3">
-    <UButton type="secondary" v-on:click="previous" v-if="current === 7" label="Previous"/>
+  <div class="flex justify-end space-x-2 pt-3" v-if="current === 7" >
+    <UButton type="secondary" v-on:click="previous" label="Previous"/>
   </div>
 </template>
 <script setup>
