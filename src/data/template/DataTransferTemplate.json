@@ -1,0 +1,44 @@
+{
+  "description": "",
+  "country": {
+    "name": "",
+    "iso": ""
+  },
+  "dataTransferLegalBasis": {
+    "transferLegalBasisType": "",
+    "transferLegalBasisDescription": "",
+    "proofUrl": "",
+    "isConsent": "",
+    "recipient": {
+      "dataProcessor": {
+        "legalPerson": {
+          "dpo": {},
+          "ceo": {},
+          "postalAddress": {}
+        },
+        "dataCategoriesDisclosed": [
+          {}
+        ],
+        "processorAgreementPath": ""
+      },
+      "externalOrganization": {
+        "name": "",
+        "organizationStatus": "",
+        "legalPerson": {
+          "dpo": {},
+          "ceo": {},
+          "postalAddress": {}
+        },
+        "dataCategoriesDisclosed": [
+          {}
+        ]
+      },
+      "internalDepartment": {
+        "name": "",
+        "dataCategoriesDisclosed": [
+          {}
+        ]
+      }
+    }
+  }
+}

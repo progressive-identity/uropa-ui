@@ -1,6 +1,7 @@
 import {defineStore} from 'pinia'
 
 export const useStoreForms = defineStore('forms', {
+    //TODO to rework
     state: () => {
         return {
             ceoVisible: false,
@@ -10,7 +11,8 @@ export const useStoreForms = defineStore('forms', {
             securityMeasureVisible: false,
             internalDepartmentVisible: false,
             externalOrganizationVisible: false,
-            dataProcessorVisible: false
+            dataProcessorVisible: false,
+            dataTransferVisible: false
         }
     }
 })
