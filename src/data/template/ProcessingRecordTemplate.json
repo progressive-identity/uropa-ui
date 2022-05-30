@@ -136,18 +136,7 @@
     "dataProcessors": []
   },
   "securityMeasures": [],
-  "dataTransfers": [
-    {
-      "description": "",
-      "country": {
-        "name": "",
-        "iso": ""
-      },
-      "DataTransferLegalBasis": {
-        "recipient": {}
-      }
-    }
-  ],
+  "dataTransfers": [],
   "DPIAInfos": {
     "description": "",
     "date": "",

@@ -6,7 +6,7 @@
   },
   "dataTransferLegalBasis": {
     "transferLegalBasisType": "",
-    "transferLegalBasisDescription": "",
+    "description": "",
     "proofUrl": "",
     "isConsent": "",
     "recipient": {
