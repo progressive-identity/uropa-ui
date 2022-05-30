@@ -7,7 +7,12 @@
           data processed. Useful to manage authorisations, contracts and other legal instruments.</p>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
-        <UInput v-model="externalOrganization.name" label="Name" :rounded-top-left="true"/>
+        <div class="columns-2 gap-0">
+          <UInput v-model="externalOrganization.name" label="Name" :rounded-top-left="true"/>
+          <UInput v-model="externalOrganization.organizationStatus" label="Organization status" :rounded-top-right="true"/>
+        </div>
+        <SelectDataCategories v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"/>
+        <FormLegalPerson v-model="externalOrganization.legalPerson"/>
       </div>
       <div class="space-x-2">
         <UButton label="Back" v-on:click="closeExternalOrganization" type="secondary"/>
@@ -22,6 +27,8 @@ import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from "@/store/forms.js"
 import UButton from "@/components/basic/UButton.vue"
 import UInput from "@/components/basic/UInput.vue"
+import FormLegalPerson from "@/components/form/LegalPerson/FormLegalPerson.vue"
+import SelectDataCategories from "@/components/form/DataCategories/SelectDataCategories.vue"
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()
