@@ -20,8 +20,8 @@
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
-import UInput from "@/components/basic/UInput.vue"
-import UDatePicker from "@/components/basic/UDatePicker.vue"
+import UInput from '@/components/basic/UInput.vue'
+import UDatePicker from '@/components/basic/UDatePicker.vue'
 
 const store = useStore()
 const {processingRecord: {DPIAInfos}} = useStoreData()

@@ -9,9 +9,9 @@
 </template>
 <script setup>
 import {useStore} from '@/store/stepper.js'
-import {useStoreForms} from "@/store/forms.js"
-import {storeToRefs} from "pinia"
-import UButton from "@/components/basic/UButton.vue"
+import {useStoreForms} from '@/store/forms.js'
+import {storeToRefs} from 'pinia'
+import UButton from '@/components/basic/UButton.vue'
 
 const store = useStore()
 const {stepsProcessingRecord, current} = storeToRefs(store)

@@ -22,11 +22,11 @@
 <script setup>
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
-import {useStoreData} from "@/store/data.js"
+import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
-import UButton from "@/components/basic/UButton.vue"
-import FormDataProcessor from "@/components/form/recipients/FormDataProcessor.vue"
+import UButton from '@/components/basic/UButton.vue'
+import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import dataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 

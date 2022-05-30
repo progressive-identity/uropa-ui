@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import UIcon from "@/components/basic/UIcon.vue"
+import UIcon from '@/components/basic/UIcon.vue'
 
 export default {
   components: {
@@ -27,16 +27,16 @@ export default {
       required: false,
       default: 'primary',
       validator: function (value) {
-        return ["primary", "secondary", "warning", "danger"].indexOf(value) !== -1
+        return ['primary', 'secondary', 'warning', 'danger'].indexOf(value) !== -1
       }
     }
   },
   computed: {
     classes() {
       return {
-        "u-button": true,
+        'u-button': true,
         [`u-button--${this.type}`]: true,
-        [`u-button--icon`]: (this.icon && !this.label)
+        ['u-button--icon']: (this.icon && !this.label)
       }
     }
   }

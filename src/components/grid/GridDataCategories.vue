@@ -20,25 +20,25 @@
 
 <script setup>
 import {useStore} from '@/store/stepper.js'
-import {useStoreData} from "@/store/data.js"
+import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
-import StepperDataCategories from "@/components/stepper/StepperDataCategories.vue"
+import StepperDataCategories from '@/components/stepper/StepperDataCategories.vue'
 import dataCategories from '../../data/dataCategories.json'
-import TabDataCategory from "@/components/TabDataCategory.vue"
-import UStepperBullet from "@/components/basic/UStepperBullet.vue"
+import TabDataCategory from '@/components/TabDataCategory.vue'
+import UStepperBullet from '@/components/basic/UStepperBullet.vue'
 
 const store = useStore()
 const {current, stepsDataCategories, currentDataCategories} = storeToRefs(store)
 const {processingRecord: {purposes}} = useStoreData()
 
 purposes[0] = {
-  "name": "whatever",
-  "description": "",
-  "isMain": true,
-  "legalBasis": {
-    "type": "contentment",
-    "description": "",
-    "proofUrl": ""
+  'name': 'whatever',
+  'description': '',
+  'isMain': true,
+  'legalBasis': {
+    'type': 'contentment',
+    'description': '',
+    'proofUrl': ''
   },
   dataCategories
 }

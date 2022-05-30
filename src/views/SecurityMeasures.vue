@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import GridSecurityMeasures from "@/components/grid/GridSecurityMeasures.vue"
+import GridSecurityMeasures from '@/components/grid/GridSecurityMeasures.vue'
 </script>

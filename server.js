@@ -14,19 +14,19 @@ app.use(
 )
 
 // Serve all the files in the '/dist' directory
-app.use(express.static("dist"))
+app.use(express.static('dist'))
 
 app.use(function (req, res, next) {
     if (
         req.secure ||
-        req.headers["x-forwarded-proto"] === "https"
+        req.headers['x-forwarded-proto'] === 'https'
     ) {
         return next()
     } else {
-        return res.redirect("https://" + req.headers.host + req.url)
+        return res.redirect('https://' + req.headers.host + req.url)
     }
 })
 
-app.listen(process.env.PORT, "0.0.0.0", function () {
+app.listen(process.env.PORT, '0.0.0.0', function () {
     console.log(`Uropa UI is started on port ${process.env.PORT}`)
 })

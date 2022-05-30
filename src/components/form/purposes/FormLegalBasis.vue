@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import UInput from "@/components/basic/UInput.vue"
+import UInput from '@/components/basic/UInput.vue'
 
 const props = defineProps({
   legalBasis: {

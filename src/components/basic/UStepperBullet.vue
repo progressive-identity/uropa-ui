@@ -29,9 +29,9 @@
 </template>
 
 <script setup>
-import UButton from "@/components/basic/UButton.vue"
-import {useStore} from "@/store/stepper.js"
-import {storeToRefs} from "pinia"
+import UButton from '@/components/basic/UButton.vue'
+import {useStore} from '@/store/stepper.js'
+import {storeToRefs} from 'pinia'
 
 const props = defineProps({
       steps: {

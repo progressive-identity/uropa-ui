@@ -13,12 +13,12 @@
 
 <script setup>
 import {useStore} from '@/store/stepper.js'
-import {useStoreData} from "@/store/data.js"
+import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
-import UStepperBullet from "@/components/basic/UStepperBullet.vue"
-import GridDataProcessors from "@/components/grid/recipients/GridDataProcessors.vue"
-import GridExternalOrganizations from "@/components/grid/recipients/GridExternalOrganizations.vue"
-import GridInternalDepartments from "@/components/grid/recipients/GridInternalDepartments.vue"
+import UStepperBullet from '@/components/basic/UStepperBullet.vue'
+import GridDataProcessors from '@/components/grid/recipients/GridDataProcessors.vue'
+import GridExternalOrganizations from '@/components/grid/recipients/GridExternalOrganizations.vue'
+import GridInternalDepartments from '@/components/grid/recipients/GridInternalDepartments.vue'
 
 const {processingRecord: {recipients: {internalDepartments, externalOrganizations, dataProcessors}}} = useStoreData()
 const store = useStore()

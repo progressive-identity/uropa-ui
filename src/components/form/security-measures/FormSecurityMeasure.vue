@@ -25,10 +25,10 @@
 
 <script setup>
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from "@/store/forms.js"
-import UButton from "@/components/basic/UButton.vue"
-import UInput from "@/components/basic/UInput.vue"
-import USelect from "@/components/basic/USelect.vue"
+import {useStoreForms} from '@/store/forms.js'
+import UButton from '@/components/basic/UButton.vue'
+import UInput from '@/components/basic/UInput.vue'
+import USelect from '@/components/basic/USelect.vue'
 import {securityMeasureTypes} from '@/data/enums.js'
 
 const storeData = useStoreData()

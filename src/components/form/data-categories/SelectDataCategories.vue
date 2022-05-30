@@ -30,7 +30,7 @@
 
 <script setup>
 import {useStore} from '@/store/stepper.js'
-import {useStoreData} from "@/store/data.js"
+import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
 import dataCategories from '../../../data/dataCategories.json'
 import {computed, ref} from 'vue'
@@ -49,7 +49,7 @@ const props = defineProps({
   title: {
     type: String,
     required: false,
-    default: "Data categories"
+    default: 'Data categories'
   }
 })
 
@@ -65,13 +65,13 @@ const filteredDataCategories = computed(() =>
 )
 
 purposes[0] = {
-  "name": "whatever",
-  "description": "",
-  "isMain": true,
-  "legalBasis": {
-    "type": "contentment",
-    "description": "",
-    "proofUrl": ""
+  'name': 'whatever',
+  'description': '',
+  'isMain': true,
+  'legalBasis': {
+    'type': 'contentment',
+    'description': '',
+    'proofUrl': ''
   },
   dataCategories
 }

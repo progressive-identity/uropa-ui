@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import GridPurposes from "@/components/grid/GridPurposes.vue"
+import GridPurposes from '@/components/grid/GridPurposes.vue'
 </script>

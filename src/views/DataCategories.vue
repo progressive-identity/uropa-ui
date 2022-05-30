@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import GridDataCategories from "@/components/grid/GridDataCategories.vue"
+import GridDataCategories from '@/components/grid/GridDataCategories.vue'
 </script>

@@ -38,10 +38,10 @@
 import {useStore} from '@/store/stepper.js'
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
-import FormDpo from "@/components/form/legal-person/FormDpo.vue"
-import FormCeo from "@/components/form/legal-person/FormCeo.vue"
-import FormPostalAddress from "@/components/form/FormPostalAddress.vue"
-import UInput from "@/components/basic/UInput.vue"
+import FormDpo from '@/components/form/legal-person/FormDpo.vue'
+import FormCeo from '@/components/form/legal-person/FormCeo.vue'
+import FormPostalAddress from '@/components/form/FormPostalAddress.vue'
+import UInput from '@/components/basic/UInput.vue'
 
 
 const props = defineProps({
@@ -52,7 +52,7 @@ const props = defineProps({
       title: {
         type: String,
         required: false,
-        default: "Legal person"
+        default: 'Legal person'
       },
       description: {
         type: String,

@@ -17,5 +17,6 @@ module.exports = {
     rules: {
         semi: [2, 'never'],
         'comma-dangle': ['error', 'never'],
+        "quotes": [2, "single", {"avoidEscape": true}]
     }
 }

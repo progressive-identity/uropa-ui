@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import FormPersonalInformation from "@/components/form/FormPersonalInformation.vue"
+import FormPersonalInformation from '@/components/form/FormPersonalInformation.vue'
 
 const props = defineProps({
   ceo: {

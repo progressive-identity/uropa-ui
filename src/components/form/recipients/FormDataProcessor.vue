@@ -20,12 +20,12 @@
 </template>
 
 <script setup>
-import {useStoreData} from "@/store/data.js"
-import {useStoreForms} from "@/store/forms.js"
-import UButton from "@/components/basic/UButton.vue"
-import UInput from "@/components/basic/UInput.vue"
-import FormLegalPerson from "@/components/form/legal-person/FormLegalPerson.vue"
-import SelectDataCategories from "@/components/form/data-categories/SelectDataCategories.vue"
+import {useStoreData} from '@/store/data.js'
+import {useStoreForms} from '@/store/forms.js'
+import UButton from '@/components/basic/UButton.vue'
+import UInput from '@/components/basic/UInput.vue'
+import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
+import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()

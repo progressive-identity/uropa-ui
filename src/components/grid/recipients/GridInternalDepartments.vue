@@ -23,14 +23,14 @@
 <script setup>
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
-import {useStoreData} from "@/store/data.js"
+import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
-import UButton from "@/components/basic/UButton.vue"
-import FormInternalDepartment from "@/components/form/recipients/FormInternalDepartment.vue"
+import UButton from '@/components/basic/UButton.vue'
+import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import internalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
-import TabDataCategory from "@/components/TabDataCategory.vue"
+import TabDataCategory from '@/components/TabDataCategory.vue'
 
 const store = useStore()
 const {current} = storeToRefs(store)
