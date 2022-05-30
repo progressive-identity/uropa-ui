@@ -1,7 +1,7 @@
 <template>
-  <FormSecurityMeasures/>
+  <GridSecurityMeasures/>
 </template>
 
 <script setup>
-import FormSecurityMeasures from "@/components/grid/GridSecurityMeasures.vue"
+import GridSecurityMeasures from "@/components/grid/GridSecurityMeasures.vue"
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <FormDataTransfers/>
+  <GridDataTransfers/>
 </template>
 
 <script setup>
-import FormDataTransfers from "@/components/form/data-transfers/FormDataTransfers.vue"
+import GridDataTransfers from "@/components/grid/GridDataTransfers.vue"
 </script>

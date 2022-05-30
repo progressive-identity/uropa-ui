@@ -1,7 +1,7 @@
 <template>
-  <FormDataCategories/>
+  <GridDataCategories/>
 </template>
 
 <script setup>
-import FormDataCategories from "@/components/grid/GridDataCategories.vue"
+import GridDataCategories from "@/components/grid/GridDataCategories.vue"
 </script>
