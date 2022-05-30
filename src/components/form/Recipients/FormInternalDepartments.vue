@@ -4,7 +4,7 @@
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <li v-for="(internalDepartment, index) in internalDepartments" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
-        <div class="h-1/4 align-top text-gray-900 font-mediumpy-5">
+        <div class="h-1/4 align-top text-gray-900 font-medium py-5">
           <p class="w-full truncate">{{ internalDepartment.name }}</p>
         </div>
         <TabDataCategory :data-categories="internalDepartment.dataCategoriesDisclosed"/>
