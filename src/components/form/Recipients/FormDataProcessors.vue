@@ -28,7 +28,7 @@ import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
 import FormDataProcessor from "@/components/form/Recipients/FormDataProcessor.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import dataProcessorTemplate from '../../../data/recipients/DataProcessorTemplate.json'
+import dataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 
 const store = useStore()
 const {current} = storeToRefs(store)

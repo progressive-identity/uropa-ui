@@ -34,7 +34,7 @@ import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
 import FormSecurityMeasure from "@/components/form/SecurityMeasures/FormSecurityMeasure.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import securityMeasureTemplate from '../../../data/SecurityMeasureTemplate.json'
+import securityMeasureTemplate from '../../../data/template/SecurityMeasureTemplate.json'
 
 const store = useStore()
 const {current} = storeToRefs(store)

@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
-import processingRecord from '../data/ProcessingRecordTemplate.json'
-import purposeTemplate from '../data/PurposeTemplate.json'
-import securityMeasureTemplate from '../data/SecurityMeasureTemplate.json'
+import processingRecord from '../data/template/ProcessingRecordTemplate.json'
+import purposeTemplate from '../data/template/PurposeTemplate.json'
+import securityMeasureTemplate from '../data/template/SecurityMeasureTemplate.json'
 
 export const useStoreData = defineStore('data', {
     state: () => {

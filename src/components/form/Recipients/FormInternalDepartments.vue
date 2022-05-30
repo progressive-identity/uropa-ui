@@ -29,7 +29,7 @@ import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
 import FormInternalDepartment from "@/components/form/Recipients/FormInternalDepartment.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import internalDepartmentTemplate from '../../../data/recipients/InternalDepartmentTemplate.json'
+import internalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
 import TabDataCategory from "@/components/TabDataCategory.vue"
 
 const store = useStore()

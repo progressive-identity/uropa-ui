@@ -28,7 +28,7 @@ import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
 import FormExternalOrganization from "@/components/form/Recipients/FormExternalOrganization.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import externalOrganizationTemplate from '../../../data/recipients/ExternalOrganizationTemplate.json'
+import externalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
 
 const store = useStore()
 const {current} = storeToRefs(store)
