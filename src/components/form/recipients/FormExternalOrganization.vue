@@ -29,6 +29,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
+import LegalPersonTemplate from '/src/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()
@@ -48,7 +49,7 @@ const props = defineProps({
 function emptyExternalOrganization() {
   props.externalOrganization.name = ''
   props.externalOrganization.organizationStatus = ''
-  props.externalOrganization.legalPerson = {}
+  props.externalOrganization.legalPerson = LegalPersonTemplate
   props.externalOrganization.dataCategoriesDisclosed = []
 }
 

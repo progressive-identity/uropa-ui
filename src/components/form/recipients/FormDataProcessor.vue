@@ -26,6 +26,7 @@ import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
 import {reactive} from 'vue'
+import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
 
@@ -45,7 +46,7 @@ const state = reactive({visible: true})
 
 function emptyDataProcessor() {
   props.dataProcessor.processorAgreementPath = ''
-  props.dataProcessor.legalPerson = {}
+  props.dataProcessor.legalPerson = LegalPersonTemplate
   props.dataProcessor.dataCategoriesDisclosed = []
 }
 
