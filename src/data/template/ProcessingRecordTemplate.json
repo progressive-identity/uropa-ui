@@ -69,7 +69,12 @@
     },
     "ceo": {
       "professionalTitle": "",
-      "personalInformation": {}
+      "personalInformation": {
+        "firstName": "",
+        "lastName": "",
+        "phoneNumber": "",
+        "email": ""
+      }
     },
     "postalAddress": {
       "address1": "",
@@ -78,6 +83,8 @@
       "zipCode": "",
       "state": "",
       "country": {
+        "name": "",
+        "iso": ""
       }
     }
   },

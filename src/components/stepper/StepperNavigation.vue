@@ -1,10 +1,13 @@
 <template>
-  <div class="pt-3" v-if="stepsProcessingRecord[current].mainNavigationVisible">
+  <div class="pt-3" v-if="stepsProcessingRecord[current]?.mainNavigationVisible">
     <div class="flex justify-end space-x-2">
       <UButton type="secondary" v-on:click="previous" v-if="current > 0" label="Previous"/>
       <UButton type="primary" v-on:click="next" v-if="current < stepsProcessingRecord.length-1" label="Next"/>
       <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
     </div>
+  </div>
+  <div class="flex justify-end space-x-2 pt-3">
+    <UButton type="secondary" v-on:click="previous" v-if="current === 7" label="Previous"/>
   </div>
 </template>
 <script setup>

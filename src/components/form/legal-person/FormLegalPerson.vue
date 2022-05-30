@@ -5,19 +5,19 @@
         <h3 class="text-lg leading-6 font-medium text-gray-900">{{ title }}</h3>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ description }}</p>
       </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
-        <div class="columns-2 gap-0 py-2">
+      <div class="isolate rounded-md shadow-sm">
+        <div class="columns-2 gap-0 py-3">
           <UInput v-model="modelValue.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
           <UInput v-model="modelValue.email" label="Email" :rounded-top-right="true" :rounded-bottom-right="true"/>
         </div>
         <FormPostalAddress :postal-address="modelValue.postalAddress"/>
         <div class="py-3 space-x-2">
           <UButton type="secondary" v-on:click="toggleDpo" label="Dpo"
-                   :icon="state.dataProcessorVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                   :icon="state.dpoVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                    class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           </UButton>
           <UButton type="secondary" v-on:click="toggleCeo" label="Ceo"
-                   :icon="state.externalOrganizationVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                   :icon="state.ceoVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                    class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           </UButton>
         </div>
@@ -62,7 +62,7 @@ const props = defineProps({
       description: {
         type: String,
         required: false,
-        default: 'A Legal person is an entity that process personal data. It\'s usually a company or an organization.'
+        default: 'A legal person is an entity that process personal data. It\'s usually a company or an organization.'
       }
     }
 )

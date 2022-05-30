@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="state.visible">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Data processor</h3>
@@ -21,14 +21,13 @@
 
 <script setup>
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
+import {reactive} from 'vue'
 
 const storeData = useStoreData()
-const storeForms = useStoreForms()
 
 const props = defineProps({
   dataProcessor: {
@@ -42,6 +41,8 @@ const props = defineProps({
   }
 })
 
+const state = reactive({visible: true})
+
 function emptyDataProcessor() {
   props.dataProcessor.processorAgreementPath = ''
   props.dataProcessor.legalPerson = {}
@@ -49,9 +50,7 @@ function emptyDataProcessor() {
 }
 
 function saveDataProcessor() {
-  storeForms.$patch({
-    dataProcessorVisible: false
-  })
+  state.visible = false
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
@@ -60,9 +59,7 @@ function saveDataProcessor() {
 }
 
 function closeDataProcessor() {
-  storeForms.$patch({
-    dataProcessorVisible: false
-  })
+  state.visible = false
 }
 
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="current === 7" class="flow-root">
+  <div v-if="current === 7" class="flow-root pt-6">
     <div>
       <pre id="json" class="prettyprint">
     {{ processingRecord }}
