@@ -19,11 +19,27 @@
         <UInput v-model="dataTransferLegalBasis.description" label="Description"
                 :rounded-bottom-left="true" :rounded-bottom-right="true"/>
       </div>
-      <div class="pt-3">
-        <button type="button" v-on:click="toggleDataProcessor"
-                class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Dpo
-        </button>
+      <div class="pt-3 space-x-2">
+        <UButton type="secondary" v-on:click="toggleDataProcessor" label="Data processor"
+                 :icon="state.dataProcessorVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                 class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        </UButton>
+        <UButton type="secondary" v-on:click="toggleExternalOrganization" label="External organization"
+                 :icon="state.externalOrganizationVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                 class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        </UButton>
+        <UButton type="secondary" v-on:click="toggleInternalDepartment" label="Internal department"
+                 :icon="state.internalDepartmentVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                 class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        </UButton>
+      </div>
+      <div>
+        <FormDataProcessor v-if="state.dataProcessorVisible"
+                           :data-processor="dataTransferLegalBasis.recipient.dataProcessor"/>
+        <FormExternalOrganization v-if="state.externalOrganizationVisible"
+                           :external-organization="dataTransferLegalBasis.recipient.externalOrganization"/>
+        <FormInternalDepartment v-if="state.internalDepartmentVisible"
+                           :internal-department="dataTransferLegalBasis.recipient.internalDepartment"/>
       </div>
     </div>
   </div>
@@ -36,7 +52,12 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelect from '@/components/basic/USelect.vue'
 import {transferLegalBasisType} from '/src/data/enums.js'
+import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
+import UButton from '@/components/basic/UButton.vue'
+import {mdiArrowDownDropCircle, mdiArrowUpDropCircle} from '@mdi/js'
 import {reactive} from 'vue'
+import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
+import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 
 const state = reactive({
   dataProcessorVisible: false,
@@ -55,7 +76,21 @@ const props = defineProps({
 })
 
 function toggleDataProcessor() {
-  state.dataProcessorVisible = !this.state.dataProcessorVisible
+  state.dataProcessorVisible = !state.dataProcessorVisible
+  state.externalOrganizationVisible = false
+  state.internalDepartmentVisible = false
+}
+
+function toggleExternalOrganization() {
+  state.externalOrganizationVisible = !state.externalOrganizationVisible
+  state.dataProcessorVisible = false
+  state.internalDepartmentVisible = false
+}
+
+function toggleInternalDepartment() {
+  state.internalDepartmentVisible = !state.internalDepartmentVisible
+  state.dataProcessorVisible = false
+  state.externalOrganizationVisible = false
 }
 
 </script>
