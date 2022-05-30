@@ -8,7 +8,7 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <UInput v-model="internalDepartment.name" label="Name" :rounded-top-left="true"/>
-        <SelectDataCategories v-model="internalDepartment.dataCategoriesDisclosed"/>
+        <SelectDataCategories v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"/>
       </div>
       <div class="space-x-2">
         <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
