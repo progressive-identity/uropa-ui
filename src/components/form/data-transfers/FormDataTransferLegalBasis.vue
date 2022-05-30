@@ -7,13 +7,14 @@
           treated in order to be compliant with GDPR.</p>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
-      <div>
-        <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent" class="pb-3"/>
-      </div>
+        <div>
+          <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent" class="pb-3"/>
+        </div>
         <div class="columns-2 gap-0">
-        <UInput v-model="dataTransferLegalBasis.transferLegalBasisType" label="Description"
-                :rounded-top-left="true"/>
-        <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" :rounded-top-right="true"/>
+          <USelect v-model="dataTransferLegalBasis.transferLegalBasisType" label="Description"
+                   :list="transferLegalBasisType"
+                   :rounded-top-left="true"/>
+          <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" :rounded-top-right="true"/>
         </div>
         <UInput v-model="dataTransferLegalBasis.description" label="Description"
                 :rounded-bottom-left="true" :rounded-bottom-right="true"/>
@@ -27,6 +28,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from "@/store/forms.js"
 import UInput from "@/components/basic/UInput.vue"
 import USwitch from "@/components/basic/USwitch.vue"
+import USelect from "@/components/basic/USelect.vue"
+import {transferLegalBasisType} from "/src/data/enums.js"
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()

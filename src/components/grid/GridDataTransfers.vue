@@ -6,8 +6,8 @@
         <li v-for="(dataTransfer, index) in processingRecord.dataTransfers" :key="index"
             class="bg-white rounded-lg shadow border-2 px-5 text-sm">
           <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
-            <p class="w-full text-right">{{ dataTransfer.country.name }}</p>
             <p class="w-full truncate">{{ dataTransfer.dataTransferLegalBasis.transferLegalBasisType }}</p>
+            <p class="w-full text-right">{{ dataTransfer.country.name }}</p>
           </div>
           <div class="h-2/4">
             <p class="mt-1 text-gray-500">{{ dataTransfer.description }}</p>
