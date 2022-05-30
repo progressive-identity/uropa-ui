@@ -8,6 +8,8 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" :rounded-top-left="true"/>
+        <SelectDataCategories v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"/>
+        <FormLegalPerson v-model="dataProcessor.legalPerson"/>
       </div>
       <div class="space-x-2">
         <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
@@ -22,6 +24,8 @@ import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from "@/store/forms.js"
 import UButton from "@/components/basic/UButton.vue"
 import UInput from "@/components/basic/UInput.vue"
+import FormLegalPerson from "@/components/form/LegalPerson/FormLegalPerson.vue"
+import SelectDataCategories from "@/components/form/DataCategories/SelectDataCategories.vue"
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()
