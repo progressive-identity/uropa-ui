@@ -26,7 +26,7 @@ import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
-import FormDataProcessor from "@/components/form/Recipients/FormDataProcessor.vue"
+import FormDataProcessor from "@/components/form/recipients/FormDataProcessor.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import dataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 

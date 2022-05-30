@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import FormSecurityMeasures from "@/components/form/SecurityMeasures/FormSecurityMeasures.vue"
+import FormSecurityMeasures from "@/components/grid/GridSecurityMeasures.vue"
 </script>

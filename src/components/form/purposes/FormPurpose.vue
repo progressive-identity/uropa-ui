@@ -32,7 +32,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from "@/store/forms.js"
 import UInput from "@/components/basic/UInput.vue"
 import USwitch from "@/components/basic/USwitch.vue"
-import FormLegalBasis from "@/components/form/Purposes/FormLegalBasis.vue"
+import FormLegalBasis from "@/components/form/purposes/FormLegalBasis.vue"
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()

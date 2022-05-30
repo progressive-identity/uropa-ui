@@ -55,7 +55,7 @@ import {useStore} from '@/store/stepper.js'
 import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
-import FormSinglePurpose from "@/components/form/Purposes/FormSinglePurpose.vue"
+import FormSinglePurpose from "@/components/form/purposes/FormPurpose.vue"
 import UButton from "@/components/basic/UButton.vue"
 import UIcon from "@/components/basic/UIcon.vue"
 import {mdiCheck, mdiPlusCircle} from '@mdi/js'

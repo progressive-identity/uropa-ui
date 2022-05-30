@@ -16,9 +16,9 @@ import {useStore} from '@/store/stepper.js'
 import {useStoreData} from "@/store/data.js"
 import {storeToRefs} from 'pinia'
 import UStepperBullet from "@/components/basic/UStepperBullet.vue"
-import FormDataProcessors from "@/components/form/Recipients/FormDataProcessors.vue"
-import FormExternalOrganizations from "@/components/form/Recipients/FormExternalOrganizations.vue"
-import FormInternalDepartments from "@/components/form/Recipients/FormInternalDepartments.vue"
+import FormDataProcessors from "@/components/grid/recipients/GridDataProcessors.vue"
+import FormExternalOrganizations from "@/components/grid/recipients/GridExternalOrganizations.vue"
+import FormInternalDepartments from "@/components/grid/recipients/GridInternalDepartments.vue"
 
 const {processingRecord: {recipients: {internalDepartments, externalOrganizations, dataProcessors}}} = useStoreData()
 const store = useStore()

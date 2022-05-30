@@ -28,7 +28,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
 import UInput from "@/components/basic/UInput.vue"
-import FormDPIA from "@/components/form/ProcessingRecord/FormDPIA.vue"
+import FormDPIA from "@/components/form/processing-record/FormDPIA.vue"
 import USwitch from "@/components/basic/USwitch.vue"
 
 const store = useStore()

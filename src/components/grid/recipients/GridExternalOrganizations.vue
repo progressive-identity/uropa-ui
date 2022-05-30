@@ -26,7 +26,7 @@ import {useStoreData} from "@/store/data.js"
 import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
 import UButton from "@/components/basic/UButton.vue"
-import FormExternalOrganization from "@/components/form/Recipients/FormExternalOrganization.vue"
+import FormExternalOrganization from "@/components/form/recipients/FormExternalOrganization.vue"
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import externalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
 

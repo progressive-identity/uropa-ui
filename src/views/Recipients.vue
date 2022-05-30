@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import FormRecipients from "@/components/form/Recipients/FormRecipients.vue"
+import FormRecipients from "@/components/form/recipients/FormRecipients.vue"
 </script>

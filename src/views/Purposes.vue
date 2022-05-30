@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import FormPurposes from "@/components/form/Purposes/FormPurposes.vue"
+import FormPurposes from "@/components/grid/GridPurposes.vue"
 </script>

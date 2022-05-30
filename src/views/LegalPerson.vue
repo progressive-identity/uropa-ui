@@ -16,9 +16,9 @@ import {useStore} from '@/store/stepper'
 import {useStoreData} from '@/store/data'
 import {storeToRefs} from 'pinia'
 import UStepperBullet from "@/components/basic/UStepperBullet.vue"
-import FormJointControllers from "@/components/form/LegalPerson/FormJointControllers.vue"
-import FormLegalPerson from "@/components/form/LegalPerson/FormLegalPerson.vue"
-import FormRepresentative from "@/components/form/LegalPerson/FormRepresentative.vue"
+import FormJointControllers from "@/components/form/legal-person/FormJointControllers.vue"
+import FormLegalPerson from "@/components/form/legal-person/FormLegalPerson.vue"
+import FormRepresentative from "@/components/form/legal-person/FormRepresentative.vue"
 
 
 const {processingRecord: {legalPerson, representative, jointControllers}} = useStoreData()
