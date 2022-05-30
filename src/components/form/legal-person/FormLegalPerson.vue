@@ -11,23 +11,21 @@
           <UInput v-model="modelValue.email" label="Email" :rounded-top-right="true" :rounded-bottom-right="true"/>
         </div>
         <FormPostalAddress :postal-address="modelValue.postalAddress"/>
-        <div class="pt-5">
-          <button type="button" v-on:click="switchDpo"
-                  class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Dpo
-          </button>
+        <div class="py-3 space-x-2">
+          <UButton type="secondary" v-on:click="toggleDpo" label="Dpo"
+                   :icon="state.dataProcessorVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                   class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          </UButton>
+          <UButton type="secondary" v-on:click="toggleCeo" label="Ceo"
+                   :icon="state.externalOrganizationVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+                   class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          </UButton>
         </div>
-        <div class="pt-5">
-          <FormDpo v-if="dpoVisible" :dpo="modelValue.dpo"/>
-        </div>
-        <div class="pt-5">
-          <button type="button" v-on:click="switchCeo"
-                  class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Ceo
-          </button>
-        </div>
-        <div class="pt-5">
-          <FormCeo v-if="ceoVisible" :ceo="modelValue.ceo"/>
+        <div>
+          <FormDpo v-if="state.dpoVisible"
+                   :dpo="modelValue.dpo"/>
+          <FormCeo v-if="state.ceoVisible"
+                   :ceo="modelValue.ceo"/>
         </div>
       </div>
     </div>
@@ -36,12 +34,19 @@
 
 <script setup>
 import {useStore} from '@/store/stepper.js'
-import {useStoreForms} from '@/store/forms.js'
 import {storeToRefs} from 'pinia'
 import FormDpo from '@/components/form/legal-person/FormDpo.vue'
 import FormCeo from '@/components/form/legal-person/FormCeo.vue'
 import FormPostalAddress from '@/components/form/FormPostalAddress.vue'
 import UInput from '@/components/basic/UInput.vue'
+import UButton from '@/components/basic/UButton.vue'
+import {mdiArrowDownDropCircle, mdiArrowUpDropCircle} from '@mdi/js'
+import {reactive} from 'vue'
+
+const state = reactive({
+  ceoVisible: false,
+  dpoVisible: false
+})
 
 
 const props = defineProps({
@@ -63,23 +68,16 @@ const props = defineProps({
 )
 
 const store = useStore()
-const storeForms = useStoreForms()
-const {ceoVisible, dpoVisible} = storeToRefs(storeForms)
 
-const {current, stepsLegalPerson, currentLegalPerson} = storeToRefs(store)
+const {current} = storeToRefs(store)
 
-storeForms.$patch({
-  dpoVisible: !storeForms.dpoVisible
-})
-
-const switchDpo = async () => {
-  storeForms.$patch({
-    dpoVisible: !storeForms.dpoVisible
-  })
+function toggleCeo() {
+  state.ceoVisible = !state.ceoVisible
+  state.dpoVisible = false
 }
-const switchCeo = async () => {
-  storeForms.$patch({
-    ceoVisible: !storeForms.ceoVisible
-  })
+
+function toggleDpo() {
+  state.dpoVisible = !state.dpoVisible
+  state.ceoVisible = false
 }
 </script>
