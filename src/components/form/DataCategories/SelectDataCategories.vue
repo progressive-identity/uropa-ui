@@ -1,10 +1,10 @@
 <template>
-  <Combobox as="div" v-model="modelValue"  multiple>
-    <ComboboxLabel class="block text-sm font-medium text-gray-700">Data categories</ComboboxLabel>
+  <Combobox as="div" v-model="modelValue" multiple>
+    <ComboboxLabel class="block text-sm font-medium text-gray-700">{{ title }}</ComboboxLabel>
     <div class="relative mt-1">
       <ComboboxInput disabled="true"
-          class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-          :display-value="(dataCategories)=>dataCategories.map(dataCategory=>dataCategory?.name)"/>
+                     class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                     :display-value="(dataCategories)=>dataCategories.map(dataCategory=>dataCategory?.name)"/>
       <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
         <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
       </ComboboxButton>
@@ -45,6 +45,11 @@ const props = defineProps({
   modelValue: {
     type: Array,
     required: true
+  },
+  title: {
+    type: String,
+    required: false,
+    default: "Data categories"
   }
 })
 
