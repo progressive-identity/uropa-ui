@@ -1,11 +1,6 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="state.visible">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Purpose</h3>
-        <p class="mt-2 text-sm text-gray-700">The purpose of the processing describes what the reason why
-          the controller processes the personal data.</p>
-      </div>
       <div>
         <USwitch v-model="purpose.isMain" label="main"/>
       </div>
@@ -18,10 +13,10 @@
         <div class="pb-2">
           <FormLegalBasis :legal-basis="purpose.legalBasis"/>
         </div>
-        <button type="button" v-on:click="savePurpose"
-                class="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-white font-medium rounded-md text-gray-700 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Save
-        </button>
+        <div class="space-x-2">
+          <UButton label="Back" v-on:click="closePurpose" type="secondary"/>
+          <UButton label="Save" v-on:click="savePurpose"/>
+        </div>
       </div>
     </div>
   </div>
@@ -30,9 +25,12 @@
 <script setup>
 import {useStoreData} from '@/store/data.js'
 import {useStoreForms} from '@/store/forms.js'
+import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
+import {reactive} from 'vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import FormLegalBasis from '@/components/form/purposes/FormLegalBasis.vue'
+import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
 const storeForms = useStoreForms()
@@ -41,23 +39,34 @@ const props = defineProps({
   purpose: {
     type: Object,
     required: true
+  },
+  edition: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 
+const state = reactive({visible: true})
+
 function emptyPurpose() {
   props.purpose.name = ''
-  props.purpose.description = ''
-  props.purpose.legalBasis = {type: '', description: '', proofUrl: ''}
+  props.purpose.organizationStatus = ''
+  props.purpose.legalPerson = LegalPersonTemplate
+  props.purpose.dataCategoriesDisclosed = []
 }
 
-const savePurpose = async () => {
-  storeData.$patch((state) =>
-      state.processingRecord.purposes.push({...props.purpose})
-  )
-  emptyPurpose()
-  storeForms.$patch({
-    purposeVisible: false
-  })
+function savePurpose() {
+  state.visible = false
+  if (!props.edition) {
+    storeData.$patch((state) =>
+        state.processingRecord.purposes.push({...props.purpose}))
+    emptyPurpose()
+  }
+}
+
+function closePurpose() {
+  state.visible = false
 }
 
 </script>
