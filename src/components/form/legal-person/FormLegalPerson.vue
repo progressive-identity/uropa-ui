@@ -32,7 +32,6 @@
 
 <script setup>
 import {storeToRefs} from 'pinia'
-import {useStore} from '@/store/stepper.js'
 import {useStoreDisplay} from '@/store/display.js'
 import FormDpo from '@/components/form/legal-person/FormDpo.vue'
 import FormCeo from '@/components/form/legal-person/FormCeo.vue'
@@ -40,9 +39,6 @@ import FormPostalAddress from '@/components/form/FormPostalAddress.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UButton from '@/components/basic/UButton.vue'
 import {mdiArrowDownDropCircle, mdiArrowUpDropCircle} from '@mdi/js'
-
-const store = useStore()
-const {current} = storeToRefs(store)
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)

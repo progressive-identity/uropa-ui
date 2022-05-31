@@ -51,13 +51,23 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeDisplay = useStoreDisplay()
 
+store.$patch({
+  mainNavigationDisplayed: false
+})
+
 function next() {
   store.current++
   storeDisplay.$reset()
+  store.$patch({
+    mainNavigationDisplayed: true
+  })
 }
 
 function previous() {
   store.current--
   storeDisplay.$reset()
+  store.$patch({
+    mainNavigationDisplayed: true
+  })
 }
 </script>

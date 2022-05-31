@@ -22,7 +22,6 @@
 
 <script setup>
 import {reactive} from 'vue'
-import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
@@ -32,8 +31,6 @@ import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import internalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
 import TabDataCategory from '@/components/TabDataCategory.vue'
 
-const store = useStore()
-const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({internalDepartment: internalDepartmentTemplate, edition: false})

@@ -20,8 +20,6 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper'
-import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/USelect.vue'
 import countries from './../../data/countries.json'
@@ -33,6 +31,4 @@ const props = defineProps({
   }
 })
 
-const store = useStore()
-const {current} = storeToRefs(store)
 </script>

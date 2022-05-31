@@ -29,16 +29,12 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {storeToRefs} from 'pinia'
 import dataCategories from '../../../data/dataCategories.json'
 import {computed, ref} from 'vue'
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid'
 import {Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions} from '@headlessui/vue'
 
-const store = useStore()
-const {current} = storeToRefs(store)
 const {processingRecord: {purposes}} = useStoreData()
 
 const props = defineProps({

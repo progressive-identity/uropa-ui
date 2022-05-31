@@ -27,7 +27,6 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import {reactive} from 'vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import FormLegalBasis from '@/components/form/purposes/FormLegalBasis.vue'
 import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
@@ -57,7 +56,7 @@ function emptyPurpose() {
 }
 
 function savePurpose() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       purpose: false
     }
@@ -70,7 +69,7 @@ function savePurpose() {
 }
 
 function closePurpose() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       purpose: false
     }

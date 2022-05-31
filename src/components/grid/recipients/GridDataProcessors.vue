@@ -21,7 +21,6 @@
 
 <script setup>
 import {reactive} from 'vue'
-import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
@@ -30,8 +29,6 @@ import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vu
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import dataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 
-const store = useStore()
-const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({dataProcessor: dataProcessorTemplate, edition: false})
