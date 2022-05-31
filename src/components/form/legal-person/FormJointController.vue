@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="state.visible">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.jointController">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <FormLegalPerson v-model="jointController.legalPerson" title="Joint controllers" description="A joint controller is an entity that process the personal data
           and jointly determines the purposes and the means of the processing, according to article 26 GDPR."/>
@@ -14,16 +14,18 @@
 </template>
 
 <script setup>
+import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import UInput from '@/components/basic/UInput.vue'
-import {reactive} from 'vue'
+import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
-const storeForms = useStoreForms()
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
+
 
 const props = defineProps({
   jointController: {
@@ -37,7 +39,6 @@ const props = defineProps({
   }
 })
 
-const state = reactive({visible: true})
 
 function emptyJointController() {
   props.jointController.name = ''
@@ -47,7 +48,11 @@ function emptyJointController() {
 }
 
 function saveJointController() {
-  state.visible = false
+    storeDisplay.$patch({
+    formsDisplayed: {
+      jointController: false
+    }
+  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.jointControllers.push({...props.jointController}))
@@ -56,7 +61,11 @@ function saveJointController() {
 }
 
 function closeJointController() {
-  state.visible = false
+    storeDisplay.$patch({
+    formsDisplayed: {
+      jointController: false
+    }
+  })
 }
 
 </script>

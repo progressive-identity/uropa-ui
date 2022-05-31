@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.securityMeasure">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Security measure</h3>
@@ -24,15 +24,17 @@
 </template>
 
 <script setup>
+import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/USelect.vue'
 import {securityMeasureTypes} from '@/data/enums.js'
 
 const storeData = useStoreData()
-const storeForms = useStoreForms()
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
   securityMeasure: {
@@ -53,8 +55,10 @@ function emptySecurityMeasure() {
 }
 
 function saveSecurityMeasure() {
-  storeForms.$patch({
-    securityMeasureVisible: false
+    storeDisplay.$patch({
+    formsDisplayed: {
+      securityMeasure: false
+    }
   })
   if (!props.edition) {
     storeData.$patch((state) =>
@@ -64,8 +68,10 @@ function saveSecurityMeasure() {
 }
 
 function closeSecurityMeasure() {
-  storeForms.$patch({
-    securityMeasureVisible: false
+    storeDisplay.$patch({
+    formsDisplayed: {
+      securityMeasure: false
+    }
   })
 }
 

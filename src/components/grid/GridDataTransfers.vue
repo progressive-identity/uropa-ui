@@ -19,7 +19,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="dataTransferVisible">
+    <div>
       <FormDataTransfer :data-transfer="state.dataTransfer" :edition="state.edition"/>
     </div>
   </div>
@@ -29,7 +29,7 @@
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataTransfer from '@/components/form/data-transfers/FormDataTransfer.vue'
@@ -40,30 +40,38 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const storeForms = useStoreForms()
-const {dataTransferVisible} = storeToRefs(storeForms)
 const state = reactive({dataTransfer: dataTransferTemplate, edition: false})
+const storeDisplay = useStoreDisplay()
 
 
 function createDataTransfer() {
   state.dataTransfer = dataTransferTemplate
   state.edition = false
-  storeForms.$patch({
-    dataTransferVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataTransfer: true
+    }
   })
 }
 
 function editDataTransfer(dataTransfer) {
   state.dataTransfer = dataTransfer
   state.edition = true
-  storeForms.$patch({
-    dataTransferVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataTransfer: true
+    }
   })
 }
 
 function deleteDataTransfer(index) {
   storeData.$patch((state) => {
     state.processingRecord.dataTransfers.splice(index, 1)
+  })
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataTransfer: false
+    }
   })
 }
 

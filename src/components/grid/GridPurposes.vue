@@ -21,7 +21,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="state.purposeVisible">
+    <div>
       <FormPurpose :purpose="state.purpose" :edition="state.edition"/>
     </div>
   </div>
@@ -36,29 +36,44 @@ import UButton from '@/components/basic/UButton.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import PurposeTemplate from '../../data/template/PurposeTemplate.json'
+import {useStoreDisplay} from '@/store/display.js'
 
 const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({purpose: PurposeTemplate, edition: false, purposeVisible: false})
+const storeDisplay = useStoreDisplay()
 
 
 function createPurpose() {
   state.purpose = PurposeTemplate
-  state.purposeVisible = true
   state.edition = false
+  storeDisplay.$patch({
+    formsDisplayed: {
+      purpose: true
+    }
+  })
 }
 
 function editPurpose(purpose) {
   state.purpose = purpose
-  state.purposeVisible = true
   state.edition = true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      purpose: true
+    }
+  })
 }
 
 function deletePurpose(index) {
   storeData.$patch((state) => {
     state.processingRecord.purposes.splice(index, 1)
+  })
+  storeDisplay.$patch({
+    formsDisplayed: {
+      purpose: false
+    }
   })
 }
 

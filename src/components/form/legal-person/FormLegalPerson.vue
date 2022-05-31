@@ -12,20 +12,18 @@
         </div>
         <FormPostalAddress :postal-address="modelValue.postalAddress"/>
         <div class="py-3 space-x-2">
-          <UButton type="secondary" v-on:click="toggleDpo" label="Dpo"
-                   :icon="state.dpoVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+          <UButton type="secondary" v-on:click="toggleDisplay(false, !formsDisplayed.dpo)" label="Dpo"
+                   :icon="formsDisplayed.dpo ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                    class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           </UButton>
-          <UButton type="secondary" v-on:click="toggleCeo" label="Ceo"
-                   :icon="state.ceoVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+          <UButton type="secondary" v-on:click="toggleDisplay(!formsDisplayed.ceo, false)" label="Ceo"
+                   :icon="formsDisplayed.ceo ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                    class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           </UButton>
         </div>
         <div>
-          <FormDpo v-if="state.dpoVisible"
-                   :dpo="modelValue.dpo"/>
-          <FormCeo v-if="state.ceoVisible"
-                   :ceo="modelValue.ceo"/>
+          <FormDpo :dpo="modelValue.dpo"/>
+          <FormCeo :ceo="modelValue.ceo"/>
         </div>
       </div>
     </div>
@@ -33,21 +31,21 @@
 </template>
 
 <script setup>
-import {useStore} from '@/store/stepper.js'
 import {storeToRefs} from 'pinia'
+import {useStore} from '@/store/stepper.js'
+import {useStoreDisplay} from '@/store/display.js'
 import FormDpo from '@/components/form/legal-person/FormDpo.vue'
 import FormCeo from '@/components/form/legal-person/FormCeo.vue'
 import FormPostalAddress from '@/components/form/FormPostalAddress.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UButton from '@/components/basic/UButton.vue'
 import {mdiArrowDownDropCircle, mdiArrowUpDropCircle} from '@mdi/js'
-import {reactive} from 'vue'
 
-const state = reactive({
-  ceoVisible: false,
-  dpoVisible: false
-})
+const store = useStore()
+const {current} = storeToRefs(store)
 
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
       modelValue: {
@@ -67,17 +65,13 @@ const props = defineProps({
     }
 )
 
-const store = useStore()
-
-const {current} = storeToRefs(store)
-
-function toggleCeo() {
-  state.ceoVisible = !state.ceoVisible
-  state.dpoVisible = false
+function toggleDisplay(ceo, dpo) {
+  storeDisplay.$patch({
+    formsDisplayed: {
+      ceo,
+      dpo
+    }
+  })
 }
 
-function toggleDpo() {
-  state.dpoVisible = !state.dpoVisible
-  state.ceoVisible = false
-}
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="state.visible">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.purpose">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
         <USwitch v-model="purpose.isMain" label="main"/>
@@ -24,16 +24,18 @@
 
 <script setup>
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import {reactive} from 'vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import FormLegalBasis from '@/components/form/purposes/FormLegalBasis.vue'
 import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
+import {storeToRefs} from 'pinia/dist/pinia.esm-browser.js'
 
 const storeData = useStoreData()
-const storeForms = useStoreForms()
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
   purpose: {
@@ -47,8 +49,6 @@ const props = defineProps({
   }
 })
 
-const state = reactive({visible: true})
-
 function emptyPurpose() {
   props.purpose.name = ''
   props.purpose.organizationStatus = ''
@@ -57,7 +57,11 @@ function emptyPurpose() {
 }
 
 function savePurpose() {
-  state.visible = false
+    storeDisplay.$patch({
+    formsDisplayed: {
+      purpose: false
+    }
+  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.purposes.push({...props.purpose}))
@@ -66,7 +70,11 @@ function savePurpose() {
 }
 
 function closePurpose() {
-  state.visible = false
+    storeDisplay.$patch({
+    formsDisplayed: {
+      purpose: false
+    }
+  })
 }
 
 </script>

@@ -19,7 +19,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="securityMeasureVisible">
+    <div>
       <FormSecurityMeasure :security-measure="state.securityMeasure" :edition="state.edition"/>
     </div>
   </div>
@@ -29,7 +29,7 @@
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormSecurityMeasure from '@/components/form/security-measures/FormSecurityMeasure.vue'
@@ -40,30 +40,38 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const storeForms = useStoreForms()
-const {securityMeasureVisible} = storeToRefs(storeForms)
 const state = reactive({securityMeasure: securityMeasureTemplate, edition: false})
+const storeDisplay = useStoreDisplay()
 
 
 function createSecurityMeasure() {
   state.securityMeasure = securityMeasureTemplate
   state.edition = false
-  storeForms.$patch({
-    securityMeasureVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      securityMeasure: true
+    }
   })
 }
 
 function editSecurityMeasure(securityMeasure) {
   state.securityMeasure = securityMeasure
   state.edition = true
-  storeForms.$patch({
-    securityMeasureVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      securityMeasure: true
+    }
   })
 }
 
 function deleteSecurityMeasure(index) {
   storeData.$patch((state) => {
     state.processingRecord.securityMeasures.splice(index, 1)
+  })
+  storeDisplay.$patch({
+    formsDisplayed: {
+      securityMeasure: false
+    }
   })
 }
 

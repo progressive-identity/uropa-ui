@@ -14,7 +14,7 @@
       </li>
     </ul>
   </div>
-  <div v-if="state.jointControllerVisible">
+  <div>
     <FormJointController :joint-controller="state.jointController" :edition="state.edition"/>
   </div>
 </template>
@@ -23,6 +23,7 @@
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormJointController from '@/components/form/legal-person/FormJointController.vue'
@@ -33,19 +34,27 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({jointController: JointControllerTemplate, edition: false, jointControllerVisible:false})
-
+const state = reactive({jointController: JointControllerTemplate, edition: false})
+const storeDisplay = useStoreDisplay()
 
 function createJointController() {
   state.jointController = JointControllerTemplate
-  state.jointControllerVisible = true
   state.edition = false
+  storeDisplay.$patch({
+    formsDisplayed: {
+      jointController: true
+    }
+  })
 }
 
 function editJointController(jointController) {
   state.jointController = jointController
-  state.jointControllerVisible = true
   state.edition = true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      jointController: true
+    }
+  })
 }
 
 function deleteJointController(index) {

@@ -15,7 +15,7 @@
       </li>
     </ul>
   </div>
-  <div v-if="internalDepartmentVisible">
+  <div>
     <FormInternalDepartment :internal-department="state.internalDepartment" :edition="state.edition"/>
   </div>
 </template>
@@ -24,7 +24,7 @@
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
@@ -36,9 +36,8 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const storeForms = useStoreForms()
-const {internalDepartmentVisible} = storeToRefs(storeForms)
 const state = reactive({internalDepartment: internalDepartmentTemplate, edition: false})
+const storeDisplay = useStoreDisplay()
 
 const props = defineProps({
   internalDepartments: {
@@ -50,22 +49,31 @@ const props = defineProps({
 function createInternalDepartment() {
   state.internalDepartment = internalDepartmentTemplate
   state.edition = false
-  storeForms.$patch({
-    internalDepartmentVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      internalDepartment: true
+    }
   })
 }
 
 function editInternalDepartment(internalDepartment) {
   state.internalDepartment = internalDepartment
   state.edition = true
-  storeForms.$patch({
-    internalDepartmentVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      internalDepartment: true
+    }
   })
 }
 
 function deleteInternalDepartment(index) {
   storeData.$patch((state) => {
     state.processingRecord.recipients.internalDepartments.splice(index, 1)
+  })
+  storeDisplay.$patch({
+    formsDisplayed: {
+      internalDepartment: false
+    }
   })
 }
 

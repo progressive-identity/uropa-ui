@@ -14,7 +14,7 @@
       </li>
     </ul>
   </div>
-  <div v-if="externalOrganizationVisible">
+  <div>
     <FormExternalOrganization :external-organization="state.externalOrganization" :edition="state.edition"/>
   </div>
 </template>
@@ -23,7 +23,7 @@
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
@@ -34,9 +34,8 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const storeForms = useStoreForms()
-const {externalOrganizationVisible} = storeToRefs(storeForms)
 const state = reactive({externalOrganization: externalOrganizationTemplate, edition: false})
+const storeDisplay = useStoreDisplay()
 
 const props = defineProps({
   externalOrganizations: {
@@ -48,22 +47,31 @@ const props = defineProps({
 function createExternalOrganization() {
   state.externalOrganization = externalOrganizationTemplate
   state.edition = false
-  storeForms.$patch({
-    externalOrganizationVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      externalOrganization: true
+    }
   })
 }
 
 function editExternalOrganization(externalOrganization) {
   state.externalOrganization = externalOrganization
   state.edition = true
-  storeForms.$patch({
-    externalOrganizationVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      externalOrganization: true
+    }
   })
 }
 
 function deleteExternalOrganization(index) {
   storeData.$patch((state) => {
     state.processingRecord.recipients.externalOrganizations.splice(index, 1)
+  })
+  storeDisplay.$patch({
+    formsDisplayed: {
+      externalOrganization: false
+    }
   })
 }
 

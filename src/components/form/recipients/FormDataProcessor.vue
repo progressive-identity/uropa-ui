@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="state.visible">
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.dataProcessor">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Data processor</h3>
@@ -11,7 +11,7 @@
         <SelectDataCategories v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"/>
         <FormLegalPerson v-model="dataProcessor.legalPerson"/>
       </div>
-      <div class="space-x-2">
+      <div class="space-x-2" v-if="!nested">
         <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
         <UButton label="Save" v-on:click="saveDataProcessor"/>
       </div>
@@ -20,15 +20,18 @@
 </template>
 
 <script setup>
+import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
+import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
-import {reactive} from 'vue'
 import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
   dataProcessor: {
@@ -39,10 +42,13 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false
+  },
+  nested: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
-
-const state = reactive({visible: true})
 
 function emptyDataProcessor() {
   props.dataProcessor.processorAgreementPath = ''
@@ -51,7 +57,11 @@ function emptyDataProcessor() {
 }
 
 function saveDataProcessor() {
-  state.visible = false
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataProcessor: false
+    }
+  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
@@ -60,7 +70,11 @@ function saveDataProcessor() {
 }
 
 function closeDataProcessor() {
-  state.visible = false
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataProcessor: false
+    }
+  })
 }
 
 </script>

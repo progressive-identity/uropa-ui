@@ -20,34 +20,31 @@
                 :rounded-bottom-left="true" :rounded-bottom-right="true"/>
       </div>
       <div class="pt-3 space-x-2">
-        <UButton type="secondary" v-on:click="toggleDataProcessor" label="Data processor"
-                 :icon="state.dataProcessorVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+        <UButton type="secondary" v-on:click="toggleDisplay(!formsDisplayed.dataProcessor, false, false)" label="Data processor"
+                 :icon="formsDisplayed.dataProcessor ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                  class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         </UButton>
-        <UButton type="secondary" v-on:click="toggleExternalOrganization" label="External organization"
-                 :icon="state.externalOrganizationVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+        <UButton type="secondary" v-on:click="toggleDisplay(false, !formsDisplayed.externalOrganization, false)" label="External organization"
+                 :icon="formsDisplayed.externalOrganization ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                  class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         </UButton>
-        <UButton type="secondary" v-on:click="toggleInternalDepartment" label="Internal department"
-                 :icon="state.internalDepartmentVisible ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
+        <UButton type="secondary" v-on:click="toggleDisplay(false, false, !formsDisplayed.internalDepartment)" label="Internal department"
+                 :icon="formsDisplayed.internalDepartment ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                  class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         </UButton>
       </div>
       <div>
-        <FormDataProcessor v-if="state.dataProcessorVisible"
-                           :data-processor="dataTransferLegalBasis.recipient.dataProcessor"/>
-        <FormExternalOrganization v-if="state.externalOrganizationVisible"
-                           :external-organization="dataTransferLegalBasis.recipient.externalOrganization"/>
-        <FormInternalDepartment v-if="state.internalDepartmentVisible"
-                           :internal-department="dataTransferLegalBasis.recipient.internalDepartment"/>
+        <FormDataProcessor :data-processor="dataTransferLegalBasis.recipient.dataProcessor" :nested="true"/>
+        <FormExternalOrganization :external-organization="dataTransferLegalBasis.recipient.externalOrganization" :nested="true"/>
+        <FormInternalDepartment :internal-department="dataTransferLegalBasis.recipient.internalDepartment" :nested="true"/>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {storeToRefs} from 'pinia'
+import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelect from '@/components/basic/USelect.vue'
@@ -55,18 +52,11 @@ import {transferLegalBasisType} from '/src/data/enums.js'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
 import UButton from '@/components/basic/UButton.vue'
 import {mdiArrowDownDropCircle, mdiArrowUpDropCircle} from '@mdi/js'
-import {reactive} from 'vue'
 import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 
-const state = reactive({
-  dataProcessorVisible: false,
-  externalOrganizationVisible: false,
-  internalDepartmentVisible: false
-})
-
-const storeData = useStoreData()
-const storeForms = useStoreForms()
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
   dataTransferLegalBasis: {
@@ -75,22 +65,14 @@ const props = defineProps({
   }
 })
 
-function toggleDataProcessor() {
-  state.dataProcessorVisible = !state.dataProcessorVisible
-  state.externalOrganizationVisible = false
-  state.internalDepartmentVisible = false
-}
-
-function toggleExternalOrganization() {
-  state.externalOrganizationVisible = !state.externalOrganizationVisible
-  state.dataProcessorVisible = false
-  state.internalDepartmentVisible = false
-}
-
-function toggleInternalDepartment() {
-  state.internalDepartmentVisible = !state.internalDepartmentVisible
-  state.dataProcessorVisible = false
-  state.externalOrganizationVisible = false
+function toggleDisplay(dataProcessor, externalOrganization, internalDepartment) {
+    storeDisplay.$patch({
+    formsDisplayed: {
+      dataProcessor,
+      externalOrganization,
+      internalDepartment
+    }
+  })
 }
 
 </script>

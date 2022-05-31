@@ -14,7 +14,7 @@
       </li>
     </ul>
   </div>
-  <div v-if="dataProcessorVisible">
+  <div>
     <FormDataProcessor :data-processor="state.dataProcessor" :edition="state.edition"/>
   </div>
 </template>
@@ -23,7 +23,7 @@
 import {reactive} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
@@ -34,9 +34,8 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const storeForms = useStoreForms()
-const {dataProcessorVisible} = storeToRefs(storeForms)
 const state = reactive({dataProcessor: dataProcessorTemplate, edition: false})
+const storeDisplay = useStoreDisplay()
 
 const props = defineProps({
   dataProcessors: {
@@ -48,22 +47,31 @@ const props = defineProps({
 function createDataProcessor() {
   state.dataProcessor = dataProcessorTemplate
   state.edition = false
-  storeForms.$patch({
-    dataProcessorVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataProcessor: true
+    }
   })
 }
 
 function editDataProcessor(dataProcessor) {
   state.dataProcessor = dataProcessor
   state.edition = true
-  storeForms.$patch({
-    dataProcessorVisible: true
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataProcessor: true
+    }
   })
 }
 
 function deleteDataProcessor(index) {
   storeData.$patch((state) => {
     state.processingRecord.recipients.dataProcessors.splice(index, 1)
+  })
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataProcessor: false
+    }
   })
 }
 

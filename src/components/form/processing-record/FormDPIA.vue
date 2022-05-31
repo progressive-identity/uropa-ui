@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-6 sm:space-y-5">
+  <div class="space-y-6 sm:space-y-5" v-if="formsDisplayed.DPIA">
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">DPIA</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">The description of the some data related to the data protection
@@ -19,6 +19,7 @@
 <script setup>
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
 import UDatePicker from '@/components/basic/UDatePicker.vue'
@@ -26,4 +27,6 @@ import UDatePicker from '@/components/basic/UDatePicker.vue'
 const store = useStore()
 const {processingRecord: {DPIAInfos}} = useStoreData()
 const {current} = storeToRefs(store)
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 </script>

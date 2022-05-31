@@ -31,16 +31,4 @@ const store = useStore()
 const {current, stepsDataCategories, currentDataCategories} = storeToRefs(store)
 const {processingRecord: {purposes}} = useStoreData()
 
-purposes[0] = {
-  'name': 'whatever',
-  'description': '',
-  'isMain': true,
-  'legalBasis': {
-    'type': 'contentment',
-    'description': '',
-    'proofUrl': ''
-  },
-  dataCategories
-}
-
 </script>

@@ -12,11 +12,12 @@
           <div class="columns-2 gap-0">
             <UInput v-model="processingRecord.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
             <UInput v-model="processingRecord.internalId" label="Internal ID"
-                    placeholder="The reference of the processing record" :rounded-top-right="true" :rounded-bottom-right="true"/>
+                    placeholder="The reference of the processing record" :rounded-top-right="true"
+                    :rounded-bottom-right="true"/>
           </div>
         </div>
-        <USwitch v-model="options.DPIAVisible" label="DPIA"/>
-        <FormDPIA v-if="options.DPIAVisible"/>
+        <USwitch v-model="formsDisplayed.DPIA" label="DPIA"/>
+        <FormDPIA/>
       </div>
     </div>
   </div>
@@ -25,14 +26,15 @@
 <script setup>
 import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
-import {useStoreForms} from '@/store/forms.js'
+import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
-import FormDPIA from '@/components/form/processing-record/FormDPIA.vue'
 import USwitch from '@/components/basic/USwitch.vue'
+import FormDPIA from '@/components/form/processing-record/FormDPIA.vue'
 
 const store = useStore()
 const {processingRecord} = useStoreData()
-const options = useStoreForms()
 const {current} = storeToRefs(store)
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 </script>
