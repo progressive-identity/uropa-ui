@@ -50,7 +50,7 @@ function editJointController(jointController) {
 
 function deleteJointController(index) {
   storeData.$patch((state) => {
-    state.processingRecord.jointController.splice(index, 1)
+    state.processingRecord.jointControllers.splice(index, 1)
   })
 }
 

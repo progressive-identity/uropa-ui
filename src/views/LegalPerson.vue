@@ -21,7 +21,7 @@ import FormRepresentative from '@/components/form/legal-person/FormRepresentativ
 import GridJointControllers from '@/components/grid/GridJointControllers.vue'
 
 
-const {processingRecord: {legalPerson, representative, jointControllers}} = useStoreData()
+const {processingRecord: {legalPerson, representative}} = useStoreData()
 const store = useStore()
 
 const {current, stepsLegalPerson, currentLegalPerson} = storeToRefs(store)
