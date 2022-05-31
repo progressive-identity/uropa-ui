@@ -9,9 +9,11 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0">
           <UInput v-model="externalOrganization.name" label="Name" :rounded-top-left="true"/>
-          <UInput v-model="externalOrganization.organizationStatus" label="Organization status" :rounded-top-right="true"/>
+          <UInput v-model="externalOrganization.organizationStatus" label="Organization status"
+                  :rounded-top-right="true"/>
         </div>
-        <SelectDataCategories v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"/>
+        <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
+                      :list="storeData.dataCategories"/>
         <FormLegalPerson v-model="externalOrganization.legalPerson"/>
       </div>
       <div class="space-x-2" v-if="!nested">
@@ -29,8 +31,8 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
-import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
 import LegalPersonTemplate from '/src/data/template/LegalPersonTemplate.json'
+import UMultiSelect from '@/components/basic/UMultiSelect.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -61,7 +63,7 @@ function emptyExternalOrganization() {
 }
 
 function saveExternalOrganization() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       externalOrganization: false
     }
@@ -74,7 +76,7 @@ function saveExternalOrganization() {
 }
 
 function closeExternalOrganization() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       externalOrganization: false
     }

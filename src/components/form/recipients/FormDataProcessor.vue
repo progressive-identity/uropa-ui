@@ -8,7 +8,7 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" :rounded-top-left="true"/>
-        <SelectDataCategories v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"/>
+        <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed" :list="storeData.dataCategories"/>
         <FormLegalPerson v-model="dataProcessor.legalPerson"/>
       </div>
       <div class="space-x-2" v-if="!nested">
@@ -25,8 +25,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
+import UMultiSelect from '@/components/basic/UMultiSelect.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
-import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
 import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()

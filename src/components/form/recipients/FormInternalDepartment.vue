@@ -8,7 +8,7 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <UInput v-model="internalDepartment.name" label="Name" :rounded-top-left="true"/>
-        <SelectDataCategories v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"/>
+        <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed" :list="storeData.dataCategories"/>
       </div>
       <div class="space-x-2" v-if="!nested">
         <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
@@ -24,7 +24,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import SelectDataCategories from '@/components/form/data-categories/SelectDataCategories.vue'
+import UMultiSelect from '@/components/basic/UMultiSelect.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
