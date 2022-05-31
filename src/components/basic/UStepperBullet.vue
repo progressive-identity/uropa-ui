@@ -29,9 +29,10 @@
 </template>
 
 <script setup>
-import UButton from '@/components/basic/UButton.vue'
-import {useStore} from '@/store/stepper.js'
 import {storeToRefs} from 'pinia'
+import {useStore} from '@/store/stepper.js'
+import {useStoreDisplay} from '@/store/display.js'
+import UButton from '@/components/basic/UButton.vue'
 
 const props = defineProps({
       steps: {
@@ -46,19 +47,17 @@ const props = defineProps({
 )
 const emit = defineEmits(['update:modelValue'])
 
-
 const store = useStore()
 const {current} = storeToRefs(store)
+const storeDisplay = useStoreDisplay()
 
 function next() {
-  store.$patch({
-    current: store.current + 1
-  })
+  store.current++
+  storeDisplay.$reset()
 }
 
 function previous() {
-  store.$patch({
-    current: store.current - 1
-  })
+  store.current--
+  storeDisplay.$reset()
 }
 </script>

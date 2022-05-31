@@ -11,9 +11,9 @@
   </div>
 </template>
 <script setup>
+import {storeToRefs} from 'pinia'
 import {useStore} from '@/store/stepper.js'
 import {useStoreDisplay} from '@/store/display.js'
-import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 
 const store = useStore()
@@ -21,15 +21,13 @@ const {stepsProcessingRecord, current} = storeToRefs(store)
 const storeDisplay = useStoreDisplay()
 
 function next() {
-  store.$patch({
-    current: store.current + 1
-  })
+  store.current++
+  storeDisplay.$reset()
 }
 
 function previous() {
-  store.$patch({
-    current: store.current - 1
-  })
+  store.current--
+  storeDisplay.$reset()
 }
 
 </script>
