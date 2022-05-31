@@ -7,6 +7,8 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="py-2">
           <UInput v-model="dataCategory.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
+          <UMultiSelect v-model="state.purposes" label="Purposes concerned"
+                        :list="storeData.processingRecord.purposes"/>
         </div>
         <div class="space-x-2">
           <UButton label="Back" v-on:click="closeDataCategory" type="secondary"/>
@@ -18,16 +20,19 @@
 </template>
 
 <script setup>
+import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
+import UMultiSelect from '@/components/basic/UMultiSelect.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
+const state = reactive({purposes: []})
 
 const props = defineProps({
   dataCategory: {
