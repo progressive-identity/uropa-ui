@@ -64,15 +64,4 @@ const filteredDataCategories = computed(() =>
         })
 )
 
-purposes[0] = {
-  'name': 'whatever',
-  'description': '',
-  'isMain': true,
-  'legalBasis': {
-    'type': 'contentment',
-    'description': '',
-    'proofUrl': ''
-  },
-  dataCategories
-}
 </script>
