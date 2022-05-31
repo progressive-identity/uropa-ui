@@ -51,7 +51,8 @@ const store = useStore()
 
 function changeStep(stepNumber) {
   store.$patch({
-    current: stepNumber
+    current: stepNumber,
+    mainNavigationDisplayed: true
   })
 }
 
