@@ -6,5 +6,8 @@ import securityMeasureTemplate from '../data/template/SecurityMeasureTemplate.js
 export const useStoreData = defineStore('data', {
     state: () => {
         return {processingRecord, purposeTemplate, securityMeasureTemplate}
+    },
+    getters: {
+        dataCategories: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories)
     }
 })

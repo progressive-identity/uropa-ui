@@ -57,8 +57,8 @@ function saveDataCategory() {
     }
   })
   if (!props.edition) {
-    // storeData.$patch((state) =>
-        // state.processingRecord.dataCategorys.push({...props.dataCategory}))
+    storeData.$patch((state) =>
+        state.processingRecord.purposes[0].dataCategories.push({...props.dataCategory}))
     emptyDataCategory()
   }
 }

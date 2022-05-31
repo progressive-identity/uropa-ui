@@ -3,14 +3,14 @@
     <UButton label="New data category" v-on:click="createDataCategory" :icon="mdiPlusCircle"/>
     <div class=" py-5">
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="(dataCategory, index) in processingRecord.dataCategories" :key="index"
+        <li v-for="(dataCategory, index) in storeData.dataCategories" :key="index"
             class="bg-white rounded-lg shadow border-2 px-5 text-sm">
           <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
             <p class="w-full truncate">{{ dataCategory.name }}</p>
-            <p class="w-full text-right" v-if="dataCategory.isMain">main</p>
+<!--            <p class="w-full text-right" v-if="dataCategory.isMain">main</p>-->
           </div>
           <div class="h-2/4">
-            <p class="mt-1 text-gray-500">{{ dataCategory.description }}</p>
+<!--            <p class="mt-1 text-gray-500">{{ dataCategory.description }}</p>-->
           </div>
           <div class="h-1/4 align-top text-gray-900 font-medium py-5">
           </div>
@@ -22,13 +22,13 @@
       </ul>
     </div>
     <div>
-      <FormDataCategory :data-category="state.dataCategory" purposes="[]" :edition="state.edition"/>
+      <FormDataCategory :data-category="state.dataCategory" :purposes="[]" :edition="state.edition"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import {reactive} from 'vue'
+import {computed, reactive} from 'vue'
 import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
