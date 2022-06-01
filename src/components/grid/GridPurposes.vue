@@ -8,12 +8,8 @@
           <p class="w-full truncate">{{ purpose.name }}</p>
           <p class="w-full text-right" v-if="purpose.isMain">main</p>
         </div>
-        <div class="h-2/4">
-          <p class="mt-1 text-gray-500">{{ purpose.description }}</p>
-        </div>
-        <div class="h-1/4 align-top text-gray-900 font-medium py-5">
-        </div>
-        <div class="h-1/4 py-5 space-x-2 align-bottom">
+        <p class="mt-1 text-gray-500">{{ purpose.description }}</p>
+        <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editPurpose(purpose)" :icon="mdiPencil"/>
           <UButton v-on:click="deletePurpose(index)" :icon="mdiDelete" type="danger"/>
         </div>
@@ -37,7 +33,7 @@ import {useStoreDisplay} from '@/store/display.js'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({purpose: PurposeTemplate, edition: false, purposeVisible: false})
+const state = reactive({purpose: PurposeTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 

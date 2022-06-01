@@ -2,6 +2,10 @@
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.purpose">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Purpose</h3>
+        <p class="mt-2 text-sm text-gray-700">The purpose of the processing describes what the reason why the controller processes the personal data.</p>
+      </div>
+      <div>
         <USwitch v-model="purpose.isMain" label="main"/>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
