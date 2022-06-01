@@ -1,13 +1,13 @@
 <template>
   <UButton label="New data processor" v-on:click="createDataProcessor" :icon="mdiPlusCircle"/>
   <div class=" py-5">
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <li v-for="(dataProcessor, index) in dataProcessors" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
-        <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
+        <div class="align-top text-gray-900 font-medium columns-2 py-5">
           <p class="w-full truncate">{{ dataProcessor.processorAgreementPath }}</p>
         </div>
-        <div class="h-1/4 py-5 space-x-2 align-bottom">
+        <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editDataProcessor(dataProcessor)" :icon="mdiPencil"/>
           <UButton v-on:click="deleteDataProcessor(index)" :icon="mdiDelete" type="danger"/>
         </div>

@@ -1,14 +1,14 @@
 <template>
   <UButton label="New internal department" v-on:click="createInternalDepartment" :icon="mdiPlusCircle"/>
   <div class=" py-5">
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <li v-for="(internalDepartment, index) in internalDepartments" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
-        <div class="h-1/4 align-top text-gray-900 font-medium py-5">
+        <div class="align-top text-gray-900 font-medium py-5">
           <p class="w-full truncate">{{ internalDepartment.name }}</p>
         </div>
         <TabDataCategory :data-categories="internalDepartment.dataCategoriesDisclosed"/>
-        <div class="h-1/4 py-5 space-x-2 align-bottom">
+        <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editInternalDepartment(internalDepartment)" :icon="mdiPencil"/>
           <UButton v-on:click="deleteInternalDepartment(index)" :icon="mdiDelete" type="danger"/>
         </div>

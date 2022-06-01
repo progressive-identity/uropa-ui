@@ -1,7 +1,7 @@
 <template>
   <UButton label="New purpose" v-on:click="createPurpose" :icon="mdiPlusCircle"/>
   <div class=" py-5">
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <li v-for="(purpose, index) in processingRecord.purposes" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
         <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
@@ -23,13 +23,13 @@
 
 <script setup>
 import {reactive} from 'vue'
-import {useStoreData} from '@/store/data.js'
 import {storeToRefs} from 'pinia'
+import {useStoreData} from '@/store/data.js'
+import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import PurposeTemplate from '../../data/template/PurposeTemplate.json'
-import {useStoreDisplay} from '@/store/display.js'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
