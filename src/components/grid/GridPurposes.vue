@@ -4,11 +4,10 @@
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <li v-for="(purpose, index) in processingRecord.purposes" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
-        <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
-          <p class="w-full truncate">{{ purpose.name }}</p>
-          <p class="w-full text-right" v-if="purpose.isMain">main</p>
+        <div class="align-top text-gray-900 font-medium py-5">
+          <p class="w-full truncate hover:text-clip">{{ purpose.name }}</p>
         </div>
-        <p class="mt-1 text-gray-500">{{ purpose.description }}</p>
+        <p class="mt-1 text-gray-500">{{ purpose.legalBasis.type }}</p>
         <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editPurpose(purpose)" :icon="mdiPencil"/>
           <UButton v-on:click="deletePurpose(index)" :icon="mdiDelete" type="danger"/>

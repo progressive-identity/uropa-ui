@@ -5,8 +5,9 @@
       <li v-for="(externalOrganization, index) in externalOrganizations" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
         <div class="align-top text-gray-900 font-medium columns-2 py-5">
-          <p class="w-full truncate">{{ externalOrganization.name }}</p>
+          <p class="w-full truncate">{{ externalOrganization.legalPerson.name }}</p>
         </div>
+        <p class="mt-1 text-gray-500">{{ externalOrganization.description }}</p>
         <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editExternalOrganization(externalOrganization)" :icon="mdiPencil"/>
           <UButton v-on:click="deleteExternalOrganization(index)" :icon="mdiDelete" type="danger"/>
