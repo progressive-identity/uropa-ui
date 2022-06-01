@@ -15,7 +15,7 @@
                   :rounded-bottom-right="true"/>
         </div>
       </div>
-      <USwitch v-model="formsDisplayed.dpia" label="Dpia"/>
+      <USwitch v-model="formsDisplayed.dpia" label="DPIA"/>
       <FormDpia/>
     </div>
   </div>

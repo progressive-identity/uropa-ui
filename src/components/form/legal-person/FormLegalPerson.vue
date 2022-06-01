@@ -12,11 +12,11 @@
         </div>
         <FormPostalAddress :postal-address="modelValue.postalAddress"/>
         <div class="py-3 space-x-2">
-          <UButton type="secondary" v-on:click="toggleDisplay(false, !formsDisplayed.dpo)" label="Dpo"
+          <UButton type="secondary" v-on:click="toggleDisplay(false, !formsDisplayed.dpo)" label="DPO"
                    :icon="formsDisplayed.dpo ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                    class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           </UButton>
-          <UButton type="secondary" v-on:click="toggleDisplay(!formsDisplayed.ceo, false)" label="Ceo"
+          <UButton type="secondary" v-on:click="toggleDisplay(!formsDisplayed.ceo, false)" label="CEO"
                    :icon="formsDisplayed.ceo ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
                    class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           </UButton>

@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-6" v-if="formsDisplayed.dpo">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Dpo</h3>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">DPO</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">The Data Protection Officer (DPO) of the legal person.</p>
     </div>
     <div class="space-y-3 divide-y divide-gray-200">

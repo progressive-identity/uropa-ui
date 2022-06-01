@@ -3,14 +3,14 @@
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">Dpia</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">The description of the some data related to the data protection
-        impact assessment (Dpia) established for the processing according to article 35 GDPR.</p>
+        impact assessment (DPIA) established for the processing according to article 35 GDPR.</p>
     </div>
     <div class="isolate -space-y-px rounded-md shadow-sm">
-      <UInput v-model="DpiaInfos.description" label="Description" :rounded-top-left="true" :rounded-top-right="true"/>
+      <UInput v-model="dpia.description" label="Description" :rounded-top-left="true" :rounded-top-right="true"/>
       <div class="columns-2 gap-0">
-        <UDatePicker v-model="DpiaInfos.date" label="Date" :rounded-bottom-left="true"/>
-        <UInput v-model="DpiaInfos.path" label="Path"
-                placeholder="The path to the Dpia document" :rounded-bottom-right="true"/>
+        <UDatePicker v-model="dpia.stopDate" label="Date" :rounded-bottom-left="true"/>
+        <UInput v-model="dpia.path" label="Path"
+                placeholder="The path to the DPIA document" :rounded-bottom-right="true"/>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
 import UDatePicker from '@/components/basic/UDatePicker.vue'
 
-const {processingRecord: {DpiaInfos}} = useStoreData()
+const {processingRecord: {dpia}} = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 </script>
