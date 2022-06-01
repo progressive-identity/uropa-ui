@@ -5,7 +5,7 @@
     "iso": ""
   },
   "dataTransferLegalBasis": {
-    "transferLegalBasisType": "",
+    "legalBasisType": "",
     "description": "",
     "proofUrl": "",
     "isConsent": "",

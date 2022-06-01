@@ -10,7 +10,7 @@
         <UInput v-model="legalBasis.type" label="Type" :rounded-top-left="true"/>
         <UInput v-model="legalBasis.description" label="Description" :rounded-top-right="true"/>
       </div>
-      <UInput v-model="legalBasis.proofUrl" label="Proof URL" :rounded-bottom-left="true"
+      <UInput v-model="legalBasis.proofUrl" label="Proof" :rounded-bottom-left="true"
               :rounded-bottom-right="true"/>
     </div>
   </div>

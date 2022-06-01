@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.jointController">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <FormLegalPerson v-model="jointController.legalPerson" title="Joint controllers" description="A joint controller is an entity that process the personal data
+      <FormLegalPerson v-model="jointController.legalPerson" title="Joint controller" description="A joint controller is an entity that process the personal data
           and jointly determines the purposes and the means of the processing, according to article 26 GDPR."/>
       <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path" placeholder="The path to the contract or binding agreement with the joint controller"
       :rounded-top-left="true" :rounded-top-right="true" :rounded-bottom-right="true" :rounded-bottom-left="true"/>
