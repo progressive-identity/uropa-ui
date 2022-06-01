@@ -97,9 +97,9 @@
   },
   "securityMeasures": [],
   "dataTransfers": [],
-  "DPIAInfos": {
+  "Dpia": {
     "description": "",
-    "date": "",
+    "stopDate": "",
     "path": ""
   }
 }

@@ -4,7 +4,7 @@ export const useStoreDisplay = defineStore('display', {
     state: () => {
         return {
             formsDisplayed: {
-                DPIA: false,
+                dpia: false,
                 ceo: false,
                 dpo: false,
                 purpose: false,

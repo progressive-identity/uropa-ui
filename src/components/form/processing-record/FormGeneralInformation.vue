@@ -15,8 +15,8 @@
                   :rounded-bottom-right="true"/>
         </div>
       </div>
-      <USwitch v-model="formsDisplayed.DPIA" label="DPIA"/>
-      <FormDPIA/>
+      <USwitch v-model="formsDisplayed.dpia" label="Dpia"/>
+      <FormDpia/>
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import FormDPIA from '@/components/form/processing-record/FormDPIA.vue'
+import FormDpia from '@/components/form/processing-record/FormDpia.vue'
 
 const {processingRecord} = useStoreData()
 const storeDisplay = useStoreDisplay()
