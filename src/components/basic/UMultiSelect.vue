@@ -1,5 +1,5 @@
 <template>
-  <Combobox as="div" v-model="modelValue" multiple>
+  <Combobox as="div" :modelValue="modelValue" @update:modelValue="update" multiple>
     <ComboboxLabel class="block text-sm font-medium text-gray-700">{{ label }}</ComboboxLabel>
     <div class="relative mt-1">
       <ComboboxInput disabled="true"
@@ -11,8 +11,7 @@
       <ComboboxOptions v-if="filteredList.length > 0"
                        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
         <ComboboxOption v-for="element in filteredList" :key="element.name" :value="element"
-                        v-slot="{ active, selected }"
-                        v-on:click="emit('update:modelValue', modelValue)">
+                        v-slot="{ active, selected }">
           <li :class="['relative cursor-default select-none py-2 pl-8 pr-4', active ? 'bg-indigo-600 text-white' : 'text-gray-900']">
             <span :class="['block truncate', selected && 'font-semibold']">
               {{ element.name }}
@@ -52,7 +51,11 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue'])
+
+const update = (value) => {
+  emits('update:modelValue', value)
+}
 
 const query = ref('')
 const filteredList = computed(() =>
