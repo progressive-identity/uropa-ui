@@ -7,14 +7,13 @@
             class="bg-white rounded-lg shadow border-2 px-5 text-sm">
           <div class="h-1/4 align-top text-gray-900 font-medium columns-2 py-5">
             <p class="w-full truncate">{{ dataCategory.name }}</p>
-<!--            <p class="w-full text-right" v-if="dataCategory.isMain">main</p>-->
           </div>
-          <div class="h-2/4">
-<!--            <p class="mt-1 text-gray-500">{{ dataCategory.description }}</p>-->
-          </div>
-          <div class="h-1/4 align-top text-gray-900 font-medium py-5">
-          </div>
-          <div class="h-1/4 py-5 space-x-2 align-bottom">
+          <p class="mt-1 text-gray-500">Data types :
+            <span v-for="dataType in dataCategory.dataTypes">
+                {{ dataType.name }}
+              </span>
+          </p>
+          <div class="py-5 space-x-2 align-bottom">
             <UButton v-on:click="editDataCategory(dataCategory)" :icon="mdiPencil"/>
             <UButton v-on:click="deleteDataCategory(index)" :icon="mdiDelete" type="danger"/>
           </div>
@@ -28,18 +27,18 @@
 </template>
 
 <script setup>
-import {computed, reactive} from 'vue'
-import {useStoreData} from '@/store/data.js'
+import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
+import {useStoreData} from '@/store/data.js'
+import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/DataCategoryTemplate.json'
-import {useStoreDisplay} from '@/store/display.js'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataCategory: DataCategoryTemplate, edition: false, dataCategoryVisible: false})
+const state = reactive({dataCategory: DataCategoryTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 

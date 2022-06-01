@@ -9,6 +9,7 @@ export const useStoreDisplay = defineStore('display', {
                 dpo: false,
                 purpose: false,
                 dataCategory:false,
+                dataType:false,
                 jointController: false,
                 internalDepartment: false,
                 externalOrganization: false,

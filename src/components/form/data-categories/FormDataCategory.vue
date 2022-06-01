@@ -2,6 +2,11 @@
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.dataCategory">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Data category</h3>
+        <p class="mt-2 text-sm text-gray-700">High-Level description of the personal data processed that is aggregation of related DataTypes.
+          For instance, the name and the first name are data types and identity information is the data category.</p>
+      </div>
+      <div>
         <USwitch v-model="dataCategory.isSensitive" label="sensitive"/>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
@@ -9,6 +14,9 @@
           <UInput v-model="dataCategory.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
                         :list="storeData.processingRecord.purposes"/>
+        </div>
+        <div class="py-2">
+          <TableDataTypes :data-category="dataCategory"/>
         </div>
         <div class="space-x-2">
           <UButton label="Back" v-on:click="closeDataCategory" type="secondary"/>
@@ -28,6 +36,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/UMultiSelect.vue'
+import TableDataTypes from '@/components/form/data-categories/TableDataTypes.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
