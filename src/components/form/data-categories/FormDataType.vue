@@ -7,8 +7,8 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
           <UInput v-model="dataType.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
-          <USelect v-model="dataType.collectionMean" label="Collection mean" :list="collectionMean"
-                   :rounded-top-right="true" :rounded-bottom-right="true"/>
+          <USelectEnums v-model="dataType.collectionMean" label="Collection mean" :list="collectionMean"
+                        :rounded-top-right="true" :rounded-bottom-right="true"/>
         </div>
         <div class="space-x-2">
           <UButton label="Back" v-on:click="closeDataType" type="secondary"/>
@@ -25,8 +25,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import USelect from '@/components/basic/USelect.vue'
 import USwitch from '@/components/basic/USwitch.vue'
+import USelectEnums from '@/components/basic/USelectEnums.vue'
 import {collectionMean} from '/src/data/enums.js'
 
 const storeData = useStoreData()

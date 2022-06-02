@@ -9,7 +9,7 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0">
           <UInput v-model="securityMeasure.name" label="Name" :rounded-top-left="true"/>
-          <USelect v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
+          <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
                    :rounded-top-right="true"/>
         </div>
         <UInput v-model="securityMeasure.description" label="Description"
@@ -31,6 +31,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/USelect.vue'
 import {securityMeasureTypes} from '@/data/enums.js'
+import USelectEnums from '@/components/basic/USelectEnums.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

@@ -12,7 +12,7 @@
         </div>
         <div class="columns-2 gap-0">
           <UInput v-model="postalAddress.state" label="State / Province" :rounded-bottom-left="true"/>
-          <USelect v-model="postalAddress.country.name" :list="countries" label="Country" :rounded-bottom-right="true"/>
+          <USelect v-model="postalAddress.country" :list="countries" label="Country" :rounded-bottom-right="true"/>
         </div>
       </div>
     </div>

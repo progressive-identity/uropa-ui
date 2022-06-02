@@ -10,33 +10,21 @@
         <div>
           <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent" class="pb-3"/>
         </div>
-        <div class="columns-2 gap-0">
-          <USelect v-model="dataTransferLegalBasis.transferLegalBasisType" label="Type"
-                   :list="transferLegalBasisType"
-                   :rounded-top-left="true"/>
+          <USelectEnums :list="transferLegalBasisType" v-model="dataTransferLegalBasis.legalBasisType"
+                           label="Type" @update:modelValue="emitChange"/>
+        <div class="gap-0">
           <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" :rounded-top-right="true"/>
         </div>
         <UInput v-model="dataTransferLegalBasis.description" label="Description"
                 :rounded-bottom-left="true" :rounded-bottom-right="true"/>
       </div>
-      <div class="pt-3 space-x-2">
-        <UButton type="secondary" v-on:click="toggleDisplay(!formsDisplayed.dataProcessor, false, false)" label="Data processor"
-                 :icon="formsDisplayed.dataProcessor ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
-                 class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        </UButton>
-        <UButton type="secondary" v-on:click="toggleDisplay(false, !formsDisplayed.externalOrganization, false)" label="External organization"
-                 :icon="formsDisplayed.externalOrganization ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
-                 class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        </UButton>
-        <UButton type="secondary" v-on:click="toggleDisplay(false, false, !formsDisplayed.internalDepartment)" label="Internal department"
-                 :icon="formsDisplayed.internalDepartment ?mdiArrowUpDropCircle : mdiArrowDownDropCircle"
-                 class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        </UButton>
-      </div>
       <div>
-        <FormDataProcessor :data-processor="dataTransferLegalBasis.recipient.dataProcessor" :nested="true"/>
-        <FormExternalOrganization :external-organization="dataTransferLegalBasis.recipient.externalOrganization" :nested="true"/>
-        <FormInternalDepartment :internal-department="dataTransferLegalBasis.recipient.internalDepartment" :nested="true"/>
+        <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
+                 :list="storeData.processingRecord.recipients.dataProcessors"/>
+        <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"
+                 :list="storeData.processingRecord.recipients.externalOrganizations"/>
+        <USelect v-model="dataTransferLegalBasis.recipient.internalDepartment" label="Internal department"
+                 :list="storeData.processingRecord.recipients.internalDepartments"/>
       </div>
     </div>
   </div>
@@ -44,18 +32,16 @@
 
 <script setup>
 import {storeToRefs} from 'pinia'
+import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
+import USelectEnums from '@/components/basic/USelectEnums.vue'
+import {transferLegalBasisType} from '@/data/enums.js'
 import USelect from '@/components/basic/USelect.vue'
-import {transferLegalBasisType} from '/src/data/enums.js'
-import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
-import UButton from '@/components/basic/UButton.vue'
-import {mdiArrowDownDropCircle, mdiArrowUpDropCircle} from '@mdi/js'
-import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
-import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 
 const storeDisplay = useStoreDisplay()
+const storeData = useStoreData()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
@@ -64,15 +50,10 @@ const props = defineProps({
     required: true
   }
 })
+const emit = defineEmits(['update:modelValue'])
 
-function toggleDisplay(dataProcessor, externalOrganization, internalDepartment) {
-    storeDisplay.$patch({
-    formsDisplayed: {
-      dataProcessor,
-      externalOrganization,
-      internalDepartment
-    }
-  })
+const emitChange = (value) => {
+  emit('update:modelValue', value)
 }
 
 </script>
