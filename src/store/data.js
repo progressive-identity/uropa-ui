@@ -8,6 +8,7 @@ export const useStoreData = defineStore('data', {
         return {processingRecord, purposeTemplate, securityMeasureTemplate}
     },
     getters: {
-        dataCategories: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories)
+        dataCategories: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories),
+        dataTypes: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories.flatMap(e => e?.dataTypes))
     }
 })
