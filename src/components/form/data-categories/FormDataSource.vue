@@ -11,10 +11,11 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
-          <UInput v-model="dataSource.name" label="Name" :rounded-top-left="true" />
+          <UInput v-model="dataSource.name" label="Name" :rounded-top-left="true"/>
           <UInput v-model="dataSource.storageType" label="Storage type" :rounded-top-right="true"/>
         </div>
-        <USelect v-model="dataSource.country.name" :list="countries" label="Country" :rounded-bottom-left="true" :rounded-bottom-right="true"/>
+        <USelect v-model="dataSource.country.name" :list="countries" label="Country" :rounded-bottom-left="true"
+                 :rounded-bottom-right="true"/>
       </div>
     </div>
   </div>
@@ -24,7 +25,7 @@
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/USelect.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import countries from 'src/data/countries.json'
+import countries from './../../../data/countries.json'
 
 const props = defineProps({
   dataSource: {

@@ -12,10 +12,10 @@
         <div class="py-2">
           <UInput v-model="dataLocation.name" label="Name" :rounded-top-left="true"/>
           <UInput v-model="dataLocation.path" label="Path" :rounded-top-right="true"/>
-          <USelect v-model="dataLocation.dataSupport" label="Data support" :list="dataSupport"
-                   :rounded-bottom-left="true"/>
-          <USelect v-model="dataLocation.storageState" label="Storage state" :list="storageState"
-                   :rounded-bottom-right="true"/>
+          <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupport"
+                        :rounded-bottom-left="true"/>
+          <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageState"
+                        :rounded-bottom-right="true"/>
         </div>
         <FormDataSource :data-source="dataLocation.dataSource"/>
         <div class="space-x-2">
@@ -36,8 +36,8 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import FormDataSource from '@/components/form/data-categories/FormDataSource.vue'
-import USelect from '@/components/basic/USelect.vue'
 import {dataSupport, storageState} from '/src/data/enums.js'
+import USelectEnums from '@/components/basic/USelectEnums.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
