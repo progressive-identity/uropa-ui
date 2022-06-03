@@ -1,17 +1,17 @@
 <template>
   <div
-      class="relative border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 overflow-visible">
+      class="border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 overflow-hidden">
     <Combobox as="div" :modelValue="modelValue" @update:modelValue="update">
       <ComboboxLabel class="block text-xs font-medium text-gray-900">{{ label }}</ComboboxLabel>
-      <div class="relative mt-1">
-        <ComboboxInput
-            class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-            :display-value="()=>modelValue.name"/>
-        <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+      <div class="relative mt-1 overflow-auto columns-2">
+        <ComboboxInput @change="query = $event.target.value"
+                       class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 text-sm"
+                       :display-value="(e)=>e.name"/>
+        <ComboboxButton class="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none">
           <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
         </ComboboxButton>
         <ComboboxOptions v-if="filteredList.length > 0"
-                         class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                         class="overflow-auto z-10 mt-1 max-h-60 w-full py-1 text-sm">
           <ComboboxOption v-for="element in filteredList" :key="element.name" :value="element"
                           v-slot="{ active, selected }">
             <li :class="['relative cursor-default select-none py-2 pl-8 pr-4', active ? 'bg-indigo-600 text-white' : 'text-gray-900']">
@@ -19,7 +19,7 @@
               {{ element.name }}
             </span>
               <span v-if="selected"
-                    :class="['absolute inset-y-0 left-0 flex items-center pl-1.5', active ? 'text-white' : 'text-indigo-600']">
+                    :class="['absolute inset-y-0 flex left-0 items-center pl-1.5', active ? 'text-white' : 'text-primary-600']">
               <CheckIcon class="h-5 w-5" aria-hidden="true"/>
             </span>
             </li>

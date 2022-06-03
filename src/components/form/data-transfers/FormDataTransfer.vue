@@ -8,7 +8,7 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <UInput v-model="dataTransfer.description" label="Description"
                 :rounded-top-left="true" :rounded-top-right="true"/>
-          <USelect v-model="dataTransfer.country.name" :list="countries" label="Country" :rounded-bottom-left="true" :rounded-bottom-right="true"/>
+          <USelect v-model="dataTransfer.country" :list="countries" label="Country" :rounded-bottom-left="true" :rounded-bottom-right="true"/>
       </div>
       <FormDataTransferLegalBasis :data-transfer-legal-basis="dataTransfer.dataTransferLegalBasis"/>
       <div class="space-x-2">
