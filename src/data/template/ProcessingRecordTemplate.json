@@ -109,11 +109,11 @@
       },
       "dataCategories": [
         {
-          "name": "Applicant Information",
+          "name": "Applicant Information1",
           "isSensitive": true,
           "dataTypes": [
             {
-              "name": "firstname",
+              "name": "firstname1",
               "isOptional": true,
               "collectionMean": "generated"
             },
