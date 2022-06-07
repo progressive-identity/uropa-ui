@@ -115,17 +115,20 @@
             {
               "name": "firstname1",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         },
@@ -136,17 +139,20 @@
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         },
@@ -157,22 +163,24 @@
             {
               "name": "First name",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "Last name",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "IP address",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         }
       ]
-
     },
     {
       "name": "purpose 2",
@@ -199,17 +207,20 @@
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         },
@@ -220,17 +231,20 @@
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         },
@@ -241,22 +255,24 @@
             {
               "name": "First name",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "Last name",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "IP address",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         }
       ]
-
     },
     {
       "name": "purpose 3",
@@ -283,17 +299,20 @@
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         },
@@ -304,17 +323,20 @@
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "firstname",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         },
@@ -325,17 +347,20 @@
             {
               "name": "First name",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "Last name",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             },
             {
               "name": "IP address",
               "isOptional": true,
-              "collectionMean": "generated"
+              "collectionMean": "generated",
+              "dataLocations": []
             }
           ]
         }

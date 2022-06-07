@@ -5,12 +5,9 @@
         <h3 class="text-lg leading-6 font-medium text-gray-900">Data location</h3>
         <p class="mt-2 text-sm text-gray-700">Place where a data item is stored within a DataSource.</p>
       </div>
-      <div>
-        <USwitch v-model="dataLocation.isSensitive" label="sensitive"/>
-      </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="py-2">
-          <UInput v-model="dataLocation.name" label="Name" :rounded-top-left="true"/>
+          <UInput v-model="dataLocation.description" label="Name" :rounded-top-left="true"/>
           <UInput v-model="dataLocation.path" label="Path" :rounded-top-right="true"/>
           <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupport"
                         :rounded-bottom-left="true"/>
@@ -18,7 +15,7 @@
                         :rounded-bottom-right="true"/>
         </div>
         <FormDataSource :data-source="dataLocation.dataSource"/>
-        <div class="space-x-2">
+        <div class="space-x-2 py-3">
           <UButton label="Back" v-on:click="closeDataLocation" type="secondary"/>
           <UButton label="Save" v-on:click="saveDataLocation"/>
         </div>
@@ -34,7 +31,6 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import USwitch from '@/components/basic/USwitch.vue'
 import FormDataSource from '@/components/form/data-categories/FormDataSource.vue'
 import {dataSupport, storageState} from '/src/data/enums.js'
 import USelectEnums from '@/components/basic/USelectEnums.vue'
