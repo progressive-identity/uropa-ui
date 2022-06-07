@@ -32,4 +32,11 @@ import FormDpia from '@/components/form/processing-record/FormDpia.vue'
 const {processingRecord} = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
+
+storeDisplay.$patch({
+  formsDisplayed: {
+    dpia: processingRecord.dpia.description.length > 0
+  }
+})
+
 </script>
