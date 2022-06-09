@@ -11,5 +11,6 @@
       "iso": ""
     }
   },
-  "storageDurations": []
+  "storageDurations": [],
+  "dataTypes": []
 }

@@ -9,6 +9,14 @@ export const useStoreData = defineStore('data', {
     },
     getters: {
         dataCategories: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories),
-        dataTypes: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories.flatMap(e => e?.dataTypes))
+        dataTypes: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories.flatMap(e => e?.dataTypes)),
+        dataTypesForDataLocation: (state) =>
+            state.processingRecord.purposes.flatMap(purpose =>
+                purpose?.dataCategories.flatMap(dataCategory =>
+                    dataCategory?.dataTypes.map(dataType => {
+                        return {name: `${purpose.name} -> ${dataCategory.name} -> ${dataType.name}`}
+                    })
+                )
+            )
     }
 })

@@ -372,6 +372,7 @@
     "externalOrganizations": [],
     "dataProcessors": []
   },
+  "dataLocations": [],
   "securityMeasures": [],
   "dataTransfers": [],
   "dpia": {

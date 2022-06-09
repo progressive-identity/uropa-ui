@@ -4,7 +4,7 @@
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <GridDataCategories v-if="currentDataCategories===0"/>
-        <GridDataTypes v-if="currentDataCategories===1"/>
+        <GridDataLocations v-if="currentDataCategories===1"/>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@ import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
 import UStepperBullet from '@/components/basic/UStepperBullet.vue'
 import GridDataCategories from '@/components/grid/GridDataCategories.vue'
-import GridDataTypes from '@/components/grid/GridDataTypes.vue'
+import GridDataLocations from '@/components/grid/GridDataLocations.vue'
 
 const store = useStore()
 

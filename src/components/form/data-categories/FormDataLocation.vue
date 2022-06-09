@@ -7,14 +7,17 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="py-2">
-          <UInput v-model="dataLocation.description" label="Name" :rounded-top-left="true"/>
-          <UInput v-model="dataLocation.path" label="Path" :rounded-top-right="true"/>
+          <UInput v-model="dataLocation.description" label="Description" :rounded-top-left="true"/>
           <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupport"
                         :rounded-bottom-left="true"/>
           <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageState"
                         :rounded-bottom-right="true"/>
         </div>
         <FormDataSource :data-source="dataLocation.dataSource"/>
+        <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"
+                      :list="storeData.dataTypesForDataLocation"/>
+        <UInput v-for="dataType in dataLocation.dataTypes" v-model="dataType.path"
+                :label="`Path for ${dataType.name}`"/>
         <div class="space-x-2 py-3">
           <UButton label="Back" v-on:click="closeDataLocation" type="secondary"/>
           <UButton label="Save" v-on:click="saveDataLocation"/>
@@ -25,7 +28,6 @@
 </template>
 
 <script setup>
-import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
@@ -33,12 +35,12 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormDataSource from '@/components/form/data-categories/FormDataSource.vue'
 import {dataSupport, storageState} from '/src/data/enums.js'
+import UMultiSelect from '@/components/basic/UMultiSelect.vue'
 import USelectEnums from '@/components/basic/USelectEnums.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
-const state = reactive({purposes: []})
 
 const props = defineProps({
   dataLocation: {
@@ -53,8 +55,20 @@ const props = defineProps({
 })
 
 function emptyDataLocation() {
-  props.dataLocation.name = ''
-  props.dataLocation.isSensitive = false
+  props.dataLocation.description = ''
+  props.dataLocation.dataSupport = ''
+  props.dataLocation.path = ''
+  props.dataLocation.storageState = ''
+  props.dataLocation.dataSource = {
+    name: '',
+    storageType: '',
+    country: {
+      iso: '',
+      name: ''
+    }
+  }
+  props.dataLocation.storageDurations = []
+  props.dataLocation.dataTypes = []
 }
 
 function saveDataLocation() {
@@ -64,8 +78,9 @@ function saveDataLocation() {
     }
   })
   if (!props.edition) {
-    // storeData.$patch((state) =>
-    //     state.processingRecord.purposes[0].dataCategories.push({...props.dataLocation}))
+    // FIXME dataLocations should be in dataCategories
+    storeData.$patch((state) =>
+        state.processingRecord.dataLocations.push({...props.dataLocation}))
     emptyDataLocation()
   }
 }
