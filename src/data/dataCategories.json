@@ -1,6 +1,7 @@
 [
   {
     "name": "Identity",
+    "isSensitive": true,
     "dataTypes": [
       {
         "name": "First name"
@@ -18,6 +19,7 @@
   },
   {
     "name": "Connection data",
+    "isSensitive": false,
     "dataTypes": [
       {
         "name": "IP address"
@@ -32,6 +34,7 @@
   },
   {
     "name": "Personal life",
+    "isSensitive": false,
     "dataTypes": [
       {
         "name": "Marital status"

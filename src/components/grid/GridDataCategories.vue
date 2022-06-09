@@ -1,6 +1,8 @@
 <template>
   <div>
-    <UButton label="New data category" v-on:click="createDataCategory" :icon="mdiPlusCircle"/>
+    <div>
+      <UButton label="New data category" @click="createDataCategory" :icon="mdiPlusCircle"/>
+    </div>
     <div class="py-5">
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <li v-for="(dataCategory, index) in storeData.dataCategories" :key="index"
@@ -41,8 +43,10 @@
       </ul>
     </div>
     <div id="formDataCategory">
+      <USelect v-model="state.dataCategory" :list="storeData.predefinedDataCategories" @click="loadDataCategory"
+               label="Select among predefined ones"/>
       <FormDataCategory :data-category="state.dataCategory" :purposes="[]"
-                        :edition="state.edition" @="createDataCategory"/>
+                        :edition="state.edition"/>
     </div>
   </div>
 </template>
@@ -56,6 +60,7 @@ import UButton from '@/components/basic/UButton.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/DataCategoryTemplate.json'
+import USelect from '@/components/basic/USelect.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
@@ -65,23 +70,17 @@ const storeDisplay = useStoreDisplay()
 async function createDataCategory() {
   state.dataCategory = DataCategoryTemplate
   state.edition = false
-  // FIXME is this the right way to do it ?
-  // TODO once finalized this behaviour should be reported on the other grids components
-  await displayForm()
-  const top = document.getElementById('formDataCategory').offsetTop
-  window.scroll(0, top)
-
+  await scrollToForm()
 }
 
-async function displayForm() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataCategory: true
-    }
-  })
+async function loadDataCategory() {
+  if (state.dataCategory.name !== '') {
+    state.edition = false
+    await scrollToForm()
+  }
 }
 
-function editDataCategory(dataCategory) {
+async function editDataCategory(dataCategory) {
   state.dataCategory = dataCategory
   state.edition = true
   storeDisplay.$patch({
@@ -89,15 +88,33 @@ function editDataCategory(dataCategory) {
       dataCategory: true
     }
   })
+  await scrollToForm()
 }
 
 function deleteDataCategory(index) {
+  //TODO loop on selected purposes
   // storeData.$patch((state) => {
-  //   state.processingRecord.dataCategorys.splice(index, 1)
+  //   state.processingRecord.dataCategories.splice(index, 1)
   // })
   storeDisplay.$patch({
     formsDisplayed: {
       dataCategory: false
+    }
+  })
+}
+
+async function scrollToForm() {
+  // FIXME is this the right way to do it ?
+  // TODO once finalized this behaviour should be reported on the other grids components
+  await displayForm()
+  const top = document.getElementById('formDataCategory').offsetTop
+  window.scroll(0, top)
+}
+
+async function displayForm() {
+  storeDisplay.$patch({
+    formsDisplayed: {
+      dataCategory: true
     }
   })
 }
