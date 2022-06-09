@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Progress">
+  <nav v-if="current >=0" aria-label="Progress">
     <ol class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0" role="list">
       <li v-for="(step, stepIdx) in stepsProcessingRecord" :key="step.name" class="relative md:flex-1 md:flex">
         <a v-if="step.id < current" class="group flex items-center w-full" v-on:click="changeStep(step.id)">

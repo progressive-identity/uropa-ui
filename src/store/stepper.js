@@ -3,7 +3,7 @@ import {defineStore} from 'pinia'
 export const useStore = defineStore('stepper', {
     state: () => {
         return {
-            mainNavigationDisplayed: true,
+            mainNavigationDisplayed: false,
             stepsProcessingRecord: [
                 {id: 0, name: 'General information'},
                 {id: 1, name: 'Legal person'},
@@ -13,7 +13,7 @@ export const useStore = defineStore('stepper', {
                 {id: 5, name: 'Security measures'},
                 {id: 6, name: 'Data transfers'}
             ],
-            current: 0,
+            current: -1,
             stepsDataCategories: [
                 {id: 0, name: 'Add data categories'},
                 {id: 1, name: 'Add data locations'},

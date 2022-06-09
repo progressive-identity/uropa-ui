@@ -2,6 +2,7 @@
   <section class="px-0 md:px-6 py-24">
     <StepperProcessingRecord/>
     <StepperNavigation/>
+    <Welcome/>
     <GeneralInformation/>
     <LegalPerson/>
     <Purposes/>
@@ -23,4 +24,5 @@ import Purposes from '@/views/Purposes.vue'
 import DataCategories from '@/views/DataCategories.vue'
 import Recipients from '@/views/Recipients.vue'
 import SecurityMeasures from '@/views/SecurityMeasures.vue'
-import DataTransfers from '@/views/DataTransfers.vue'</script>
+import DataTransfers from '@/views/DataTransfers.vue'
+import Welcome from '@/views/Welcome.vue';</script>
