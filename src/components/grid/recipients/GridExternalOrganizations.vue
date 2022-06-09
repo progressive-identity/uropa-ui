@@ -4,10 +4,30 @@
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <li v-for="(externalOrganization, index) in externalOrganizations" :key="index"
           class="bg-white rounded-lg shadow border-2 px-5 text-sm">
-        <div class="align-top text-gray-900 font-medium columns-2 py-5">
-          <p class="w-full truncate">{{ externalOrganization.legalPerson.name }}</p>
+        <div class="px-4 py-5 sm:px-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">{{ externalOrganization.legalPerson.name }}</h3>
         </div>
-        <p class="mt-1 text-gray-500">{{ externalOrganization.description }}</p>
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+          <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Organization status</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ externalOrganization.organizationStatus }}</dd>
+            </div>
+          </dl>
+          <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Data categories disclosed</dt>
+              <ul role="list">
+                <li v-for="dataCategories in externalOrganization.dataCategoriesDisclosed"
+                    class="flex items-center justify-between text-sm">
+                  <div class="flex-1 flex items-center pb-2">
+                    <span class="flex-1 truncate">{{ dataCategories.name }}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </dl>
+        </div>
         <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editExternalOrganization(externalOrganization)" :icon="mdiPencil"/>
           <UButton v-on:click="deleteExternalOrganization(index)" :icon="mdiDelete" type="danger"/>
