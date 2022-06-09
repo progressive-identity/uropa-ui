@@ -1,7 +1,18 @@
 <template>
   <div v-if="current === -1">
-    <UButton type="primary" label="Start a new processing record" @click="startProcessingRecord"/>
-    <UButton type="primary" label="Import an existing one"/>
+    <div class="flex w-full items-center justify-center h-screen">
+      <div class="max-w-2xl mx-auto space-y-5">
+        <div class="flex justify-center">
+          <UButton type="primary" label="Start a new processing record" @click="startProcessingRecord"/>
+        </div>
+        <div class="flex justify-center">
+          OR
+        </div>
+        <div class="flex justify-center">
+          <UButton type="primary" label="Import an existing one"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
