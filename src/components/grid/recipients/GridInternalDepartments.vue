@@ -7,20 +7,21 @@
         <div class="px-4 py-5 sm:px-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900">{{ internalDepartment.name }}</h3>
         </div>
-          <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-            <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Data categories disclosed</dt>
-                <ul role="list">
-                  <li v-for="dataCategories in internalDepartment.dataCategoriesDisclosed" class="flex items-center justify-between text-sm">
-                    <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">{{dataCategories.name}}</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </dl>
-          </div>
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+          <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Data categories disclosed</dt>
+              <ul role="list">
+                <li v-for="dataCategories in internalDepartment.dataCategoriesDisclosed"
+                    class="flex items-center justify-between text-sm">
+                  <div class="flex-1 flex items-center pb-2">
+                    <span class="flex-1 truncate">{{ dataCategories.name }}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </dl>
+        </div>
         <div class="py-5 space-x-2 align-bottom">
           <UButton v-on:click="editInternalDepartment(internalDepartment)" :icon="mdiPencil"/>
           <UButton v-on:click="deleteInternalDepartment(index)" :icon="mdiDelete" type="danger"/>
@@ -42,7 +43,6 @@ import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import internalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
-import TabDataCategory from '@/components/TabDataCategory.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
