@@ -1,9 +1,8 @@
 <template>
   <footer class="bg-white">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="flex justify-center space-x-6 md:order-2">
         <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-gray-400 hover:text-gray-500">
-          <span class="sr-only">{{ item.name }}</span>
         <UIcon
           :path="item.icon" :size="24"/>
         </a>
