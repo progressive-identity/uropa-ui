@@ -10,7 +10,7 @@
         <div class="columns-2 gap-0">
           <UInput v-model="securityMeasure.name" label="Name" :rounded-top-left="true"/>
           <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
-                   :rounded-top-right="true"/>
+                        :rounded-top-right="true"/>
         </div>
         <UInput v-model="securityMeasure.description" label="Description"
                 :rounded-bottom-left="true" :rounded-bottom-right="true"/>
@@ -29,7 +29,6 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import USelect from '@/components/basic/USelect.vue'
 import {securityMeasureTypes} from '@/data/enums.js'
 import USelectEnums from '@/components/basic/USelectEnums.vue'
 
@@ -56,7 +55,7 @@ function emptySecurityMeasure() {
 }
 
 function saveSecurityMeasure() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       securityMeasure: false
     }
@@ -69,7 +68,7 @@ function saveSecurityMeasure() {
 }
 
 function closeSecurityMeasure() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       securityMeasure: false
     }
