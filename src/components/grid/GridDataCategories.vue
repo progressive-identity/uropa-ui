@@ -13,9 +13,10 @@
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Purposes</dt>
                 <ul role="list">
-                  <li v-for="purpose in storeData.processingRecord.purposes" class="flex items-center justify-between text-sm">
+                  <li v-for="purpose in storeData.processingRecord.purposes"
+                      class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">{{purpose.name}}</span>
+                      <span class="flex-1 truncate">{{ purpose.name }}</span>
                     </div>
                   </li>
                 </ul>
@@ -25,22 +26,23 @@
                 <ul role="list">
                   <li v-for="dataType in dataCategory.dataTypes" class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">{{dataType.name}}</span>
+                      <span class="flex-1 truncate">{{ dataType.name }}</span>
                     </div>
                   </li>
                 </ul>
               </div>
             </dl>
           </div>
-          <div class="py-5 space-x-2 align-bottom">
+          <div ref="123" class="py-5 space-x-2 align-bottom">
             <UButton v-on:click="editDataCategory(dataCategory)" :icon="mdiPencil"/>
             <UButton v-on:click="deleteDataCategory(index)" :icon="mdiDelete" type="danger"/>
           </div>
         </li>
       </ul>
     </div>
-    <div>
-      <FormDataCategory :data-category="state.dataCategory" :purposes="[]" :edition="state.edition"/>
+    <div id="formDataCategory">
+      <FormDataCategory :data-category="state.dataCategory" :purposes="[]"
+                        :edition="state.edition" @="createDataCategory"/>
     </div>
   </div>
 </template>
@@ -60,10 +62,18 @@ const {processingRecord} = storeToRefs(storeData)
 const state = reactive({dataCategory: DataCategoryTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
-
-function createDataCategory() {
+async function createDataCategory() {
   state.dataCategory = DataCategoryTemplate
   state.edition = false
+  // FIXME is this the right way to do it ?
+  // TODO once finalized this behaviour should be reported on the other grids components
+  await displayForm()
+  const top = document.getElementById('formDataCategory').offsetTop
+  window.scroll(0, top)
+
+}
+
+async function displayForm() {
   storeDisplay.$patch({
     formsDisplayed: {
       dataCategory: true
