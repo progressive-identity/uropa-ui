@@ -4,7 +4,7 @@
       <div class="max-w-2xl mx-auto space-y-5">
         <div class="flex justify-center">
           <UButton type="primary" :icon="mdiClipboardEditOutline"
-                   label="Start a new processing record" @click="startProcessingRecord"/>
+                   label="Start a new processing record" @click="startProcessingRecord()"/>
         </div>
         <div class="flex justify-center text-xl font-medium text-gray-700">
           OR
