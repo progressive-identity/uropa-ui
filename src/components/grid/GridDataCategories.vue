@@ -43,7 +43,7 @@
       </ul>
     </div>
     <div id="formDataCategory">
-      <USelect v-model="state.dataCategory" :list="storeData.predefinedDataCategories" @click="loadDataCategory"
+      <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory" :list="storeData.predefinedDataCategories" @click="loadDataCategory"
                label="Select among predefined ones"/>
       <FormDataCategory :data-category="state.dataCategory" :purposes="[]"
                         :edition="state.edition"/>
@@ -63,9 +63,10 @@ import DataCategoryTemplate from '../../data/template/DataCategoryTemplate.json'
 import USelect from '@/components/basic/USelect.vue'
 
 const storeData = useStoreData()
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({dataCategory: DataCategoryTemplate, edition: false})
-const storeDisplay = useStoreDisplay()
 
 async function createDataCategory() {
   state.dataCategory = DataCategoryTemplate
