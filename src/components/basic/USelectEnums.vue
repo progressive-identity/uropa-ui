@@ -50,7 +50,7 @@
 import {Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions} from '@headlessui/vue'
 import {CheckIcon, ChevronDownIcon} from '@heroicons/vue/solid'
 
-let props = defineProps({
+const props = defineProps({
   modelValue: {
     type: String,
     required: true
