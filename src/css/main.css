@@ -3,3 +3,5 @@
 @import "tailwind/_utilities.css";
 
 @import "_button.css";
+@import "_input.css";
+@import "_label.css";

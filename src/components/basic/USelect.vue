@@ -1,11 +1,10 @@
 <template>
-  <div
-      class="border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 overflow-hidden">
+  <div>
     <Combobox as="div" :modelValue="modelValue" @update:modelValue="update">
-      <ComboboxLabel class="block text-xs font-medium text-gray-900">{{ label }}</ComboboxLabel>
-      <div class="relative mt-1 overflow-auto columns-2">
+      <ComboboxLabel class="u-label">{{ label }}</ComboboxLabel>
+      <div class="relative overflow-auto columns-2">
         <ComboboxInput @change="query = $event.target.value"
-                       class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 text-sm"
+                       class="u-input"
                        :display-value="(e)=>e.name"/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none">
           <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>

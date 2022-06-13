@@ -1,14 +1,14 @@
 <template>
   <div class="block py-2">
-    <label for="name" class="block text-xs font-medium text-gray-900">{{ label }} <span v-if="required"> *</span></label>
-    <div class="mt-1">
-      <input type="text" name="todo" id="todo" :value="modelValue"
-             @input="$emit('update:modelValue', $event.target.value)"
-             class="text-sm border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 rounded-md w-full"
-             :class="'max-w-'+size"
-             :placeholder="placeholder"/>
-      <p v-if="required" class="mt-2 text-sm text-red-600" id="email-error">This field is mandatory.</p>
-    </div>
+    <label for="name" class="u-label">{{ label }}
+      <span v-if="required"> *</span>
+    </label>
+    <input type="text" :value="modelValue"
+           @input="$emit('update:modelValue', $event.target.value)"
+           class="u-input"
+           :class="'max-w-'+size"
+           :placeholder="placeholder"/>
+    <p v-if="required" class="mt-1 text-sm text-red-600" id="email-error">This field is mandatory.</p>
   </div>
 </template>
 

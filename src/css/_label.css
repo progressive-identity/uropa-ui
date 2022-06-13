@@ -1,0 +1,5 @@
+/* GENERAL LABEL STYLE */
+
+.u-label {
+    @apply block text-xs font-medium text-gray-900;
+}

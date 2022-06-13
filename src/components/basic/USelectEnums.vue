@@ -1,11 +1,10 @@
 <template>
-  <div
-      class="relative border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 overflow-visible">
+  <div>
     <Listbox v-model="modelValue" @update:modelValue="emitChange">
-      <ListboxLabel class="block text-xs font-medium text-gray-900"> {{ label }}</ListboxLabel>
+      <ListboxLabel class="u-label"> {{ label }}</ListboxLabel>
       <div class="relative">
         <div class="inline-flex shadow-sm rounded-md">
-          <div class="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-gray-300">
+          <div class="border border-gray-300 relative z-0 inline-flex shadow-sm rounded-md divide-x divide-gray-300">
             <div
                 class="relative inline-flex items-center py-2 pl-3 pr-4 border border-transparent rounded-l-md shadow-sm">
               <p class="ml-2.5 text-sm font-medium">{{ modelValue }}</p>

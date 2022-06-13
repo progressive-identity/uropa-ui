@@ -1,11 +1,10 @@
 <template>
-  <div
-      class="relative border border-gray-300 px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 overflow-visible">
+  <div>
     <Combobox as="div" :modelValue="modelValue" @update:modelValue="update" multiple>
-      <ComboboxLabel class="block text-xs font-medium text-gray-900">{{ label }}</ComboboxLabel>
-      <div class="relative mt-1">
+      <ComboboxLabel class="u-label">{{ label }}</ComboboxLabel>
+      <div class="relative">
         <ComboboxInput disabled="true"
-                       class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                       class="u-input"
                        :display-value="()=>modelValue.map(e=>e?.name)"/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
           <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
