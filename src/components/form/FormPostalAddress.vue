@@ -8,7 +8,7 @@
         </div>
         <div class="columns-2 gap-0">
           <UInput v-model="postalAddress.city" label="City"/>
-          <UInput v-model="postalAddress.zipCode" label="Zip / Postal code"/>
+          <UInput v-model="postalAddress.zipCode" label="Zip / Postal code" type="number"/>
         </div>
         <div class="columns-2 gap-0">
           <UInput v-model="postalAddress.state" label="State / Province" />

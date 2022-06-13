@@ -10,13 +10,13 @@
         <div>
           <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent" class="pb-3"/>
         </div>
-          <USelectEnums :list="transferLegalBasisType" v-model="dataTransferLegalBasis.legalBasisType"
-                           label="Type" @update:modelValue="emitChange"/>
+        <USelectEnums :list="transferLegalBasisType" v-model="dataTransferLegalBasis.legalBasisType"
+                      label="Type" @update:modelValue="emitChange"/>
         <div class="gap-0">
-          <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" />
+          <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" type="url"/>
         </div>
         <UInput v-model="dataTransferLegalBasis.description" label="Description"
-                 />
+        />
       </div>
       <div>
         <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"

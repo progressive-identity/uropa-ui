@@ -11,8 +11,8 @@
           </div>
           <div class="isolate rounded-md shadow-sm">
             <div class="columns-2 gap-0 py-3">
-              <UInput v-model="modelValue.name" label="Name"  />
-              <UInput v-model="modelValue.email" label="Email"  />
+              <UInput v-model="modelValue.name" label="Name"/>
+              <UInput v-model="modelValue.email" label="Email" type="email"/>
             </div>
             <FormPostalAddress :postal-address="modelValue.postalAddress"/>
           </div>
