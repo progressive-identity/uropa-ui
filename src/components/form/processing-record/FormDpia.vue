@@ -6,10 +6,10 @@
         impact assessment (DPIA) established for the processing according to article 35 GDPR.</p>
     </div>
     <div class="isolate -space-y-px rounded-md shadow-sm">
-      <UInput v-model="dpia.description" label="Description"/>
-      <UDatePicker v-model="dpia.stopDate" label="Date"/>
-      <UInput v-model="dpia.path" label="Path"
+      <UInput v-model="dpia.description" label="Description" size="xl"/>
+      <UInput v-model="dpia.path" label="Path" size="xl"
               placeholder="The path to the DPIA document"/>
+      <UInput v-model="dpia.stopDate" label="Date" type="date" size="s"/>
     </div>
   </div>
 </template>
@@ -19,7 +19,6 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
-import UDatePicker from '@/components/basic/UDatePicker.vue'
 
 const {processingRecord: {dpia}} = useStoreData()
 const storeDisplay = useStoreDisplay()
