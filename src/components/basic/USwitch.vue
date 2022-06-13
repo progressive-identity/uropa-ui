@@ -1,7 +1,7 @@
 <template>
-  <SwitchGroup as="div" class="flex items-center">
+  <SwitchGroup as="div" class="flex items-center pt-2 pb-2">
     <SwitchLabel v-if="label" as="span" class="mr-3">
-      <span class="text-sm font-medium text-gray-900">{{ label }}</span>
+      <span class="u-label">{{ label }}</span>
     </SwitchLabel>
     <Switch :modelValue="modelValue" @update:modelValue="update"
             :class="[modelValue ? 'bg-indigo-600' : 'bg-gray-200', 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500']">
