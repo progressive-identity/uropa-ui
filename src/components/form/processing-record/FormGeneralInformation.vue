@@ -7,10 +7,10 @@
           GDPR. It must reflect the reality of the personal data processing, to keep track of the usage of personal
           data in the controller system.</p>
       </div>
-      <div class="space-y-5">
-        <UInput v-model="processingRecord.name" label="Name" :required="true" class="max-w-md"/>
+      <div>
+        <UInput v-model="processingRecord.name" label="Name" :required="true"/>
         <UInput v-model="processingRecord.internalId" label="Internal ID"
-                placeholder="The reference of the processing record" class="max-w-md"/>
+                placeholder="The reference of the processing record"/>
       </div>
       <USwitch v-model="formsDisplayed.dpia" label="DPIA"/>
       <FormDpia/>
