@@ -5,7 +5,7 @@
       <p class="mt-1 max-w-2xl text-sm text-gray-500">The description of the some data related to the data protection
         impact assessment (DPIA) established for the processing according to article 35 GDPR.</p>
     </div>
-    <div class="isolate -space-y-px rounded-md shadow-sm">
+    <div>
       <UInput v-model="dpia.description" label="Description" size="xl"/>
       <UInput v-model="dpia.path" label="Path" size="xl"
               placeholder="The path to the DPIA document"/>

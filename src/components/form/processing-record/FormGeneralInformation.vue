@@ -1,8 +1,8 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200">
+  <div class="space-y-8">
     <div class="pt-8 space-y-6">
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">General Information</h3>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">General information</h3>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">An inventory of the data processing according to article 30
           GDPR. It must reflect the reality of the personal data processing, to keep track of the usage of personal
           data in the controller system.</p>
