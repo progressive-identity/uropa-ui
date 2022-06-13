@@ -6,9 +6,9 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
-          <UInput v-model="dataType.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
+          <UInput v-model="dataType.name" label="Name"  />
           <USelectEnums v-model="dataType.collectionMean" label="Collection mean" :list="collectionMean"
-                        :rounded-top-right="true" :rounded-bottom-right="true"/>
+                         />
         </div>
         <div class="space-x-2">
           <UButton label="Back" v-on:click="closeDataType" type="secondary"/>

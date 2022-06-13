@@ -11,7 +11,7 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="py-2">
-          <UInput v-model="dataCategory.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
+          <UInput v-model="dataCategory.name" label="Name"  />
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
                         :list="storeData.processingRecord.purposes"/>
         </div>

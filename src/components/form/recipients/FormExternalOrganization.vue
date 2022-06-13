@@ -8,9 +8,9 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0">
-          <UInput v-model="externalOrganization.description" label="Description" :rounded-top-left="true"/>
+          <UInput v-model="externalOrganization.description" label="Description" />
           <UInput v-model="externalOrganization.organizationStatus" label="Organization status"
-                  :rounded-top-right="true"/>
+                  />
         </div>
         <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
                       :list="storeData.dataCategories"/>

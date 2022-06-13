@@ -13,10 +13,10 @@
           <USelectEnums :list="transferLegalBasisType" v-model="dataTransferLegalBasis.legalBasisType"
                            label="Type" @update:modelValue="emitChange"/>
         <div class="gap-0">
-          <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" :rounded-top-right="true"/>
+          <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" />
         </div>
         <UInput v-model="dataTransferLegalBasis.description" label="Description"
-                :rounded-bottom-left="true" :rounded-bottom-right="true"/>
+                 />
       </div>
       <div>
         <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"

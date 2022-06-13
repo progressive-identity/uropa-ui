@@ -7,11 +7,11 @@
     </div>
     <div class="isolate -space-y-px rounded-md shadow-sm">
       <div class="columns-2 gap-0">
-        <UInput v-model="legalBasis.type" label="Type" :rounded-top-left="true"/>
-        <UInput v-model="legalBasis.description" label="Description" :rounded-top-right="true"/>
+        <UInput v-model="legalBasis.type" label="Type" />
+        <UInput v-model="legalBasis.description" label="Description" />
       </div>
-      <UInput v-model="legalBasis.proofUrl" label="Proof" :rounded-bottom-left="true"
-              :rounded-bottom-right="true"/>
+      <UInput v-model="legalBasis.proofUrl" label="Proof"
+              />
     </div>
   </div>
 </template>

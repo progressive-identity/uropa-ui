@@ -3,16 +3,16 @@
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0">
-          <UInput v-model="postalAddress.address1" label="Address line 1" :rounded-top-left="true"/>
-          <UInput v-model="postalAddress.address2" label="Address line 2" :rounded-top-right="true"/>
+          <UInput v-model="postalAddress.address1" label="Address line 1" />
+          <UInput v-model="postalAddress.address2" label="Address line 2" />
         </div>
         <div class="columns-2 gap-0">
           <UInput v-model="postalAddress.city" label="City"/>
           <UInput v-model="postalAddress.zipCode" label="Zip / Postal code"/>
         </div>
         <div class="columns-2 gap-0">
-          <UInput v-model="postalAddress.state" label="State / Province" :rounded-bottom-left="true"/>
-          <USelect v-model="postalAddress.country" :list="countries" label="Country" :rounded-bottom-right="true"/>
+          <UInput v-model="postalAddress.state" label="State / Province" />
+          <USelect v-model="postalAddress.country" :list="countries" label="Country" />
         </div>
       </div>
     </div>

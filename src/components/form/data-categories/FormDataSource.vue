@@ -8,11 +8,11 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
-          <UInput v-model="dataSource.name" label="Name" placeholder="The name of the data source (ex: name of database, server etc.)" :rounded-top-left="true"/>
-          <UInput v-model="dataSource.storageType" label="Storage type" placeholder="Provides useful information on the storage type" :rounded-top-right="true"/>
+          <UInput v-model="dataSource.name" label="Name" placeholder="The name of the data source (ex: name of database, server etc.)" />
+          <UInput v-model="dataSource.storageType" label="Storage type" placeholder="Provides useful information on the storage type" />
         </div>
-        <USelect v-model="dataSource.country" :list="countries" label="Country" :rounded-bottom-left="true"
-                 :rounded-bottom-right="true"/>
+        <USelect v-model="dataSource.country" :list="countries" label="Country"
+                 />
       </div>
     </div>
   </div>

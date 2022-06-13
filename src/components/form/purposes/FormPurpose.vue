@@ -10,9 +10,9 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
-          <UInput v-model="purpose.name" label="Name" :rounded-top-left="true" :rounded-bottom-left="true"/>
-          <UInput v-model="purpose.description" label="Description" :rounded-top-right="true"
-                  :rounded-bottom-right="true"/>
+          <UInput v-model="purpose.name" label="Name"  />
+          <UInput v-model="purpose.description" label="Description"
+                  />
         </div>
         <div class="pb-2">
           <FormLegalBasis :legal-basis="purpose.legalBasis"/>

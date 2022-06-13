@@ -7,11 +7,11 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="py-2">
-          <UInput v-model="dataLocation.description" label="Description" :rounded-top-left="true"/>
+          <UInput v-model="dataLocation.description" label="Description" />
           <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupport"
-                        :rounded-bottom-left="true"/>
+                        />
           <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageState"
-                        :rounded-bottom-right="true"/>
+                        />
         </div>
         <FormDataSource :data-source="dataLocation.dataSource"/>
         <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"

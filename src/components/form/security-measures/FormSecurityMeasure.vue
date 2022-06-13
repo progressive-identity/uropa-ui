@@ -8,12 +8,12 @@
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0">
-          <UInput v-model="securityMeasure.name" label="Name" :rounded-top-left="true"/>
+          <UInput v-model="securityMeasure.name" label="Name" />
           <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
-                        :rounded-top-right="true"/>
+                        />
         </div>
         <UInput v-model="securityMeasure.description" label="Description"
-                :rounded-bottom-left="true" :rounded-bottom-right="true"/>
+                 />
       </div>
       <div class="space-x-2">
         <UButton label="Back" v-on:click="closeSecurityMeasure" type="secondary"/>

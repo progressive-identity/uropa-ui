@@ -6,7 +6,7 @@
     </div>
     <div class="space-y-3">
         <UInput v-model="ceo.professionalTitle" label="Professional title"
-                :rounded-top-left="true" :rounded-top-right="true" :rounded-bottom-right="true" :rounded-bottom-left="true"/>
+                   />
       <FormPersonalInformation :personal-information="ceo.personalInformation"/>
     </div>
   </div>

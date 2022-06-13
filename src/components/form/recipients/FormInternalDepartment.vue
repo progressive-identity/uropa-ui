@@ -7,7 +7,7 @@
           processed. Useful to manage authorization at the level of the organization</p>
       </div>
       <div class="isolate -space-y-px rounded-md shadow-sm">
-        <UInput v-model="internalDepartment.name" label="Name" :rounded-top-left="true"/>
+        <UInput v-model="internalDepartment.name" label="Name" />
         <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed" :list="storeData.dataCategories"/>
       </div>
       <div class="space-x-2" v-if="!nested">

@@ -6,11 +6,11 @@
         impact assessment (DPIA) established for the processing according to article 35 GDPR.</p>
     </div>
     <div class="isolate -space-y-px rounded-md shadow-sm">
-      <UInput v-model="dpia.description" label="Description" :rounded-top-left="true" :rounded-top-right="true"/>
+      <UInput v-model="dpia.description" label="Description"  />
       <div class="columns-2 gap-0">
-        <UDatePicker v-model="dpia.stopDate" label="Date" :rounded-bottom-left="true"/>
+        <UDatePicker v-model="dpia.stopDate" label="Date" />
         <UInput v-model="dpia.path" label="Path"
-                placeholder="The path to the DPIA document" :rounded-bottom-right="true"/>
+                placeholder="The path to the DPIA document" />
       </div>
     </div>
   </div>
