@@ -8,9 +8,9 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="py-2">
           <UInput v-model="dataLocation.description" label="Description" />
-          <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupport"
+          <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupports"
                         />
-          <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageState"
+          <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageStates"
                         />
         </div>
         <FormDataSource :data-source="dataLocation.dataSource"/>
@@ -34,7 +34,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormDataSource from '@/components/form/data-categories/FormDataSource.vue'
-import {dataSupport, storageState} from '/src/data/enums.js'
+import {dataSupports, storageStates} from '/src/data/enums.js'
 import UMultiSelect from '@/components/basic/UMultiSelect.vue'
 import USelectEnums from '@/components/basic/USelectEnums.vue'
 

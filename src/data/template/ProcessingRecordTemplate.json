@@ -97,7 +97,7 @@
       "legalBasis": {
         "legalBasisType": "consent",
         "legalBasisDescription": "Article L323-2 du Code de commerce sur la conversation des documents comptables",
-        "proofUrl": "https://www.proof.url",
+        "source": "https://www.proof.url",
         "legalBasisProof": {
           "startValidityEventType": {
             "countdown": {}
@@ -189,7 +189,7 @@
       "legalBasis": {
         "legalBasisType": "consent",
         "legalBasisDescription": "Article L323-2 du Code de commerce sur la conversation des documents comptables",
-        "proofUrl": "https://www.proof.url",
+        "source": "https://www.proof.url",
         "legalBasisProof": {
           "startValidityEventType": {
             "countdown": {}
@@ -281,7 +281,7 @@
       "legalBasis": {
         "legalBasisType": "consent",
         "legalBasisDescription": "Article L323-2 du Code de commerce sur la conversation des documents comptables",
-        "proofUrl": "https://www.proof.url",
+        "source": "https://www.proof.url",
         "legalBasisProof": {
           "startValidityEventType": {
             "countdown": {}

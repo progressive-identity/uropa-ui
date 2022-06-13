@@ -1,22 +1,22 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5 py-5">
+  <div class="py-5">
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">Legal basis</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">A Legal person is an entity that process personal data. It's
         usually a company or an organization.</p>
     </div>
-    <div class="isolate -space-y-px rounded-md shadow-sm">
-      <div class="columns-2 gap-0">
-        <UInput v-model="legalBasis.type" label="Type"/>
-        <UInput v-model="legalBasis.description" label="Description"/>
-      </div>
-      <UInput v-model="legalBasis.proofUrl" label="Proof" type="url"/>
+    <div class="pt-3">
+      <USelectEnums v-model="legalBasis.type" label="Type" :list="legalBasisTypes"/>
+      <UInput v-model="legalBasis.description" label="Description" size="xl"/>
+      <UInput v-model="legalBasis.source" label="Source" type="url"/>
     </div>
   </div>
 </template>
 
 <script setup>
 import UInput from '@/components/basic/UInput.vue'
+import USelectEnums from '@/components/basic/USelectEnums.vue'
+import {legalBasisTypes} from '/src/data/enums.js'
 
 const props = defineProps({
   legalBasis: {

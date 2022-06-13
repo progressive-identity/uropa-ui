@@ -7,7 +7,7 @@
       <div class="isolate -space-y-px rounded-md shadow-sm">
         <div class="columns-2 gap-0 py-2">
           <UInput v-model="dataType.name" label="Name"  />
-          <USelectEnums v-model="dataType.collectionMean" label="Collection mean" :list="collectionMean"
+          <USelectEnums v-model="dataType.collectionMean" label="Collection mean" :list="collectionMeans"
                          />
         </div>
         <div class="space-x-2">
@@ -27,7 +27,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelectEnums from '@/components/basic/USelectEnums.vue'
-import {collectionMean} from '/src/data/enums.js'
+import {collectionMeans} from '/src/data/enums.js'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
