@@ -1,32 +1,23 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Data transfer legal basis</h3>
-        <p class="mt-2 text-sm text-gray-700">Classification that pertains to how an atomic piece of data must be
-          treated in order to be compliant with GDPR.</p>
-      </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
-        <div>
-          <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent" class="pb-3"/>
-        </div>
-        <USelectEnums :list="transferLegalBasisType" v-model="dataTransferLegalBasis.legalBasisTypes"
-                      label="Type" @update:modelValue="emitChange"/>
-        <div class="gap-0">
-          <UInput v-model="dataTransferLegalBasis.proofUrl" label="Proof url" type="url"/>
-        </div>
-        <UInput v-model="dataTransferLegalBasis.description" label="Description"
-        />
-      </div>
-      <div>
-        <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
-                 :list="storeData.processingRecord.recipients.dataProcessors"/>
-        <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"
-                 :list="storeData.processingRecord.recipients.externalOrganizations"/>
-        <USelect v-model="dataTransferLegalBasis.recipient.internalDepartment" label="Internal department"
-                 :list="storeData.processingRecord.recipients.internalDepartments"/>
-      </div>
-    </div>
+  <div class="pt-5">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">Data transfer legal basis</h3>
+    <p class="mt-2 text-sm text-gray-700">Classification that pertains to how an atomic piece of data must be
+      treated in order to be compliant with GDPR.</p>
+  </div>
+  <div class="pt-3">
+    <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent"/>
+  </div>
+  <USelectEnums :list="legalBasisTypes" v-model="dataTransferLegalBasis.legalBasisType"
+                label="Type" @update:modelValue="emitChange"/>
+    <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"/>
+  <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl"/>
+  <div>
+    <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
+             :list="storeData.processingRecord.recipients.dataProcessors"/>
+    <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"
+             :list="storeData.processingRecord.recipients.externalOrganizations"/>
+    <USelect v-model="dataTransferLegalBasis.recipient.internalDepartment" label="Internal department"
+             :list="storeData.processingRecord.recipients.internalDepartments"/>
   </div>
 </template>
 
