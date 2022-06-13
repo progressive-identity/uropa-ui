@@ -1,14 +1,13 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.jointController">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <FormLegalPerson v-model="jointController.legalPerson" title="Joint controller" description="A joint controller is an entity that process the personal data
+  <div v-if="formsDisplayed.jointController">
+    <FormLegalPerson v-model="jointController.legalPerson" title="Joint controller" description="A joint controller is an entity that process the personal data
           and jointly determines the purposes and the means of the processing, according to article 26 GDPR."/>
-      <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path" placeholder="The path to the contract or binding agreement with the joint controller"
-         />
-      <div class="space-x-2">
-        <UButton label="Back" v-on:click="closeJointController" type="secondary"/>
-        <UButton label="Save" v-on:click="saveJointController"/>
-      </div>
+    <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path"
+            placeholder="The path to the contract or binding agreement with the joint controller"
+    />
+    <div class="space-x-2 pt-3">
+      <UButton label="Back" v-on:click="closeJointController" type="secondary"/>
+      <UButton label="Save" v-on:click="saveJointController"/>
     </div>
   </div>
 </template>
@@ -48,7 +47,7 @@ function emptyJointController() {
 }
 
 function saveJointController() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       jointController: false
     }
@@ -61,7 +60,7 @@ function saveJointController() {
 }
 
 function closeJointController() {
-    storeDisplay.$patch({
+  storeDisplay.$patch({
     formsDisplayed: {
       jointController: false
     }
