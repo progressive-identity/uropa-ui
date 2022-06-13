@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+  <div class="space-y-8">
     <div class="pt-8 space-y-6 pb-8">
       <div class="space-y-5">
         <UVerticalBar label="Legal person" :rotate="formsDisplayed.legalPerson"
@@ -9,10 +9,11 @@
             <h3 class="text-lg leading-6 font-medium text-gray-900">{{ title }}</h3>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ description }}</p>
           </div>
-          <div class="isolate rounded-md shadow-sm">
-            <div class="columns-2 gap-0 py-3">
-              <UInput v-model="modelValue.name" label="Name"/>
-              <UInput v-model="modelValue.email" label="Email" type="email"/>
+          <div>
+            <div class="pt-3 flex flex-wrap">
+              <UInput v-model="modelValue.name" label="Name" class="flex-1"/>
+              <UInput v-model="modelValue.email" label="Email" type="email" class="flex-1"/>
+              <div class="grow"></div>
             </div>
             <FormPostalAddress :postal-address="modelValue.postalAddress"/>
           </div>
