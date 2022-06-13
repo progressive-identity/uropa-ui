@@ -4,7 +4,7 @@
       <ComboboxLabel class="u-label">{{ label }}</ComboboxLabel>
       <div class="relative overflow-auto columns-2">
         <ComboboxInput @change="query = $event.target.value"
-                       class="u-input"
+                       :class="classes"
                        :display-value="(e)=>e.name"/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none">
           <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
@@ -47,9 +47,21 @@ const props = defineProps({
     required: false,
     default: ''
   },
+  size: {
+    type: String,
+    required: false,
+    default: 'l'
+  },
   list: {
     type: Array,
     required: true
+  }
+})
+
+const classes = computed(() => {
+  return {
+    'u-input': true,
+    [`u-input--${props.size}`]: true
   }
 })
 
