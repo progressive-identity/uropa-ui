@@ -1,20 +1,19 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.internalDepartment">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Internal department</h3>
-        <p class="mt-2 text-sm text-gray-700">Information about the internal department that is a recipient of the data
-          processed. Useful to manage authorization at the level of the organization</p>
-      </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
-        <UInput v-model="internalDepartment.name" label="Name" />
-        <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed" :list="storeData.dataCategories"/>
-      </div>
-      <div class="space-x-2" v-if="!nested">
-        <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
-        <UButton label="Save" v-on:click="saveInternalDepartment"/>
-      </div>
+  <div v-if="formsDisplayed.internalDepartment">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Internal department</h3>
+      <p class="mt-2 text-sm text-gray-700">Information about the internal department that is a recipient of the data
+        processed. Useful to manage authorization at the level of the organization</p>
     </div>
+    <div class="pt-3">
+      <UInput v-model="internalDepartment.name" label="Name"/>
+      <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
+                    :list="storeData.dataCategories"/>
+    </div>
+  </div>
+  <div class="space-x-2" v-if="!nested">
+    <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
+    <UButton label="Save" v-on:click="saveInternalDepartment"/>
   </div>
 </template>
 

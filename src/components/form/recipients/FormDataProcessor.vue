@@ -1,20 +1,19 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.dataProcessor">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Data processor</h3>
-        <p class="mt-2 text-sm text-gray-700">Information about the data processor that is a recipient of the data
-          processed. Useful to manage authorisations, contracts and other legal instruments.</p>
-      </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
-        <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" />
-        <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed" :list="storeData.dataCategories"/>
-        <FormLegalPerson v-model="dataProcessor.legalPerson"/>
-      </div>
-      <div class="space-x-2" v-if="!nested">
-        <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
-        <UButton label="Save" v-on:click="saveDataProcessor"/>
-      </div>
+  <div v-if="formsDisplayed.dataProcessor">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Data processor</h3>
+      <p class="mt-2 text-sm text-gray-700">Information about the data processor that is a recipient of the data
+        processed. Useful to manage authorisations, contracts and other legal instruments.</p>
+    </div>
+    <div class="pt-3">
+      <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" size="xl"/>
+      <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"
+                    :list="storeData.dataCategories"/>
+      <FormLegalPerson v-model="dataProcessor.legalPerson"/>
+    </div>
+    <div class="space-x-2" v-if="!nested">
+      <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
+      <UButton label="Save" v-on:click="saveDataProcessor"/>
     </div>
   </div>
 </template>

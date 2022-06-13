@@ -1,25 +1,20 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.externalOrganization">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">External organization</h3>
-        <p class="mt-2 text-sm text-gray-700">Information about the external organization that is a recipient of the
-          data processed. Useful to manage authorisations, contracts and other legal instruments.</p>
-      </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
-        <div class="columns-2 gap-0">
-          <UInput v-model="externalOrganization.description" label="Description" />
-          <UInput v-model="externalOrganization.organizationStatus" label="Organization status"
-                  />
-        </div>
-        <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
-                      :list="storeData.dataCategories"/>
-        <FormLegalPerson v-model="externalOrganization.legalPerson"/>
-      </div>
-      <div class="space-x-2" v-if="!nested">
-        <UButton label="Back" v-on:click="closeExternalOrganization" type="secondary"/>
-        <UButton label="Save" v-on:click="saveExternalOrganization"/>
-      </div>
+  <div v-if="formsDisplayed.externalOrganization">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">External organization</h3>
+      <p class="mt-2 text-sm text-gray-700">Information about the external organization that is a recipient of the
+        data processed. Useful to manage authorisations, contracts and other legal instruments.</p>
+    </div>
+    <div class="pt-3">
+      <UInput v-model="externalOrganization.organizationStatus" label="Organization status"/>
+      <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
+      <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
+                    :list="storeData.dataCategories"/>
+      <FormLegalPerson v-model="externalOrganization.legalPerson"/>
+    </div>
+    <div class="space-x-2" v-if="!nested">
+      <UButton label="Back" v-on:click="closeExternalOrganization" type="secondary"/>
+      <UButton label="Save" v-on:click="saveExternalOrganization"/>
     </div>
   </div>
 </template>
