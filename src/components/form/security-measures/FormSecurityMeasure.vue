@@ -1,24 +1,18 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.securityMeasure">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Security measure</h3>
-        <p class="mt-2 text-sm text-gray-700">A measure adopted by the controller to ensure the
-          confidentiality, integrity and availability of the processed personal data.</p>
-      </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
-        <div class="columns-2 gap-0">
-          <UInput v-model="securityMeasure.name" label="Name" />
-          <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
-                        />
-        </div>
-        <UInput v-model="securityMeasure.description" label="Description"
-                 />
-      </div>
-      <div class="space-x-2">
-        <UButton label="Back" v-on:click="closeSecurityMeasure" type="secondary"/>
-        <UButton label="Save" v-on:click="saveSecurityMeasure"/>
-      </div>
+  <div v-if="formsDisplayed.securityMeasure">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Security measure</h3>
+      <p class="mt-2 text-sm text-gray-700">A measure adopted by the controller to ensure the
+        confidentiality, integrity and availability of the processed personal data.</p>
+    </div>
+    <div class="pt-3">
+      <UInput v-model="securityMeasure.name" label="Name"/>
+      <UInput v-model="securityMeasure.description" label="Description" size="xl"/>
+      <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"/>
+    </div>
+    <div class="space-x-2 pt-3">
+      <UButton label="Back" v-on:click="closeSecurityMeasure" type="secondary"/>
+      <UButton label="Save" v-on:click="saveSecurityMeasure"/>
     </div>
   </div>
 </template>
