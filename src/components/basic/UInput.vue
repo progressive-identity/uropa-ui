@@ -4,7 +4,7 @@
       <span v-if="required"> *</span>
     </label>
     <input :type="type" :value="modelValue"
-           @input="$emit('update:modelValue', $event.target.value)"
+           @change="$emit('update:modelValue', $event.target.value)"
            :class="classes"
            :placeholder="placeholder"/>
     <p v-if="required" class="mt-1 text-sm text-red-600" id="email-error">This field is mandatory.</p>
