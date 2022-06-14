@@ -10,10 +10,10 @@
       <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
                     :list="storeData.dataCategories"/>
     </div>
-  </div>
-  <div class="space-x-2" v-if="!nested">
-    <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
-    <UButton label="Save" v-on:click="saveInternalDepartment"/>
+    <div class="space-x-2" v-if="!nested">
+      <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
+      <UButton label="Save" v-on:click="saveInternalDepartment"/>
+    </div>
   </div>
 </template>
 
