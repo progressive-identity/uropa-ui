@@ -53,8 +53,8 @@ store.$patch({
   mainNavigationDisplayed: false
 })
 
-function next() {
-  if (isFormValid()) {
+async function next() {
+  if (await isFormValid()) {
     storeDisplay.$reset()
     if (props.modelValue === props.steps.length - 1) {
       store.current++
@@ -75,7 +75,9 @@ function previous() {
   })
 }
 
-function isFormValid() {
+async function isFormValid() {
+  const elements = document.querySelectorAll('input')
+  await elements.forEach(e => e.dispatchEvent(new Event('change')))
   return !document.getElementById('error')
 }
 

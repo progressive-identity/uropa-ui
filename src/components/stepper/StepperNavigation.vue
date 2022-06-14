@@ -17,8 +17,9 @@ const store = useStore()
 const {mainNavigationDisplayed, stepsProcessingRecord, current} = storeToRefs(store)
 const storeDisplay = useStoreDisplay()
 
-function next() {
-  if (isFormValid()) {
+
+async function next() {
+  if (await isFormValid()) {
     store.current++
     storeDisplay.$reset()
   }
@@ -29,7 +30,9 @@ function previous() {
   storeDisplay.$reset()
 }
 
-function isFormValid() {
+async function isFormValid() {
+  const elements = document.querySelectorAll('input')
+  await elements.forEach(e => e.dispatchEvent(new Event('change')))
   return !document.getElementById('error')
 }
 
