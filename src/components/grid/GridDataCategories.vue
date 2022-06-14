@@ -44,7 +44,7 @@
     </div>
     <div id="formDataCategory">
       <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory" :list="storeData.predefinedDataCategories" @click="loadDataCategory"
-               label="Select among predefined ones"/>
+               label="Load a template"/>
       <FormDataCategory :data-category="state.dataCategory" :purposes="[]"
                         :edition="state.edition"/>
     </div>

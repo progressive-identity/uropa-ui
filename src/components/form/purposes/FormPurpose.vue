@@ -10,10 +10,10 @@
         <USwitch v-model="purpose.isMain" label="main"/>
         <UInput v-model="purpose.name" label="Name"/>
         <UInput v-model="purpose.description" label="Description" size="xl"/>
-        <div class="pb-2">
+        <div>
           <FormLegalBasis :legal-basis="purpose.legalBasis"/>
         </div>
-        <div class="space-x-2">
+        <div class="space-x-2 pt-3">
           <UButton label="Back" v-on:click="closePurpose" type="secondary"/>
           <UButton label="Save" v-on:click="savePurpose"/>
         </div>

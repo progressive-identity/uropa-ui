@@ -1,6 +1,6 @@
 <template>
   <div v-if="formsDisplayed.dataCategory">
-    <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+    <div class="pt-8">
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Data category</h3>
         <p class="mt-2 text-sm text-gray-700">High-Level description of the personal data processed that is aggregation of related DataTypes.
