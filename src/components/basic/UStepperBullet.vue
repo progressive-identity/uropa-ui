@@ -55,14 +55,14 @@ store.$patch({
 
 function next() {
   if (isFormValid()) {
-    store.current++
     storeDisplay.$reset()
     if (props.modelValue === props.steps.length - 1) {
+      store.current++
       store.$patch({
         mainNavigationDisplayed: true
       })
     } else {
-      emit('update:modelValue', props.modelValue++)
+      emit('update:modelValue', props.modelValue + 1)
     }
   }
 }
