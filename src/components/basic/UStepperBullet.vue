@@ -4,9 +4,7 @@
       <UButton type="secondary" v-on:click="previous" v-if="modelValue === 0" label="Previous"/>
       <UButton type="secondary" v-on:click="emit('update:modelValue', modelValue-1)" v-if="modelValue > 0"
                label="Previous"/>
-      <UButton type="primary" v-on:click="emit('update:modelValue', modelValue+1)" v-if="modelValue < steps.length-1"
-               label="Next"/>
-      <UButton type="primary" v-on:click="next" v-if="modelValue === steps.length-1" label="Next"/>
+      <UButton type="primary" v-on:click="next" label="Next"/>
     </div>
   </div>
   <nav aria-label="Progress" class="flex items-center justify-center pt-5">
@@ -56,11 +54,17 @@ store.$patch({
 })
 
 function next() {
-  store.current++
-  storeDisplay.$reset()
-  store.$patch({
-    mainNavigationDisplayed: true
-  })
+  if (isFormValid()) {
+    store.current++
+    storeDisplay.$reset()
+    if (props.modelValue === props.steps.length - 1) {
+      store.$patch({
+        mainNavigationDisplayed: true
+      })
+    } else {
+      emit('update:modelValue', props.modelValue++)
+    }
+  }
 }
 
 function previous() {
@@ -70,4 +74,9 @@ function previous() {
     mainNavigationDisplayed: true
   })
 }
+
+function isFormValid() {
+  return !document.getElementById('error')
+}
+
 </script>

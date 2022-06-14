@@ -65,7 +65,6 @@ const props = defineProps({
     required: true
   }
 })
-const open = true
 
 const emit = defineEmits(['update:modelValue'])
 
