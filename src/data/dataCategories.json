@@ -4,7 +4,9 @@
     "isSensitive": true,
     "dataTypes": [
       {
-        "name": "First name"
+        "name": "First name",
+        "collectionMean": "computed",
+        "isOptional": true
       },
       {
         "name": "Last name"

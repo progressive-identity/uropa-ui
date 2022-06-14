@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5" v-if="formsDisplayed.dataCategory">
+  <div v-if="formsDisplayed.dataCategory">
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Data category</h3>
@@ -18,7 +18,7 @@
         <div class="py-2">
           <TableDataTypes :data-category="dataCategory"/>
         </div>
-        <div class="space-x-2">
+        <div class="space-x-2 pt-3">
           <UButton label="Back" v-on:click="closeDataCategory" type="secondary"/>
           <UButton label="Save" v-on:click="saveDataCategory"/>
         </div>
