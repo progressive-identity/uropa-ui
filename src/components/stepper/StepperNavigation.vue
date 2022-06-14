@@ -18,13 +18,19 @@ const {mainNavigationDisplayed, stepsProcessingRecord, current} = storeToRefs(st
 const storeDisplay = useStoreDisplay()
 
 function next() {
-  store.current++
-  storeDisplay.$reset()
+  if (isFormValid()) {
+    store.current++
+    storeDisplay.$reset()
+  }
 }
 
 function previous() {
   store.current--
   storeDisplay.$reset()
+}
+
+function isFormValid() {
+  return !document.getElementById('error')
 }
 
 </script>
