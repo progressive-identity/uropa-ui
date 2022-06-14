@@ -5,6 +5,7 @@
           :icon="icon"
           :label="label"
       />
+      <!-- FIXME the cursor isn't working properly here, I don't know why -->
       <input
           ref="root"
           :accept="accept"
