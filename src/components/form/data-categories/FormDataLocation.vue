@@ -13,7 +13,7 @@
     </div>
     <FormDataSource :data-source="dataLocation.dataSource"/>
     <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"
-                  :list="storeData.dataTypesForDataLocation"/>
+                  :list="storeData.uniqueDataTypes"/>
     <UInput v-for="dataType in dataLocation.dataTypes" v-model="dataType.path"
             :label="`Path for ${dataType.name}`" size="xl"/>
     <div class="space-x-2 py-3">

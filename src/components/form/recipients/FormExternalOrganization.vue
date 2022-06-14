@@ -9,7 +9,7 @@
       <UInput v-model="externalOrganization.organizationStatus" label="Organization status"/>
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
       <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
-                    :list="storeData.dataCategories"/>
+                    :list="storeData.uniqueDataCategories"/>
       <FormLegalPerson v-model="externalOrganization.legalPerson"/>
     </div>
     <div class="space-x-2" v-if="!nested">

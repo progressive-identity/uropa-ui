@@ -9,15 +9,18 @@ export const useStoreData = defineStore('data', {
         return {processingRecord, purposeTemplate, securityMeasureTemplate, predefinedDataCategories}
     },
     getters: {
-        dataCategories: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories),
-        dataTypes: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories.flatMap(e => e?.dataTypes)),
-        dataTypesForDataLocation: (state) =>
-            state.processingRecord.purposes.flatMap(purpose =>
-                purpose?.dataCategories.flatMap(dataCategory =>
-                    dataCategory?.dataTypes.map(dataType => {
-                        return {name: `${purpose.name} -> ${dataCategory.name} -> ${dataType.name}`}
-                    })
-                )
-            )
+        allDataCategories: (state) => state.processingRecord.purposes.flatMap(e => e?.dataCategories),
+        uniqueDataCategories: (state) => getUniqueDataCategories(state),
+        uniqueDataTypes: (state) => getUniqueDataTypes(state)
     }
 })
+
+function getUniqueDataCategories(state) {
+    const dataCategories = state.processingRecord.purposes.flatMap(e => e?.dataCategories)
+    return [...new Map(dataCategories.map(e => [e['name'], e])).values()]
+}
+
+function getUniqueDataTypes(state) {
+    const dataTypes = getUniqueDataCategories(state).flatMap(dataCategory => dataCategory?.dataTypes)
+    return [...new Map(dataTypes.map(e => [e['name'], e])).values()]
+}

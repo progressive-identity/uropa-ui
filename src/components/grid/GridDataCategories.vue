@@ -5,7 +5,7 @@
     </div>
     <div class="py-5">
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <li v-for="(dataCategory, index) in storeData.dataCategories" :key="index"
+        <li v-for="(dataCategory, index) in storeData.allDataCategories" :key="index"
             class="bg-white rounded-lg shadow border-2 px-5 text-sm">
           <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">{{ dataCategory.name }}</h3>

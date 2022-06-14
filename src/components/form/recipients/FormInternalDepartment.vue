@@ -8,7 +8,7 @@
     <div class="pt-3">
       <UInput v-model="internalDepartment.name" label="Name"/>
       <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
-                    :list="storeData.dataCategories"/>
+                    :list="storeData.uniqueDataCategories"/>
     </div>
     <div class="space-x-2" v-if="!nested">
       <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
