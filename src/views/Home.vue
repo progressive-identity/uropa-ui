@@ -17,7 +17,7 @@
 <script setup>
 import StepperProcessingRecord from '@/components/stepper/StepperProcessingRecord.vue'
 import StepperNavigation from '@/components/stepper/StepperNavigation.vue'
-import JsonContent from '@/components/JsonContent.vue'
+import JsonContent from '@/views/JsonContent.vue'
 import LegalPerson from '@/views/LegalPerson.vue'
 import GeneralInformation from '@/views/GeneralInformation.vue'
 import Purposes from '@/views/Purposes.vue'

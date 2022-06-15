@@ -23,7 +23,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import USelect from '@/components/basic/USelect.vue'
+import USelect from '@/components/basic/select/USelect.vue'
 import countries from './../../../data/countries.json'
 import FormDataTransferLegalBasis from '@/components/form/data-transfers/FormDataTransferLegalBasis.vue'
 

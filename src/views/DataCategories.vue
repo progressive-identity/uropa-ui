@@ -13,7 +13,7 @@
 <script setup>
 import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
-import UStepperBullet from '@/components/basic/UStepperBullet.vue'
+import UStepperBullet from '@/components/stepper/StepperBullet.vue'
 import GridDataCategories from '@/components/grid/GridDataCategories.vue'
 import GridDataLocations from '@/components/grid/GridDataLocations.vue'
 

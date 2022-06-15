@@ -24,7 +24,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import {securityMeasureTypes} from '@/data/enums.js'
-import USelectEnums from '@/components/basic/USelectEnums.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

@@ -60,7 +60,7 @@ import UButton from '@/components/basic/UButton.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/DataCategoryTemplate.json'
-import USelect from '@/components/basic/USelect.vue'
+import USelect from '@/components/basic/select/USelect.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

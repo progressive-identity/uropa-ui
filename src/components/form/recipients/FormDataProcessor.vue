@@ -24,7 +24,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import UMultiSelect from '@/components/basic/UMultiSelect.vue'
+import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 

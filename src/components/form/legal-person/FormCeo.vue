@@ -15,7 +15,7 @@
 import {storeToRefs} from 'pinia'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
-import FormPersonalInformation from '@/components/form/FormPersonalInformation.vue'
+import FormPersonalInformation from '@/components/form/legal-person/FormPersonalInformation.vue'
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)

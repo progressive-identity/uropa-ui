@@ -13,8 +13,8 @@
 
 <script setup>
 import UInput from '@/components/basic/UInput.vue'
-import USelect from '@/components/basic/USelect.vue'
-import countries from './../../data/countries.json'
+import USelect from '@/components/basic/select/USelect.vue'
+import countries from '../../../data/countries.json'
 
 const props = defineProps({
   postalAddress: {

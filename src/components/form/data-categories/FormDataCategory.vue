@@ -35,7 +35,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import UMultiSelect from '@/components/basic/UMultiSelect.vue'
+import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import TableDataTypes from '@/components/form/data-categories/TableDataTypes.vue'
 
 const storeData = useStoreData()

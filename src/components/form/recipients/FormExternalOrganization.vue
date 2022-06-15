@@ -27,7 +27,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
 import LegalPersonTemplate from '/src/data/template/LegalPersonTemplate.json'
-import UMultiSelect from '@/components/basic/UMultiSelect.vue'
+import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

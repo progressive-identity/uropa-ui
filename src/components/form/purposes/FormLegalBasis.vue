@@ -15,7 +15,7 @@
 
 <script setup>
 import UInput from '@/components/basic/UInput.vue'
-import USelectEnums from '@/components/basic/USelectEnums.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {legalBasisTypes} from '/src/data/enums.js'
 
 const props = defineProps({

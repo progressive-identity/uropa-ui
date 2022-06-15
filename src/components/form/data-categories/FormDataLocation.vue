@@ -31,8 +31,8 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormDataSource from '@/components/form/data-categories/FormDataSource.vue'
 import {dataSupports, storageStates} from '/src/data/enums.js'
-import UMultiSelect from '@/components/basic/UMultiSelect.vue'
-import USelectEnums from '@/components/basic/USelectEnums.vue'
+import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

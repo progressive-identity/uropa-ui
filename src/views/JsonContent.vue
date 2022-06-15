@@ -14,8 +14,8 @@
 
 <script setup>
 import {storeToRefs} from 'pinia'
-import {useStore} from '@/store/stepper'
-import {useStoreData} from '@/store/data'
+import {useStore} from '@/store/stepper.js'
+import {useStoreData} from '@/store/data.js'
 import UButton from '@/components/basic/UButton.vue'
 import {mdiContentCopy, mdiContentSave} from '@mdi/js'
 

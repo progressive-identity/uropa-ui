@@ -27,9 +27,9 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import USelectEnums from '@/components/basic/USelectEnums.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {legalBasisTypes} from '@/data/enums.js'
-import USelect from '@/components/basic/USelect.vue'
+import USelect from '@/components/basic/select/USelect.vue'
 
 const storeDisplay = useStoreDisplay()
 const storeData = useStoreData()
