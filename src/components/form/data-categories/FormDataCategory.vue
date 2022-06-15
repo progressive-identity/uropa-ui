@@ -1,27 +1,35 @@
 <template>
   <div v-if="formsDisplayed.dataCategory">
-    <div class="pt-8">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Data category</h3>
-        <p class="mt-2 text-sm text-gray-700">High-Level description of the personal data processed that is aggregation of related DataTypes.
-          For instance, the name and the first name are data types and identity information is the data category.</p>
-      </div>
-      <div>
-        <USwitch v-model="dataCategory.isSensitive" label="sensitive"/>
-      </div>
-      <div class="isolate -space-y-px rounded-md shadow-sm">
+    <div class="space-y-5">
+      <UVerticalBar label="Data category" :rotate="formsDisplayed.subDataCategory"
+                    @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+      <div class="px-5" v-if="formsDisplayed.subDataCategory">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Data category</h3>
+          <p class="mt-2 text-sm text-gray-700">High-Level description of the personal data processed that is
+            aggregation
+            of related DataTypes.
+            For instance, the name and the first name are data types and identity information is the data
+            category.</p>
+        </div>
+        <div>
+          <USwitch v-model="dataCategory.isSensitive" label="sensitive"/>
+        </div>
         <div class="py-2">
-          <UInput v-model="dataCategory.name" label="Name"  />
+          <UInput v-model="dataCategory.name" label="Name"/>
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
                         :list="storeData.processingRecord.purposes"/>
         </div>
-        <div class="py-2">
-          <TableDataTypes :data-category="dataCategory"/>
-        </div>
-        <div class="space-x-2 pt-3">
-          <UButton label="Back" v-on:click="closeDataCategory" type="secondary"/>
-          <UButton label="Save" v-on:click="saveDataCategory"/>
-        </div>
+      </div>
+      <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"
+                    @click="toggleDisplay(formsDisplayed.subDataCategory, !formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+      <TableDataTypes class="px-5" :data-category="dataCategory"/>
+      <UVerticalBar label="Data subject types" :rotate="formsDisplayed.dataSubjectType"
+                    @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectType)"/>
+      <TableDataSubjectTypes class="px-5" :data-category="dataCategory"/>
+      <div class="space-x-2 pt-3">
+        <UButton label="Back" v-on:click="closeDataCategory" type="secondary"/>
+        <UButton label="Save" v-on:click="saveDataCategory"/>
       </div>
     </div>
   </div>
@@ -37,6 +45,8 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import TableDataTypes from '@/components/form/data-categories/TableDataTypes.vue'
+import TableDataSubjectTypes from '@/components/form/data-categories/TableDataSubjectTypes.vue'
+import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -56,6 +66,12 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false
+  }
+})
+
+storeDisplay.$patch({
+  formsDisplayed: {
+    subDataCategory: true
   }
 })
 
@@ -81,6 +97,16 @@ function closeDataCategory() {
   storeDisplay.$patch({
     formsDisplayed: {
       dataCategory: false
+    }
+  })
+}
+
+function toggleDisplay(dataCategory, dataType, dataSubjectType) {
+  storeDisplay.$patch({
+    formsDisplayed: {
+      subDataCategory: dataCategory,
+      dataType,
+      dataSubjectType
     }
   })
 }

@@ -23,12 +23,25 @@
                   </li>
                 </ul>
               </div>
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div v-if="dataCategory?.dataTypes?.length > 0"
+                   class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Data types</dt>
                 <ul role="list">
                   <li v-for="dataType in dataCategory.dataTypes" class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
                       <span class="flex-1 truncate">{{ dataType.name }}</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div v-if="dataCategory?.dataSubjectTypes?.length > 0"
+                   class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Data subject types</dt>
+                <ul role="list">
+                  <li v-for="dataSubjectType in dataCategory?.dataSubjectTypes"
+                      class="flex items-center justify-between text-sm">
+                    <div class="flex-1 flex items-center pb-2">
+                      <span class="flex-1 truncate">{{ dataSubjectType.name }}</span>
                     </div>
                   </li>
                 </ul>
@@ -43,8 +56,9 @@
       </ul>
     </div>
     <div id="formDataCategory">
-      <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory" :list="storeData.predefinedDataCategories" @click="loadDataCategory"
-               label="Load a template"/>
+      <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory"
+               :list="storeData.predefinedDataCategories" @click="loadDataCategory"
+               label="Load a template" class="py-5"/>
       <FormDataCategory :data-category="state.dataCategory" :purposes="[]"
                         :edition="state.edition"/>
     </div>
@@ -57,10 +71,12 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
+import USelect from '@/components/basic/select/USelect.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/DataCategoryTemplate.json'
-import USelect from '@/components/basic/select/USelect.vue'
+import DataSubjectTypeTemplate from '@/data/template/DataSubjectTypeTemplate.json'
+import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -77,6 +93,22 @@ async function createDataCategory() {
 async function loadDataCategory() {
   if (state.dataCategory.name !== '') {
     state.edition = false
+    storeDisplay.$patch({
+      formsDisplayed: {
+        subDataCategory: true,
+        dataType: true,
+        dataSubjectType: true
+      }
+    })
+
+    //FIXME not sure it should be done here
+    if (state.dataCategory?.dataTypes?.length === 0) {
+      state.dataCategory.dataTypes.push({...DataTypeTemplate})
+    }
+    if (state.dataCategory?.dataSubjectTypes?.length === 0) {
+      state.dataCategory.dataSubjectTypes.push({...DataSubjectTypeTemplate})
+    }
+
     await scrollToForm()
   }
 }
