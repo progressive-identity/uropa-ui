@@ -14,6 +14,7 @@ export const useStoreDisplay = defineStore('display', {
                 dataType:false,
                 dataSubjectCategory:false,
                 dataLocation:false,
+                subDataLocation:false,
                 dataSource:false,
                 storageDuration:false,
                 jointController: false,

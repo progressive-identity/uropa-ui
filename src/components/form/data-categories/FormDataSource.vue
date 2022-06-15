@@ -1,8 +1,8 @@
 <template>
-  <div class="pt-8 space-y-6">
+  <div v-if="formsDisplayed.dataSource">
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">Data source</h3>
-      <p class="mt-2 text-sm text-gray-700">Abstraction of the medium on which Personal data is stored. It could be a
+      <p class="mt-2 text-sm text-gray-700">Abstraction of the medium on which personal data is stored. It could be a
         hard drive on site, a SaaS, or even an archive room.</p>
     </div>
     <USelect v-model="dataSource.country" :list="countries" label="Country" size="s"/>
@@ -17,9 +17,14 @@
 </template>
 
 <script setup>
+import {storeToRefs} from 'pinia/dist/pinia.prod.cjs'
+import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
 import countries from './../../../data/countries.json'
+
+const storeDisplay = useStoreDisplay()
+const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
   dataSource: {

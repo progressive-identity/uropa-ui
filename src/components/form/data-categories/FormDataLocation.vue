@@ -1,24 +1,33 @@
 <template>
   <div v-if="formsDisplayed.dataLocation">
-    <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Data location</h3>
-      <p class="mt-2 text-sm text-gray-700">Place where a data item is stored within a DataSource.</p>
-    </div>
-    <div class="pt-3">
-      <UInput v-model="dataLocation.description" label="Description" size="xl"/>
-      <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupports"
-      />
-      <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageStates"
-      />
-    </div>
-    <FormDataSource :data-source="dataLocation.dataSource"/>
-    <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"
-                  :list="storeData.uniqueDataTypes"/>
-    <UInput v-for="dataType in dataLocation.dataTypes" v-model="dataType.path"
-            :label="`Path for ${dataType.name}`" size="xl"/>
-    <div class="space-x-2 py-3">
-      <UButton label="Back" v-on:click="closeDataLocation" type="secondary"/>
-      <UButton label="Save" v-on:click="saveDataLocation"/>
+    <div class="space-y-5">
+      <UVerticalBar label="Data location" :rotate="formsDisplayed.subDataLocation"
+                    @click="toggleDisplay(!formsDisplayed.subDataLocation, formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
+      <div class="px-5" v-if="formsDisplayed.subDataLocation">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Data location</h3>
+          <p class="mt-2 text-sm text-gray-700">Place where a data item is stored within a DataSource.</p>
+        </div>
+        <div class="py-2">
+          <UInput v-model="dataLocation.description" label="Description" size="xl"/>
+          <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupports"/>
+          <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageStates"/>
+          <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"
+                        :list="storeData.uniqueDataTypes"/>
+          <UInput v-for="dataType in dataLocation.dataTypes" v-model="dataType.path"
+                  :label="`Path for ${dataType.name}`" size="xl"/>
+        </div>
+      </div>
+      <UVerticalBar label="Data source" :rotate="formsDisplayed.dataSource"
+                    @click="toggleDisplay(formsDisplayed.subDataLocation, !formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
+      <FormDataSource class="px-5" :data-source="dataLocation.dataSource"/>
+      <UVerticalBar label="Storage durations" :rotate="formsDisplayed.storageDuration"
+                    @click="toggleDisplay(formsDisplayed.subDataLocation, formsDisplayed.dataSource, !formsDisplayed.storageDuration)"/>
+      <TableStorageDurations class="px-5" :data-location="dataLocation"/>
+      <div class="space-x-2 py-3">
+        <UButton label="Back" v-on:click="closeDataLocation" type="secondary"/>
+        <UButton label="Save" v-on:click="saveDataLocation"/>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +42,8 @@ import FormDataSource from '@/components/form/data-categories/FormDataSource.vue
 import {dataSupports, storageStates} from '/src/data/enums.js'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
+import UVerticalBar from '@/components/basic/UVerticalBar.vue'
+import TableStorageDurations from '@/components/form/data-categories/TableStorageDurations.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -68,11 +79,7 @@ function emptyDataLocation() {
 }
 
 function saveDataLocation() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataLocation: false
-    }
-  })
+  storeDisplay.$reset()
   if (!props.edition) {
     // FIXME dataLocations should be in dataCategories
     storeData.$patch((state) =>
@@ -82,9 +89,15 @@ function saveDataLocation() {
 }
 
 function closeDataLocation() {
+  storeDisplay.$reset()
+}
+
+function toggleDisplay(dataLocation, dataSource, storageDuration) {
   storeDisplay.$patch({
     formsDisplayed: {
-      dataLocation: false
+      subDataLocation: dataLocation,
+      dataSource,
+      storageDuration
     }
   })
 }
