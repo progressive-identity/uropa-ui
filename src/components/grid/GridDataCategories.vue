@@ -116,11 +116,6 @@ async function loadDataCategory() {
 async function editDataCategory(dataCategory) {
   state.dataCategory = dataCategory
   state.edition = true
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataCategory: true
-    }
-  })
   await scrollToForm()
 }
 
@@ -129,11 +124,6 @@ function deleteDataCategory(index) {
   // storeData.$patch((state) => {
   //   state.processingRecord.dataCategories.splice(index, 1)
   // })
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataCategory: false
-    }
-  })
 }
 
 async function scrollToForm() {
@@ -147,7 +137,8 @@ async function scrollToForm() {
 async function displayForm() {
   storeDisplay.$patch({
     formsDisplayed: {
-      dataCategory: true
+      dataCategory: true,
+      subDataCategory: true
     }
   })
 }

@@ -8,7 +8,7 @@
           <h3 class="text-lg leading-6 font-medium text-gray-900">Data category</h3>
           <p class="mt-2 text-sm text-gray-700">High-Level description of the personal data processed that is
             aggregation
-            of related DataTypes.
+            of related data types.
             For instance, the name and the first name are data types and identity information is the data
             category.</p>
         </div>
@@ -81,11 +81,7 @@ function emptyDataCategory() {
 }
 
 function saveDataCategory() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataCategory: false
-    }
-  })
+  storeDisplay.$reset()
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.purposes[0].dataCategories.push({...props.dataCategory}))
@@ -94,11 +90,7 @@ function saveDataCategory() {
 }
 
 function closeDataCategory() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataCategory: false
-    }
-  })
+  storeDisplay.$reset()
 }
 
 function toggleDisplay(dataCategory, dataType, dataSubjectType) {
