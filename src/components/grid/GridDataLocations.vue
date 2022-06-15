@@ -12,9 +12,7 @@
             <dl class="sm:divide-y sm:divide-gray-200">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Country</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                    dataLocation.dataSource.country.name
-                  }}
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataLocation.dataSource.country.name }}
                 </dd>
               </div>
             </dl>
@@ -48,7 +46,7 @@
         </li>
       </ul>
     </div>
-    <div>
+    <div id="formDataLocation">
       <FormDataLocation :data-location="state.dataLocation" :edition="state.edition"/>
     </div>
   </div>
@@ -62,7 +60,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataLocation from '@/components/form/data-categories/FormDataLocation.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import DataLocationTemplate from '../../data/template/DataLocationTemplate.json'
+import DataLocationTemplate from '../../data/template/data-categories/DataLocationTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
@@ -70,35 +68,36 @@ const state = reactive({dataLocation: DataLocationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 
-function createDataLocation() {
+async function createDataLocation() {
   state.dataLocation = DataLocationTemplate
   state.edition = false
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataLocation: true,
-      subDataLocation: true
-    }
-  })
+  await scrollToForm()
 }
 
-function editDataLocation(dataLocation) {
+async function editDataLocation(dataLocation) {
   state.dataLocation = dataLocation
   state.edition = true
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataLocation: true,
-      subDataLocation: true
-    }
-  })
+  await scrollToForm()
 }
 
 function deleteDataLocation(index) {
   storeData.$patch((state) => {
     state.processingRecord.dataLocations.splice(index, 1)
   })
+}
+
+async function scrollToForm() {
+  // TODO refactor into a store
+  await displayForm()
+  const top = document.getElementById('formDataLocation').offsetTop
+  window.scroll(0, top)
+}
+
+async function displayForm() {
   storeDisplay.$patch({
     formsDisplayed: {
-      dataLocation: false
+      dataLocation: true,
+      subDataLocation: true
     }
   })
 }
