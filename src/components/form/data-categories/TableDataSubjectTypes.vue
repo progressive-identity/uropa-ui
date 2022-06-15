@@ -27,10 +27,10 @@
                 </div>
               </td>
               <td>
-                <UInput v-model="dataCategory.dataSubjectTypes[index].name" label=""/>
+                <UInput v-model="dataCategory.dataSubjectTypes[index].name" />
               </td>
               <td>
-                <USwitch v-model="dataSubjectType.isChild" label=""/>
+                <USwitch v-model="dataSubjectType.isChild" />
               </td>
             </tr>
             </tbody>
@@ -48,7 +48,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
-import DataSubjectTypeTemplate from '@/data/template/DataSubjectTypeTemplate.json'
+import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

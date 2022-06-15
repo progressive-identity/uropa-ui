@@ -29,13 +29,13 @@
                 </div>
               </td>
               <td>
-                <UInput v-model="dataCategory.dataTypes[index].name" label=""/>
+                <UInput v-model="dataCategory.dataTypes[index].name" />
               </td>
               <td>
-                <USelectEnums v-model="dataType.collectionMean" label="" :list="collectionMeans"/>
+                <USelectEnums v-model="dataType.collectionMean"  :list="collectionMeans"/>
               </td>
               <td>
-                <USwitch v-model="dataType.isOptional" label=""/>
+                <USwitch v-model="dataType.isOptional" />
               </td>
             </tr>
             </tbody>
