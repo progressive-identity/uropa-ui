@@ -7,7 +7,7 @@
            @change="$emit('update:modelValue', $event.target.value); validate($event.target.value);"
            :class="classes"
            :placeholder="placeholder"/>
-    <p v-if="!state.valid" v-for="error in state.errors" class="mt-1 text-sm text-red-600" id="error">{{error}}</p>
+    <p v-if="!state.valid" v-for="error in state.errors" class="mt-1 text-sm text-red-600" id="error">{{ error }}</p>
   </div>
 </template>
 
@@ -19,29 +19,25 @@ const state = reactive({valid: true, errors: []})
 const props = defineProps({
   type: {
     type: String,
-    required: false,
     default: 'text'
   },
   label: {
     type: String,
-    required: true
+    default: ''
   },
   modelValue: {
     type: String,
     required: true
   },
   placeholder: {
-    type: String,
-    required: false
+    type: String
   },
   required: {
     type: Boolean,
-    required: false,
     default: false
   },
   size: {
     type: String,
-    required: false,
     default: 'l'
   }
 })
@@ -66,7 +62,7 @@ function validate(value) {
 }
 
 function isEmpty(value) {
-  if (value.length ===0) {
+  if (value.length === 0) {
     state.valid = false
     state.errors.push('This field cannot be empty')
   }
@@ -74,9 +70,9 @@ function isEmpty(value) {
 
 // TODO externalize in a specific file once more rules are defined
 function isEMailValid(email) {
-   if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
-     state.valid = false
+  if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+    state.valid = false
     state.errors.push('The email is not valid')
-   }
+  }
 }
 </script>

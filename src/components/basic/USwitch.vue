@@ -22,7 +22,7 @@ const {formsDisplayed} = storeToRefs(storeDisplay)
 const props = defineProps({
   label: {
     type: String,
-    required: false
+    default: ''
   },
   modelValue: {
     type: Boolean,

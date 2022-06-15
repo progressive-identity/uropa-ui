@@ -57,7 +57,6 @@ const props = defineProps({
   },
   label: {
     type: String,
-    required: false,
     default: ''
   },
   list: {
