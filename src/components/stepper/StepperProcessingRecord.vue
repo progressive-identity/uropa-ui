@@ -18,8 +18,8 @@
           </span>
           <span class="ml-4 text-sm font-medium text-indigo-600">{{ step.name }}</span>
         </a>
-        <!-- Temporary help for development purposes, should be removed afterward-->
-        <a v-else class="group flex items-center" v-on:click="changeStep(step.id)">
+        <a v-else class="group flex items-center">
+          <div @click="debugMode ? changeStep(step.id) : {}">
           <span class="px-6 py-4 flex items-center text-sm font-medium">
             <span
                 class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
@@ -27,6 +27,7 @@
             </span>
             <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">{{ step.name }}</span>
           </span>
+          </div>
         </a>
         <template v-if="stepIdx !== stepsProcessingRecord.length - 1">
           <!-- Arrow separator for lg screens and up -->
@@ -48,6 +49,7 @@ import {useStore} from '@/store/stepper'
 import {storeToRefs} from 'pinia'
 
 const store = useStore()
+const debugMode = process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG)
 
 function changeStep(stepNumber) {
   store.$patch({

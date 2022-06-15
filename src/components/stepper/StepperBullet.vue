@@ -76,6 +76,8 @@ function previous() {
 }
 
 async function isFormValid() {
+  if (JSON.parse(process.env.VUE_APP_DEBUG)) return true
+
   const elements = document.querySelectorAll('input')
   await elements.forEach(e => e.dispatchEvent(new Event('change')))
   return !document.getElementById('error')
