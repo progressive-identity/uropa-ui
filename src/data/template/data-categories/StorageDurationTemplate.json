@@ -1,0 +1,11 @@
+{
+  "storageType": "",
+  "startEvent": {
+    "name": "",
+    "description": "",
+    "countdown": {
+      "timeUnit": "",
+      "duration": ""
+    }
+  }
+}
