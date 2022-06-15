@@ -24,6 +24,8 @@
                 <div>
                   <UButton v-if="index === dataCategory.dataTypes.length-1" :icon="mdiPlusCircle"
                            @click="createDataType"/>
+                  <UButton v-else :icon="mdiMinusCircle" type="danger"
+                           @click="deleteDataType(index)"/>
                 </div>
               </td>
               <td>
@@ -48,12 +50,12 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
-import USwitch from '@/components/basic/USwitch.vue'
-import {mdiPlusCircle} from '@mdi/js'
-import {collectionMeans} from '/src/data/enums.js'
 import UInput from '@/components/basic/UInput.vue'
+import USwitch from '@/components/basic/USwitch.vue'
+import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
+import {collectionMeans} from '/src/data/enums.js'
+import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -72,6 +74,10 @@ if (props.dataCategory.dataTypes.length === 0) {
 
 function createDataType() {
   props.dataCategory.dataTypes.push({...DataTypeTemplate})
+}
+
+function deleteDataType(index) {
+  props.dataCategory.dataTypes.splice(index, 1)
 }
 
 </script>

@@ -12,7 +12,7 @@
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
               <th scope="col" class="py-3.5 pl-4 pr-3">Name</th>
-              <th scope="col" class="px-3 py-3.5">Optional</th>
+              <th scope="col" class="px-3 py-3.5">Child</th>
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
@@ -22,13 +22,15 @@
                 <div>
                   <UButton v-if="index === dataCategory?.dataSubjectTypes.length-1" :icon="mdiPlusCircle"
                            @click="createDataSubjectType"/>
+                  <UButton v-else :icon="mdiMinusCircle" type="danger"
+                           @click="deleteDataSubjectType(index)"/>
                 </div>
               </td>
               <td>
                 <UInput v-model="dataCategory.dataSubjectTypes[index].name" label=""/>
               </td>
               <td>
-                <USwitch v-model="dataSubjectType.isOptional" label=""/>
+                <USwitch v-model="dataSubjectType.isChild" label=""/>
               </td>
             </tr>
             </tbody>
@@ -43,10 +45,10 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import DataSubjectTypeTemplate from '@/data/template/DataSubjectTypeTemplate.json'
-import USwitch from '@/components/basic/USwitch.vue'
-import {mdiPlusCircle} from '@mdi/js'
 import UInput from '@/components/basic/UInput.vue'
+import USwitch from '@/components/basic/USwitch.vue'
+import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
+import DataSubjectTypeTemplate from '@/data/template/DataSubjectTypeTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -65,6 +67,10 @@ if (props.dataCategory?.dataSubjectTypes?.length === 0) {
 
 function createDataSubjectType() {
   props.dataCategory.dataSubjectTypes.push({...DataSubjectTypeTemplate})
+}
+
+function deleteDataSubjectType(index) {
+  props.dataCategory.dataSubjectTypes.splice(index, 1)
 }
 
 </script>
