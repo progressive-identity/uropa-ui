@@ -49,4 +49,30 @@ const legalBasisTypes = [{
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
 }]
 
-export {collectionMeans, securityMeasureTypes, dataSupports, storageStates, legalBasisTypes}
+const storageTypes = [{
+    name: 'production',
+    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+}, {
+    name: 'legal',
+    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+}, {
+    name: 'data locking',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+}, {
+    name: 'definitive archive',
+    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+}, {}]
+
+const timeUnit = [{
+    name: 'years'
+}, {
+    name: 'months'
+}, {
+    name: 'weeks'
+}, {
+    name: 'days'
+}, {
+    name: 'hours'
+}, {}]
+
+export {collectionMeans, securityMeasureTypes, dataSupports, storageStates, legalBasisTypes, storageTypes, timeUnit}

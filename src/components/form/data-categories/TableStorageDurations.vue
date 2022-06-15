@@ -13,48 +13,62 @@
             <thead class="bg-gray-50">
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
-              <th scope="col" class="py-3.5 pl-4 pr-3">Name</th>
-              <th scope="col" class="px-3 py-3.5">Child</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3">Storage type</th>
+              <th scope="col" class="px-3 py-3.5">Start event</th>
+              <th scope="col" class="px-3 py-3.5">Stop event</th>
+              <th scope="col" class="px-3 py-3.5">Interrupt event</th>
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
-            <tr v-for="(dataSubjectType, index) in dataLocation.dataSubjectTypes" :key="dataSubjectType.name"
-                class="text-sm font-medium text-gray-900">
+            <tr v-for="(storageDuration, index) in dataLocation.storageDurations" :key="storageDuration"
+                class="text-sm font-medium text-gray-900 space-x-2">
               <td class="pl-2">
                 <div>
-                  <UButton v-if="index === dataLocation?.dataSubjectTypes.length-1" :icon="mdiPlusCircle"
-                           @click="createDataSubjectType"/>
+                  <UButton v-if="index === dataLocation?.storageDurations.length-1" :icon="mdiPlusCircle"
+                           @click="createStorageDuration"/>
                   <UButton v-else :icon="mdiMinusCircle" type="danger"
-                           @click="deleteDataSubjectType(index)"/>
+                           @click="deleteStorageDuration(index)"/>
                 </div>
               </td>
               <td>
-                <UInput v-model="dataLocation.dataSubjectTypes[index].name" label=""/>
+                <USelectEnums v-model="storageDuration.storageType" :list="storageTypes"/>
               </td>
               <td>
-                <USwitch v-model="dataSubjectType.isChild" label=""/>
+                <ButtonEventType :event-type="storageDuration.startEvent" @click="editEventType(storageDuration.startEvent)" />
+              </td>
+              <td>
+                <ButtonEventType :event-type="storageDuration.stopEvent" @click="editEventType(storageDuration.stopEvent)" />
+              </td>
+              <td>
+                <ButtonEventType :event-type="storageDuration.interruptEvent" @click="editEventType(storageDuration.interruptEvent)" />
               </td>
             </tr>
             </tbody>
           </table>
+        <FormEventType class="px-2" :event-type="state.eventType" :edition="state.edition"/>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
+import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import UInput from '@/components/basic/UInput.vue'
-import USwitch from '@/components/basic/USwitch.vue'
-import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
-import DataSubjectTypeTemplate from '@/data/template/DataSubjectTypeTemplate.json'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
+import FormEventType from '@/components/form/data-categories/FormEventType.vue'
+import {mdiMinusCircle, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {storageTypes} from '/src/data/enums.js'
+import EventTypeTemplate from '@/data/template/data-categories/EventTypeTemplate.json'
+import StorageDurationTemplate from '@/data/template/data-categories/StorageDurationTemplate.json'
+import ButtonEventType from '@/components/form/data-categories/ButtonEventType.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
+const state = reactive({eventType: EventTypeTemplate})
 
 const props = defineProps({
   dataLocation: {
@@ -63,16 +77,25 @@ const props = defineProps({
   }
 })
 
-if (props.dataLocation?.dataSubjectTypes?.length === 0) {
-  createDataSubjectType()
+if (props.dataLocation?.storageDurations?.length === 0) {
+  createStorageDuration()
 }
 
-function createDataSubjectType() {
-  props.dataLocation.dataSubjectTypes.push({...DataSubjectTypeTemplate})
+function createStorageDuration() {
+  props.dataLocation.storageDurations.push(structuredClone(StorageDurationTemplate))
 }
 
-function deleteDataSubjectType(index) {
-  props.dataLocation.dataSubjectTypes.splice(index, 1)
+function deleteStorageDuration(index) {
+  props.dataLocation.storageDurations.splice(index, 1)
+}
+
+function editEventType(eventType) {
+  state.eventType = eventType
+  storeDisplay.$patch({
+    formsDisplayed: {
+      eventType: true
+    }
+  })
 }
 
 </script>
