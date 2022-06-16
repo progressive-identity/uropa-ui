@@ -5,7 +5,7 @@
         <a v-if="step.id < current" class="group flex items-center w-full" v-on:click="changeStep(step.id)">
           <span class="px-6 py-4 flex items-center text-sm font-medium cursor-pointer">
             <span
-                class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary-600 rounded-full group-hover:bg-primary-800">
+                class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary-500 rounded-full group-hover:bg-primary-800">
               <CheckIcon aria-hidden="true" class="w-6 h-6 text-white"/>
             </span>
             <span class="ml-4 text-sm font-medium text-gray-900">{{ step.name }}</span>
@@ -13,10 +13,10 @@
         </a>
         <a v-else-if="step.id === current" aria-current="step" class="px-6 py-4 flex items-center text-sm font-medium">
           <span
-              class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-primary-600 rounded-full">
-            <span class="text-primary-600">{{ step.id }}</span>
+              class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-primary-500 rounded-full">
+            <span class="text-primary-500">{{ step.id }}</span>
           </span>
-          <span class="ml-4 text-sm font-medium text-primary-600">{{ step.name }}</span>
+          <span class="ml-4 text-sm font-medium text-primary-500">{{ step.name }}</span>
         </a>
         <a v-else class="group flex items-center">
           <div @click="debugMode ? changeStep(step.id) : {}">

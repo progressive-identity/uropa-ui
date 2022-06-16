@@ -15,7 +15,7 @@
 /* PRIMARY */
 
 .u-button--primary {
-    @apply bg-primary-600;
+    @apply bg-primary-500;
 }
 
 .u-button--primary:hover {
@@ -43,7 +43,7 @@
 /* WARNING */
 
 .u-button--warning {
-    @apply bg-yellow-600;
+    @apply bg-yellow-500;
 }
 
 .u-button--warning:hover {
@@ -57,7 +57,7 @@
 /* DANGER */
 
 .u-button--danger {
-    @apply bg-red-600;
+    @apply bg-red-500;
 }
 
 .u-button--danger:hover {

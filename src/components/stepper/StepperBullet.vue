@@ -12,13 +12,13 @@
     <ol class="ml-8 flex items-center space-x-5" role="list">
       <li v-for="step in steps" :key="step.name">
         <p v-if="step.id < modelValue"
-           class="block w-2.5 h-2.5 bg-primary-600 rounded-full hover:bg-primary-900"/>
+           class="block w-2.5 h-2.5 bg-primary-500 rounded-full hover:bg-primary-900"/>
         <p v-else-if="step.id === modelValue" aria-current="step"
            class="relative flex items-center justify-center">
           <span aria-hidden="true" class="absolute w-5 h-5 p-px flex">
             <span class="w-full h-full rounded-full bg-primary-200"/>
           </span>
-          <span aria-hidden="true" class="relative block w-2.5 h-2.5 bg-primary-600 rounded-full"/>
+          <span aria-hidden="true" class="relative block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
         </p>
         <p v-else class="block w-2.5 h-2.5 bg-gray-200 rounded-full hover:bg-gray-400"/>
       </li>

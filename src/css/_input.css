@@ -5,7 +5,7 @@
 }
 
 .u-button:focus-within {
-    @apply z-10 ring-1 ring-primary-600 border-primary-600;
+    @apply z-10 ring-1 ring-primary-500 border-primary-500;
 }
 
 .u-input--s {

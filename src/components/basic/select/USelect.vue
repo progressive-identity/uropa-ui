@@ -14,12 +14,12 @@
           <ComboboxOption v-for="element in filteredList" :key="namePath ? element[namePath].name:element.name"
                           :value="element"
                           v-slot="{ active, selected }">
-            <li :class="['relative cursor-default select-none py-2 pl-8 pr-4', active ? 'bg-primary-600 text-white' : 'text-gray-900']">
+            <li :class="['relative cursor-default select-none py-2 pl-8 pr-4', active ? 'bg-primary-500 text-white' : 'text-gray-900']">
             <span :class="['block truncate', selected && 'font-semibold']">
               {{ namePath ? element[namePath].name:element.name }}
             </span>
               <span v-if="selected"
-                    :class="['absolute inset-y-0 flex left-0 items-center pl-1.5', active ? 'text-white' : 'text-primary-600']">
+                    :class="['absolute inset-y-0 flex left-0 items-center pl-1.5', active ? 'text-white' : 'text-primary-500']">
               <CheckIcon class="h-5 w-5" aria-hidden="true"/>
             </span>
             </li>
