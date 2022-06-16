@@ -11,11 +11,12 @@
         </ComboboxButton>
         <ComboboxOptions v-if="filteredList.length > 0"
                          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-          <ComboboxOption v-for="element in filteredList" :key="element.name" :value="element"
+          <ComboboxOption v-for="element in filteredList" :key="namePath ? element[namePath].name:element.name"
+                          :value="element"
                           v-slot="{ active, selected }">
             <li :class="['relative cursor-default select-none py-2 pl-8 pr-4', active ? 'bg-primary-600 text-white' : 'text-gray-900']">
             <span :class="['block truncate', selected && 'font-semibold']">
-              {{ element.name }}
+              {{ namePath ? element[namePath].name:element.name }}
             </span>
               <span v-if="selected"
                     :class="['absolute inset-y-0 flex left-0 items-center pl-1.5', active ? 'text-white' : 'text-primary-600']">
@@ -48,12 +49,15 @@ const props = defineProps({
   },
   size: {
     type: String,
-    required: false,
     default: 'l'
   },
   list: {
     type: Array,
     required: true
+  },
+  namePath: {
+    type: String,
+    default: null
   }
 })
 
@@ -71,12 +75,13 @@ const update = (value) => {
 }
 
 const query = ref('')
-const filteredList = computed(() =>
-    query.value === ''
-        ? props.list
-        : props.list.filter((e) => {
-          return e.name.toLowerCase().includes(query.value.toLowerCase())
-        })
+const filteredList = computed(() => {
+      return query.value === ''
+          ? props.list
+          : props.list.filter((e) => {
+            return e.name.toLowerCase().includes(query.value.toLowerCase())
+          })
+    }
 )
 
 </script>

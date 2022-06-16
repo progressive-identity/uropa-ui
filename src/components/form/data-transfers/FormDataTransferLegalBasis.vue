@@ -13,9 +13,9 @@
   <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl"/>
   <div>
     <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
-             :list="storeData.processingRecord.recipients.dataProcessors"/>
+             :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>
     <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"
-             :list="storeData.processingRecord.recipients.externalOrganizations"/>
+             :list="storeData.processingRecord.recipients.externalOrganizations" name-path="legalPerson"/>
     <USelect v-model="dataTransferLegalBasis.recipient.internalDepartment" label="Internal department"
              :list="storeData.processingRecord.recipients.internalDepartments"/>
   </div>
