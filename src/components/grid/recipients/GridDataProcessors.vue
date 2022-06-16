@@ -42,11 +42,11 @@ import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import dataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
+import DataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataProcessor: dataProcessorTemplate, edition: false})
+const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 const props = defineProps({
@@ -57,7 +57,7 @@ const props = defineProps({
 })
 
 function createDataProcessor() {
-  state.dataProcessor = dataProcessorTemplate
+  state.dataProcessor = structuredClone(DataProcessorTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

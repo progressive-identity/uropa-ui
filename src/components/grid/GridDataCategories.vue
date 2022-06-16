@@ -59,8 +59,7 @@
       <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory"
                :list="storeData.predefinedDataCategories" @click="loadDataCategory"
                label="Load a template" class="py-5"/>
-      <FormDataCategory :data-category="state.dataCategory" :purposes="[]"
-                        :edition="state.edition"/>
+      <FormDataCategory :data-category="state.dataCategory" :purposes="[]" :edition="state.edition"/>
     </div>
   </div>
 </template>
@@ -85,7 +84,7 @@ const {processingRecord} = storeToRefs(storeData)
 const state = reactive({dataCategory: DataCategoryTemplate, edition: false})
 
 async function createDataCategory() {
-  state.dataCategory = DataCategoryTemplate
+  state.dataCategory = structuredClone(DataCategoryTemplate)
   state.edition = false
   await scrollToForm()
 }

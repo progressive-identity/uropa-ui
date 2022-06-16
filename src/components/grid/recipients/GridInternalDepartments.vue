@@ -42,11 +42,11 @@ import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import internalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
+import InternalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({internalDepartment: internalDepartmentTemplate, edition: false})
+const state = reactive({internalDepartment: InternalDepartmentTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 const props = defineProps({
@@ -57,7 +57,7 @@ const props = defineProps({
 })
 
 function createInternalDepartment() {
-  state.internalDepartment = internalDepartmentTemplate
+  state.internalDepartment = structuredClone(InternalDepartmentTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

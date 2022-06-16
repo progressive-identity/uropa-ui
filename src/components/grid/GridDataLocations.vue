@@ -69,7 +69,7 @@ const storeDisplay = useStoreDisplay()
 
 
 async function createDataLocation() {
-  state.dataLocation = DataLocationTemplate
+  state.dataLocation = structuredClone(DataLocationTemplate)
   state.edition = false
   await scrollToForm()
 }

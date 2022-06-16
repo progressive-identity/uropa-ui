@@ -38,16 +38,16 @@ import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormSecurityMeasure from '@/components/form/security-measures/FormSecurityMeasure.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import securityMeasureTemplate from '../../data/template/SecurityMeasureTemplate.json'
+import SecurityMeasureTemplate from '../../data/template/SecurityMeasureTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({securityMeasure: securityMeasureTemplate, edition: false})
+const state = reactive({securityMeasure: SecurityMeasureTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 
 function createSecurityMeasure() {
-  state.securityMeasure = securityMeasureTemplate
+  state.securityMeasure = structuredClone(SecurityMeasureTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

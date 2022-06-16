@@ -47,7 +47,7 @@ const storeDisplay = useStoreDisplay()
 
 
 function createPurpose() {
-  state.purpose = PurposeTemplate
+  state.purpose = structuredClone(PurposeTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

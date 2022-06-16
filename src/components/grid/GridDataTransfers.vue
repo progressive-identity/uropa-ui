@@ -47,16 +47,16 @@ import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataTransfer from '@/components/form/data-transfers/FormDataTransfer.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
-import dataTransferTemplate from '../../data/template/DataTransferTemplate.json'
+import DataTransferTemplate from '../../data/template/DataTransferTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataTransfer: dataTransferTemplate, edition: false})
+const state = reactive({dataTransfer: DataTransferTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 
 function createDataTransfer() {
-  state.dataTransfer = dataTransferTemplate
+  state.dataTransfer = structuredClone(DataTransferTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

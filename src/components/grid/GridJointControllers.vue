@@ -49,7 +49,7 @@ const state = reactive({jointController: JointControllerTemplate, edition: false
 const storeDisplay = useStoreDisplay()
 
 function createJointController() {
-  state.jointController = JointControllerTemplate
+  state.jointController = structuredClone(JointControllerTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {
