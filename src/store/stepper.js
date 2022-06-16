@@ -15,20 +15,20 @@ export const useStore = defineStore('stepper', {
             ],
             current: -1,
             stepsDataCategories: [
-                {id: 0, name: 'Add data categories'},
-                {id: 1, name: 'Add data sources'}
+                {id: 0, name: 'Data categories'},
+                {id: 1, name: 'Data sources'}
             ],
             currentDataCategories: 0,
             stepsDataControllers: [
-                {id: 0, name: 'Add a data controller'},
-                {id: 1, name: 'Add a representative'},
-                {id: 2, name: 'Add joint controllers'}
+                {id: 0, name: 'Data controller'},
+                {id: 1, name: 'Representative'},
+                {id: 2, name: 'Joint controllers'}
             ],
             currentDataControllers: 0,
             stepsRecipients: [
-                {id: 0, name: 'Add internal departments'},
-                {id: 1, name: 'Add data processors'},
-                {id: 2, name: 'Add external organizations'}
+                {id: 0, name: 'Internal departments'},
+                {id: 1, name: 'Data processors'},
+                {id: 2, name: 'External organizations'}
             ],
             currentRecipients: 0
         }
