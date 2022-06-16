@@ -2,13 +2,13 @@
   <div class="space-y-8">
     <div class="pt-8 space-y-6 pb-8">
       <div class="space-y-5">
+        <div v-if="title.length > 0">
+          <h3>{{ title }}</h3>
+          <p class="form-description">{{ description }}</p>
+        </div>
         <UVerticalBar label="Legal person" :rotate="formsDisplayed.legalPerson"
                       @click="toggleDisplay(!formsDisplayed.legalPerson, formsDisplayed.dpo, formsDisplayed.ceo)"/>
         <div class="px-5" v-if="formsDisplayed.legalPerson">
-          <div>
-            <h3>{{ title }}</h3>
-            <p class="form-description">{{ description }}</p>
-          </div>
           <div>
             <div class="pt-3 flex flex-wrap">
               <UInput v-model="modelValue.name" label="Name" class="flex-1"/>
@@ -49,7 +49,7 @@ const props = defineProps({
       title: {
         type: String,
         required: false,
-        default: 'Legal person'
+        default: ''
       },
       description: {
         type: String,

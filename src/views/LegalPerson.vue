@@ -1,7 +1,8 @@
 <template>
   <div v-if="current === 1">
     <UStepperBullet v-model="currentDataControllers" :steps="stepsDataControllers"/>
-    <FormLegalPerson v-if="currentDataControllers===0" v-model="legalPerson"/>
+    <FormLegalPerson title="Data controller" description="TODO on Uropa"
+                     v-if="currentDataControllers===0" v-model="legalPerson"/>
     <FormRepresentative v-if="currentDataControllers===1" v-model="representative"/>
     <GridJointControllers v-if="currentDataControllers===2"/>
   </div>
