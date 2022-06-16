@@ -1,13 +1,9 @@
 <template>
   <div v-if="current === 4">
     <UStepperBullet v-model="currentRecipients" :steps="stepsRecipients"/>
-    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-      <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-        <GridInternalDepartments v-if="currentRecipients===0" :internal-departments="internalDepartments"/>
-        <GridDataProcessors v-if="currentRecipients===1" :data-processors="dataProcessors"/>
-        <GridExternalOrganizations v-if="currentRecipients===2" :external-organizations="externalOrganizations"/>
-      </div>
-    </div>
+    <GridInternalDepartments v-if="currentRecipients===0" :internal-departments="internalDepartments"/>
+    <GridDataProcessors v-if="currentRecipients===1" :data-processors="dataProcessors"/>
+    <GridExternalOrganizations v-if="currentRecipients===2" :external-organizations="externalOrganizations"/>
   </div>
 </template>
 
