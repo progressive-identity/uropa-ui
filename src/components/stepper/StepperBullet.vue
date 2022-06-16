@@ -8,26 +8,30 @@
     </div>
   </div>
   <nav aria-label="Progress" class="flex items-center justify-center pt-5">
-    <!--    <p class="text-sm font-medium">{{ steps[modelValue].name }}</p>-->
     <ol class="ml-8 flex items-center space-x-5" role="list">
       <li v-for="step in steps" :key="step.name">
-        <p v-if="step.id < modelValue"
-           class="block rounded-full relative flex items-center justify-center">
-          <span aria-hidden="true" class="relative hover:bg-primary-700 block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
-        </p>
-        <p v-else-if="step.id === modelValue" aria-current="step"
-           class="relative flex items-center justify-center">
+        <div v-if="step.id < modelValue">
+          <p class="block rounded-full relative flex items-center justify-center">
+            <span aria-hidden="true"
+                  class="relative hover:bg-primary-700 block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
+          </p>
+          <p class="py-2 text-sm font-medium text-gray-700">{{ step.name }}</p>
+        </div>
+        <div v-else-if="step.id === modelValue" aria-current="step">
+          <p class="relative flex items-center justify-center">
           <span aria-hidden="true" class="absolute w-5 h-5 p-px flex">
             <span class="w-full h-full rounded-full bg-primary-200"/>
           </span>
-          <span aria-hidden="true" class="relative block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
-        </p>
-        <p v-else
-           class="block rounded-full relative flex items-center justify-center">
-          <span aria-hidden="true" class="relative hover:bg-gray-500 block w-2.5 h-2.5 bg-gray-300 rounded-full"/>
-        </p>
-        <p class="py-2 text-sm font-medium"
-           :class="step.id === modelValue ? 'text-primary-700' : 'text-gray-700'">{{ step.name }}</p>
+            <span aria-hidden="true" class="relative block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
+          </p>
+          <p class="py-2 text-sm font-medium text-primary-500">{{ step.name }}</p>
+        </div>
+        <div v-else>
+          <p class="block rounded-full relative flex items-center justify-center">
+            <span aria-hidden="true" class="relative hover:bg-gray-500 block w-2.5 h-2.5 bg-gray-300 rounded-full"/>
+          </p>
+          <p class="py-2 text-sm font-medium text-gray-300">{{ step.name }}</p>
+        </div>
       </li>
     </ol>
   </nav>
