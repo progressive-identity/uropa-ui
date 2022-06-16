@@ -15,7 +15,7 @@
             <span aria-hidden="true"
                   class="relative hover:bg-primary-700 block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
           </p>
-          <p class="py-2 text-sm font-medium text-gray-700">{{ step.name }}</p>
+          <p class="py-2 text-sm font-medium text-gray-900">{{ step.name }}</p>
         </div>
         <div v-else-if="step.id === modelValue" aria-current="step">
           <p class="relative flex items-center justify-center">
@@ -24,13 +24,13 @@
           </span>
             <span aria-hidden="true" class="relative block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
           </p>
-          <p class="py-2 text-sm font-medium text-primary-600">{{ step.name }}</p>
+          <p class="py-2 text-sm font-medium text-primary-500">{{ step.name }}</p>
         </div>
         <div v-else>
           <p class="block rounded-full relative flex items-center justify-center">
             <span aria-hidden="true" class="relative hover:bg-gray-500 block w-2.5 h-2.5 bg-gray-300 rounded-full"/>
           </p>
-          <p class="py-2 text-sm font-medium text-gray-300">{{ step.name }}</p>
+          <p class="py-2 text-sm font-medium text-gray-500">{{ step.name }}</p>
         </div>
       </li>
     </ol>

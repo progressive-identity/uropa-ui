@@ -25,7 +25,7 @@
                 class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
               <span class="text-gray-500 group-hover:text-gray-900">{{ step.id }}</span>
             </span>
-            <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">{{ step.name }}</span>
+            <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-500">{{ step.name }}</span>
           </span>
           </div>
         </a>
