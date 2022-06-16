@@ -2,7 +2,7 @@
   <div class="space-y-8" v-if="formsDisplayed.purpose">
     <div class="pt-8">
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Purpose</h3>
+        <h3>Purpose</h3>
         <p class="mt-2 text-sm text-gray-700">The purpose of the processing describes what the reason why the controller
           processes the personal data.</p>
       </div>

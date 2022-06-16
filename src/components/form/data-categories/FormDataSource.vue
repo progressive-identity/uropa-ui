@@ -1,7 +1,7 @@
 <template>
   <div v-if="formsDisplayed.dataSource">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Data source</h3>
+      <h3>Data source</h3>
       <p class="mt-2 text-sm text-gray-700">Abstraction of the medium on which personal data is stored. It could be a
         hard drive on site, a SaaS, or even an archive room.</p>
     </div>

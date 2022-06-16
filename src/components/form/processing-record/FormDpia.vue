@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-6 sm:space-y-5" v-if="formsDisplayed.dpia">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Dpia</h3>
+      <h3>Dpia</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">The description of the some data related to the data protection
         impact assessment (DPIA) established for the processing according to article 35 GDPR.</p>
     </div>

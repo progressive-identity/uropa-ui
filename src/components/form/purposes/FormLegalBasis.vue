@@ -1,7 +1,7 @@
 <template>
   <div class="py-5">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Legal basis</h3>
+      <h3>Legal basis</h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-500">A Legal person is an entity that process personal data. It's
         usually a company or an organization.</p>
     </div>

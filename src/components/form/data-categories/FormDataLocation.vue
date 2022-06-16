@@ -9,7 +9,7 @@
                     @click="toggleDisplay(!formsDisplayed.subDataLocation, formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
       <div class="px-5" v-if="formsDisplayed.subDataLocation">
         <div>
-          <h3 class="text-lg leading-6 font-medium text-gray-900">Data location</h3>
+          <h3>Data location</h3>
           <p class="mt-2 text-sm text-gray-700">Place where a data item is stored within a DataSource.</p>
         </div>
         <div class="py-2">

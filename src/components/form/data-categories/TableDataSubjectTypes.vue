@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-5" v-if="formsDisplayed.dataSubjectType">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Data subject types</h3>
+      <h3>Data subject types</h3>
       <p class="mt-2 text-sm text-gray-700">TODO on UROPA</p>
     </div>
     <div class="flex flex-col">

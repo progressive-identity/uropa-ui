@@ -1,7 +1,7 @@
 <template>
   <div v-if="formsDisplayed.eventType" class="pt-3">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Event type</h3>
+      <h3>Event type</h3>
       <p class="mt-2 text-sm text-gray-700">Description of an event that has consequences on the processing. For
         example, it can be an event triggering the beginning of the validity of the legal basis, or the end of a data
         retention period.</p>

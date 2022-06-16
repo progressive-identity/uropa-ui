@@ -1,7 +1,7 @@
 <template>
   <div v-if="formsDisplayed.securityMeasure">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Security measure</h3>
+      <h3>Security measure</h3>
       <p class="mt-2 text-sm text-gray-700">A measure adopted by the controller to ensure the
         confidentiality, integrity and availability of the processed personal data.</p>
     </div>

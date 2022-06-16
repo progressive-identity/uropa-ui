@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-5" v-if="formsDisplayed.storageDuration">
     <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">Storage durations</h3>
+      <h3>Storage durations</h3>
       <p class="mt-2 text-sm text-gray-700">Describes the events defining the storage duration rule (events determining
         the beginning and the end of the processing). For instance, the consent legal basis would be triggered by the
         start event "GiveConsent" and be ended by the stop event "RevokeConsent"</p>
