@@ -50,7 +50,7 @@
           />
         </nav-bar-item>
         <nav-bar-item
-            href="https://github.com/progressive-identity/alias-data-discovery-api"
+            :href="gitHubUrl"
             is-desktop-icon-only
             target="_blank"
         >
@@ -84,6 +84,7 @@ const menuNavBarToggle = () => {
 
 const store = useStore()
 const {current} = storeToRefs(store)
+const gitHubUrl = process.env.VUE_APP_GITHUB_URL
 
 function toHome() {
   store.$patch({
