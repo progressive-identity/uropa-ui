@@ -3,9 +3,9 @@
   <div class=" py-5">
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <li v-for="(jointController, index) in processingRecord.jointControllers" :key="index"
-          class="bg-white rounded-lg shadow border-2 px-5 text-sm">
+          class="u-grid">
         <div class="px-4 py-3 sm:px-6">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">{{ jointController.legalPerson.name }}</h3>
+          <h3>{{ jointController.legalPerson.name }}</h3>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl v-if="jointController.legalPerson.dpo.personalInformation.firstName" class="sm:divide-y sm:divide-gray-200">

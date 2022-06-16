@@ -1,0 +1,5 @@
+/* GENERAL GRID STYLE */
+
+.u-grid {
+    @apply bg-gray-50 rounded-lg shadow border-2 px-5 text-sm;
+}
