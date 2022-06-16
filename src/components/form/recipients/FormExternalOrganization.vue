@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.externalOrganization">
     <div>
       <h3>External organization</h3>
-      <p class="mt-2 text-sm text-gray-700">Information about the external organization that is a recipient of the
+      <p class="form-description">Information about the external organization that is a recipient of the
         data processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">

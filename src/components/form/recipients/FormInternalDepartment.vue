@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.internalDepartment">
     <div>
       <h3>Internal department</h3>
-      <p class="mt-2 text-sm text-gray-700">Information about the internal department that is a recipient of the data
+      <p class="form-description">Information about the internal department that is a recipient of the data
         processed. Useful to manage authorization at the level of the organization</p>
     </div>
     <div class="pt-3">

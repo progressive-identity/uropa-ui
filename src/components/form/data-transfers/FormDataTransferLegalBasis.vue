@@ -1,7 +1,7 @@
 <template>
   <div class="pt-5">
     <h3>Data transfer legal basis</h3>
-    <p class="mt-2 text-sm text-gray-700">Classification that pertains to how an atomic piece of data must be
+    <p class="form-description">Classification that pertains to how an atomic piece of data must be
       treated in order to be compliant with GDPR.</p>
   </div>
   <div class="pt-3">

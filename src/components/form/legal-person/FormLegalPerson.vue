@@ -7,7 +7,7 @@
         <div class="px-5" v-if="formsDisplayed.legalPerson">
           <div>
             <h3>{{ title }}</h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ description }}</p>
+            <p class="form-description">{{ description }}</p>
           </div>
           <div>
             <div class="pt-3 flex flex-wrap">

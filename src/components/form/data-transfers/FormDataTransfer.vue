@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.dataTransfer">
     <div>
       <h3>Data transfer</h3>
-      <p class="mt-2 text-sm text-gray-700">Description of the data transfer including the country, the recipient (legal
+      <p class="form-description">Description of the data transfer including the country, the recipient (legal
         person) and the legal basis.</p>
     </div>
     <div class="pt-3">

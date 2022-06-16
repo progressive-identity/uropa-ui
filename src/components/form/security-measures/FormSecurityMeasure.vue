@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.securityMeasure">
     <div>
       <h3>Security measure</h3>
-      <p class="mt-2 text-sm text-gray-700">A measure adopted by the controller to ensure the
+      <p class="form-description">A measure adopted by the controller to ensure the
         confidentiality, integrity and availability of the processed personal data.</p>
     </div>
     <div class="pt-3">

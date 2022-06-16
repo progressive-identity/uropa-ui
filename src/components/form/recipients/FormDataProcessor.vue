@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.dataProcessor">
     <div>
       <h3>Data processor</h3>
-      <p class="mt-2 text-sm text-gray-700">Information about the data processor that is a recipient of the data
+      <p class="form-description">Information about the data processor that is a recipient of the data
         processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">

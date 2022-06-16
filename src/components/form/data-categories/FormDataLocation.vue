@@ -10,7 +10,7 @@
       <div class="px-5" v-if="formsDisplayed.subDataLocation">
         <div>
           <h3>Data location</h3>
-          <p class="mt-2 text-sm text-gray-700">Place where a data item is stored within a DataSource.</p>
+          <p class="form-description">Place where a data item is stored within a DataSource.</p>
         </div>
         <div class="py-2">
           <UInput v-model="dataLocation.description" label="Description" size="xl"/>

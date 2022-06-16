@@ -6,7 +6,7 @@
       <div class="px-5" v-if="formsDisplayed.subDataCategory">
         <div>
           <h3>Data category</h3>
-          <p class="mt-2 text-sm text-gray-700">High-Level description of the personal data processed that is
+          <p class="form-description">High-Level description of the personal data processed that is
             aggregation
             of related data types.
             For instance, the name and the first name are data types and identity information is the data

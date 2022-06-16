@@ -3,7 +3,7 @@
     <div class="pt-8">
       <div>
         <h3>Purpose</h3>
-        <p class="mt-2 text-sm text-gray-700">The purpose of the processing describes what the reason why the controller
+        <p class="form-description">The purpose of the processing describes what the reason why the controller
           processes the personal data.</p>
       </div>
       <div class="pt-3">

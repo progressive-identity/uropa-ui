@@ -2,7 +2,7 @@
   <div class="space-y-6" v-if="formsDisplayed.dataType">
     <div>
       <h3>Data types</h3>
-      <p class="mt-2 text-sm text-gray-700">A data type is the most precise categorization of a data (example :
+      <p class="form-description">A data type is the most precise categorization of a data (example :
         email).</p>
     </div>
     <div class="flex flex-col">
