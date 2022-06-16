@@ -107,8 +107,6 @@ async function loadDataCategory() {
     if (state.dataCategory?.dataSubjectTypes?.length === 0) {
       state.dataCategory.dataSubjectTypes.push({...DataSubjectTypeTemplate})
     }
-
-    await scrollToForm()
   }
 }
 
