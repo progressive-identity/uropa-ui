@@ -24,7 +24,7 @@
           </span>
             <span aria-hidden="true" class="relative block w-2.5 h-2.5 bg-primary-500 rounded-full"/>
           </p>
-          <p class="py-2 text-sm font-medium text-primary-500">{{ step.name }}</p>
+          <p class="py-2 text-sm font-medium text-primary-600">{{ step.name }}</p>
         </div>
         <div v-else>
           <p class="block rounded-full relative flex items-center justify-center">
