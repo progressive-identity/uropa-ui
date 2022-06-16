@@ -4,8 +4,8 @@
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <GridInternalDepartments v-if="currentRecipients===0" :internal-departments="internalDepartments"/>
-        <GridExternalOrganizations v-if="currentRecipients===1" :external-organizations="externalOrganizations"/>
-        <GridDataProcessors v-if="currentRecipients===2" :data-processors="dataProcessors"/>
+        <GridDataProcessors v-if="currentRecipients===1" :data-processors="dataProcessors"/>
+        <GridExternalOrganizations v-if="currentRecipients===2" :external-organizations="externalOrganizations"/>
       </div>
     </div>
   </div>
