@@ -1,6 +1,10 @@
 <template>
   <div v-if="formsDisplayed.dataLocation">
     <div class="space-y-5">
+      <!-- TODO Rename component and create a specific data location form -->
+      <UVerticalBar label="Data source" :rotate="formsDisplayed.dataSource"
+                    @click="toggleDisplay(formsDisplayed.subDataLocation, !formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
+      <FormDataSource class="px-5" :data-source="dataLocation.dataSource"/>
       <UVerticalBar label="Data location" :rotate="formsDisplayed.subDataLocation"
                     @click="toggleDisplay(!formsDisplayed.subDataLocation, formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
       <div class="px-5" v-if="formsDisplayed.subDataLocation">
@@ -18,9 +22,6 @@
                   :label="`Path for ${dataType.name}`" size="xl"/>
         </div>
       </div>
-      <UVerticalBar label="Data source" :rotate="formsDisplayed.dataSource"
-                    @click="toggleDisplay(formsDisplayed.subDataLocation, !formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
-      <FormDataSource class="px-5" :data-source="dataLocation.dataSource"/>
       <UVerticalBar label="Storage durations" :rotate="formsDisplayed.storageDuration"
                     @click="toggleDisplay(formsDisplayed.subDataLocation, formsDisplayed.dataSource, !formsDisplayed.storageDuration)"/>
       <TableStorageDurations class="px-5" :data-location="dataLocation"/>

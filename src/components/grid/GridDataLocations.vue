@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UButton label="New data location" v-on:click="createDataLocation" :icon="mdiPlusCircle"/>
+    <UButton label="New data source" v-on:click="createDataLocation" :icon="mdiPlusCircle"/>
     <div class="py-5">
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <li v-for="(dataLocation, index) in processingRecord.dataLocations" :key="index"
@@ -97,7 +97,7 @@ async function displayForm() {
   storeDisplay.$patch({
     formsDisplayed: {
       dataLocation: true,
-      subDataLocation: true
+      dataSource: true
     }
   })
 }
