@@ -18,12 +18,12 @@
             <FormPostalAddress :postal-address="modelValue.postalAddress"/>
           </div>
         </div>
-        <UVerticalBar label="Dpo" :rotate="formsDisplayed.dpo"
-                      @click="toggleDisplay(formsDisplayed.legalPerson, !formsDisplayed.dpo, formsDisplayed.ceo)"/>
-        <FormDpo class="px-5" :dpo="modelValue.dpo"/>
         <UVerticalBar label="Ceo" :rotate="formsDisplayed.ceo"
                       @click="toggleDisplay(formsDisplayed.legalPerson, formsDisplayed.dpo, !formsDisplayed.ceo)"/>
         <FormCeo class="px-5" :ceo="modelValue.ceo"/>
+        <UVerticalBar label="Dpo" :rotate="formsDisplayed.dpo"
+                      @click="toggleDisplay(formsDisplayed.legalPerson, !formsDisplayed.dpo, formsDisplayed.ceo)"/>
+        <FormDpo class="px-5" :dpo="modelValue.dpo"/>
       </div>
     </div>
   </div>
