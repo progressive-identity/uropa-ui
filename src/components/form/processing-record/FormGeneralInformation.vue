@@ -8,7 +8,7 @@
           data in the controller system.</p>
       </div>
       <div>
-        <UInput v-model="processingRecord.name" label="Name" :required="true" type="email"/>
+        <UInput v-model="processingRecord.name" label="Name" :required="true"/>
         <UInput v-model="processingRecord.internalId" label="Internal ID"
                 placeholder="The reference of the processing record"/>
       </div>
