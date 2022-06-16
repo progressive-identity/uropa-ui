@@ -7,7 +7,7 @@
   <div class="pt-3">
     <USwitch v-model="dataTransferLegalBasis.isConsent" label="consent"/>
   </div>
-  <USelectEnums :list="legalBasisTypes" v-model="dataTransferLegalBasis.legalBasisType"
+  <USelectEnums :list="dataTransferLegalBasisTypes" v-model="dataTransferLegalBasis.legalBasisType"
                 label="Type" @update:modelValue="emitChange"/>
     <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"/>
   <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl"/>
@@ -28,7 +28,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
-import {legalBasisTypes} from '@/data/enums.js'
+import {dataTransferLegalBasisTypes} from '@/data/enums.js'
 import USelect from '@/components/basic/select/USelect.vue'
 
 const storeDisplay = useStoreDisplay()
