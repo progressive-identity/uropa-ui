@@ -1,9 +1,9 @@
 <template>
   <div v-if="current === 1">
-    <UStepperBullet v-model="currentLegalPerson" :steps="stepsLegalPerson"/>
-    <FormLegalPerson v-if="currentLegalPerson===0" v-model="legalPerson"/>
-    <FormRepresentative v-if="currentLegalPerson===1" v-model="representative"/>
-    <GridJointControllers v-if="currentLegalPerson===2"/>
+    <UStepperBullet v-model="currentDataControllers" :steps="stepsDataControllers"/>
+    <FormLegalPerson v-if="currentDataControllers===0" v-model="legalPerson"/>
+    <FormRepresentative v-if="currentDataControllers===1" v-model="representative"/>
+    <GridJointControllers v-if="currentDataControllers===2"/>
   </div>
 </template>
 
@@ -20,6 +20,6 @@ import GridJointControllers from '@/components/grid/GridJointControllers.vue'
 const {processingRecord: {legalPerson, representative}} = useStoreData()
 const store = useStore()
 
-const {current, stepsLegalPerson, currentLegalPerson} = storeToRefs(store)
+const {current, stepsDataControllers, currentDataControllers} = storeToRefs(store)
 
 </script>
