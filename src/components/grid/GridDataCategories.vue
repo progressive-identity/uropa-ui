@@ -7,11 +7,11 @@
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <li v-for="(dataCategory, index) in storeData.allDataCategories" :key="index"
             class="u-grid">
-          <div class="px-4 py-5 grid grid-cols-3">
-            <div class="flex items-center col-span-2 ">
+          <div class="relative px-4 py-5">
+            <div class="flex items-center">
               <h3>{{ dataCategory.name }}</h3>
             </div>
-            <div class="space-x-2">
+            <div class="flex space-x-1 right-0 top-2 absolute">
               <UButton v-on:click="editDataCategory(dataCategory)" :icon="mdiPencil"/>
               <UButton v-on:click="deleteDataCategory(index)" :icon="mdiDelete" type="danger"/>
             </div>
