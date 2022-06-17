@@ -11,10 +11,7 @@
             <div class="flex items-center">
               <h3>{{ dataCategory.name }}</h3>
             </div>
-            <div class="flex space-x-1 right-0 top-2 absolute">
-              <UButton v-on:click="editDataCategory(dataCategory)" :icon="mdiPencil"/>
-              <UButton v-on:click="deleteDataCategory(index)" :icon="mdiDelete" type="danger"/>
-            </div>
+            <GridButtons @edit="editDataCategory(dataCategory)" @delete="deleteDataCategory(index)"/>
           </div>
           <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">
@@ -74,10 +71,11 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelect from '@/components/basic/select/USelect.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
-import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/data-categories/DataCategoryTemplate.json'
 import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
 import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
+import GridButtons from '@/components/grid/GridButtons.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -113,12 +111,13 @@ async function loadDataCategory() {
 }
 
 async function editDataCategory(dataCategory) {
+  console.log(123)
   state.dataCategory = dataCategory
   state.edition = true
   await scrollToForm()
 }
 
-function deleteDataCategory(index) {
+async function deleteDataCategory(index) {
   //TODO loop on selected purposes
   // storeData.$patch((state) => {
   //   state.processingRecord.dataCategories.splice(index, 1)
