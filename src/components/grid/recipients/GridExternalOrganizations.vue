@@ -1,7 +1,7 @@
 <template>
   <UButton label="New external organization" v-on:click="createExternalOrganization" :icon="mdiPlusCircle"/>
   <div class=" py-5">
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <ul role="list" class="u-grid">
       <li v-for="(externalOrganization, index) in externalOrganizations" :key="index"
           class="u-grid">
         <div class="px-4 py-5 sm:px-6">

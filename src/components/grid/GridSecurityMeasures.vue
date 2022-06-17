@@ -1,7 +1,7 @@
 <template>
   <UButton label="New security measure" v-on:click="createSecurityMeasure" :icon="mdiPlusCircle"/>
   <div class=" py-5">
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <ul role="list" class="u-grid">
       <li v-for="(securityMeasure, index) in processingRecord.securityMeasures" :key="index"
           class="u-grid">
         <div class="px-4 py-3 sm:px-6">

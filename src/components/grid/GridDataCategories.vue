@@ -4,7 +4,7 @@
       <UButton label="New data category" @click="createDataCategory" :icon="mdiPlusCircle"/>
     </div>
     <div class="py-5">
-      <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul role="list" class="u-grid">
         <li v-for="(dataCategory, index) in storeData.allDataCategories" :key="index"
             class="u-grid">
           <div class="relative px-4 py-5">
