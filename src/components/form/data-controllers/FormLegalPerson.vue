@@ -31,9 +31,9 @@
 <script setup>
 import {storeToRefs} from 'pinia'
 import {useStoreDisplay} from '@/store/display.js'
-import FormDpo from '@/components/form/legal-person/FormDpo.vue'
-import FormCeo from '@/components/form/legal-person/FormCeo.vue'
-import FormPostalAddress from '@/components/form/legal-person/FormPostalAddress.vue'
+import FormDpo from '@/components/form/data-controllers/FormDpo.vue'
+import FormCeo from '@/components/form/data-controllers/FormCeo.vue'
+import FormPostalAddress from '@/components/form/data-controllers/FormPostalAddress.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 

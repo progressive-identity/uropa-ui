@@ -13,8 +13,8 @@ import {useStore} from '@/store/stepper'
 import {useStoreData} from '@/store/data'
 import {storeToRefs} from 'pinia'
 import UStepperBullet from '@/components/stepper/StepperBullet.vue'
-import FormLegalPerson from '@/components/form/legal-person/FormLegalPerson.vue'
-import FormRepresentative from '@/components/form/legal-person/FormRepresentative.vue'
+import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import FormRepresentative from '@/components/form/data-controllers/FormRepresentative.vue'
 import GridJointControllers from '@/components/grid/GridJointControllers.vue'
 
 

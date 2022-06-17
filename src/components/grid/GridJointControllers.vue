@@ -39,7 +39,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
-import FormJointController from '@/components/form/legal-person/FormJointController.vue'
+import FormJointController from '@/components/form/data-controllers/FormJointController.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import JointControllerTemplate from '../../data/template/JointControllerTemplate.json'
 
