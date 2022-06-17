@@ -1,6 +1,6 @@
 <template>
   <div v-if="current === -1">
-    <div class="flex w-full items-center justify-center h-screen">
+    <div>
       <div class="max-w-2xl mx-auto space-y-5">
         <div class="flex justify-center">
           <UButton type="primary" :icon="mdiClipboardEditOutline"

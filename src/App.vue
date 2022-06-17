@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col h-screen justify-between">
     <UropaNavBar class="h-14"/>
-    <Home class="mb-auto h-10"/>
-    <!--    <UropaFooter class="h-10"/>-->
+    <Home class="mb-auto"/>
+    <UropaFooter/>
   </div>
 </template>
 
