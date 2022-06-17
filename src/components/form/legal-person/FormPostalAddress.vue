@@ -3,7 +3,7 @@
     <USelect v-model="postalAddress.country" :list="countries" label="Country" size="m"/>
     <UInput v-model="postalAddress.address1" label="Address line 1" size="xl"/>
     <UInput v-model="postalAddress.address2" label="Address line 2" size="xl"/>
-    <div class="pt-3 flex justify-start space-x-5">
+    <div class="flex justify-start space-x-5">
       <UInput v-model="postalAddress.city" label="City" size="m"/>
       <UInput v-model="postalAddress.state" label="State / Province" size="m"/>
       <UInput v-model="postalAddress.zipCode" label="Zip / Postal code" type="number" size="s"/>

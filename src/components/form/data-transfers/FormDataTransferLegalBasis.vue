@@ -11,7 +11,7 @@
                 label="Type" @update:modelValue="emitChange"/>
     <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"/>
   <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl"/>
-  <div>
+  <div class="flex justify-start space-x-5">
     <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
              :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>
     <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"

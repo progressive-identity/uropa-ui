@@ -6,9 +6,11 @@
         confidentiality, integrity and availability of the processed personal data.</p>
     </div>
     <div class="pt-3">
-      <UInput v-model="securityMeasure.name" label="Name"/>
+      <div class="flex justify-start space-x-5">
+        <UInput v-model="securityMeasure.name" label="Name"/>
+        <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type" class="w-64"/>
+      </div>
       <UInput v-model="securityMeasure.description" label="Description" size="xl"/>
-      <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"/>
     </div>
     <div class="space-x-2 pt-3">
       <UButton label="Back" v-on:click="closeSecurityMeasure" type="secondary"/>

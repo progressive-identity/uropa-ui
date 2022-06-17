@@ -5,13 +5,14 @@
       <p class="form-description">Abstraction of the medium on which personal data is stored. It could be a
         hard drive on site, a SaaS, or even an archive room.</p>
     </div>
-    <USelect v-model="dataSource.country" :list="countries" label="Country" size="s"/>
-    <div class="pt-3 flex justify-start space-x-5">
-      <UInput v-model="dataSource.name" label="Name"
-              placeholder="The name of the data source (ex: name of database, server etc.)" size="xl"/>
-      <UInput v-model="dataSource.storageType" label="Storage type"
-              placeholder="Provides useful information on the storage type" size="xl"/>
-      <div class="grow"></div>
+    <div class="py-2">
+      <USelect v-model="dataSource.country" :list="countries" label="Country" size="s"/>
+      <div class="flex justify-start space-x-5">
+        <UInput v-model="dataSource.name" label="Name"
+                placeholder="The name of the data source (ex: name of database, server etc.)" size="xl"/>
+        <UInput v-model="dataSource.storageType" label="Storage type"
+                placeholder="Provides useful information on the storage type" size="xl"/>
+      </div>
     </div>
   </div>
 </template>
