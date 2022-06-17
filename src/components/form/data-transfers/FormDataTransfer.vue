@@ -9,7 +9,7 @@
       <USelect v-model="dataTransfer.country" :list="countries" label="Country" size="s"/>
       <UInput v-model="dataTransfer.description" label="Description" size="xl"/>
       <FormDataTransferLegalBasis :data-transfer-legal-basis="dataTransfer.dataTransferLegalBasis"/>
-      <div class="space-x-2">
+      <div class="space-x-2 pt-3">
         <UButton label="Back" v-on:click="closeDataTransfer" type="secondary"/>
         <UButton label="Save" v-on:click="saveDataTransfer"/>
       </div>

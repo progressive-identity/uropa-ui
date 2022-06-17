@@ -1,14 +1,12 @@
 <template>
   <div>
-    <div class="flex flex-wrap">
-      <UInput v-model="personalInformation.firstName" label="First name" class="flex-1"/>
-      <UInput v-model="personalInformation.lastName" label="Last name" class="flex-1"/>
-      <div class="grow"></div>
+    <div class="pt-3 flex justify-start space-x-5">
+      <UInput v-model="personalInformation.firstName" label="First name"/>
+      <UInput v-model="personalInformation.lastName" label="Last name"/>
     </div>
-    <div class="flex flex-wrap">
-      <UInput v-model="personalInformation.phoneNumber" label="Phone number" type="tel" class="flex-1"/>
-      <UInput v-model="personalInformation.email" label="Email" type="email" class="flex-1"/>
-      <div class="grow"></div>
+    <div class="pt-3 flex justify-start space-x-5">
+      <UInput v-model="personalInformation.phoneNumber" label="Phone number" type="tel" size="s"/>
+      <UInput v-model="personalInformation.email" label="Email" type="email" size="m"/>
     </div>
   </div>
 </template>

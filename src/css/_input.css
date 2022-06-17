@@ -9,11 +9,11 @@
 }
 
 .u-input--s {
-    @apply max-w-xs;
+    @apply w-48;
 }
 
 .u-input--m {
-    @apply max-w-md;
+    @apply w-64;
 }
 
 .u-input--l {
@@ -21,5 +21,5 @@
 }
 
 .u-input--xl {
-    @apply max-w-4xl;
+    @apply w-96;
 }

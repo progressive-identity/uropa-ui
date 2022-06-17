@@ -10,7 +10,7 @@
                       @click="toggleDisplay(!formsDisplayed.legalPerson, formsDisplayed.dpo, formsDisplayed.ceo)"/>
         <div class="px-5" v-if="formsDisplayed.legalPerson">
           <div>
-            <div class="pt-3 flex justify-start pt-3 space-x-5">
+            <div class="pt-3 flex justify-start space-x-5">
               <UInput v-model="modelValue.name" label="Name"/>
               <UInput v-model="modelValue.email" label="Email" type="email"/>
             </div>
