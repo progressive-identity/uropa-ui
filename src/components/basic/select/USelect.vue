@@ -5,7 +5,7 @@
       <div class="relative" :class="classes">
         <ComboboxInput @change="query = $event.target.value"
                        class="text-sm border-0 w-full p-0 focus:ring-0"
-                       :display-value="(e)=>e.name"/>
+                       :display-value="(e)=>namePath ? e[namePath].name:e.name"/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center px-2">
           <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
         </ComboboxButton>
