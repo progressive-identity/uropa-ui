@@ -8,7 +8,7 @@
 
 <script>
 import UIcon from '@/components/basic/UIcon.vue'
-
+// TODO change to defineProps
 export default {
   components: {
     UIcon
