@@ -4,8 +4,11 @@
     <ul role="list" class="u-grid">
       <li v-for="(dataTransfer, index) in processingRecord.dataTransfers" :key="index"
           class="u-grid">
-        <div class="px-4 py-5 sm:px-6">
-          <h3>{{ dataTransfer.description }}</h3>
+        <div class="relative px-4 py-5">
+          <div class="flex items-center">
+            <h3>{{ dataTransfer.description }}</h3>
+          </div>
+          <GridButtons @edit="editDataTransfer(dataTransfer)" @delete="deleteDataTransfer(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
@@ -17,19 +20,19 @@
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">Type</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataTransfer.dataTransferLegalBasis.legalBasisType }}</dd>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {{ dataTransfer.dataTransferLegalBasis.legalBasisType }}
+              </dd>
             </div>
           </dl>
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">Description</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataTransfer.dataTransferLegalBasis.description }}</dd>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {{ dataTransfer.dataTransferLegalBasis.description }}
+              </dd>
             </div>
           </dl>
-        </div>
-        <div class="py-5 space-x-2 align-bottom">
-          <UButton v-on:click="editDataTransfer(dataTransfer)" :icon="mdiPencil"/>
-          <UButton v-on:click="deleteDataTransfer(index)" :icon="mdiDelete" type="danger"/>
         </div>
       </li>
     </ul>
@@ -46,8 +49,9 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataTransfer from '@/components/form/data-transfers/FormDataTransfer.vue'
-import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle} from '@mdi/js'
 import DataTransferTemplate from '../../data/template/DataTransferTemplate.json'
+import GridButtons from '@/components/grid/GridButtons.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)

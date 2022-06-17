@@ -4,8 +4,11 @@
     <ul role="list" class="u-grid">
       <li v-for="(securityMeasure, index) in processingRecord.securityMeasures" :key="index"
           class="u-grid">
-        <div class="px-4 py-3 sm:px-6">
-          <h3>{{ securityMeasure.name }}</h3>
+        <div class="relative px-4 py-5">
+          <div class="flex items-center">
+            <h3>{{ securityMeasure.name }}</h3>
+          </div>
+          <GridButtons @edit="editSecurityMeasure(securityMeasure)" @delete="deleteSecurityMeasure(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
@@ -17,10 +20,6 @@
               </dd>
             </div>
           </dl>
-        </div>
-        <div class="py-5 space-x-2 align-bottom">
-          <UButton v-on:click="editSecurityMeasure(securityMeasure)" :icon="mdiPencil"/>
-          <UButton v-on:click="deleteSecurityMeasure(index)" :icon="mdiDelete" type="danger"/>
         </div>
       </li>
     </ul>
@@ -39,6 +38,7 @@ import UButton from '@/components/basic/UButton.vue'
 import FormSecurityMeasure from '@/components/form/security-measures/FormSecurityMeasure.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import SecurityMeasureTemplate from '../../data/template/SecurityMeasureTemplate.json'
+import GridButtons from '@/components/grid/GridButtons.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)

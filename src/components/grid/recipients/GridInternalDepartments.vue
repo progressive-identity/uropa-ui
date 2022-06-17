@@ -4,9 +4,12 @@
     <ul role="list" class="u-grid">
       <li v-for="(internalDepartment, index) in internalDepartments" :key="index"
           class="u-grid">
-        <div class="px-4 py-5 sm:px-6">
-          <h3>{{ internalDepartment.name }}</h3>
-        </div>
+          <div class="relative px-4 py-5">
+            <div class="flex items-center">
+              <h3>{{ internalDepartment.name }}</h3>
+            </div>
+            <GridButtons @edit="editInternalDepartment(internalDepartment)" @delete="deleteInternalDepartment(index)"/>
+          </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -21,10 +24,6 @@
               </ul>
             </div>
           </dl>
-        </div>
-        <div class="py-5 space-x-2 align-bottom">
-          <UButton v-on:click="editInternalDepartment(internalDepartment)" :icon="mdiPencil"/>
-          <UButton v-on:click="deleteInternalDepartment(index)" :icon="mdiDelete" type="danger"/>
         </div>
       </li>
     </ul>
@@ -43,6 +42,7 @@ import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import InternalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
+import GridButtons from '@/components/grid/GridButtons.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)

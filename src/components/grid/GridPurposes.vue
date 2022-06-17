@@ -7,8 +7,11 @@
         <div class="align-top text-gray-900 font-medium py-2">
           <p v-if="purpose.isMain" class="w-full truncate hover:text-clip text-center">Main</p>
         </div>
-        <div class="px-4 py-3 sm:px-6">
-          <h3>{{ purpose.name }}</h3>
+        <div class="relative px-4 py-5">
+          <div class="flex items-center">
+            <h3>{{ purpose.name }}</h3>
+          </div>
+          <GridButtons @edit="editPurpose(purpose)" @delete="deletePurpose(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
@@ -17,10 +20,6 @@
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ purpose.legalBasis.type }}</dd>
             </div>
           </dl>
-        </div>
-        <div class="py-5 space-x-2 align-bottom">
-          <UButton v-on:click="editPurpose(purpose)" :icon="mdiPencil"/>
-          <UButton v-on:click="deletePurpose(index)" :icon="mdiDelete" type="danger"/>
         </div>
       </li>
     </ul>
@@ -37,8 +36,9 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
-import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle} from '@mdi/js'
 import PurposeTemplate from '../../data/template/PurposeTemplate.json'
+import GridButtons from '@/components/grid/GridButtons.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
