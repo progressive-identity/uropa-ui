@@ -13,30 +13,30 @@
           </div>
           <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Country</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataLocation.dataSource.country.name }}
+              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiEarth"/> Country</dt>
+                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataLocation.dataSource.country.name }}
                 </dd>
               </div>
             </dl>
             <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Support</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataLocation.dataSupport }}</dd>
+              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiLaptop"/> Support</dt>
+                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ dataLocation.dataSupport }}</dd>
               </div>
             </dl>
             <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">State</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiArchive"/> State</dt>
+                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   {{ dataLocation.storageState }}
                 </dd>
               </div>
             </dl>
             <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Type</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiDatabase"/> Type</dt>
+                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   {{ dataLocation.dataSource.storageType }}
                 </dd>
               </div>
@@ -58,9 +58,10 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataLocation from '@/components/form/data-categories/FormDataLocation.vue'
-import {mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle, mdiEarth, mdiDatabase, mdiArchive, mdiLaptop} from '@mdi/js'
 import DataLocationTemplate from '../../data/template/data-categories/DataLocationTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)

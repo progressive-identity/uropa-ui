@@ -15,8 +15,8 @@
           </div>
           <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Purposes</dt>
+              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiScaleBalance"/> Purposes</dt>
                 <ul role="list">
                   <li v-for="purpose in storeData.processingRecord.purposes"
                       class="flex items-center justify-between text-sm">
@@ -27,8 +27,8 @@
                 </ul>
               </div>
               <div v-if="dataCategory?.dataTypes?.length > 0"
-                   class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Data types</dt>
+                   class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiCardAccountDetails"/> Data types</dt>
                 <ul role="list">
                   <li v-for="dataType in dataCategory.dataTypes" class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
@@ -38,8 +38,8 @@
                 </ul>
               </div>
               <div v-if="dataCategory?.dataSubjectTypes?.length > 0"
-                   class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Data subject types</dt>
+                   class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiFaceWoman"/> Data subjects</dt>
                 <ul role="list">
                   <li v-for="dataSubjectType in dataCategory?.dataSubjectTypes"
                       class="flex items-center justify-between text-sm">
@@ -71,11 +71,12 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelect from '@/components/basic/select/USelect.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
-import {mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle, mdiFaceWoman, mdiScaleBalance, mdiCardAccountDetails} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/data-categories/DataCategoryTemplate.json'
 import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
 import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -111,7 +112,6 @@ async function loadDataCategory() {
 }
 
 async function editDataCategory(dataCategory) {
-  console.log(123)
   state.dataCategory = dataCategory
   state.edition = true
   await scrollToForm()
