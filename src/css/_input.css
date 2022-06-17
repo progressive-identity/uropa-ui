@@ -17,7 +17,7 @@
 }
 
 .u-input--l {
-    @apply max-w-lg;
+    @apply w-80;
 }
 
 .u-input--xl {
