@@ -16,8 +16,14 @@
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Legal basis</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ purpose.legalBasis.type }}</dd>
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiScaleBalance"/>
+                Legal basis
+              </dt>
+              <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
+                  purpose.legalBasis.type
+                }}
+              </dd>
             </div>
           </dl>
         </div>
@@ -35,10 +41,11 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
-import {mdiPlusCircle} from '@mdi/js'
-import PurposeTemplate from '../../data/template/PurposeTemplate.json'
+import UIcon from '@/components/basic/UIcon.vue'
 import GridButtons from '@/components/grid/GridButtons.vue'
+import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
+import {mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
+import PurposeTemplate from '../../data/template/PurposeTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
