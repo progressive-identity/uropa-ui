@@ -5,20 +5,23 @@
     </div>
     <div class="py-5">
       <ul role="list" class="u-grid">
-        <li v-for="(dataCategory, index) in storeData.allDataCategories" :key="index"
+        <li v-for="(dataCategory, index) in storeData.uniqueDataCategories" :key="index"
             class="u-grid">
           <div class="relative px-4 py-5">
             <div class="flex items-center">
               <h3>{{ dataCategory.name }}</h3>
             </div>
-            <GridButtons @edit="editDataCategory(dataCategory)" @delete="deleteDataCategory(index)"/>
+            <GridButtons @edit="editDataCategory(dataCategory)" @delete="deleteDataCategory(dataCategory)"/>
           </div>
           <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
-                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiScaleBalance"/> Purposes</dt>
+                <dt class="flex items-center text-sm font-medium text-gray-500">
+                  <UIcon :path="mdiScaleBalance"/>
+                  Purposes
+                </dt>
                 <ul role="list">
-                  <li v-for="purpose in storeData.processingRecord.purposes"
+                  <li v-for="purpose in getPurposes(dataCategory)"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
                       <span class="flex-1 truncate">{{ purpose.name }}</span>
@@ -28,7 +31,10 @@
               </div>
               <div v-if="dataCategory?.dataTypes?.length > 0"
                    class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiCardAccountDetails"/> Data types</dt>
+                <dt class="flex items-center text-sm font-medium text-gray-500">
+                  <UIcon :path="mdiCardAccountDetails"/>
+                  Data types
+                </dt>
                 <ul role="list">
                   <li v-for="dataType in dataCategory.dataTypes" class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
@@ -39,7 +45,10 @@
               </div>
               <div v-if="dataCategory?.dataSubjectTypes?.length > 0"
                    class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
-                <dt class="flex items-center text-sm font-medium text-gray-500"><UIcon :path="mdiFaceWoman"/> Data subjects</dt>
+                <dt class="flex items-center text-sm font-medium text-gray-500">
+                  <UIcon :path="mdiFaceWoman"/>
+                  Data subjects
+                </dt>
                 <ul role="list">
                   <li v-for="dataSubjectType in dataCategory?.dataSubjectTypes"
                       class="flex items-center justify-between text-sm">
@@ -58,7 +67,7 @@
       <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory"
                :list="storeData.predefinedDataCategories" @click="loadDataCategory"
                label="Load a template" class="py-5"/>
-      <FormDataCategory :data-category="state.dataCategory" :purposes="[]" :edition="state.edition"/>
+      <FormDataCategory :data-category="state.dataCategory" :purposes="state.purposes" :edition="state.edition"/>
     </div>
   </div>
 </template>
@@ -71,7 +80,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelect from '@/components/basic/select/USelect.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
-import {mdiPlusCircle, mdiFaceWoman, mdiScaleBalance, mdiCardAccountDetails} from '@mdi/js'
+import {mdiCardAccountDetails, mdiFaceWoman, mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
 import DataCategoryTemplate from '../../data/template/data-categories/DataCategoryTemplate.json'
 import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
 import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
@@ -81,12 +90,17 @@ import UIcon from '@/components/basic/UIcon.vue'
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
-const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataCategory: DataCategoryTemplate, edition: false})
+const state = reactive({dataCategory: DataCategoryTemplate, edition: false, purposes: []})
+
+function getPurposes(dataCategory) {
+  return storeData.getPurposesByDataCategory(dataCategory)
+}
+
 
 async function createDataCategory() {
   state.dataCategory = structuredClone(DataCategoryTemplate)
   state.edition = false
+  state.purposes = []
   await scrollToForm()
 }
 
@@ -103,10 +117,10 @@ async function loadDataCategory() {
 
     //FIXME not sure it should be done here
     if (state.dataCategory?.dataTypes?.length === 0) {
-      state.dataCategory.dataTypes.push({...DataTypeTemplate})
+      state.dataCategory.dataTypes.push(structuredClone(DataTypeTemplate))
     }
     if (state.dataCategory?.dataSubjectTypes?.length === 0) {
-      state.dataCategory.dataSubjectTypes.push({...DataSubjectTypeTemplate})
+      state.dataCategory.dataSubjectTypes.push(structuredClone(DataSubjectTypeTemplate))
     }
   }
 }
@@ -114,14 +128,25 @@ async function loadDataCategory() {
 async function editDataCategory(dataCategory) {
   state.dataCategory = dataCategory
   state.edition = true
+  state.purposes = storeData.getPurposesByDataCategory(dataCategory)
   await scrollToForm()
 }
 
-async function deleteDataCategory(index) {
+async function deleteDataCategory(dataCategoryToDelete) {
   //TODO loop on selected purposes
-  // storeData.$patch((state) => {
-  //   state.processingRecord.dataCategories.splice(index, 1)
-  // })
+  let indexPurpose = 0
+  storeData.processingRecord?.purposes.forEach(purpose => {
+    let indexDataCategory = 0
+    purpose?.dataCategories.forEach(dataCategory => {
+      if (dataCategory.name === dataCategoryToDelete.name) {
+        storeData.$patch((state) => {
+          state.processingRecord.purposes[indexPurpose].dataCategories.splice(indexDataCategory, 1)
+        })
+      }
+      indexDataCategory++
+    })
+    indexPurpose++
+  })
 }
 
 async function scrollToForm() {

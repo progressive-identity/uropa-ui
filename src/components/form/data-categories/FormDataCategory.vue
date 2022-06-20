@@ -51,7 +51,6 @@ import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
-const state = reactive({purposes: []})
 
 const props = defineProps({
   dataCategory: {
@@ -64,10 +63,11 @@ const props = defineProps({
   },
   edition: {
     type: Boolean,
-    required: false,
     default: false
   }
 })
+
+const state = reactive({purposes: props.purposes})
 
 storeDisplay.$patch({
   formsDisplayed: {
@@ -75,18 +75,20 @@ storeDisplay.$patch({
   }
 })
 
-function emptyDataCategory() {
-  props.dataCategory.name = ''
-  props.dataCategory.isSensitive = false
-}
-
 function saveDataCategory() {
   storeDisplay.$reset()
   if (!props.edition) {
-    storeData.$patch((state) =>
-        state.processingRecord.purposes[0].dataCategories.push({...props.dataCategory}))
-    emptyDataCategory()
+    const purposes = storeData.processingRecord.purposes
+    state.purposes.forEach(purposeDataCategory => {
+          purposes.forEach(purposeStore => {
+            if (purposeStore.name === purposeDataCategory.name) {
+              purposeStore.dataCategories.push({...props.dataCategory})
+            }
+          })
+        }
+    )
   }
+  state.purposes = []
 }
 
 function closeDataCategory() {
