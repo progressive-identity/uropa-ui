@@ -3,6 +3,8 @@ dist: focal
 os: linux
 node_js:
   - v18.2.0
+git:
+  depth: false
 branches:
   only:
     - main
