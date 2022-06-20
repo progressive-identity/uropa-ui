@@ -19,6 +19,3 @@ deploy:
   on:
     all_branches: true
     condition: "$TRAVIS_BRANCH =~ ^(main|staging)$"
-notifications:
-  webhooks:
-    - https://discord.com/api/webhooks/920972562526240829/zvimdFMk2RcRQ7otE7F56lhQUgkrgDdmO6z4E_z-ZzRHEXU9G65wXCOTB93gCOwwT8Tb

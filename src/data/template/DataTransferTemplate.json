@@ -1,0 +1,114 @@
+{
+  "description": "",
+  "country": {
+    "name": "",
+    "iso": ""
+  },
+  "dataTransferLegalBasis": {
+    "legalBasisType": "",
+    "description": "",
+    "source": "",
+    "isConsent": "",
+    "recipient": {
+      "dataProcessor": {
+        "processorAgreementPath": "",
+        "legalPerson": {
+          "name": "",
+          "email": "",
+          "dpo": {
+            "personalInformation": {
+              "firstName": "",
+              "lastName": "",
+              "phoneNumber": "",
+              "email": ""
+            },
+            "postalAddress": {
+              "address1": "",
+              "address2": "",
+              "city": "",
+              "zipCode": "",
+              "state": "",
+              "country": {
+                "name": "",
+                "iso": ""
+              }
+            }
+          },
+          "ceo": {
+            "professionalTitle": "",
+            "personalInformation": {
+              "firstName": "",
+              "lastName": "",
+              "phoneNumber": "",
+              "email": ""
+            }
+          },
+          "postalAddress": {
+            "address1": "",
+            "address2": "",
+            "city": "",
+            "zipCode": "",
+            "state": "",
+            "country": {
+              "name": "",
+              "iso": ""
+            }
+          }
+        },
+        "dataCategoriesDisclosed": []
+      },
+      "externalOrganization": {
+        "name": "",
+        "organizationStatus": "",
+        "legalPerson": {
+          "name": "",
+          "email": "",
+          "dpo": {
+            "personalInformation": {
+              "firstName": "",
+              "lastName": "",
+              "phoneNumber": "",
+              "email": ""
+            },
+            "postalAddress": {
+              "address1": "",
+              "address2": "",
+              "city": "",
+              "zipCode": "",
+              "state": "",
+              "country": {
+                "name": "",
+                "iso": ""
+              }
+            }
+          },
+          "ceo": {
+            "professionalTitle": "",
+            "personalInformation": {
+              "firstName": "",
+              "lastName": "",
+              "phoneNumber": "",
+              "email": ""
+            }
+          },
+          "postalAddress": {
+            "address1": "",
+            "address2": "",
+            "city": "",
+            "zipCode": "",
+            "state": "",
+            "country": {
+              "name": "",
+              "iso": ""
+            }
+          }
+        },
+        "dataCategoriesDisclosed": []
+      },
+      "internalDepartment": {
+        "name": "",
+        "dataCategoriesDisclosed": []
+      }
+    }
+  }
+}

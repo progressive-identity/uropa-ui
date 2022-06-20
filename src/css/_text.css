@@ -1,0 +1,5 @@
+/* GENERAL TEXT STYLE */
+
+.form-description {
+    @apply mt-2 text-sm text-gray-500;
+}

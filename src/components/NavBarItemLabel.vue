@@ -1,5 +1,5 @@
 <script setup>
-import Icon from '@/components/Icon.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 
 defineProps({
   icon: {
@@ -17,7 +17,7 @@ defineProps({
 
 <template>
   <slot />
-  <icon
+  <UIcon
     v-if="icon"
     :path="icon"
     class="transition-colors"

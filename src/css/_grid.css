@@ -1,0 +1,13 @@
+/* GENERAL GRID STYLE */
+
+li.u-grid {
+    @apply bg-gray-50 rounded-lg border-2 px-5 text-sm border-gray-200;
+}
+
+ul.u-grid {
+    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+}
+
+li.u-grid:hover {
+    @apply bg-gray-100;
+}

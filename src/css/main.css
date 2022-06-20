@@ -1,3 +1,10 @@
 @import "tailwind/_base.css";
 @import "tailwind/_components.css";
 @import "tailwind/_utilities.css";
+
+@import "_button.css";
+@import "_grid.css";
+@import "_input.css";
+@import "_label.css";
+@import "_tag.css";
+@import "_text.css";

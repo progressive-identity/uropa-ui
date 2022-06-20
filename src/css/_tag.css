@@ -1,0 +1,5 @@
+/* GENERAL TAG STYLE */
+
+h3 {
+    @apply text-lg leading-6 font-medium text-gray-900;
+}

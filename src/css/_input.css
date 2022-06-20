@@ -1,0 +1,25 @@
+/* GENERAL INPUT STYLE */
+
+.u-input {
+    @apply mt-1 text-sm border border-gray-300 px-3 py-2 rounded-md w-full;
+}
+
+.u-button:focus-within {
+    @apply z-10 ring-1 ring-primary-500 border-primary-500;
+}
+
+.u-input--s {
+    @apply w-48;
+}
+
+.u-input--m {
+    @apply w-64;
+}
+
+.u-input--l {
+    @apply w-80;
+}
+
+.u-input--xl {
+    @apply w-96;
+}

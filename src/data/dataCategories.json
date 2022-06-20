@@ -1,0 +1,75 @@
+[
+  {
+    "name": "Identity",
+    "isSensitive": true,
+    "dataTypes": [
+      {
+        "name": "First name",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Last name",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Birthdate",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Postal address",
+        "collectionMean": "computed",
+        "isOptional": true
+      }
+    ],
+    "dataSubjectTypes": []
+  },
+  {
+    "name": "Connection data",
+    "collectionMean": "computed",
+    "isSensitive": false,
+    "dataTypes": [
+      {
+        "name": "IP address",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Timestamps",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Cookies",
+        "collectionMean": "computed",
+        "isOptional": true
+      }
+    ],
+    "dataSubjectTypes": []
+  },
+  {
+    "name": "Personal life",
+    "collectionMean": "computed",
+    "isSensitive": false,
+    "dataTypes": [
+      {
+        "name": "Marital status",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Children",
+        "collectionMean": "computed",
+        "isOptional": true
+      },
+      {
+        "name": "Lifestyle information",
+        "collectionMean": "computed",
+        "isOptional": true
+      }
+    ],
+    "dataSubjectTypes": []
+  }
+]

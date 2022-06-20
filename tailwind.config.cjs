@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
     content: [
         './public/index.html',
@@ -5,7 +7,11 @@ module.exports = {
     ],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'primary': colors.indigo,
+            },
+        },
     },
     plugins: [
         require("@tailwindcss/forms"),

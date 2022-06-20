@@ -1,37 +1,42 @@
 <template>
-  <div class="pt-5">
-    <div class="flex justify-end">
-      <button type="button" v-on:click="previous"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Previous
-      </button>
-      <button type="button" v-on:click="next" v-if="current < steps.length"
-              class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Next
-      </button>
-      <button type="button" v-on:click="next" v-if="current === steps.length"
-              class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Finish
-      </button>
+  <div class="pt-3" v-if="mainNavigationDisplayed">
+    <div class="flex justify-end space-x-2">
+      <UButton type="secondary" v-on:click="previous" v-if="current > 0" label="Previous"/>
+      <UButton type="primary" v-on:click="next" v-if="current < stepsProcessingRecord.length-1" label="Next"/>
+      <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
     </div>
   </div>
 </template>
 <script setup>
-import {useStore} from '@/store/stepper'
-import {storeToRefs} from "pinia/dist/pinia.esm-browser"
+import {storeToRefs} from 'pinia'
+import {useStore} from '@/store/stepper.js'
+import {useStoreDisplay} from '@/store/display.js'
+import UButton from '@/components/basic/UButton.vue'
 
 const store = useStore()
-const {steps, current} = storeToRefs(store)
+const {mainNavigationDisplayed, stepsProcessingRecord, current} = storeToRefs(store)
+const storeDisplay = useStoreDisplay()
 
-const next = async () => {
-  store.$patch({
-    current: store.current + 1
-  })
+
+async function next() {
+  if (await isFormValid()) {
+    store.current++
+    storeDisplay.$reset()
+  }
 }
-const previous = async () => {
-  store.$patch({
-    current: store.current - 1
-  })
+
+function previous() {
+  store.current--
+  storeDisplay.$reset()
+}
+
+async function isFormValid() {
+  if (process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG)) return true
+
+  // TODO maybe use $refs https://vuejs.org/guide/essentials/template-refs.html#ref-on-component
+  const elements = document.querySelectorAll('input')
+  await elements.forEach(e => e.dispatchEvent(new Event('change')))
+  return !document.getElementById('error')
 }
 
 </script>
