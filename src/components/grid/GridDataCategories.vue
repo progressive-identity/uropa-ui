@@ -65,7 +65,7 @@
     </div>
     <div id="formDataCategory">
       <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory"
-               :list="storeData.predefinedDataCategories" @click="loadDataCategory"
+               :list="predefinedDataCategories" @click="loadDataCategory"
                label="Load a template" class="py-5"/>
       <FormDataCategory :data-category="state.dataCategory" :purposes="state.purposes" :edition="state.edition"/>
     </div>
@@ -81,9 +81,10 @@ import UButton from '@/components/basic/UButton.vue'
 import USelect from '@/components/basic/select/USelect.vue'
 import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
 import {mdiCardAccountDetails, mdiFaceWoman, mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
-import DataCategoryTemplate from '../../data/template/data-categories/DataCategoryTemplate.json'
+import DataCategoryTemplate from '@/data/template/data-categories/DataCategoryTemplate.json'
 import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
 import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
+import predefinedDataCategories from '@/data/dataCategories.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
