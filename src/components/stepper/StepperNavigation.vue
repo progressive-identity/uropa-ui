@@ -10,10 +10,12 @@
 <script setup>
 import {storeToRefs} from 'pinia'
 import {useStore} from '@/store/stepper.js'
+import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 
 const store = useStore()
+const storeData = useStoreData()
 const {mainNavigationDisplayed, stepsProcessingRecord, current} = storeToRefs(store)
 const storeDisplay = useStoreDisplay()
 
@@ -22,6 +24,11 @@ async function next() {
   if (await isFormValid()) {
     store.current++
     storeDisplay.$reset()
+    storeData.$patch({
+      processingRecord: {
+        updatedAt: new Date()
+      }
+    })
   }
 }
 
