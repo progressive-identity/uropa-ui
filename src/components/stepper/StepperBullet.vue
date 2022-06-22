@@ -42,6 +42,7 @@ import {storeToRefs} from 'pinia'
 import {useStore} from '@/store/stepper.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
+import {isFormValid} from '@/utils/validation.js'
 
 const props = defineProps({
       steps: {
@@ -84,14 +85,6 @@ function previous() {
   store.$patch({
     mainNavigationDisplayed: true
   })
-}
-
-async function isFormValid() {
-  if (process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG)) return true
-
-  const elements = document.querySelectorAll('input')
-  await elements.forEach(e => e.dispatchEvent(new Event('change')))
-  return !document.getElementById('error')
 }
 
 </script>
