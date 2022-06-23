@@ -13,6 +13,7 @@ import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
+import {isFormValid} from '@/utils/validation.js'
 
 const store = useStore()
 const storeData = useStoreData()
@@ -37,13 +38,5 @@ function previous() {
   storeDisplay.$reset()
 }
 
-async function isFormValid() {
-  if (process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG)) return true
-
-  // TODO maybe use $refs https://vuejs.org/guide/essentials/template-refs.html#ref-on-component
-  const elements = document.querySelectorAll('input')
-  await elements.forEach(e => e.dispatchEvent(new Event('change')))
-  return !document.getElementById('error')
-}
 
 </script>
