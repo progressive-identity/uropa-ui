@@ -25,17 +25,4 @@ import DataCategories from '@/views/DataCategories.vue'
 import Recipients from '@/views/Recipients.vue'
 import SecurityMeasures from '@/views/SecurityMeasures.vue'
 import DataTransfers from '@/views/DataTransfers.vue'
-import Welcome from '@/views/Welcome.vue'
-import {useStoreData} from '@/store/data.js'
-
-const storeData = useStoreData()
-
-const processingRecordCookie = $cookies.get('uropa_processing_record')
-console.log(processingRecordCookie)
-if (processingRecordCookie) {
-  storeData.$patch({
-    processingRecord: processingRecordCookie
-  })
-}
-
-</script>
+import Welcome from '@/views/Welcome.vue'</script>
