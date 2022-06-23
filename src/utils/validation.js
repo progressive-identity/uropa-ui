@@ -8,7 +8,7 @@ export async function isFormValid() {
 
 // TODO should use is_js https://www.npmjs.com/package/is_js
 export function isEmpty(value) {
-    return !(!value || value.length === 0)
+    return (!value || value.length === 0)
 }
 
 export function isEMailValid(email) {
