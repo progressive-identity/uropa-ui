@@ -6,6 +6,7 @@ export async function isFormValid() {
     return !document.getElementById('error')
 }
 
+// TODO should use is_js https://www.npmjs.com/package/is_js
 export function isEmpty(value) {
     return !(!value || value.length === 0)
 }
