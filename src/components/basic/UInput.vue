@@ -3,17 +3,22 @@
     <label for="name" class="u-label">{{ label }}
       <span v-if="required"> *</span>
     </label>
-    <input :type="type" :value="modelValue"
-           @change="$emit('update:modelValue', $event.target.value); validate(state, props, $event.target.value);"
-           :class="classes"
-           :placeholder="placeholder"/>
+      <input :type="type" :value="modelValue"
+             @change="$emit('update:modelValue', $event.target.value); validate(state, props, $event.target.value);"
+             :class="classes"
+             :placeholder="placeholder"/>
+      <UIcon v-if="modelValue.length > 0" :path="mdiClose"
+             class="z-5 text-gray-300 cursor-pointer relative right-6"
+             @click="$emit('update:modelValue', '');validate(state, props, $event.target.value);"/>
+    </div>
     <p v-if="!state.valid" v-for="error in state.errors" class="mt-1 text-sm text-red-600" id="error">{{ error }}</p>
-  </div>
 </template>
 
 <script setup>
 import {computed, reactive} from 'vue'
 import {validate} from '@/composable/useValidation.js'
+import UIcon from '@/components/basic/UIcon.vue'
+import {mdiClose} from '@mdi/js'
 
 const state = reactive({valid: true, errors: []})
 
