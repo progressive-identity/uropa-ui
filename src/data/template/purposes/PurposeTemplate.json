@@ -2,10 +2,6 @@
   "name": "",
   "description": "",
   "isMain": true,
-  "legalBasis": {
-    "type": "",
-    "description": "",
-    "source": ""
-  },
+  "legalBasis": {},
   "dataCategories": []
 }

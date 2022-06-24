@@ -23,14 +23,13 @@
 </template>
 
 <script setup>
+import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import FormLegalBasis from '@/components/form/purposes/FormLegalBasis.vue'
-import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
-import {storeToRefs} from 'pinia/dist/pinia.esm-browser.js'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -48,13 +47,6 @@ const props = defineProps({
   }
 })
 
-function emptyPurpose() {
-  props.purpose.name = ''
-  props.purpose.organizationStatus = ''
-  props.purpose.legalPerson = LegalPersonTemplate
-  props.purpose.dataCategoriesDisclosed = []
-}
-
 function savePurpose() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -64,7 +56,6 @@ function savePurpose() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.purposes.push({...props.purpose}))
-    emptyPurpose()
   }
 }
 

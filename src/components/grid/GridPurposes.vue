@@ -45,13 +45,16 @@ import UIcon from '@/components/basic/UIcon.vue'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
 import {mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
-import PurposeTemplate from '../../data/template/PurposeTemplate.json'
+import PurposeTemplate from '../../data/template/purposes/PurposeTemplate.json'
+import LegalBasisTemplate from '../../data/template/purposes/LegalBasisTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({purpose: PurposeTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
+// TODO maybe we should do this only once on the application start ?
+PurposeTemplate.legalBasis = structuredClone(LegalBasisTemplate)
 
 function createPurpose() {
   state.purpose = structuredClone(PurposeTemplate)
