@@ -11,7 +11,7 @@
                     :list="storeData.uniqueDataCategories"/>
       <FormLegalPerson v-model="dataProcessor.legalPerson"/>
     </div>
-    <div class="space-x-2" v-if="!nested">
+    <div class="space-x-2">
       <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
       <UButton label="Save" v-on:click="saveDataProcessor"/>
     </div>
@@ -38,11 +38,6 @@ const props = defineProps({
     required: true
   },
   edition: {
-    type: Boolean,
-    required: false,
-    default: false
-  },
-  nested: {
     type: Boolean,
     required: false,
     default: false

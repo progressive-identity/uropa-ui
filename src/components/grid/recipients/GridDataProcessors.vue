@@ -4,8 +4,11 @@
     <ul role="list" class="u-grid">
       <li v-for="(dataProcessor, index) in dataProcessors" :key="index"
           class="u-grid">
-        <div class="px-4 py-5 sm:px-6">
-          <h3>{{ dataProcessor.legalPerson.name }}</h3>
+        <div class="relative px-4 py-5">
+          <div class="flex items-center">
+            <h3>{{ dataProcessor.legalPerson.name }}</h3>
+          </div>
+          <GridButtons @edit="editDataProcessor(dataProcessor)" @delete="deleteDataProcessor(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
@@ -22,10 +25,6 @@
             </div>
           </dl>
         </div>
-        <div class="py-5 space-x-2 align-bottom">
-          <UButton v-on:click="editDataProcessor(dataProcessor)" :icon="mdiPencil"/>
-          <UButton v-on:click="deleteDataProcessor(index)" :icon="mdiDelete" type="danger"/>
-        </div>
       </li>
     </ul>
   </div>
@@ -41,8 +40,9 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
-import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle} from '@mdi/js'
 import DataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
+import GridButtons from '@/components/grid/GridButtons.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
