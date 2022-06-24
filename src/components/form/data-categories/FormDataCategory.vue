@@ -17,7 +17,7 @@
         </div>
         <div class="py-2">
           <UInput v-model="dataCategory.name" label="Name"/>
-          <UMultiSelect v-model="state.purposes" label="Purposes concerned"
+          <UMultiSelect v-model="purposes" label="Purposes concerned"
                         :list="storeData.processingRecord.purposes"/>
         </div>
       </div>
@@ -67,8 +67,6 @@ const props = defineProps({
   }
 })
 
-const state = reactive({purposes: props.purposes})
-
 storeDisplay.$patch({
   formsDisplayed: {
     subDataCategory: true
@@ -79,7 +77,7 @@ function saveDataCategory() {
   storeDisplay.$reset()
   if (!props.edition) {
     const purposes = storeData.processingRecord.purposes
-    state.purposes.forEach(purposeDataCategory => {
+    props.purposes.forEach(purposeDataCategory => {
           purposes.forEach(purposeStore => {
             if (purposeStore.name === purposeDataCategory.name) {
               purposeStore.dataCategories.push({...props.dataCategory})
@@ -88,7 +86,6 @@ function saveDataCategory() {
         }
     )
   }
-  state.purposes = []
 }
 
 function closeDataCategory() {

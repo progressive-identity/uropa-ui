@@ -21,7 +21,7 @@
                   Purposes
                 </dt>
                 <ul role="list">
-                  <li v-for="purpose in getPurposes(dataCategory)"
+                  <li v-for="purpose in storeData.getPurposesByDataCategory(dataCategory)"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
                       <span class="flex-1 truncate">{{ purpose.name }}</span>
@@ -93,11 +93,6 @@ const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({dataCategory: DataCategoryTemplate, edition: false, purposes: []})
 
-function getPurposes(dataCategory) {
-  return storeData.getPurposesByDataCategory(dataCategory)
-}
-
-
 async function createDataCategory() {
   state.dataCategory = structuredClone(DataCategoryTemplate)
   state.edition = false
@@ -108,6 +103,7 @@ async function createDataCategory() {
 async function loadDataCategory() {
   if (state.dataCategory.name !== '') {
     state.edition = false
+    state.purposes = []
     storeDisplay.$patch({
       formsDisplayed: {
         subDataCategory: true,
@@ -134,19 +130,14 @@ async function editDataCategory(dataCategory) {
 }
 
 async function deleteDataCategory(dataCategoryToDelete) {
-  //TODO loop on selected purposes
-  let indexPurpose = 0
-  storeData.processingRecord?.purposes.forEach(purpose => {
-    let indexDataCategory = 0
-    purpose?.dataCategories.forEach(dataCategory => {
+  storeData.processingRecord?.purposes.forEach((purpose, indexPurpose) => {
+    purpose?.dataCategories.forEach((dataCategory, indexDataCategory) => {
       if (dataCategory.name === dataCategoryToDelete.name) {
         storeData.$patch((state) => {
           state.processingRecord.purposes[indexPurpose].dataCategories.splice(indexDataCategory, 1)
         })
       }
-      indexDataCategory++
     })
-    indexPurpose++
   })
 }
 
