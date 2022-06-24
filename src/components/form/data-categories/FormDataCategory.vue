@@ -17,7 +17,7 @@
         </div>
         <div class="py-2">
           <UInput v-model="dataCategory.name" label="Name"/>
-          <UMultiSelect v-model="purposes" label="Purposes concerned"
+          <UMultiSelect v-model="state.purposes" label="Purposes concerned"
                         :list="storeData.processingRecord.purposes"/>
         </div>
       </div>
@@ -60,12 +60,11 @@ const props = defineProps({
   purposes: {
     type: Array,
     required: true
-  },
-  edition: {
-    type: Boolean,
-    default: false
   }
 })
+
+// props are readonly
+const state = reactive({purposes: props.purposes})
 
 storeDisplay.$patch({
   formsDisplayed: {
@@ -74,18 +73,23 @@ storeDisplay.$patch({
 })
 
 function saveDataCategory() {
+  // TODO could probably be reworked
   storeDisplay.$reset()
-  if (!props.edition) {
-    const purposes = storeData.processingRecord.purposes
-    props.purposes.forEach(purposeDataCategory => {
-          purposes.forEach(purposeStore => {
-            if (purposeStore.name === purposeDataCategory.name) {
-              purposeStore.dataCategories.push({...props.dataCategory})
-            }
-          })
+  // We iterate over the purposes in the store
+  storeData.processingRecord.purposes.forEach(purposeStore => {
+        // We check if the data category is present on the purpose in the store
+        const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
+        if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {
+          if (!dataCategoryPresent) {
+            // If the purpose is among those chosen and that the data category is not already present, then we add it
+            purposeStore.dataCategories.push({...props.dataCategory})
+          }
+        } else if (dataCategoryPresent) {
+          // If the purpose is not among those chosen but the data category is present, then we remove it
+          purposeStore.dataCategories = purposeStore.dataCategories.filter(e => e.name !== props.dataCategory.name)
         }
-    )
-  }
+      }
+  )
 }
 
 function closeDataCategory() {

@@ -67,7 +67,7 @@
       <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory"
                :list="predefinedDataCategories" @click="loadDataCategory"
                label="Load a template" class="py-5"/>
-      <FormDataCategory :data-category="state.dataCategory" :purposes="state.purposes" :edition="state.edition"/>
+      <FormDataCategory :data-category="state.dataCategory" :purposes="state.purposes"/>
     </div>
   </div>
 </template>
@@ -91,18 +91,16 @@ import UIcon from '@/components/basic/UIcon.vue'
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
-const state = reactive({dataCategory: DataCategoryTemplate, edition: false, purposes: []})
+const state = reactive({dataCategory: DataCategoryTemplate, purposes: []})
 
 async function createDataCategory() {
   state.dataCategory = structuredClone(DataCategoryTemplate)
-  state.edition = false
   state.purposes = []
   await scrollToForm()
 }
 
 async function loadDataCategory() {
   if (state.dataCategory.name !== '') {
-    state.edition = false
     state.purposes = []
     storeDisplay.$patch({
       formsDisplayed: {
@@ -124,7 +122,6 @@ async function loadDataCategory() {
 
 async function editDataCategory(dataCategory) {
   state.dataCategory = dataCategory
-  state.edition = true
   state.purposes = storeData.getPurposesByDataCategory(dataCategory)
   await scrollToForm()
 }
