@@ -11,7 +11,7 @@
         <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageStates" class="w-48"/>
       </div>
       <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"
-                    :list="storeData.getUniqueDataTypes"/>
+                    :list="uniqueDataTypes"/>
       <UInput v-for="dataType in dataLocation.dataTypes" v-model="dataType.path"
               :label="`Path for ${dataType.name}`" size="xl"/>
     </div>
@@ -35,12 +35,9 @@ const props = defineProps({
   dataLocation: {
     type: Object,
     required: true
-  },
-  edition: {
-    type: Boolean,
-    required: false,
-    default: false
   }
 })
 
+const uniqueDataTypes = storeData.getUniqueDataTypes
+uniqueDataTypes.forEach(dataType => dataType.path = '')
 </script>

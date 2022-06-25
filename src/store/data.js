@@ -3,7 +3,7 @@ import ProcessingRecordTemplate from '../data/template/ProcessingRecordTemplate.
 
 export const useStoreData = defineStore('data', {
     state: () => {
-        return { processingRecord: structuredClone(ProcessingRecordTemplate) }
+        return {processingRecord: structuredClone(ProcessingRecordTemplate)}
     },
     getters: {
         getUniqueDataCategories: (state) => getUniqueDataCategories(state),
@@ -13,12 +13,17 @@ export const useStoreData = defineStore('data', {
             return (dataCategory) => state.processingRecord.purposes.filter(purpose => {
                 return purpose.dataCategories.find(e => e.name === dataCategory.name) !== undefined
             })
+        },
+        getDataTypesByDataLocation: (state) => {
+            return (dataLocation) => state.processingRecord.purposes.flat().dataCategories.flat().dataTypes.filter(dataType => {
+                return dataType?.dataLocations.find(e => e?.dataSource.name === dataLocation?.dataSource.name) !== undefined
+            })
         }
     }
 })
 
 function getUniqueDataCategories(state) {
-    const dataCategories = state.processingRecord.purposes.flatMap(e => e?.dataCategories)
+    const dataCategories = state.processingRecord.purposes.flatMap(purpose => purpose?.dataCategories)
     return [...new Map(dataCategories.map(e => [e['name'], e])).values()]
 }
 
@@ -29,5 +34,5 @@ function getUniqueDataTypes(state) {
 
 function getUniqueDataLocations(state) {
     const dataLocations = getUniqueDataTypes(state).flatMap(dataType => dataType?.dataLocations)
-    return [...new Map(dataLocations.map(e => [e['name'], e])).values()]
+    return [...new Map(dataLocations.map(e => [e?.dataSource['name'], e])).values()]
 }

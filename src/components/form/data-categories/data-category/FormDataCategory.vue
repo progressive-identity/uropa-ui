@@ -3,6 +3,7 @@
     <div class="space-y-5">
       <UVerticalBar label="Data category" :rotate="formsDisplayed.subDataCategory"
                     @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+      <!-- TODO Rename component and create a specific data category form (but how to deal with purposes then ?) -->
       <div class="px-5" v-if="formsDisplayed.subDataCategory">
         <div>
           <h3>Data category</h3>
@@ -77,19 +78,18 @@ function saveDataCategory() {
   storeDisplay.$reset()
   // We iterate over the purposes in the store
   storeData.processingRecord.purposes.forEach(purposeStore => {
-        // We check if the data category is present on the purpose in the store
-        const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
-        if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {
-          if (!dataCategoryPresent) {
-            // If the purpose is among those chosen and that the data category is not already present, then we add it
-            purposeStore.dataCategories.push({...props.dataCategory})
-          }
-        } else if (dataCategoryPresent) {
-          // If the purpose is not among those chosen but the data category is present, then we remove it
-          purposeStore.dataCategories = purposeStore.dataCategories.filter(e => e.name !== props.dataCategory.name)
-        }
+    // We check if the data category is present on the purpose in the store
+    const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
+    if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {
+      if (!dataCategoryPresent) {
+        // If the purpose is among those chosen and that the data category is not already present, then we add it
+        purposeStore.dataCategories.push({...props.dataCategory})
       }
-  )
+    } else if (dataCategoryPresent) {
+      // If the purpose is not among those chosen but the data category is present, then we remove it
+      purposeStore.dataCategories = purposeStore.dataCategories.filter(e => e.name !== props.dataCategory.name)
+    }
+  })
 }
 
 function closeDataCategory() {

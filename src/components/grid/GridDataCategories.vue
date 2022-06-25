@@ -141,6 +141,7 @@ async function deleteDataCategory(dataCategoryToDelete) {
 async function scrollToForm() {
   // FIXME is this the right way to do it ?
   // TODO once finalized this behaviour should be reported on the other grids components
+  // TODO refactor into a store
   await displayForm()
   const top = document.getElementById('formDataCategory').offsetTop
   window.scroll(0, top)

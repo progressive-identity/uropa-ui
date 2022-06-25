@@ -6,22 +6,26 @@
       {
         "name": "First name",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Last name",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Birthdate",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Postal address",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       }
     ],
     "dataSubjectTypes": []
@@ -34,17 +38,20 @@
       {
         "name": "IP address",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Timestamps",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Cookies",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       }
     ],
     "dataSubjectTypes": []
@@ -57,17 +64,20 @@
       {
         "name": "Marital status",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Children",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Lifestyle information",
         "collectionMean": "computed",
-        "isOptional": true
+        "isOptional": true,
+        "dataLocations": []
       }
     ],
     "dataSubjectTypes": []

@@ -36,39 +36,32 @@ const props = defineProps({
   dataLocation: {
     type: Object,
     required: true
-  },
-  edition: {
-    type: Boolean,
-    required: false,
-    default: false
   }
 })
 
-function emptyDataLocation() {
-  props.dataLocation.description = ''
-  props.dataLocation.dataSupport = ''
-  props.dataLocation.path = ''
-  props.dataLocation.storageState = ''
-  props.dataLocation.dataSource = {
-    name: '',
-    storageType: '',
-    country: {
-      iso: '',
-      name: ''
-    }
-  }
-  props.dataLocation.storageDurations = []
-  props.dataLocation.dataTypes = []
-}
-
 function saveDataLocation() {
   storeDisplay.$reset()
-  if (!props.edition) {
-    // FIXME dataLocations should be in dataCategories
-    storeData.$patch((state) =>
-        state.processingRecord.dataLocations.push({...props.dataLocation}))
-    emptyDataLocation()
-  }
+  // We get all the data types in the store
+  const storeDataTypes = storeData.processingRecord.purposes.flatMap(purpose =>
+      purpose?.dataCategories.flatMap(dataCategory =>
+          dataCategory?.dataTypes.flat()
+      )
+  )
+  storeDataTypes.forEach(dataTypeStore => {
+    // We check if the data location is present on the data type in the store
+    const dataLocationPresent = dataTypeStore.dataLocations.filter(e => e.dataSource.name === props.dataLocation.dataSource.name).length > 0
+    if (props.dataLocation.dataTypes.filter(e => e.name === dataTypeStore.name).length > 0) {
+      if (!dataLocationPresent) {
+        // If the data location is among those chosen and that the data type is not already present, then we add it
+        props.dataLocation.path = props.dataLocation.dataTypes.filter(e => e.name === dataTypeStore.name)[0].path
+        delete props.dataLocation.dataTypes
+        dataTypeStore.dataLocations.push({...props.dataLocation})
+      }
+    } else if (dataLocationPresent) {
+      // If the data type is not among those chosen but the data location is present, then we remove it
+      dataTypeStore.dataLocations = dataTypeStore.dataLocations.filter(e => e.dataSource.name !== props.dataLocation.dataSource.name)
+    }
+  })
 }
 
 function closeDataLocation() {

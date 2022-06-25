@@ -61,7 +61,7 @@
       </ul>
     </div>
     <div id="formDataLocation">
-      <DataSource :data-location="state.dataLocation" :edition="state.edition"/>
+      <DataSource :data-location="state.dataLocation"/>
     </div>
   </div>
 </template>
@@ -73,37 +73,40 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import {mdiArchive, mdiDatabase, mdiEarth, mdiLaptop, mdiPlusCircle} from '@mdi/js'
-import DataLocationTemplate from '../../data/template/data-categories/DataLocationTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import DataSource from '@/components/form/data-categories/data-source/DataSource.vue'
+import DataLocationTemplate from '../../data/template/data-categories/DataLocationTemplate.json'
+import DataSourceTemplate from '../../data/template/data-categories/DataSourceTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataLocation: DataLocationTemplate, edition: false})
+const state = reactive({dataLocation: DataLocationTemplate})
 const storeDisplay = useStoreDisplay()
 
+// TODO maybe we should do this only once on the application start ?
+DataLocationTemplate.dataSource = structuredClone(DataSourceTemplate)
 
 async function createDataLocation() {
   state.dataLocation = structuredClone(DataLocationTemplate)
-  state.edition = false
+  state.dataLocation.dataTypes = []
   await scrollToForm()
 }
 
 async function editDataLocation(dataLocation) {
   state.dataLocation = dataLocation
-  state.edition = true
+  state.dataLocation.dataTypes = structuredClone(storeData.getDataTypesByDataLocation(dataLocation))
   await scrollToForm()
 }
 
 function deleteDataLocation(index) {
   storeData.$patch((state) => {
+    // TODO
     state.processingRecord.dataLocations.splice(index, 1)
   })
 }
 
 async function scrollToForm() {
-  // TODO refactor into a store
   await displayForm()
   const top = document.getElementById('formDataLocation').offsetTop
   window.scroll(0, top)
