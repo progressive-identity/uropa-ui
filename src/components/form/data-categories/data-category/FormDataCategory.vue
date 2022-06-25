@@ -44,8 +44,8 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
-import TableDataTypes from '@/components/form/data-categories/TableDataTypes.vue'
-import TableDataSubjectTypes from '@/components/form/data-categories/TableDataSubjectTypes.vue'
+import TableDataTypes from '@/components/form/data-categories/data-category/TableDataTypes.vue'
+import TableDataSubjectTypes from '@/components/form/data-categories/data-category/TableDataSubjectTypes.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 
 const storeData = useStoreData()

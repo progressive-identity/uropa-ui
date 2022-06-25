@@ -1,29 +1,12 @@
 <template>
   <div v-if="formsDisplayed.dataLocation">
     <div class="space-y-5">
-      <!-- TODO Rename component and create a specific data location form -->
       <UVerticalBar label="Data source" :rotate="formsDisplayed.dataSource"
                     @click="toggleDisplay(formsDisplayed.subDataLocation, !formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
       <FormDataSource class="px-5" :data-source="dataLocation.dataSource"/>
       <UVerticalBar label="Data location" :rotate="formsDisplayed.subDataLocation"
                     @click="toggleDisplay(!formsDisplayed.subDataLocation, formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
-      <div class="px-5" v-if="formsDisplayed.subDataLocation">
-        <div>
-          <h3>Data location</h3>
-          <p class="form-description">Place where a data item is stored within a data source.</p>
-        </div>
-        <div class="py-2">
-          <UInput v-model="dataLocation.description" label="Description" size="xl"/>
-          <div class="flex justify-start space-x-5">
-            <USelectEnums v-model="dataLocation.dataSupport" label="Data support" :list="dataSupports" class="w-48"/>
-            <USelectEnums v-model="dataLocation.storageState" label="Storage state" :list="storageStates" class="w-48"/>
-          </div>
-          <UMultiSelect v-model="dataLocation.dataTypes" label="Data types stored"
-                        :list="storeData.uniqueDataTypes"/>
-          <UInput v-for="dataType in dataLocation.dataTypes" v-model="dataType.path"
-                  :label="`Path for ${dataType.name}`" size="xl"/>
-        </div>
-      </div>
+      <FormDataLocation class="px-5" :data-location="dataLocation"/>
       <UVerticalBar label="Storage durations" :rotate="formsDisplayed.storageDuration"
                     @click="toggleDisplay(formsDisplayed.subDataLocation, formsDisplayed.dataSource, !formsDisplayed.storageDuration)"/>
       <TableStorageDurations class="px-5" :data-location="dataLocation"/>
@@ -40,13 +23,10 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import UInput from '@/components/basic/UInput.vue'
-import FormDataSource from '@/components/form/data-categories/FormDataSource.vue'
-import {dataSupports, storageStates} from '/src/data/enums.js'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
-import USelectEnums from '@/components/basic/select/USelectEnums.vue'
+import FormDataSource from '@/components/form/data-categories/data-source/FormDataSource.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
-import TableStorageDurations from '@/components/form/data-categories/TableStorageDurations.vue'
+import TableStorageDurations from '@/components/form/data-categories/data-source/TableStorageDurations.vue'
+import FormDataLocation from '@/components/form/data-categories/data-source/FormDataLocation.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

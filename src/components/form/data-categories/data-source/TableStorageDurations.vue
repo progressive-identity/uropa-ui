@@ -58,12 +58,12 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
-import FormEventType from '@/components/form/data-categories/FormEventType.vue'
+import FormEventType from '@/components/form/data-categories/data-source/FormEventType.vue'
 import {mdiMinusCircle, mdiPencil, mdiPlusCircle} from '@mdi/js'
 import {storageTypes} from '/src/data/enums.js'
 import EventTypeTemplate from '@/data/template/data-categories/EventTypeTemplate.json'
 import StorageDurationTemplate from '@/data/template/data-categories/StorageDurationTemplate.json'
-import ButtonEventType from '@/components/form/data-categories/ButtonEventType.vue'
+import ButtonEventType from '@/components/form/data-categories/data-source/ButtonEventType.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

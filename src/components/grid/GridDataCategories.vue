@@ -5,7 +5,7 @@
     </div>
     <div class="py-5">
       <ul role="list" class="u-grid">
-        <li v-for="(dataCategory, index) in storeData.uniqueDataCategories" :key="index"
+        <li v-for="(dataCategory, index) in storeData.getUniqueDataCategories" :key="index"
             class="u-grid">
           <div class="relative px-4 py-5">
             <div class="flex items-center">
@@ -79,7 +79,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelect from '@/components/basic/select/USelect.vue'
-import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
+import FormDataCategory from '@/components/form/data-categories/data-category/FormDataCategory.vue'
 import {mdiCardAccountDetails, mdiFaceWoman, mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
 import DataCategoryTemplate from '@/data/template/data-categories/DataCategoryTemplate.json'
 import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
