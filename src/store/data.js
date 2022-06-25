@@ -1,9 +1,9 @@
 import {defineStore} from 'pinia'
-import processingRecord from '../data/template/ProcessingRecordTemplate.json'
+import ProcessingRecordTemplate from '../data/template/ProcessingRecordTemplate.json'
 
 export const useStoreData = defineStore('data', {
     state: () => {
-        return {processingRecord}
+        return { processingRecord: structuredClone(ProcessingRecordTemplate) }
     },
     getters: {
         uniqueDataCategories: (state) => getUniqueDataCategories(state),

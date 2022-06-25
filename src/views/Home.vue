@@ -25,4 +25,4 @@ import DataCategories from '@/views/DataCategories.vue'
 import Recipients from '@/views/Recipients.vue'
 import SecurityMeasures from '@/views/SecurityMeasures.vue'
 import DataTransfers from '@/views/DataTransfers.vue'
-import Welcome from '@/views/Welcome.vue';</script>
+import Welcome from '@/views/Welcome.vue'</script>
