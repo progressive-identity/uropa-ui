@@ -68,6 +68,7 @@ async function startProcessingRecord(data = null) {
       processingRecord: ProcessingRecordTemplate
     })
   }
+  // TODO externalize some variables in a file as constants
   $cookies.set('uropa_processing_record', storeData.processingRecord, '30d')
 }
 </script>
