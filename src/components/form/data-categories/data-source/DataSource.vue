@@ -62,7 +62,7 @@ function saveDataLocation() {
       // If the data type is not among those chosen but the data location is present, then we remove it
       dataTypeStore.dataLocations = dataTypeStore.dataLocations.filter(e => e.dataSource.name !== props.dataLocation.dataSource.name)
     }
-    delete dataType.path
+    delete dataTypeStore.path
   })
 }
 
