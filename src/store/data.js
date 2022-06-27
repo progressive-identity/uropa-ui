@@ -15,7 +15,7 @@ export const useStoreData = defineStore('data', {
             })
         },
         getDataTypesByDataLocation: (state) => {
-            return (dataLocation) => state.processingRecord.purposes.flat().dataCategories.flat().dataTypes.filter(dataType => {
+            return (dataLocation) => state.processingRecord.purposes.flatMap(purpose => purpose?.dataCategories.flatMap(dataCategory => dataCategory?.dataTypes)).filter(dataType => {
                 return dataType?.dataLocations.find(e => e?.dataSource.name === dataLocation?.dataSource.name) !== undefined
             })
         }

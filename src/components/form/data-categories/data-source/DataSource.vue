@@ -44,23 +44,25 @@ function saveDataLocation() {
   // We get all the data types in the store
   const storeDataTypes = storeData.processingRecord.purposes.flatMap(purpose =>
       purpose?.dataCategories.flatMap(dataCategory =>
-          dataCategory?.dataTypes.flat()
-      )
+          dataCategory?.dataTypes.flat())
   )
   storeDataTypes.forEach(dataTypeStore => {
     // We check if the data location is present on the data type in the store
     const dataLocationPresent = dataTypeStore.dataLocations.filter(e => e.dataSource.name === props.dataLocation.dataSource.name).length > 0
-    if (props.dataLocation.dataTypes.filter(e => e.name === dataTypeStore.name).length > 0) {
+    const dataType = props.dataLocation.dataTypes.find(e => e.name === dataTypeStore.name)
+    if (dataType) {
       if (!dataLocationPresent) {
         // If the data location is among those chosen and that the data type is not already present, then we add it
-        props.dataLocation.path = props.dataLocation.dataTypes.filter(e => e.name === dataTypeStore.name)[0].path
-        delete props.dataLocation.dataTypes
-        dataTypeStore.dataLocations.push({...props.dataLocation})
+        props.dataLocation.path = dataType.path
+        const dataLocationClone = {...props.dataLocation}
+        delete dataLocationClone.dataTypes
+        dataTypeStore.dataLocations.push(dataLocationClone)
       }
     } else if (dataLocationPresent) {
       // If the data type is not among those chosen but the data location is present, then we remove it
       dataTypeStore.dataLocations = dataTypeStore.dataLocations.filter(e => e.dataSource.name !== props.dataLocation.dataSource.name)
     }
+    delete dataType.path
   })
 }
 

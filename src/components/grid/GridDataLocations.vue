@@ -95,7 +95,13 @@ async function createDataLocation() {
 
 async function editDataLocation(dataLocation) {
   state.dataLocation = dataLocation
-  state.dataLocation.dataTypes = structuredClone(storeData.getDataTypesByDataLocation(dataLocation))
+  state.dataLocation.dataTypes = [...storeData.getDataTypesByDataLocation(dataLocation)]
+  // TODO to rework
+  state.dataLocation.dataTypes.forEach((dataType, index) => {
+    dataType.path = dataType.dataLocations.find(dataLocation => dataLocation.dataSource.name === state.dataLocation.dataSource.name).path
+    dataType.dataLocations = []
+    state.dataLocation.dataTypes[index] = {...dataType}
+  })
   await scrollToForm()
 }
 
