@@ -8,9 +8,9 @@
     <div class="pt-3">
       <UInput v-model="internalDepartment.name" label="Name"/>
       <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
-                    :list="storeData.uniqueDataCategories"/>
+                    :list="storeData.getUniqueDataCategories"/>
     </div>
-    <div class="space-x-2 pt-3" v-if="!nested">
+    <div class="space-x-2 pt-3">
       <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
       <UButton label="Save" v-on:click="saveInternalDepartment"/>
     </div>
@@ -35,11 +35,6 @@ const props = defineProps({
     required: true
   },
   edition: {
-    type: Boolean,
-    required: false,
-    default: false
-  },
-  nested: {
     type: Boolean,
     required: false,
     default: false

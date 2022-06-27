@@ -3,6 +3,7 @@
     <div class="space-y-5">
       <UVerticalBar label="Data category" :rotate="formsDisplayed.subDataCategory"
                     @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+      <!-- TODO Rename component and create a specific data category form (but how to deal with purposes then ?) -->
       <div class="px-5" v-if="formsDisplayed.subDataCategory">
         <div>
           <h3>Data category</h3>
@@ -44,8 +45,8 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
-import TableDataTypes from '@/components/form/data-categories/TableDataTypes.vue'
-import TableDataSubjectTypes from '@/components/form/data-categories/TableDataSubjectTypes.vue'
+import TableDataTypes from '@/components/form/data-categories/data-category/TableDataTypes.vue'
+import TableDataSubjectTypes from '@/components/form/data-categories/data-category/TableDataSubjectTypes.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 
 const storeData = useStoreData()
@@ -60,13 +61,10 @@ const props = defineProps({
   purposes: {
     type: Array,
     required: true
-  },
-  edition: {
-    type: Boolean,
-    default: false
   }
 })
 
+// props are readonly
 const state = reactive({purposes: props.purposes})
 
 storeDisplay.$patch({
@@ -76,19 +74,22 @@ storeDisplay.$patch({
 })
 
 function saveDataCategory() {
+  // TODO could probably be reworked
   storeDisplay.$reset()
-  if (!props.edition) {
-    const purposes = storeData.processingRecord.purposes
-    state.purposes.forEach(purposeDataCategory => {
-          purposes.forEach(purposeStore => {
-            if (purposeStore.name === purposeDataCategory.name) {
-              purposeStore.dataCategories.push({...props.dataCategory})
-            }
-          })
-        }
-    )
-  }
-  state.purposes = []
+  // We iterate over the purposes in the store
+  storeData.processingRecord.purposes.forEach(purposeStore => {
+    // We check if the data category is present on the purpose in the store
+    const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
+    if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {
+      if (!dataCategoryPresent) {
+        // If the purpose is among those chosen and that the data category is not already present, then we add it
+        purposeStore.dataCategories.push({...props.dataCategory})
+      }
+    } else if (dataCategoryPresent) {
+      // If the purpose is not among those chosen but the data category is present, then we remove it
+      purposeStore.dataCategories = purposeStore.dataCategories.filter(e => e.name !== props.dataCategory.name)
+    }
+  })
 }
 
 function closeDataCategory() {

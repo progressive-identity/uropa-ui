@@ -5,7 +5,7 @@
     </div>
     <div class="py-5">
       <ul role="list" class="u-grid">
-        <li v-for="(dataCategory, index) in storeData.uniqueDataCategories" :key="index"
+        <li v-for="(dataCategory, index) in storeData.getUniqueDataCategories" :key="index"
             class="u-grid">
           <div class="relative px-4 py-5">
             <div class="flex items-center">
@@ -21,7 +21,7 @@
                   Purposes
                 </dt>
                 <ul role="list">
-                  <li v-for="purpose in getPurposes(dataCategory)"
+                  <li v-for="purpose in storeData.getPurposesByDataCategory(dataCategory)"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
                       <span class="flex-1 truncate">{{ purpose.name }}</span>
@@ -67,7 +67,7 @@
       <USelect v-if="formsDisplayed.dataCategory" v-model="state.dataCategory"
                :list="predefinedDataCategories" @click="loadDataCategory"
                label="Load a template" class="py-5"/>
-      <FormDataCategory :data-category="state.dataCategory" :purposes="state.purposes" :edition="state.edition"/>
+      <FormDataCategory :data-category="state.dataCategory" :purposes="state.purposes"/>
     </div>
   </div>
 </template>
@@ -79,7 +79,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelect from '@/components/basic/select/USelect.vue'
-import FormDataCategory from '@/components/form/data-categories/FormDataCategory.vue'
+import FormDataCategory from '@/components/form/data-categories/data-category/FormDataCategory.vue'
 import {mdiCardAccountDetails, mdiFaceWoman, mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
 import DataCategoryTemplate from '@/data/template/data-categories/DataCategoryTemplate.json'
 import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
@@ -91,23 +91,17 @@ import UIcon from '@/components/basic/UIcon.vue'
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
-const state = reactive({dataCategory: DataCategoryTemplate, edition: false, purposes: []})
-
-function getPurposes(dataCategory) {
-  return storeData.getPurposesByDataCategory(dataCategory)
-}
-
+const state = reactive({dataCategory: DataCategoryTemplate, purposes: []})
 
 async function createDataCategory() {
   state.dataCategory = structuredClone(DataCategoryTemplate)
-  state.edition = false
   state.purposes = []
   await scrollToForm()
 }
 
 async function loadDataCategory() {
   if (state.dataCategory.name !== '') {
-    state.edition = false
+    state.purposes = []
     storeDisplay.$patch({
       formsDisplayed: {
         subDataCategory: true,
@@ -128,31 +122,26 @@ async function loadDataCategory() {
 
 async function editDataCategory(dataCategory) {
   state.dataCategory = dataCategory
-  state.edition = true
   state.purposes = storeData.getPurposesByDataCategory(dataCategory)
   await scrollToForm()
 }
 
 async function deleteDataCategory(dataCategoryToDelete) {
-  //TODO loop on selected purposes
-  let indexPurpose = 0
-  storeData.processingRecord?.purposes.forEach(purpose => {
-    let indexDataCategory = 0
-    purpose?.dataCategories.forEach(dataCategory => {
+  storeData.processingRecord?.purposes.forEach((purpose, indexPurpose) => {
+    purpose?.dataCategories.forEach((dataCategory, indexDataCategory) => {
       if (dataCategory.name === dataCategoryToDelete.name) {
         storeData.$patch((state) => {
           state.processingRecord.purposes[indexPurpose].dataCategories.splice(indexDataCategory, 1)
         })
       }
-      indexDataCategory++
     })
-    indexPurpose++
   })
 }
 
 async function scrollToForm() {
   // FIXME is this the right way to do it ?
   // TODO once finalized this behaviour should be reported on the other grids components
+  // TODO refactor into a store
   await displayForm()
   const top = document.getElementById('formDataCategory').offsetTop
   window.scroll(0, top)

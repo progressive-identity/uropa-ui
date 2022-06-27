@@ -4,12 +4,12 @@
     <ul role="list" class="u-grid">
       <li v-for="(internalDepartment, index) in internalDepartments" :key="index"
           class="u-grid">
-          <div class="relative px-4 py-5">
-            <div class="flex items-center">
-              <h3>{{ internalDepartment.name }}</h3>
-            </div>
-            <GridButtons @edit="editInternalDepartment(internalDepartment)" @delete="deleteInternalDepartment(index)"/>
+        <div class="relative px-4 py-5">
+          <div class="flex items-center">
+            <h3>{{ internalDepartment.name }}</h3>
           </div>
+          <GridButtons @edit="editInternalDepartment(internalDepartment)" @delete="deleteInternalDepartment(index)"/>
+        </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -40,7 +40,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
-import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle} from '@mdi/js'
 import InternalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 

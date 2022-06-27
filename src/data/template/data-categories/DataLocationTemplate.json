@@ -3,14 +3,6 @@
   "dataSupport": "",
   "path": "",
   "storageState": "",
-  "dataSource": {
-    "name": "",
-    "storageType": "",
-    "country": {
-      "name": "",
-      "iso": ""
-    }
-  },
-  "storageDurations": [],
-  "dataTypes": []
+  "dataSource": {},
+  "storageDurations": []
 }

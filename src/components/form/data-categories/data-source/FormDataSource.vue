@@ -22,7 +22,7 @@ import {storeToRefs} from 'pinia/dist/pinia.prod.cjs'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
-import countries from './../../../data/countries.json'
+import countries from '../../../../data/countries.json'
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)

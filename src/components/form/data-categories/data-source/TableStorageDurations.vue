@@ -34,18 +34,21 @@
                 <USelectEnums v-model="storageDuration.storageType" :list="storageTypes"/>
               </td>
               <td>
-                <ButtonEventType :event-type="storageDuration.startEvent" @click="editEventType(storageDuration.startEvent)" />
+                <ButtonEventType :event-type="storageDuration.startEvent"
+                                 @click="editEventType(storageDuration.startEvent)"/>
               </td>
               <td>
-                <ButtonEventType :event-type="storageDuration.stopEvent" @click="editEventType(storageDuration.stopEvent)" />
+                <ButtonEventType :event-type="storageDuration.stopEvent"
+                                 @click="editEventType(storageDuration.stopEvent)"/>
               </td>
               <td>
-                <ButtonEventType :event-type="storageDuration.interruptEvent" @click="editEventType(storageDuration.interruptEvent)" />
+                <ButtonEventType :event-type="storageDuration.interruptEvent"
+                                 @click="editEventType(storageDuration.interruptEvent)"/>
               </td>
             </tr>
             </tbody>
           </table>
-        <FormEventType class="px-2" :event-type="state.eventType" :edition="state.edition"/>
+          <FormEventType class="px-2" :event-type="state.eventType" :edition="state.edition"/>
         </div>
       </div>
     </div>
@@ -58,12 +61,12 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
-import FormEventType from '@/components/form/data-categories/FormEventType.vue'
-import {mdiMinusCircle, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import FormEventType from '@/components/form/data-categories/data-source/FormEventType.vue'
+import ButtonEventType from '@/components/form/data-categories/data-source/ButtonEventType.vue'
+import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import {storageTypes} from '/src/data/enums.js'
 import EventTypeTemplate from '@/data/template/data-categories/EventTypeTemplate.json'
 import StorageDurationTemplate from '@/data/template/data-categories/StorageDurationTemplate.json'
-import ButtonEventType from '@/components/form/data-categories/ButtonEventType.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -82,7 +85,8 @@ if (props.dataLocation?.storageDurations?.length === 0) {
 }
 
 function createStorageDuration() {
-  props.dataLocation.storageDurations.push(structuredClone(StorageDurationTemplate))
+  //TODO create and use eventTemplate
+  props.dataLocation.storageDurations.push({...StorageDurationTemplate})
 }
 
 function deleteStorageDuration(index) {
