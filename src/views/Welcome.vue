@@ -6,7 +6,7 @@
           <UButton type="primary" :icon="mdiClipboardEditOutline"
                    label="Start a new processing record" @click="resetProcessingRecord()"/>
         </div>
-        <div v-if="state.isCookiePresent" class="space-y-5">
+        <div v-if="state.isCookie" class="space-y-5">
           <div class="flex justify-center text-xl font-medium text-gray-700">
             OR
           </div>
@@ -40,13 +40,10 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
+const state = reactive({isCookie : $cookies.isKey('uropa_processing_record')})
 
-const state = reactive({isCookiePresent: false})
-
-
-if ($cookies.get('uropa_processing_record')) {
+if (state.isCookie) {
 // When loading the application we put the cookie content, if present, in the store
-  state.isCookiePresent = true
   storeData.$patch({
     processingRecord: $cookies.get('uropa_processing_record')
   })
@@ -54,7 +51,6 @@ if ($cookies.get('uropa_processing_record')) {
 
 async function resetProcessingRecord() {
   $cookies.remove('uropa_processing_record')
-  state.isCookiePresent = false
   await startProcessingRecord()
 }
 
@@ -67,11 +63,11 @@ async function startProcessingRecord(data = null) {
     storeData.$patch({
       processingRecord: JSON.parse(data)
     })
-  } else if (!state.isCookiePresent) {
+  } else if (!$cookies.isKey('uropa_processing_record')) {
     storeData.$patch({
       processingRecord: ProcessingRecordTemplate
     })
-    state.isCookiePresent = true
   }
+  $cookies.set('uropa_processing_record', storeData.processingRecord, '30d')
 }
 </script>
