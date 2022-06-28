@@ -11,14 +11,43 @@
           <GridButtons @edit="editDataProcessor(dataProcessor)" @delete="deleteDataProcessor(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+          <dl v-if="dataProcessor.legalPerson.dpo.personalInformation.firstName"
+              class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiFaceManShimmer"/>
+                DPO
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
+                  dataProcessor.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalPerson.dpo.personalInformation.firstName
+                }}
+              </dd>
+            </div>
+          </dl>
+          <dl v-if="dataProcessor.legalPerson.ceo.personalInformation.firstName"
+              class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiFaceWomanShimmer"/>
+                CEO
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
+                  dataProcessor.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalPerson.ceo.personalInformation.firstName
+                }}
+              </dd>
+            </div>
+          </dl>
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">Data categories disclosed</dt>
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiFormatListBulletedSquare"/>
+                Disclosed
+              </dt>
               <ul role="list">
                 <li v-for="dataCategories in dataProcessor.dataCategoriesDisclosed"
                     class="flex items-center justify-between text-sm">
                   <div class="flex-1 flex items-center pb-2">
-                    <span class="flex-1 truncate">{{ dataCategories.name }}</span>
+                    <span class="flex-1 truncate">- {{ dataCategories.name }}</span>
                   </div>
                 </li>
               </ul>
@@ -40,9 +69,10 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
-import {mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle, mdiFormatListBulletedSquare, mdiFaceManShimmer, mdiFaceWomanShimmer} from '@mdi/js'
 import DataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
