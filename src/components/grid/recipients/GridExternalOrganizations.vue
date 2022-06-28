@@ -93,17 +93,17 @@ import {
   mdiFormatListBulletedSquare,
   mdiPlusCircle
 } from '@mdi/js'
-import externalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
+import ExternalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({externalOrganization: externalOrganizationTemplate, edition: false})
+const state = reactive({externalOrganization: ExternalOrganizationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 function createExternalOrganization() {
-  state.externalOrganization = externalOrganizationTemplate
+  state.externalOrganization = structuredClone(ExternalOrganizationTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {
