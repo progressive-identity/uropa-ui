@@ -41,11 +41,6 @@ const props = defineProps({
   }
 })
 
-function emptyInternalDepartment() {
-  props.internalDepartment.name = ''
-  props.internalDepartment.dataCategoriesDisclosed = []
-}
-
 function saveInternalDepartment() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -55,7 +50,6 @@ function saveInternalDepartment() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.internalDepartments.push({...props.internalDepartment}))
-    emptyInternalDepartment()
   }
 }
 

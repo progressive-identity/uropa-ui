@@ -43,12 +43,6 @@ const props = defineProps({
   }
 })
 
-function emptyDataTransfer() {
-  props.dataTransfer.name = ''
-  props.dataTransfer.description = ''
-  props.dataTransfer.dataTransferType = ''
-}
-
 function saveDataTransfer() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -58,7 +52,6 @@ function saveDataTransfer() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.dataTransfers.push({...props.dataTransfer}))
-    emptyDataTransfer()
   }
 }
 

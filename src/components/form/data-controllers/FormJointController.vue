@@ -19,7 +19,6 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
-import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -38,14 +37,6 @@ const props = defineProps({
   }
 })
 
-
-function emptyJointController() {
-  props.jointController.name = ''
-  props.jointController.organizationStatus = ''
-  props.jointController.legalPerson = LegalPersonTemplate
-  props.jointController.dataCategoriesDisclosed = []
-}
-
 function saveJointController() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -55,7 +46,6 @@ function saveJointController() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.jointControllers.push({...props.jointController}))
-    emptyJointController()
   }
 }
 

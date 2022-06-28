@@ -26,7 +26,6 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
-import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -44,12 +43,6 @@ const props = defineProps({
   }
 })
 
-function emptyDataProcessor() {
-  props.dataProcessor.processorAgreementPath = ''
-  props.dataProcessor.legalPerson = LegalPersonTemplate
-  props.dataProcessor.dataCategoriesDisclosed = []
-}
-
 function saveDataProcessor() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -59,7 +52,6 @@ function saveDataProcessor() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
-    emptyDataProcessor()
   }
 }
 

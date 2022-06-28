@@ -26,7 +26,6 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
-import LegalPersonTemplate from '/src/data/template/LegalPersonTemplate.json'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 
 const storeData = useStoreData()
@@ -50,13 +49,6 @@ const props = defineProps({
   }
 })
 
-function emptyExternalOrganization() {
-  props.externalOrganization.name = ''
-  props.externalOrganization.organizationStatus = ''
-  props.externalOrganization.legalPerson = LegalPersonTemplate
-  props.externalOrganization.dataCategoriesDisclosed = []
-}
-
 function saveExternalOrganization() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -66,7 +58,6 @@ function saveExternalOrganization() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.externalOrganizations.push({...props.externalOrganization}))
-    emptyExternalOrganization()
   }
 }
 

@@ -8,7 +8,8 @@
     <div class="pt-3">
       <div class="flex justify-start space-x-5">
         <UInput v-model="securityMeasure.name" label="Name"/>
-        <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type" class="w-64"/>
+        <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
+                      class="w-64"/>
       </div>
       <UInput v-model="securityMeasure.description" label="Description" size="xl"/>
     </div>
@@ -44,12 +45,6 @@ const props = defineProps({
   }
 })
 
-function emptySecurityMeasure() {
-  props.securityMeasure.name = ''
-  props.securityMeasure.description = ''
-  props.securityMeasure.securityMeasureType = ''
-}
-
 function saveSecurityMeasure() {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -59,7 +54,6 @@ function saveSecurityMeasure() {
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.securityMeasures.push({...props.securityMeasure}))
-    emptySecurityMeasure()
   }
 }
 
