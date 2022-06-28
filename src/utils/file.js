@@ -16,7 +16,7 @@ export function saveToJsonFile(json) {
     //FIXME review the code
     // maybe use : https://github.com/eligrey/FileSaver.js/
 
-    const fileName = json.hasOwnProperty('name') ? json.name : 'uropa-json'
+    const fileName = json?.name.length > 0 ? json.name : 'uropa-json'
     const today = (new Date()).toISOString().substring(0, 10)
     const data = JSON.stringify(json)
     const blob = new Blob([data], {type: 'text/plain'})
