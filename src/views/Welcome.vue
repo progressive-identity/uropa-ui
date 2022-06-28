@@ -3,7 +3,7 @@
     <div>
       <div class="max-w-2xl mx-auto space-y-5">
         <div class="flex justify-center">
-          <UButton type="primary" :icon="mdiClipboardEditOutline"
+          <UButton :icon="mdiClipboardEditOutline"
                    label="Start a new processing record" @click="resetProcessingRecord()"/>
         </div>
         <div v-if="state.isCookie" class="space-y-5">
@@ -11,7 +11,7 @@
             OR
           </div>
           <div class="flex justify-center">
-            <UButton type="primary" :icon="mdiClipboardEditOutline"
+            <UButton :icon="mdiClipboardEditOutline"
                      label="Continue your processing record" @click="startProcessingRecord()"/>
           </div>
         </div>
