@@ -2,7 +2,7 @@
   <UButton label="New data processor" v-on:click="createDataProcessor" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(dataProcessor, index) in dataProcessors" :key="index"
+      <li v-for="(dataProcessor, index) in processingRecord.recipients.dataProcessors" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -48,13 +48,6 @@ const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-const props = defineProps({
-  dataProcessors: {
-    type: Object,
-    required: true
-  }
-})
 
 function createDataProcessor() {
   state.dataProcessor = structuredClone(DataProcessorTemplate)

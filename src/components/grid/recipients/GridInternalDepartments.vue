@@ -2,7 +2,7 @@
   <UButton label="New internal department" v-on:click="createInternalDepartment" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(internalDepartment, index) in internalDepartments" :key="index"
+      <li v-for="(internalDepartment, index) in processingRecord.recipients.internalDepartments" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -48,13 +48,6 @@ const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({internalDepartment: InternalDepartmentTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-const props = defineProps({
-  internalDepartments: {
-    type: Object,
-    required: true
-  }
-})
 
 function createInternalDepartment() {
   state.internalDepartment = structuredClone(InternalDepartmentTemplate)

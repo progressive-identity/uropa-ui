@@ -2,7 +2,7 @@
   <UButton label="New external organization" v-on:click="createExternalOrganization" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(externalOrganization, index) in externalOrganizations" :key="index"
+      <li v-for="(externalOrganization, index) in processingRecord.recipients.externalOrganizations" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -58,13 +58,6 @@ const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({externalOrganization: externalOrganizationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-const props = defineProps({
-  externalOrganizations: {
-    type: Object,
-    required: true
-  }
-})
 
 function createExternalOrganization() {
   state.externalOrganization = externalOrganizationTemplate
