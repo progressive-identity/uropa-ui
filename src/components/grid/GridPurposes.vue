@@ -9,7 +9,10 @@
         </div>
         <div class="relative px-4 py-5">
           <div class="flex items-center">
-            <h3>{{ purpose.name }}</h3>
+            <h3>
+              <UIcon size="24" :path="mdiTarget"/>
+              {{ purpose.name }}
+            </h3>
           </div>
           <GridButtons @edit="editPurpose(purpose)" @delete="deletePurpose(index)"/>
         </div>
@@ -68,7 +71,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
-import {mdiPlusCircle, mdiText, mdiScaleBalance, mdiWeb} from '@mdi/js'
+import {mdiPlusCircle, mdiScaleBalance, mdiTarget, mdiText, mdiWeb} from '@mdi/js'
 import PurposeTemplate from '../../data/template/purposes/PurposeTemplate.json'
 import LegalBasisTemplate from '../../data/template/purposes/LegalBasisTemplate.json'
 

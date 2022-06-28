@@ -6,7 +6,10 @@
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
-            <h3>{{ dataProcessor.legalPerson.name }}</h3>
+            <h3>
+              <UIcon size="24" :path="mdiAccountWrench"/>
+              {{ dataProcessor.legalPerson.name }}
+            </h3>
           </div>
           <GridButtons @edit="editDataProcessor(dataProcessor)" @delete="deleteDataProcessor(index)"/>
         </div>
@@ -69,7 +72,13 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
-import {mdiPlusCircle, mdiFormatListBulletedSquare, mdiFaceManShimmer, mdiFaceWomanShimmer} from '@mdi/js'
+import {
+  mdiAccountWrench,
+  mdiFaceManShimmer,
+  mdiFaceWomanShimmer,
+  mdiFormatListBulletedSquare,
+  mdiPlusCircle
+} from '@mdi/js'
 import DataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'

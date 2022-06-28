@@ -7,7 +7,10 @@
             class="u-grid">
           <div class="relative px-4 py-5">
             <div class="flex items-center">
-              <h3>{{ dataLocation.dataSource.name }}</h3>
+              <h3>
+                <UIcon size="24" :path="mdiFileMarkerOutline"/>
+                {{ dataLocation.dataSource.name }}
+              </h3>
             </div>
             <GridButtons @edit="editDataLocation(dataLocation)" @delete="deleteDataLocation(index)"/>
           </div>
@@ -72,7 +75,7 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import {mdiArchive, mdiDatabase, mdiEarth, mdiLaptop, mdiPlusCircle} from '@mdi/js'
+import {mdiArchive, mdiFileMarkerOutline, mdiDatabase, mdiEarth, mdiLaptop, mdiPlusCircle} from '@mdi/js'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import DataSource from '@/components/form/data-categories/data-source/DataSource.vue'

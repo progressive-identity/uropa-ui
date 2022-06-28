@@ -6,7 +6,10 @@
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
-            <h3>{{ internalDepartment.name }}</h3>
+            <h3>
+              <UIcon size="24" :path="mdiAccountGroup"/>
+              {{ internalDepartment.name }}
+            </h3>
           </div>
           <GridButtons @edit="editInternalDepartment(internalDepartment)" @delete="deleteInternalDepartment(index)"/>
         </div>
@@ -44,7 +47,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
-import {mdiFormatListBulletedSquare, mdiPlusCircle} from '@mdi/js'
+import {mdiAccountGroup, mdiFormatListBulletedSquare, mdiPlusCircle} from '@mdi/js'
 import InternalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'

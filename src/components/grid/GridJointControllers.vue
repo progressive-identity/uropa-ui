@@ -6,7 +6,10 @@
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
-            <h3>{{ jointController.legalPerson.name }}</h3>
+            <h3>
+              <UIcon size="24" :path="mdiHandshake"/>
+              {{ jointController.legalPerson.name }}
+            </h3>
           </div>
           <GridButtons @edit="editJointController(jointController)" @delete="deleteJointController(index)"/>
         </div>
@@ -53,7 +56,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormJointController from '@/components/form/data-controllers/FormJointController.vue'
-import {mdiPlusCircle, mdiFaceManShimmer, mdiFaceWomanShimmer} from '@mdi/js'
+import {mdiHandshake, mdiFaceManShimmer, mdiFaceWomanShimmer, mdiPlusCircle} from '@mdi/js'
 import JointControllerTemplate from '../../data/template/JointControllerTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'

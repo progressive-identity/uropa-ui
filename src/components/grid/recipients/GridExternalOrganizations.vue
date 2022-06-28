@@ -6,7 +6,10 @@
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
-            <h3>{{ externalOrganization.legalPerson.name }}</h3>
+            <h3>
+              <UIcon size="24" :path="mdiAccountSwitch"/>
+              {{ externalOrganization.legalPerson.name }}
+            </h3>
           </div>
           <GridButtons @edit="editExternalOrganization(externalOrganization)"
                        @delete="deleteExternalOrganization(index)"/>
@@ -82,7 +85,14 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
-import {mdiPlusCircle, mdiFormatListBulletedSquare, mdiDomain, mdiFaceManShimmer, mdiFaceWomanShimmer} from '@mdi/js'
+import {
+  mdiAccountSwitch,
+  mdiDomain,
+  mdiFaceManShimmer,
+  mdiFaceWomanShimmer,
+  mdiFormatListBulletedSquare,
+  mdiPlusCircle
+} from '@mdi/js'
 import externalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
