@@ -8,6 +8,8 @@
       </div>
       <div class="pt-3">
         <USwitch v-model="purpose.isMain" label="main"/>
+        <p v-if="purpose.isMain && storeData.getOtherMainPurpose(purpose)" class="mt-1 mb-1 text-sm text-red-600">You can only have
+          one main purpose, {{ storeData.getOtherMainPurpose(purpose).name }} won't be main anymore </p>
         <UInput v-model="purpose.name" label="Name"/>
         <UInput v-model="purpose.description" label="Description" size="xl"/>
         <div>
@@ -53,6 +55,15 @@ function savePurpose() {
       purpose: false
     }
   })
+
+  // Only one purpose can be main
+  if (props.purpose.isMain) {
+    const mainPurpose = storeData.getOtherMainPurpose(props.purpose)
+    if (mainPurpose) {
+      mainPurpose.isMain = false
+    }
+  }
+
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.purposes.push({...props.purpose}))

@@ -18,6 +18,9 @@ export const useStoreData = defineStore('data', {
             return (dataLocation) => state.processingRecord.purposes.flatMap(purpose => purpose?.dataCategories.flatMap(dataCategory => dataCategory?.dataTypes)).filter(dataType => {
                 return dataType?.dataLocations.find(e => e?.dataSource.name === dataLocation?.dataSource.name) !== undefined
             })
+        },
+        getOtherMainPurpose:(state) => {
+            return (purpose) => state.processingRecord?.purposes.find(e => e.isMain && purpose.name !== e.name)
         }
     }
 })
