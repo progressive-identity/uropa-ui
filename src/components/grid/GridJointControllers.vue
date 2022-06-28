@@ -4,23 +4,37 @@
     <ul role="list" class="u-grid">
       <li v-for="(jointController, index) in processingRecord.jointControllers" :key="index"
           class="u-grid">
-          <div class="relative px-4 py-5">
-            <div class="flex items-center">
-              <h3>{{ jointController.legalPerson.name }}</h3>
-            </div>
-            <GridButtons @edit="editJointController(jointController)" @delete="deleteJointController(index)"/>
+        <div class="relative px-4 py-5">
+          <div class="flex items-center">
+            <h3>{{ jointController.legalPerson.name }}</h3>
           </div>
+          <GridButtons @edit="editJointController(jointController)" @delete="deleteJointController(index)"/>
+        </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-          <dl v-if="jointController.legalPerson.dpo.personalInformation.firstName" class="sm:divide-y sm:divide-gray-200">
+          <dl v-if="jointController.legalPerson.dpo.personalInformation.firstName"
+              class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">DPO</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ jointController.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalPerson.dpo.personalInformation.firstName }}</dd>
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiFaceManShimmer"/>
+                DPO
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
+                  jointController.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalPerson.dpo.personalInformation.firstName
+                }}
+              </dd>
             </div>
           </dl>
-          <dl v-if="jointController.legalPerson.ceo.personalInformation.firstName" class="sm:divide-y sm:divide-gray-200">
+          <dl v-if="jointController.legalPerson.ceo.personalInformation.firstName"
+              class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">CEO</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ jointController.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalPerson.ceo.personalInformation.firstName }}</dd>
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiFaceWomanShimmer"/>
+                CEO
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
+                  jointController.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalPerson.ceo.personalInformation.firstName
+                }}
+              </dd>
             </div>
           </dl>
         </div>
@@ -39,9 +53,10 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormJointController from '@/components/form/data-controllers/FormJointController.vue'
-import {mdiDelete, mdiPencil, mdiPlusCircle} from '@mdi/js'
+import {mdiPlusCircle, mdiFaceManShimmer, mdiFaceWomanShimmer} from '@mdi/js'
 import JointControllerTemplate from '../../data/template/JointControllerTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
