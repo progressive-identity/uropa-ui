@@ -4,6 +4,7 @@
       <UButton type="secondary" v-on:click="previous" v-if="current > 0" label="Previous"/>
       <UButton type="primary" v-on:click="next" v-if="current < stepsProcessingRecord.length-1" label="Next"/>
       <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
+      <SaveButton/>
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import {isFormValid} from '@/utils/validation.js'
+import SaveButton from '@/components/stepper/SaveButton.vue'
 
 const store = useStore()
 const storeData = useStoreData()

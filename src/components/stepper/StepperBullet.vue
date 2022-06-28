@@ -5,6 +5,7 @@
       <UButton type="secondary" v-on:click="emit('update:modelValue', modelValue-1)" v-if="modelValue > 0"
                label="Previous"/>
       <UButton type="primary" v-on:click="next" label="Next"/>
+      <SaveButton/>
     </div>
   </div>
   <nav aria-label="Progress" class="flex items-center justify-center pt-5">
@@ -43,6 +44,7 @@ import {useStore} from '@/store/stepper.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import {isFormValid} from '@/utils/validation.js'
+import SaveButton from '@/components/stepper/SaveButton.vue'
 
 const props = defineProps({
       steps: {
