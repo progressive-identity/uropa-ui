@@ -11,10 +11,9 @@ export function validate(state, props, value) {
             writeError(state, ERROR_MESSAGES.EMPTY)
         }
     }
-
     if (state.valid && props.type === 'email') {
-        if (!isEMailValid(state, value)) {
-            writeError(state, ERROR_MESSAGES.EMPTY)
+        if (!isEMailValid(value)) {
+            writeError(state, ERROR_MESSAGES.EMAIL)
         }
     }
 }
