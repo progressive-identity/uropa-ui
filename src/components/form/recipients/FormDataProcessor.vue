@@ -6,7 +6,7 @@
         processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">
-      <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"
+      <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed *"
                     :list="storeData.getUniqueDataCategories"/>
       <FormLegalPerson v-model="dataProcessor.legalPerson"/>
       <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" placeholder="The path of the binding agreement with processor" size="xl"/>

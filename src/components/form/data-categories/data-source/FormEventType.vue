@@ -6,7 +6,7 @@
         example, it can be an event triggering the beginning of the validity of the legal basis, or the end of a data
         retention period.</p>
     </div>
-    <UInput v-model="eventType.name" label="Name" placeholder="ex: user logs in"/>
+    <UInput v-model="eventType.name" label="Name" placeholder="ex: user logs in" :required="true"/>
     <UInput v-model="eventType.description" label="Description" size="xl" placeholder="ex : user revoked its consent"/>
     <USwitch v-model="state.displayCountdown" label="Triggered by a countdown" @click="resetCountdown()"/>
     <div v-if="state.displayCountdown">

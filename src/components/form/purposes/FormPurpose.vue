@@ -14,7 +14,7 @@
           <p v-if="purpose.isMain && storeData.getOtherMainPurpose(purpose)" class="mt-1 mb-1 text-sm text-red-600">You
             can only have
             one main purpose, {{ storeData.getOtherMainPurpose(purpose).name }} won't be main anymore </p>
-          <UInput v-model="purpose.name" label="Name"/>
+          <UInput v-model="purpose.name" label="Name" :required="true"/>
           <UInput v-model="purpose.description" label="Description" size="xl"/>
         </div>
       </div>

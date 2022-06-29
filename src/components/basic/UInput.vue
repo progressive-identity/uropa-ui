@@ -1,7 +1,7 @@
 <template>
   <div class="block py-2">
     <label for="name" class="u-label">{{ label }}
-      <span v-if="required"> *</span>
+      <span v-if="required && label.length > 0"> *</span>
     </label>
     <input :type="type" :value="modelValue"
            @change="$emit('update:modelValue', $event.target.value); validate(state, props, $event.target.value);"

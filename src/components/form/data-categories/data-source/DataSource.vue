@@ -39,6 +39,9 @@ const props = defineProps({
   }
 })
 
+// TODO check if every dataType has a dataLocation before allowing next
+
+
 function saveDataLocation() {
   storeDisplay.$reset()
   // We get all the data types in the store

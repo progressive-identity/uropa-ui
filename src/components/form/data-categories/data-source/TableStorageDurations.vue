@@ -13,9 +13,9 @@
             <thead class="bg-gray-50">
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
-              <th scope="col" class="py-3.5 pl-4 pr-3">Storage type</th>
-              <th scope="col" class="px-3 py-3.5">Start event</th>
-              <th scope="col" class="px-3 py-3.5">Stop event</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3">Storage state</th>
+              <th scope="col" class="px-3 py-3.5">Start event *</th>
+              <th scope="col" class="px-3 py-3.5">Stop event *</th>
               <th scope="col" class="px-3 py-3.5">Interrupt event</th>
             </tr>
             </thead>

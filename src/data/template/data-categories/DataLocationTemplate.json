@@ -1,8 +1,8 @@
 {
   "description": "",
-  "dataSupport": "",
+  "dataSupport": "digital",
   "path": "",
-  "storageState": "",
+  "storageState": "production",
   "dataSource": {},
   "storageDurations": []
 }

@@ -8,10 +8,10 @@
     <div class="py-2">
       <USelect v-model="dataSource.country" :list="countries" label="Country" size="s"/>
       <div class="flex justify-start space-x-5">
+        <UInput v-model="dataSource.name" label="Name"
+                placeholder="ex : name of the database, server, etc." size="xl" :required="true"/>
         <UInput v-model="dataSource.storageType" label="Storage type"
                 placeholder="ex: paper binder, postgresql database, etc." size="xl"/>
-        <UInput v-model="dataSource.name" label="Name"
-                placeholder="ex : name of the database, server, etc." size="xl"/>
       </div>
     </div>
   </div>

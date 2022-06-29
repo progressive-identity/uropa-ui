@@ -12,11 +12,11 @@
             <thead class="bg-gray-50">
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
-              <th scope="col" class="px-3 py-3.5">Type</th>
+              <th scope="col" class="px-3 py-3.5">Type *</th>
               <th scope="col" class="px-3 py-3.5">Description</th>
-              <th scope="col" class="px-3 py-3.5">Source</th>
-              <th scope="col" class="px-3 py-3.5">Start validity</th>
-              <th scope="col" class="px-3 py-3.5">Stop validity</th>
+              <th scope="col" class="px-3 py-3.5">Source *</th>
+              <th scope="col" class="px-3 py-3.5">Start validity *</th>
+              <th scope="col" class="px-3 py-3.5">Stop validity *</th>
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
@@ -37,7 +37,7 @@
                 <UInput v-model="legalBasis.description" placeholder="ex: consent of the employee"/>
               </td>
               <td>
-                <UInput v-model="legalBasis.source" placeholder="ex: lease contract"/>
+                <UInput v-model="legalBasis.source" placeholder="ex: lease contract" :required="true"/>
               </td>
               <td>
                 <ButtonEventType :event-type="legalBasis.startValidity"

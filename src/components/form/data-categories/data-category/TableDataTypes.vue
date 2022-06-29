@@ -11,7 +11,7 @@
             <thead class="bg-gray-50">
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
-              <th scope="col" class="py-3.5 pl-4 pr-3">Name</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3">Name *</th>
               <th scope="col" class="px-3 py-3.5">Is it optional ?</th>
               <th scope="col" class="px-3 py-3.5">Collection mean</th>
             </tr>
@@ -28,13 +28,13 @@
                 </div>
               </td>
               <td>
-                <UInput v-model="dataType.name" placeholder="ex: first name, email, IP address, etc."/>
+                <UInput v-model="dataType.name" placeholder="ex: first name, email, IP address, etc." :required="true"/>
               </td>
               <td>
                 <USwitch v-model="dataType.isOptional" />
               </td>
               <td>
-                <USelectEnums v-model="dataType.collectionMean"  :list="collectionMeans"/>
+                <USelectEnums v-model="dataType.collectionMean"  :list="collectionMeans" :required="true"/>
               </td>
             </tr>
             </tbody>

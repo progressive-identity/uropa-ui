@@ -17,9 +17,10 @@
           <USwitch v-model="dataCategory.isSensitive" label="sensitive"/>
         </div>
         <div class="py-2">
-          <UInput v-model="dataCategory.name" label="Name" placeholder="ex : identity, connection data, etc."/>
+          <UInput v-model="dataCategory.name" label="Name" placeholder="ex : identity, connection data, etc."
+                  :required="true"/>
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
-                        :list="storeData.processingRecord.purposes"/>
+                        :list="storeData.processingRecord.purposes" :required="true"/>
         </div>
       </div>
       <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"

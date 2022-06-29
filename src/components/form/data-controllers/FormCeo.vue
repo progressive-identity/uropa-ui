@@ -5,7 +5,8 @@
       <p class="form-description">The highest-ranking person of the legal person.</p>
     </div>
     <div>
-      <UInput v-model="ceo.professionalTitle" label="Professional title" placeholder="ex: CEO, President, Director General, etc."/>
+      <UInput v-model="ceo.professionalTitle" label="Professional title"
+              placeholder="ex: CEO, President, Director General, etc." :required="true"/>
       <FormPersonalInformation :personal-information="ceo.personalInformation"/>
     </div>
   </div>

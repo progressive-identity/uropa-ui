@@ -1,5 +1,5 @@
 <template>
-  <UButton label="New joint controller" v-on:click="createJointController" :icon="mdiPlusCircle"/>
+  <UButton label="New joint controller (optional)" v-on:click="createJointController" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
       <li v-for="(jointController, index) in processingRecord.jointControllers" :key="index"
