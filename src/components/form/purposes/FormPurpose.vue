@@ -1,25 +1,30 @@
 <template>
   <div class="space-y-8" v-if="formsDisplayed.purpose">
-    <div class="pt-8">
-      <div>
-        <h3>Purpose</h3>
-        <p class="form-description">The purpose of the processing describes what the reason why the controller
-          processes the personal data.</p>
-      </div>
-      <div class="pt-3">
-        <USwitch v-model="purpose.isMain" label="main"/>
-        <p v-if="purpose.isMain && storeData.getOtherMainPurpose(purpose)" class="mt-1 mb-1 text-sm text-red-600">You can only have
-          one main purpose, {{ storeData.getOtherMainPurpose(purpose).name }} won't be main anymore </p>
-        <UInput v-model="purpose.name" label="Name"/>
-        <UInput v-model="purpose.description" label="Description" size="xl"/>
+    <div class="space-y-5">
+      <UVerticalBar label="Purpose" :rotate="formsDisplayed.subPurpose"
+                    @click="toggleDisplay(!formsDisplayed.subPurpose, formsDisplayed.legalBasis)"/>
+      <div class="px-5" v-if="formsDisplayed.subPurpose">
         <div>
-          <FormLegalBasis :legal-basis="purpose.legalBasis"/>
+          <h3>Purpose</h3>
+          <p class="form-description">The purpose of the processing describes what the reason why the controller
+            processes the personal data.</p>
         </div>
-        <div class="space-x-2 pt-3">
-          <UButton label="Back" v-on:click="closePurpose" type="secondary"/>
-          <UButton label="Save" v-on:click="savePurpose"/>
+        <div class="pt-3">
+          <USwitch v-model="purpose.isMain" label="main"/>
+          <p v-if="purpose.isMain && storeData.getOtherMainPurpose(purpose)" class="mt-1 mb-1 text-sm text-red-600">You
+            can only have
+            one main purpose, {{ storeData.getOtherMainPurpose(purpose).name }} won't be main anymore </p>
+          <UInput v-model="purpose.name" label="Name"/>
+          <UInput v-model="purpose.description" label="Description" size="xl"/>
         </div>
       </div>
+      <UVerticalBar label="Legal bases" :rotate="formsDisplayed.legalBasis"
+                    @click="toggleDisplay(formsDisplayed.subPurpose, !formsDisplayed.legalBasis)"/>
+      <TableLegalBases class="px-5" :purpose="purpose"/>
+    </div>
+    <div class="space-x-2 pt-3">
+      <UButton label="Back" v-on:click="closePurpose" type="secondary"/>
+      <UButton label="Save" v-on:click="savePurpose"/>
     </div>
   </div>
 </template>
@@ -31,7 +36,8 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import FormLegalBasis from '@/components/form/purposes/FormLegalBasis.vue'
+import UVerticalBar from '@/components/basic/UVerticalBar.vue'
+import TableLegalBases from '@/components/form/purposes/TableLegalBases.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -46,6 +52,12 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false
+  }
+})
+
+storeDisplay.$patch({
+  formsDisplayed: {
+    subPurpose: true
   }
 })
 
@@ -70,10 +82,16 @@ function savePurpose() {
   }
 }
 
+// TODO could probably be centralized
 function closePurpose() {
+  storeDisplay.$reset()
+}
+
+function toggleDisplay(purpose, legalBasis) {
   storeDisplay.$patch({
     formsDisplayed: {
-      purpose: false
+      subPurpose: purpose,
+      legalBasis
     }
   })
 }

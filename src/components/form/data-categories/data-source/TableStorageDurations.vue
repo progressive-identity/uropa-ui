@@ -65,7 +65,7 @@ import FormEventType from '@/components/form/data-categories/data-source/FormEve
 import ButtonEventType from '@/components/form/data-categories/data-source/ButtonEventType.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import {storageTypes} from '/src/data/enums.js'
-import EventTypeTemplate from '@/data/template/data-categories/EventTypeTemplate.json'
+import EventTypeTemplate from '@/data/template/EventTypeTemplate.json'
 import StorageDurationTemplate from '@/data/template/data-categories/StorageDurationTemplate.json'
 
 const storeData = useStoreData()
