@@ -12,7 +12,7 @@
             <thead class="bg-gray-50">
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
-              <th scope="col" class="py-3.5 pl-4 pr-3">Type</th>
+              <th scope="col" class="px-3 py-3.5">Type</th>
               <th scope="col" class="px-3 py-3.5">Description</th>
               <th scope="col" class="px-3 py-3.5">Source</th>
               <th scope="col" class="px-3 py-3.5">Start validity</th>
@@ -31,7 +31,7 @@
                 </div>
               </td>
               <td>
-                <USelectEnums v-model="legalBasis.type" :list="legalBasisTypes"/>
+                <USelectEnums class="pr-4" v-model="legalBasis.type" :list="legalBasisTypes"/>
               </td>
               <td>
                 <UInput v-model="legalBasis.description"/>
@@ -92,12 +92,11 @@ if (props.purpose?.legalBases?.length === 0) {
 }
 
 function createLegalBasis() {
-  //TODO create and use eventTemplate
   props.purpose.legalBases.push({...LegalBasisTemplate})
 }
 
 function deleteLegalBasis(index) {
-  props.dataLocation.legalBases.splice(index, 1)
+  props.purpose.legalBases.splice(index, 1)
 }
 
 function editEventType(eventType) {
