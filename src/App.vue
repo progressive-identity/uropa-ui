@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import UropaNavBar from '@/components/UropaNavBar'
-import UropaFooter from '@/components/UropaFooter'
+import UropaNavBar from '@/components/section/UropaNavBar.vue'
+import UropaFooter from '@/components/section/UropaFooter.vue'
 import Home from '@/views/Home'
 
 export default {

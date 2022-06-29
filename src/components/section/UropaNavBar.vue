@@ -41,15 +41,6 @@
           class="max-h-screen-menu overflow-y-auto lg:overflow-visible lg:flex lg:items-stretch lg:justify-end lg:ml-auto"
       >
         <nav-bar-item
-            is-desktop-icon-only
-        >
-          <nav-bar-item-label
-              :icon="mdiThemeLightDark"
-              is-desktop-icon-only
-              label="Light/Dark"
-          />
-        </nav-bar-item>
-        <nav-bar-item
             :href="gitHubUrl"
             is-desktop-icon-only
             target="_blank"
@@ -70,8 +61,8 @@ import {computed, ref} from 'vue'
 import {useStore} from '@/store/stepper.js'
 import {storeToRefs} from 'pinia/dist/pinia.esm-browser.js'
 import {mdiClose, mdiDotsVertical, mdiGithub, mdiThemeLightDark} from '@mdi/js'
-import NavBarItem from '@/components/NavBarItem.vue'
-import NavBarItemLabel from '@/components/NavBarItemLabel.vue'
+import NavBarItem from '@/components/section/NavBarItem.vue'
+import NavBarItemLabel from '@/components/section/NavBarItemLabel.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
 const isMenuNavBarActive = ref(false)
@@ -84,7 +75,7 @@ const menuNavBarToggle = () => {
 
 const store = useStore()
 const {current} = storeToRefs(store)
-const gitHubUrl = process.env.VUE_APP_GITHUB_URL
+const gitHubUrl = process.env.VUE_APP_URL_GITHUB_UROPAUI
 
 function toHome() {
   store.$patch({

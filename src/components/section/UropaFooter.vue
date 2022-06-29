@@ -7,7 +7,7 @@
         </a>
       </div>
       <div class="flex justify-center space-x-6">
-        <a v-for="link in externalLinks" :key="link.name" :href="link.href" class="hover:text-gray-500">
+        <a v-for="link in externalLinks" :key="link.name" target="_blank" :href="link.href" class="hover:text-gray-500">
           <UIcon
               :path="link.icon" :size="24"/>
         </a>
