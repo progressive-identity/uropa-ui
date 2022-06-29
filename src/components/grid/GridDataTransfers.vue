@@ -24,8 +24,6 @@
                 {{ dataTransfer.country.name }}
               </dd>
             </div>
-          </dl>
-          <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiGavel"/>
@@ -35,22 +33,20 @@
                 {{ dataTransfer.dataTransferLegalBasis.legalBasisType }}
               </dd>
             </div>
-          </dl>
-          <div v-if="dataTransfer.dataTransferLegalBasis.recipient.dataProcessor">
-            <dl class="sm:divide-y sm:divide-gray-200">
-              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
-                <dt class="flex items-center text-sm font-medium text-gray-500">
-                  <UIcon :path="mdiAccountWrench"/>
-                  Data processor
-                </dt>
-                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataTransfer.dataTransferLegalBasis.recipient.dataProcessor.legalPerson.name }}
-                </dd>
-              </div>
-            </dl>
-          </div>
-          <div v-if="dataTransfer.dataTransferLegalBasis.recipient.externalOrganization">
-            <dl class="sm:divide-y sm:divide-gray-200">
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipient.dataProcessor">
+              <dl class="sm:divide-y sm:divide-gray-200">
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                  <dt class="flex items-center text-sm font-medium text-gray-500">
+                    <UIcon :path="mdiAccountWrench"/>
+                    Data processor
+                  </dt>
+                  <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {{ dataTransfer.dataTransferLegalBasis.recipient.dataProcessor.legalPerson.name }}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipient.externalOrganization">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiAccountSwitch"/>
@@ -60,10 +56,8 @@
                   {{ dataTransfer.dataTransferLegalBasis.recipient.externalOrganization.legalPerson.name }}
                 </dd>
               </div>
-            </dl>
-          </div>
-          <div v-if="dataTransfer.dataTransferLegalBasis.recipient.internalDepartment">
-            <dl class="sm:divide-y sm:divide-gray-200">
+            </div>
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipient.internalDepartment">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiAccountGroup"/>
@@ -73,8 +67,8 @@
                   {{ dataTransfer.dataTransferLegalBasis.recipient.internalDepartment.name }}
                 </dd>
               </div>
-            </dl>
-          </div>
+            </div>
+          </dl>
         </div>
       </li>
     </ul>
@@ -91,7 +85,15 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormDataTransfer from '@/components/form/data-transfers/FormDataTransfer.vue'
-import {mdiAccountGroup, mdiAccountSwitch, mdiAccountWrench, mdiEarth, mdiPlusCircle, mdiSwapHorizontal, mdiGavel} from '@mdi/js'
+import {
+  mdiAccountGroup,
+  mdiAccountSwitch,
+  mdiAccountWrench,
+  mdiEarth,
+  mdiGavel,
+  mdiPlusCircle,
+  mdiSwapHorizontal
+} from '@mdi/js'
 import DataTransferTemplate from '../../data/template/DataTransferTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'

@@ -25,8 +25,6 @@
                   {{ dataLocation.dataSource.country.name }}
                 </dd>
               </div>
-            </dl>
-            <dl class="sm:divide-y sm:divide-gray-200">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiLaptop"/>
@@ -36,8 +34,6 @@
                   {{ dataLocation.dataSupport }}
                 </dd>
               </div>
-            </dl>
-            <dl class="sm:divide-y sm:divide-gray-200">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiArchive"/>
@@ -47,8 +43,6 @@
                   {{ dataLocation.storageState }}
                 </dd>
               </div>
-            </dl>
-            <dl class="sm:divide-y sm:divide-gray-200">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiDatabase"/>
@@ -75,7 +69,7 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import {mdiArchive, mdiFileMarkerOutline, mdiDatabase, mdiEarth, mdiLaptop, mdiPlusCircle} from '@mdi/js'
+import {mdiArchive, mdiDatabase, mdiEarth, mdiFileMarkerOutline, mdiLaptop, mdiPlusCircle} from '@mdi/js'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import DataSource from '@/components/form/data-categories/data-source/DataSource.vue'

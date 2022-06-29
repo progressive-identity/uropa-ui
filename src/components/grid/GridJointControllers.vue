@@ -14,9 +14,9 @@
           <GridButtons @edit="editJointController(jointController)" @delete="deleteJointController(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-          <dl v-if="jointController.legalPerson.dpo.personalInformation.firstName"
-              class="sm:divide-y sm:divide-gray-200">
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dl class="sm:divide-y sm:divide-gray-200">
+            <div v-if="jointController.legalPerson.dpo.personalInformation.firstName"
+                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
@@ -26,10 +26,8 @@
                 }}
               </dd>
             </div>
-          </dl>
-          <dl v-if="jointController.legalPerson.ceo.personalInformation.firstName"
-              class="sm:divide-y sm:divide-gray-200">
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div v-if="jointController.legalPerson.ceo.personalInformation.firstName"
+                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
@@ -56,7 +54,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormJointController from '@/components/form/data-controllers/FormJointController.vue'
-import {mdiHandshake, mdiFaceManShimmer, mdiFaceWomanShimmer, mdiPlusCircle} from '@mdi/js'
+import {mdiFaceManShimmer, mdiFaceWomanShimmer, mdiHandshake, mdiPlusCircle} from '@mdi/js'
 import JointControllerTemplate from '../../data/template/JointControllerTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'

@@ -14,9 +14,9 @@
           <GridButtons @edit="editDataProcessor(dataProcessor)" @delete="deleteDataProcessor(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-          <dl v-if="dataProcessor.legalPerson.dpo.personalInformation.firstName"
-              class="sm:divide-y sm:divide-gray-200">
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dl class="sm:divide-y sm:divide-gray-200">
+            <div v-if="dataProcessor.legalPerson.dpo.personalInformation.firstName"
+                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
@@ -26,10 +26,8 @@
                 }}
               </dd>
             </div>
-          </dl>
-          <dl v-if="dataProcessor.legalPerson.ceo.personalInformation.firstName"
-              class="sm:divide-y sm:divide-gray-200">
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div v-if="dataProcessor.legalPerson.ceo.personalInformation.firstName"
+                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
@@ -39,9 +37,7 @@
                 }}
               </dd>
             </div>
-          </dl>
-          <dl class="sm:divide-y sm:divide-gray-200">
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFormatListBulletedSquare"/>
                 Disclosed

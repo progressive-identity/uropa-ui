@@ -27,7 +27,7 @@
                   <li v-for="purpose in storeData.getPurposesByDataCategory(dataCategory)"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">{{ purpose.name }}</span>
+                      <span class="flex-1 truncate">- {{ purpose.name }}</span>
                     </div>
                   </li>
                 </ul>
@@ -41,7 +41,7 @@
                 <ul role="list">
                   <li v-for="dataType in dataCategory.dataTypes" class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">{{ dataType.name }}</span>
+                      <span class="flex-1 truncate">- {{ dataType.name }}</span>
                     </div>
                   </li>
                 </ul>
@@ -56,7 +56,7 @@
                   <li v-for="dataSubjectType in dataCategory?.dataSubjectTypes"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">{{ dataSubjectType.name }}</span>
+                      <span class="flex-1 truncate">- {{ dataSubjectType.name }}</span>
                     </div>
                   </li>
                 </ul>
