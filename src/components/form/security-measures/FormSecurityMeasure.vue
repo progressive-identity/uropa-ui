@@ -7,7 +7,7 @@
     </div>
     <div class="pt-3">
       <div class="flex justify-start space-x-5">
-        <UInput v-model="securityMeasure.name" label="Name"/>
+        <UInput v-model="securityMeasure.name" label="Name" placeholder="ex : encryption of data"/>
         <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
                       class="w-64"/>
       </div>

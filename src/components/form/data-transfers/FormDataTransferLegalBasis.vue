@@ -9,8 +9,8 @@
   </div>
   <USelectEnums :list="dataTransferLegalBasisTypes" v-model="dataTransferLegalBasis.legalBasisType"
                 label="Type" @update:modelValue="emitChange"/>
-    <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"/>
-  <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl"/>
+  <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl" placeholder="ex: standard contractual clauses"/>
+  <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url" placeholder="ex: URL, internal path to the agreement, BCR, etc. "/>
   <div class="flex justify-start space-x-5">
     <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
              :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>

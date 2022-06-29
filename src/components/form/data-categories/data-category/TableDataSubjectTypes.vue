@@ -12,7 +12,7 @@
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
               <th scope="col" class="py-3.5 pl-4 pr-3">Name</th>
-              <th scope="col" class="px-3 py-3.5">Child</th>
+              <th scope="col" class="px-3 py-3.5">Is a child ?</th>
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
@@ -27,7 +27,7 @@
                 </div>
               </td>
               <td>
-                <UInput v-model="dataCategory.dataSubjectTypes[index].name" />
+                <UInput v-model="dataSubjectType.name" placeholder="ex: employees, prospects etc." />
               </td>
               <td>
                 <USwitch v-model="dataSubjectType.isChild" />

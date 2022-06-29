@@ -3,7 +3,7 @@
     <FormLegalPerson v-model="jointController.legalPerson" title="Joint controller" description="A joint controller is an entity that process the personal data
           and jointly determines the purposes and the means of the processing, according to article 26 GDPR."/>
     <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path"
-            placeholder="The path to the contract or binding agreement with the joint controller"
+            placeholder="The path to the binding agreement "
     />
     <div class="space-x-2 pt-3">
       <UButton label="Back" v-on:click="closeJointController" type="secondary"/>

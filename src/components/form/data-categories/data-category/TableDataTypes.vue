@@ -2,8 +2,7 @@
   <div class="space-y-6" v-if="formsDisplayed.dataType">
     <div>
       <h3>Data types</h3>
-      <p class="form-description">A data type is the most precise categorization of a data (example :
-        email).</p>
+      <p class="form-description">A data type is the most precise categorization of a data (ex: email).</p>
     </div>
     <div class="flex flex-col">
       <div class="inline-block min-w-full py-2 align-middle">
@@ -13,8 +12,8 @@
             <tr class="text-left text-sm font-semibold text-gray-900">
               <th scope="col"/>
               <th scope="col" class="py-3.5 pl-4 pr-3">Name</th>
+              <th scope="col" class="px-3 py-3.5">Is it optional ?</th>
               <th scope="col" class="px-3 py-3.5">Collection mean</th>
-              <th scope="col" class="px-3 py-3.5">Optional</th>
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
@@ -29,13 +28,13 @@
                 </div>
               </td>
               <td>
-                <UInput v-model="dataCategory.dataTypes[index].name" />
-              </td>
-              <td>
-                <USelectEnums v-model="dataType.collectionMean"  :list="collectionMeans"/>
+                <UInput v-model="dataType.name" placeholder="ex: first name, email, IP address, etc."/>
               </td>
               <td>
                 <USwitch v-model="dataType.isOptional" />
+              </td>
+              <td>
+                <USelectEnums v-model="dataType.collectionMean"  :list="collectionMeans"/>
               </td>
             </tr>
             </tbody>

@@ -34,10 +34,10 @@
                 <USelectEnums class="pr-4" v-model="legalBasis.type" :list="legalBasisTypes"/>
               </td>
               <td>
-                <UInput v-model="legalBasis.description"/>
+                <UInput v-model="legalBasis.description" placeholder="ex: consent of the employee"/>
               </td>
               <td>
-                <UInput v-model="legalBasis.source"/>
+                <UInput v-model="legalBasis.source" placeholder="ex: lease contract"/>
               </td>
               <td>
                 <ButtonEventType :event-type="legalBasis.startValidity"

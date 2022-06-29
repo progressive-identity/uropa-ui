@@ -6,9 +6,9 @@
         example, it can be an event triggering the beginning of the validity of the legal basis, or the end of a data
         retention period.</p>
     </div>
-    <UInput v-model="eventType.name" label="Name"/>
-    <UInput v-model="eventType.description" label="Description" size="xl"/>
-    <USwitch v-model="state.displayCountdown" label="Has countdown" @click="resetCountdown()"/>
+    <UInput v-model="eventType.name" label="Name" placeholder="ex: user logs in"/>
+    <UInput v-model="eventType.description" label="Description" size="xl" placeholder="ex : user revoked its consent"/>
+    <USwitch v-model="state.displayCountdown" label="Triggered by a countdown" @click="resetCountdown()"/>
     <div v-if="state.displayCountdown">
       <USelectEnums v-model="eventType.countdown.timeUnit" label="Time unit" :list="timeUnit"/>
       <UInput v-model="eventType.countdown.duration" label="Duration" size="s" type="number"/>

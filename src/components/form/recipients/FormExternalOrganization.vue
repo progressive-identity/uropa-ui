@@ -6,7 +6,7 @@
         data processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">
-      <UInput v-model="externalOrganization.organizationStatus" label="Organization status"/>
+      <UInput v-model="externalOrganization.organizationStatus" label="Organization status" placeholder="ex : affiliate, holding, head quarter, etc."/>
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
       <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
                     :list="storeData.getUniqueDataCategories"/>

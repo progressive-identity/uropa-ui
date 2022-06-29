@@ -6,7 +6,7 @@
         processed. Useful to manage authorization at the level of the organization</p>
     </div>
     <div class="pt-3">
-      <UInput v-model="internalDepartment.name" label="Name"/>
+      <UInput v-model="internalDepartment.name" label="Name" placeholder="ex : marketing, HR, etc."/>
       <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
                     :list="storeData.getUniqueDataCategories"/>
     </div>

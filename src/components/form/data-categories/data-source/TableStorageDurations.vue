@@ -21,7 +21,7 @@
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
             <tr v-for="(storageDuration, index) in dataLocation.storageDurations" :key="storageDuration"
-                class="text-sm font-medium text-gray-900 space-x-2">
+                class="text-sm text-gray-900 space-x-2">
               <td class="pl-2">
                 <div>
                   <UButton v-if="index === dataLocation?.storageDurations.length-1" :icon="mdiPlusCircle"
@@ -31,7 +31,7 @@
                 </div>
               </td>
               <td>
-                <USelectEnums v-model="storageDuration.storageType" :list="storageTypes"/>
+                <USelectEnums v-model="storageDuration.storageState" :list="storageStates"/>
               </td>
               <td>
                 <ButtonEventType :event-type="storageDuration.startEvent"
@@ -64,7 +64,7 @@ import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import FormEventType from '@/components/form/data-categories/data-source/FormEventType.vue'
 import ButtonEventType from '@/components/form/data-categories/data-source/ButtonEventType.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
-import {storageTypes} from '/src/data/enums.js'
+import {storageStates} from '/src/data/enums.js'
 import EventTypeTemplate from '@/data/template/EventTypeTemplate.json'
 import StorageDurationTemplate from '@/data/template/data-categories/StorageDurationTemplate.json'
 

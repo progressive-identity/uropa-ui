@@ -1,61 +1,53 @@
 const collectionMeans = [{
-    name: 'computed',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+    name: 'inferred',
+    description: 'Personal data that is derived data generated from existing data'
 }, {
     name: 'generated',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    description: 'Personal data that is generated without relation from existing data'
 }, {
-    name: 'submitted',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+    name: 'collected',
+    description: 'Personal data that has been collected'
 }]
 
 const securityMeasureTypes = [{
-    name: 'organizational',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+    name: 'organizational'
 }, {
-    name: 'physical',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    name: 'physical'
 }, {
-    name: 'technical',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+    name: 'technical'
 }]
 
 const dataSupports = [{
-    name: 'digital',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+    name: 'digital'
 }, {
-    name: 'physical',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    name: 'physical'
 }]
 const storageStates = [{
-    name: 'archives',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+    name: 'production',
+    description: 'The data is kept in the active database'
 }, {
     name: 'legal',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    description: 'The data is kept for legal reasons in a restricted database'
 }, {
-    name: 'production',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+    name: 'data locking',
+    description: 'The data is locked for legal reasons (legal obligation only for Spain)'
+}, {
+    name: 'archives',
+    description: 'The data is archived with no time limitation (only for archival purposes in the public interest)'
 }]
 
 const legalBasisTypes = [{
-    name: 'consent',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+    name: 'consent'
 }, {
-    name: 'contract',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    name: 'contract'
 }, {
-    name: 'legal obligation',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+    name: 'legal obligation'
 }, {
-    name: 'vital interest',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
+    name: 'vital interest'
 }, {
-    name: 'public interest task',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    name: 'public interest task'
 }, {
-    name: 'legitimate interest',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+    name: 'legitimate interest'
 
 }]
 
@@ -70,20 +62,6 @@ const dataTransferLegalBasisTypes = [{
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
 }]
 
-const storageTypes = [{
-    name: 'production',
-    description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
-}, {
-    name: 'legal',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
-}, {
-    name: 'data locking',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
-}, {
-    name: 'definitive archive',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
-}, {}]
-
 const timeUnit = [{
     name: 'years'
 }, {
@@ -96,4 +74,12 @@ const timeUnit = [{
     name: 'hours'
 }, {}]
 
-export {collectionMeans, securityMeasureTypes, dataSupports, storageStates, dataTransferLegalBasisTypes, legalBasisTypes, storageTypes, timeUnit}
+export {
+    collectionMeans,
+    securityMeasureTypes,
+    dataSupports,
+    storageStates,
+    dataTransferLegalBasisTypes,
+    legalBasisTypes,
+    timeUnit
+}
