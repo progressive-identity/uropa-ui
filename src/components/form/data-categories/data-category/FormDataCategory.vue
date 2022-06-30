@@ -30,8 +30,8 @@
                     @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectType)"/>
       <TableDataSubjectTypes class="px-5" :data-category="dataCategory"/>
       <div class="space-x-2 pt-3">
-        <UButton label="Back" v-on:click="closeDataCategory" type="secondary"/>
-        <UButton label="Save" v-on:click="saveDataCategory"/>
+        <BackButton/>
+        <SaveButton :on-save="saveDataCategory"/>
       </div>
     </div>
   </div>
@@ -42,13 +42,14 @@ import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import TableDataTypes from '@/components/form/data-categories/data-category/TableDataTypes.vue'
 import TableDataSubjectTypes from '@/components/form/data-categories/data-category/TableDataSubjectTypes.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -76,7 +77,6 @@ storeDisplay.$patch({
 
 function saveDataCategory() {
   // TODO could probably be reworked
-  storeDisplay.$reset()
   // We iterate over the purposes in the store
   storeData.processingRecord.purposes.forEach(purposeStore => {
     // We check if the data category is present on the purpose in the store
@@ -91,10 +91,6 @@ function saveDataCategory() {
       purposeStore.dataCategories = purposeStore.dataCategories.filter(e => e.name !== props.dataCategory.name)
     }
   })
-}
-
-function closeDataCategory() {
-  storeDisplay.$reset()
 }
 
 function toggleDisplay(dataCategory, dataType, dataSubjectType) {

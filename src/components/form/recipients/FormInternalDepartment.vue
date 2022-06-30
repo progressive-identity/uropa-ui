@@ -11,8 +11,8 @@
                     :list="storeData.getUniqueDataCategories"/>
     </div>
     <div class="space-x-2 pt-3">
-      <UButton label="Back" v-on:click="closeInternalDepartment" type="secondary"/>
-      <UButton label="Save" v-on:click="saveInternalDepartment"/>
+      <BackButton/>
+      <SaveButton :on-save="saveInternalDepartment"/>
     </div>
   </div>
 </template>
@@ -21,9 +21,10 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -42,23 +43,9 @@ const props = defineProps({
 })
 
 function saveInternalDepartment() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      internalDepartment: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.internalDepartments.push({...props.internalDepartment}))
   }
 }
-
-function closeInternalDepartment() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      internalDepartment: false
-    }
-  })
-}
-
 </script>

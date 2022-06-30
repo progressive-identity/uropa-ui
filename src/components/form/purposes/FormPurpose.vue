@@ -23,8 +23,8 @@
       <TableLegalBases class="px-5" :purpose="purpose"/>
     </div>
     <div class="space-x-2 pt-3">
-      <UButton label="Back" v-on:click="closePurpose" type="secondary"/>
-      <UButton label="Save" v-on:click="savePurpose"/>
+      <BackButton/>
+      <SaveButton :on-save="savePurpose"/>
     </div>
   </div>
 </template>
@@ -33,11 +33,12 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 import TableLegalBases from '@/components/form/purposes/TableLegalBases.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -62,12 +63,6 @@ storeDisplay.$patch({
 })
 
 function savePurpose() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      purpose: false
-    }
-  })
-
   // Only one purpose can be main
   if (props.purpose.isMain) {
     const mainPurpose = storeData.getOtherMainPurpose(props.purpose)
@@ -82,11 +77,6 @@ function savePurpose() {
   }
 }
 
-// TODO could probably be centralized
-function closePurpose() {
-  storeDisplay.$reset()
-}
-
 function toggleDisplay(purpose, legalBasis) {
   storeDisplay.$patch({
     formsDisplayed: {
@@ -95,5 +85,4 @@ function toggleDisplay(purpose, legalBasis) {
     }
   })
 }
-
 </script>

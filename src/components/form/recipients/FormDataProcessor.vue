@@ -9,11 +9,12 @@
       <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed *"
                     :list="storeData.getUniqueDataCategories"/>
       <FormLegalPerson v-model="dataProcessor.legalPerson"/>
-      <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" placeholder="The path of the binding agreement with processor" size="xl"/>
+      <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path"
+              placeholder="The path of the binding agreement with processor" size="xl"/>
     </div>
     <div class="space-x-2 pt-3">
-      <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
-      <UButton label="Save" v-on:click="saveDataProcessor"/>
+      <BackButton/>
+      <SaveButton :on-save="saveDataProcessor"/>
     </div>
   </div>
 </template>
@@ -22,10 +23,11 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -44,23 +46,9 @@ const props = defineProps({
 })
 
 function saveDataProcessor() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataProcessor: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
   }
 }
-
-function closeDataProcessor() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataProcessor: false
-    }
-  })
-}
-
 </script>

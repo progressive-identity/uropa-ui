@@ -6,8 +6,8 @@
             placeholder="The path to the binding agreement "
     />
     <div class="space-x-2 pt-3">
-      <UButton label="Back" v-on:click="closeJointController" type="secondary"/>
-      <UButton label="Save" v-on:click="saveJointController"/>
+      <BackButton/>
+      <SaveButton :on-save="saveJointController"/>
     </div>
   </div>
 </template>
@@ -19,6 +19,8 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -38,23 +40,9 @@ const props = defineProps({
 })
 
 function saveJointController() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      jointController: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.jointControllers.push({...props.jointController}))
   }
 }
-
-function closeJointController() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      jointController: false
-    }
-  })
-}
-
 </script>

@@ -11,8 +11,8 @@
                     @click="toggleDisplay(formsDisplayed.subDataLocation, formsDisplayed.dataSource, !formsDisplayed.storageDuration)"/>
       <TableStorageDurations class="px-5" :data-location="dataLocation"/>
       <div class="space-x-2 py-3">
-        <UButton label="Back" v-on:click="closeDataLocation" type="secondary"/>
-        <UButton label="Save" v-on:click="saveDataLocation"/>
+        <BackButton/>
+        <SaveButton :on-save="saveDataLocation"/>
       </div>
     </div>
   </div>
@@ -22,11 +22,12 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import FormDataSource from '@/components/form/data-categories/data-source/FormDataSource.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 import TableStorageDurations from '@/components/form/data-categories/data-source/TableStorageDurations.vue'
 import FormDataLocation from '@/components/form/data-categories/data-source/FormDataLocation.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -43,7 +44,6 @@ const props = defineProps({
 
 
 function saveDataLocation() {
-  storeDisplay.$reset()
   // We get all the data types in the store
   const storeDataTypes = storeData.processingRecord.purposes.flatMap(purpose =>
       purpose?.dataCategories.flatMap(dataCategory =>
@@ -67,10 +67,6 @@ function saveDataLocation() {
     }
     delete dataTypeStore.path
   })
-}
-
-function closeDataLocation() {
-  storeDisplay.$reset()
 }
 
 function toggleDisplay(dataLocation, dataSource, storageDuration) {
