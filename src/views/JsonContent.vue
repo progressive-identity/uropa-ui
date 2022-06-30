@@ -18,7 +18,7 @@ import {useStoreData} from '@/store/data.js'
 import UButton from '@/components/basic/UButton.vue'
 import {mdiContentCopy} from '@mdi/js'
 import {copyToClipboard} from '@/utils/file.js'
-import SaveButton from '@/components/stepper/SaveButton.vue'
+import DownloadButton from '@/components/stepper/DownloadButton.vue'
 
 const store = useStore()
 const {processingRecord} = useStoreData()
