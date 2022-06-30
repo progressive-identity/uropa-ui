@@ -1,9 +1,12 @@
 <template>
   <div class="block py-2">
     <Combobox as="div" :modelValue="modelValue" @update:modelValue="update" multiple>
-      <ComboboxLabel class="u-label">{{ label }}</ComboboxLabel>
+      <ComboboxLabel class="u-label">{{ label }}
+        <span v-if="required && label.length > 0"> *</span>
+      </ComboboxLabel>
       <div class="relative" :class="classes">
-        <ComboboxInput disabled="true"
+        <ComboboxInput @change="query = $event.target.value; validate(state, props, $event.target.value);"
+                       disabled="true"
                        class="text-sm border-0 w-full p-0"
                        :display-value="()=>modelValue.map(e=>` ${e?.name}`)"/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none">
@@ -26,16 +29,17 @@
         </ComboboxOptions>
       </div>
     </Combobox>
+    <p v-if="!state.valid" v-for="error in state.errors" class="mt-1 text-sm text-red-600" id="error">{{ error }}</p>
   </div>
 </template>
 
 <script setup>
-import {useStoreData} from '@/store/data.js'
-import {computed, ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
+import {validate} from '@/composable/useValidation.js'
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid'
 import {Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions} from '@headlessui/vue'
 
-const storeData = useStoreData()
+const state = reactive({valid: true, errors: []})
 
 const props = defineProps({
   modelValue: {
@@ -45,6 +49,10 @@ const props = defineProps({
   label: {
     type: String,
     default: ''
+  },
+  required: {
+    type: Boolean,
+    default: false
   },
   size: {
     type: String,

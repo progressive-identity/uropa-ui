@@ -1,9 +1,11 @@
 <template>
   <div class="block py-2">
     <Combobox as="div" :modelValue="modelValue" @update:modelValue="update">
-      <ComboboxLabel class="u-label">{{ label }}</ComboboxLabel>
+      <ComboboxLabel class="u-label">{{ label }}
+        <span v-if="required && label.length > 0"> *</span>
+      </ComboboxLabel>
       <div class="relative" :class="classes">
-        <ComboboxInput @change="query = $event.target.value"
+        <ComboboxInput @change="query = $event.target.value; validate(state, props, $event.target.value);"
                        class="text-sm border-0 w-full p-0 focus:ring-0"
                        :display-value="(e)=>namePath ? e[namePath].name:e.name"/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center px-2">
@@ -16,7 +18,7 @@
                           v-slot="{ active, selected }">
             <li :class="['relative cursor-default select-none py-2 pl-8 pr-4', active ? 'bg-primary-500 text-white' : 'text-gray-900']">
             <span :class="['block truncate', selected && 'font-semibold']">
-              {{ namePath ? element[namePath].name:element.name }}
+              {{ namePath ? element[namePath].name : element.name }}
             </span>
               <span v-if="selected"
                     :class="['absolute inset-y-0 flex left-0 items-center pl-1.5', active ? 'text-white' : 'text-primary-500']">
@@ -27,16 +29,17 @@
         </ComboboxOptions>
       </div>
     </Combobox>
+    <p v-if="!state.valid" v-for="error in state.errors" class="mt-1 text-sm text-red-600" id="error">{{ error }}</p>
   </div>
 </template>
 
 <script setup>
-import {useStoreData} from '@/store/data.js'
-import {computed, ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
+import {validate} from '@/composable/useValidation.js'
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid'
 import {Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions} from '@headlessui/vue'
 
-const storeData = useStoreData()
+const state = reactive({valid: true, errors: []})
 
 const props = defineProps({
   modelValue: {
@@ -46,6 +49,10 @@ const props = defineProps({
   label: {
     type: String,
     default: ''
+  },
+  required: {
+    type: Boolean,
+    default: false
   },
   size: {
     type: String,
@@ -70,6 +77,7 @@ const classes = computed(() => {
 
 const emits = defineEmits(['update:modelValue'])
 
+// for reference since this seems a bit tricky : https://github.com/tailwindlabs/headlessui/discussions/1446
 const update = (value) => {
   emits('update:modelValue', value)
 }
