@@ -19,6 +19,9 @@
         >
       </nav-bar-item>
     </div>
+    <div class="flex items-center justify-center w-full text-2xl text-primary-700 font-extrabold">
+      UROPA, easily document your processing activities
+    </div>
     <div class="flex-none items-stretch flex h-14 lg:hidden">
       <nav-bar-item @click.prevent="menuNavBarToggle">
         <UIcon
