@@ -17,12 +17,16 @@
         <p class="text-center text-base">&copy; 2022 CODE IS LAW.</p>
       </div>
     </div>
+    <div>
+      <p class="text-right text-xs w-full">v{{ version }}</p>
+    </div>
   </footer>
 </template>
 
 <script setup>
 import UIcon from '@/components/basic/UIcon.vue'
 import {mdiGithub, mdiLinkedin, mdiTwitter, mdiWeb} from '@mdi/js'
+import packageJson from './../../../package.json'
 
 const externalLinks = [
   {
@@ -62,4 +66,7 @@ const legalLinks = [
     href: '#'
   }
 ]
+
+const {version} = packageJson
+
 </script>
