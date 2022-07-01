@@ -12,10 +12,8 @@
       >
         <img @click="toHome"
              alt="Alias"
-             class="inline-block"
-             height="120"
+             class="object-contain h-12"
              src="/logo_codeislaw.png"
-             width="120"
         >
       </nav-bar-item>
     </div>
