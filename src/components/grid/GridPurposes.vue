@@ -1,4 +1,7 @@
 <template>
+  <div class="flex justify-center" v-if="processingRecord.purposes.length === 0">
+    <p class="mt-1 text-sm text-red-600" id="error">You must have at least one purpose</p>
+  </div>
   <UButton label="New purpose" v-on:click="createPurpose" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">

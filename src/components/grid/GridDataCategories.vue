@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div>
-      <UButton label="New data category" @click="createDataCategory" :icon="mdiPlusCircle"/>
+    <div class="flex justify-center" v-if="storeData.getUniqueDataCategories.length === 0">
+      <p class="mt-1 text-sm text-red-600" id="error">You must have at least one security measure</p>
     </div>
+    <UButton label="New data category" @click="createDataCategory" :icon="mdiPlusCircle"/>
     <div class="py-5">
       <ul role="list" class="u-grid">
         <li v-for="(dataCategory, index) in storeData.getUniqueDataCategories" :key="index"

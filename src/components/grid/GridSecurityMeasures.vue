@@ -1,4 +1,7 @@
 <template>
+  <div class="flex justify-center" v-if="processingRecord.securityMeasures.length === 0">
+    <p class="mt-1 text-sm text-red-600" id="error">You must have at least one security measure</p>
+  </div>
   <UButton label="New security measure" v-on:click="createSecurityMeasure" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
