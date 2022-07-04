@@ -1,5 +1,5 @@
 <template>
-  <FormLegalPerson v-model="modelValue" title="Representative"/>
+  <FormLegalPerson v-model="modelValue" title="Representative (optional)"/>
 </template>
 
 <script setup>

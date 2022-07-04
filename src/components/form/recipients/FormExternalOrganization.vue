@@ -6,15 +6,16 @@
         data processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">
-      <UInput v-model="externalOrganization.organizationStatus" label="Organization status"/>
+      <UInput v-model="externalOrganization.organizationStatus" label="Organization status"
+              placeholder="ex : affiliate, holding, head quarter, etc." :required="true"/>
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
-      <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
-                    :list="storeData.uniqueDataCategories"/>
+      <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed *"
+                    :list="storeData.getUniqueDataCategories"/>
       <FormLegalPerson v-model="externalOrganization.legalPerson"/>
     </div>
     <div class="space-x-2" v-if="!nested">
-      <UButton label="Back" v-on:click="closeExternalOrganization" type="secondary"/>
-      <UButton label="Save" v-on:click="saveExternalOrganization"/>
+      <BackButton/>
+      <SaveButton :on-save="saveExternalOrganization"/>
     </div>
   </div>
 </template>
@@ -23,11 +24,11 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
-import LegalPersonTemplate from '/src/data/template/LegalPersonTemplate.json'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -50,32 +51,10 @@ const props = defineProps({
   }
 })
 
-function emptyExternalOrganization() {
-  props.externalOrganization.name = ''
-  props.externalOrganization.organizationStatus = ''
-  props.externalOrganization.legalPerson = LegalPersonTemplate
-  props.externalOrganization.dataCategoriesDisclosed = []
-}
-
 function saveExternalOrganization() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      externalOrganization: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.externalOrganizations.push({...props.externalOrganization}))
-    emptyExternalOrganization()
   }
 }
-
-function closeExternalOrganization() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      externalOrganization: false
-    }
-  })
-}
-
 </script>

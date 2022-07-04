@@ -11,8 +11,9 @@
         <div class="px-5" v-if="formsDisplayed.legalPerson">
           <div>
             <div class="pt-3 flex justify-start space-x-5">
-              <UInput v-model="modelValue.name" label="Name"/>
-              <UInput v-model="modelValue.email" label="Email" type="email"/>
+              <UInput v-model="modelValue.name" label="Name" placeholder="The name of the entity" :required="true"/>
+              <UInput v-model="modelValue.email" label="Email" type="email"
+                      placeholder="The contact email of the entity" :required="true"/>
             </div>
             <FormPostalAddress :postal-address="modelValue.postalAddress"/>
           </div>
@@ -20,7 +21,7 @@
         <UVerticalBar label="Ceo" :rotate="formsDisplayed.ceo"
                       @click="toggleDisplay(formsDisplayed.legalPerson, formsDisplayed.dpo, !formsDisplayed.ceo)"/>
         <FormCeo class="px-5" :ceo="modelValue.ceo"/>
-        <UVerticalBar label="Dpo" :rotate="formsDisplayed.dpo"
+        <UVerticalBar label="Dpo" :rotate="formsDisplayed.dpo" :required="false"
                       @click="toggleDisplay(formsDisplayed.legalPerson, !formsDisplayed.dpo, formsDisplayed.ceo)"/>
         <FormDpo class="px-5" :dpo="modelValue.dpo"/>
       </div>

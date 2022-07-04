@@ -4,16 +4,21 @@
       <UButton type="secondary" v-on:click="previous" v-if="current > 0" label="Previous"/>
       <UButton type="primary" v-on:click="next" v-if="current < stepsProcessingRecord.length-1" label="Next"/>
       <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
+      <DownloadButton/>
     </div>
   </div>
 </template>
 <script setup>
 import {storeToRefs} from 'pinia'
 import {useStore} from '@/store/stepper.js'
+import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
+import {isFormValid} from '@/utils/validation.js'
+import DownloadButton from '@/components/stepper/DownloadButton.vue'
 
 const store = useStore()
+const storeData = useStoreData()
 const {mainNavigationDisplayed, stepsProcessingRecord, current} = storeToRefs(store)
 const storeDisplay = useStoreDisplay()
 
@@ -22,6 +27,11 @@ async function next() {
   if (await isFormValid()) {
     store.current++
     storeDisplay.$reset()
+    storeData.$patch({
+      processingRecord: {
+        updatedAt: new Date()
+      }
+    })
   }
 }
 
@@ -30,13 +40,5 @@ function previous() {
   storeDisplay.$reset()
 }
 
-async function isFormValid() {
-  if (process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG)) return true
-
-  // TODO maybe use $refs https://vuejs.org/guide/essentials/template-refs.html#ref-on-component
-  const elements = document.querySelectorAll('input')
-  await elements.forEach(e => e.dispatchEvent(new Event('change')))
-  return !document.getElementById('error')
-}
 
 </script>

@@ -7,11 +7,12 @@
     </div>
     <div class="pt-3">
       <USelect v-model="dataTransfer.country" :list="countries" label="Country" size="s"/>
-      <UInput v-model="dataTransfer.description" label="Description" size="xl"/>
+      <UInput v-model="dataTransfer.description" label="Description" size="xl"
+              placeholder="ex : transfer operated to host the processed data" :required="true"/>
       <FormDataTransferLegalBasis :data-transfer-legal-basis="dataTransfer.dataTransferLegalBasis"/>
       <div class="space-x-2 pt-3">
-        <UButton label="Back" v-on:click="closeDataTransfer" type="secondary"/>
-        <UButton label="Save" v-on:click="saveDataTransfer"/>
+        <BackButton/>
+        <SaveButton :on-save="saveDataTransfer"/>
       </div>
     </div>
   </div>
@@ -21,11 +22,12 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
 import countries from './../../../data/countries.json'
 import FormDataTransferLegalBasis from '@/components/form/data-transfers/FormDataTransferLegalBasis.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -43,31 +45,10 @@ const props = defineProps({
   }
 })
 
-function emptyDataTransfer() {
-  props.dataTransfer.name = ''
-  props.dataTransfer.description = ''
-  props.dataTransfer.dataTransferType = ''
-}
-
 function saveDataTransfer() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataTransfer: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.dataTransfers.push({...props.dataTransfer}))
-    emptyDataTransfer()
   }
 }
-
-function closeDataTransfer() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataTransfer: false
-    }
-  })
-}
-
 </script>

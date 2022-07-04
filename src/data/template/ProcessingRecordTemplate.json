@@ -89,13 +89,12 @@
     }
   },
   "jointControllers": [],
-  "purposes" : [],
+  "purposes": [],
   "recipients": {
     "internalDepartments": [],
     "externalOrganizations": [],
     "dataProcessors": []
   },
-  "dataLocations": [],
   "securityMeasures": [],
   "dataTransfers": [],
   "dpia": {

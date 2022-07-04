@@ -1,16 +1,8 @@
 {
   "description": "",
-  "dataSupport": "",
+  "dataSupport": "digital",
   "path": "",
-  "storageState": "",
-  "dataSource": {
-    "name": "",
-    "storageType": "",
-    "country": {
-      "name": "",
-      "iso": ""
-    }
-  },
-  "storageDurations": [],
-  "dataTypes": []
+  "storageState": "production",
+  "dataSource": {},
+  "storageDurations": []
 }

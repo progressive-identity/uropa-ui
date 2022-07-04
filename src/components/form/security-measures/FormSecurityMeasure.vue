@@ -7,14 +7,15 @@
     </div>
     <div class="pt-3">
       <div class="flex justify-start space-x-5">
-        <UInput v-model="securityMeasure.name" label="Name"/>
-        <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type" class="w-64"/>
+        <UInput v-model="securityMeasure.name" label="Name" placeholder="ex : encryption of data" :required="true"/>
+        <USelectEnums v-model="securityMeasure.securityMeasureType" :list="securityMeasureTypes" label="Type"
+                      class="w-64"/>
       </div>
       <UInput v-model="securityMeasure.description" label="Description" size="xl"/>
     </div>
     <div class="space-x-2 pt-3">
-      <UButton label="Back" v-on:click="closeSecurityMeasure" type="secondary"/>
-      <UButton label="Save" v-on:click="saveSecurityMeasure"/>
+      <BackButton/>
+      <SaveButton :on-save="saveSecurityMeasure"/>
     </div>
   </div>
 </template>
@@ -23,10 +24,11 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import {securityMeasureTypes} from '@/data/enums.js'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -44,31 +46,10 @@ const props = defineProps({
   }
 })
 
-function emptySecurityMeasure() {
-  props.securityMeasure.name = ''
-  props.securityMeasure.description = ''
-  props.securityMeasure.securityMeasureType = ''
-}
-
 function saveSecurityMeasure() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      securityMeasure: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.securityMeasures.push({...props.securityMeasure}))
-    emptySecurityMeasure()
   }
 }
-
-function closeSecurityMeasure() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      securityMeasure: false
-    }
-  })
-}
-
 </script>

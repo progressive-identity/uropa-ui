@@ -6,14 +6,15 @@
         processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">
-      <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path" size="xl"/>
-      <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"
-                    :list="storeData.uniqueDataCategories"/>
+      <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed *"
+                    :list="storeData.getUniqueDataCategories"/>
       <FormLegalPerson v-model="dataProcessor.legalPerson"/>
+      <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path"
+              placeholder="The path of the binding agreement with processor" size="xl"/>
     </div>
-    <div class="space-x-2" v-if="!nested">
-      <UButton label="Back" v-on:click="closeDataProcessor" type="secondary"/>
-      <UButton label="Save" v-on:click="saveDataProcessor"/>
+    <div class="space-x-2 pt-3">
+      <BackButton/>
+      <SaveButton :on-save="saveDataProcessor"/>
     </div>
   </div>
 </template>
@@ -22,11 +23,11 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
-import LegalPersonTemplate from '@/data/template/LegalPersonTemplate.json'
+import BackButton from '@/components/form/BackButton.vue'
+import SaveButton from '@/components/form/SaveButton.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -41,39 +42,13 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false
-  },
-  nested: {
-    type: Boolean,
-    required: false,
-    default: false
   }
 })
 
-function emptyDataProcessor() {
-  props.dataProcessor.processorAgreementPath = ''
-  props.dataProcessor.legalPerson = LegalPersonTemplate
-  props.dataProcessor.dataCategoriesDisclosed = []
-}
-
 function saveDataProcessor() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataProcessor: false
-    }
-  })
   if (!props.edition) {
     storeData.$patch((state) =>
         state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
-    emptyDataProcessor()
   }
 }
-
-function closeDataProcessor() {
-  storeDisplay.$patch({
-    formsDisplayed: {
-      dataProcessor: false
-    }
-  })
-}
-
 </script>

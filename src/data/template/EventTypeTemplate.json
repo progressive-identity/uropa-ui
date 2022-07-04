@@ -2,7 +2,7 @@
   "name": "",
   "description": "",
   "countdown": {
-    "timeUnit": "",
+    "timeUnit": "years",
     "duration": ""
   }
 }

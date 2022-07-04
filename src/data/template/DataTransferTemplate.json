@@ -5,10 +5,10 @@
     "iso": ""
   },
   "dataTransferLegalBasis": {
-    "legalBasisType": "",
+    "legalBasisType": "appropriate safeguards",
     "description": "",
     "source": "",
-    "isConsent": "",
+    "isConsent": false,
     "recipient": {
       "dataProcessor": {
         "processorAgreementPath": "",

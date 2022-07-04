@@ -6,10 +6,10 @@
         example, it can be an event triggering the beginning of the validity of the legal basis, or the end of a data
         retention period.</p>
     </div>
-    <UInput v-model="eventType.name" label="Name"/>
-    <UInput v-model="eventType.description" label="Description" size="xl"/>
-    <USwitch v-model="state.hasCountdown" label="Has countdown"/>
-    <div v-if="state.hasCountdown">
+    <UInput v-model="eventType.name" label="Name" placeholder="ex: user logs in" :required="true"/>
+    <UInput v-model="eventType.description" label="Description" size="xl" placeholder="ex : user revoked its consent"/>
+    <USwitch v-model="state.displayCountdown" label="Triggered by a countdown" @click="resetCountdown()"/>
+    <div v-if="state.displayCountdown">
       <USelectEnums v-model="eventType.countdown.timeUnit" label="Time unit" :list="timeUnit"/>
       <UInput v-model="eventType.countdown.duration" label="Duration" size="s" type="number"/>
     </div>
@@ -28,8 +28,6 @@ import {timeUnit} from '/src/data/enums.js'
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 
-const state = reactive({hasCountdown: false})
-
 const props = defineProps({
   eventType: {
     type: Object,
@@ -37,4 +35,15 @@ const props = defineProps({
   }
 })
 
+const state = reactive({displayCountdown: true})
+
+function resetCountdown() {
+  if (state.displayCountdown) {
+    props.eventType.countdown.duration = 1
+    props.eventType.countdown.timeUnit= 'months'
+  } else {
+    props.eventType.countdown.duration = 0
+    props.eventType.countdown.timeUnit= ''
+  }
+}
 </script>

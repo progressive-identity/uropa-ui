@@ -9,9 +9,9 @@
       <USelect v-model="dataSource.country" :list="countries" label="Country" size="s"/>
       <div class="flex justify-start space-x-5">
         <UInput v-model="dataSource.name" label="Name"
-                placeholder="The name of the data source (ex: name of database, server etc.)" size="xl"/>
+                placeholder="ex : name of the database, server, etc." size="xl" :required="true"/>
         <UInput v-model="dataSource.storageType" label="Storage type"
-                placeholder="Provides useful information on the storage type" size="xl"/>
+                placeholder="ex: paper binder, postgresql database, etc." size="xl"/>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@ import {storeToRefs} from 'pinia/dist/pinia.prod.cjs'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
-import countries from './../../../data/countries.json'
+import countries from '../../../../data/countries.json'
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)

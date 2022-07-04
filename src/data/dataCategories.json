@@ -5,69 +5,79 @@
     "dataTypes": [
       {
         "name": "First name",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Last name",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Birthdate",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Postal address",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       }
     ],
     "dataSubjectTypes": []
   },
   {
     "name": "Connection data",
-    "collectionMean": "computed",
+    "collectionMean": "collected",
     "isSensitive": false,
     "dataTypes": [
       {
         "name": "IP address",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Timestamps",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Cookies",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       }
     ],
     "dataSubjectTypes": []
   },
   {
     "name": "Personal life",
-    "collectionMean": "computed",
+    "collectionMean": "collected",
     "isSensitive": false,
     "dataTypes": [
       {
         "name": "Marital status",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Children",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       },
       {
         "name": "Lifestyle information",
-        "collectionMean": "computed",
-        "isOptional": true
+        "collectionMean": "collected",
+        "isOptional": true,
+        "dataLocations": []
       }
     ],
     "dataSubjectTypes": []

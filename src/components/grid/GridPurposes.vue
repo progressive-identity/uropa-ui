@@ -1,27 +1,46 @@
 <template>
+  <div class="flex justify-center" v-if="processingRecord.purposes.length === 0">
+    <p class="mt-1 text-sm text-red-600" id="error">You must have at least one purpose</p>
+  </div>
   <UButton label="New purpose" v-on:click="createPurpose" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
       <li v-for="(purpose, index) in processingRecord.purposes" :key="index"
           class="u-grid">
         <div class="align-top text-gray-900 font-medium py-2">
-          <p v-if="purpose.isMain" class="w-full truncate hover:text-clip text-center">Main</p>
+          <p v-if="purpose.isMain" class="w-full truncate hover:text-clip text-center">MAIN</p>
         </div>
         <div class="relative px-4 py-5">
           <div class="flex items-center">
-            <h3>{{ purpose.name }}</h3>
+            <h3>
+              <UIcon size="24" :path="mdiTarget"/>
+              {{ purpose.name }}
+            </h3>
           </div>
           <GridButtons @edit="editPurpose(purpose)" @delete="deletePurpose(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiScaleBalance"/>
-                Legal basis
+                Legal bases
+              </dt>
+              <ul role="list">
+                <li v-for="legalBasis in purpose.legalBases" class="flex items-center justify-between text-sm">
+                  <div class="flex-1 flex items-center pb-2">
+                    <span class="flex-1 truncate">- {{ legalBasis.type }}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="flex items-center text-sm font-medium text-gray-500">
+                <UIcon :path="mdiText"/>
+                Description
               </dt>
               <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  purpose.legalBasis.type
+                  purpose.description
                 }}
               </dd>
             </div>
@@ -44,14 +63,17 @@ import UButton from '@/components/basic/UButton.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
-import {mdiPlusCircle, mdiScaleBalance} from '@mdi/js'
-import PurposeTemplate from '../../data/template/PurposeTemplate.json'
+import {mdiPlusCircle, mdiScaleBalance, mdiTarget, mdiText} from '@mdi/js'
+import PurposeTemplate from '../../data/template/purposes/PurposeTemplate.json'
+import LegalBasisTemplate from '../../data/template/purposes/LegalBasisTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
 const state = reactive({purpose: PurposeTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
+// TODO maybe we should do this only once on the application start ?
+PurposeTemplate.legalBasis = structuredClone(LegalBasisTemplate)
 
 function createPurpose() {
   state.purpose = structuredClone(PurposeTemplate)
