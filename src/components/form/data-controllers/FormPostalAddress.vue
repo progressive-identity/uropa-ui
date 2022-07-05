@@ -6,7 +6,7 @@
     <div class="flex justify-start space-x-5">
       <UInput v-model="postalAddress.city" label="City" size="m" :required="true"/>
       <UInput v-model="postalAddress.state" label="State / Province" size="m"/>
-      <UInput v-model="postalAddress.zipCode" label="Zip / Postal code" type="number" size="s" :required="true"/>
+      <UInput v-model="postalAddress.zipCode" label="Zip / Postal code" size="s" :required="true"/>
     </div>
   </div>
 </template>

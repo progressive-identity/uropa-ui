@@ -1,6 +1,6 @@
 <template>
   <div class="block py-2">
-    <Listbox v-model="modelValue" @update:modelValue="emitChange">
+    <Listbox :modelValue="modelValue" @update:modelValue="update">
       <ListboxLabel class="u-label"> {{ label }}</ListboxLabel>
       <div class="relative">
         <div>
@@ -65,10 +65,11 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue'])
 
-const emitChange = (value) => {
-  emit('update:modelValue', value)
+// for reference since this seems a bit tricky : https://github.com/tailwindlabs/headlessui/discussions/1446
+const update = (value) => {
+  emits('update:modelValue', value)
 }
 
 </script>
