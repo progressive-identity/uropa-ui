@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex justify-center" v-if="storeData.getUniqueDataCategories.length === 0">
-      <p class="mt-1 text-sm text-red-600" id="error">You must have at least one security measure</p>
+      <p class="mt-1 text-sm text-red-600" id="error">You must have at least one data category</p>
     </div>
     <UButton label="New data category" @click="createDataCategory" :icon="mdiPlusCircle"/>
     <div class="py-5">
