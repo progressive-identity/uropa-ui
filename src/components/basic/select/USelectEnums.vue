@@ -67,7 +67,7 @@ const props = defineProps({
 
 const emits = defineEmits(['update:modelValue'])
 
-const emitChange = (value) => {
+// for reference since this seems a bit tricky : https://github.com/tailwindlabs/headlessui/discussions/1446
 const update = (value) => {
   emits('update:modelValue', value)
 }
