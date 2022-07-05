@@ -1,6 +1,6 @@
 {
   "name": "uropa-ui",
-  "version": "1.0.0",
+  "version": "0.9.1",
   "private": true,
   "main": "src/main.js",
   "type": "module",
