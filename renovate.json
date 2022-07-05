@@ -1,0 +1,34 @@
+{
+  "extends": [
+    "config:base",
+    ":assignee(Jabuf)"
+  ],
+  "vulnerabilityAlerts": {
+    "schedule": [
+      "after 7am on friday"
+    ]
+  },
+  "baseBranches": [
+    "staging"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "patch",
+        "pin"
+      ],
+      "schedule": [
+        "after 7am on friday"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "major",
+        "minor"
+      ],
+      "schedule": [
+        "every month"
+      ]
+    }
+  ]
+}
