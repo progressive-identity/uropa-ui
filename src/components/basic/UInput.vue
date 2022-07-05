@@ -10,7 +10,7 @@
     <UIcon v-if="modelValue.length > 0" :path="mdiClose"
            class="z-5 text-gray-300 cursor-pointer relative right-6"
            @click="$emit('update:modelValue', '');validate(state, props, $event.target.value);"/>
-    <p v-if="!state.valid" v-for="error in state.errors" class="mt-1 text-sm text-red-600" id="error">{{ error }}</p>
+    <p v-if="!state.valid" v-for="error in state.errors" class="form-error" id="error">{{ error }}</p>
   </div>
 </template>
 
