@@ -82,7 +82,7 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const gitHubUrl = process.env.VUE_APP_URL_GITHUB_UROPAUI
 
-const languages = ['Français', 'English (soon)', 'Español (soon)', 'Deutsch (soon)']
+const languages = ['English', 'Français (soon)', 'Español (soon)', 'Deutsch (soon)']
 
 function toHome() {
   store.$patch({
