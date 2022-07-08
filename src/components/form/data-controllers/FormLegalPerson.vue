@@ -18,7 +18,7 @@
             <FormPostalAddress :postal-address="modelValue.postalAddress"/>
           </div>
         </div>
-        <UVerticalBar label="Ceo" :rotate="formsDisplayed.ceo"
+        <UVerticalBar label="Ceo" :rotate="formsDisplayed.ceo" :required="false"
                       @click="toggleDisplay(formsDisplayed.legalPerson, formsDisplayed.dpo, !formsDisplayed.ceo)"/>
         <FormCeo class="px-5" :ceo="modelValue.ceo"/>
         <UVerticalBar label="Dpo" :rotate="formsDisplayed.dpo" :required="false"
