@@ -19,6 +19,8 @@
         <div class="py-2">
           <UInput v-model="dataCategory.name" label="Name" placeholder="ex : identity, connection data, etc."
                   :required="true"/>
+          <USelectEnums v-model="dataCategory.sensitiveLegalBasis" label="Sensitive legal basis"
+                        :list="sensitiveLegalBases"/>
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
                         :list="storeData.processingRecord.purposes" :required="true"/>
         </div>
@@ -50,6 +52,8 @@ import TableDataSubjectTypes from '@/components/form/data-categories/data-catego
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
+import {sensitiveLegalBases} from '@/data/enums.js'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
