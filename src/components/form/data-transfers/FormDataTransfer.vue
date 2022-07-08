@@ -6,7 +6,7 @@
         person) and the legal basis.</p>
     </div>
     <div class="pt-3">
-      <USelect v-model="dataTransfer.country" :list="countries" label="Country" size="s"/>
+      <USelect v-model="dataTransfer.country" :list="countries" label="Country" size="s" :required="true"/>
       <UInput v-model="dataTransfer.description" label="Description" size="xl"
               placeholder="ex : transfer operated to host the processed data" :required="true"/>
       <FormDataTransferLegalBasis :data-transfer-legal-basis="dataTransfer.dataTransferLegalBasis"/>
