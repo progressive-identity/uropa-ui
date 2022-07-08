@@ -30,7 +30,7 @@
                       {{ element.name }}
                     </p>
                     <span v-if="selected" :class="active ? 'text-white' : 'text-primary-500'">
-                    <CheckIcon class="h-5 w-5" aria-hidden="true"/>
+                    <CheckIcon class="h-5 w-5 ml-1" aria-hidden="true"/>
                   </span>
                   </div>
                   <p :class="[active ? 'text-primary-200' : 'text-gray-500', 'mt-2']">
