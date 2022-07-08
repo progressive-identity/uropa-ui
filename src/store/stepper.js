@@ -25,7 +25,7 @@ export const useStore = defineStore('stepper', {
       stepsDataControllers: [
         { id: 0, name: 'Data controller', optional: false },
         { id: 1, name: 'Representative', optional: true },
-        { id: 2, name: 'Joint controllers', optional: true }
+        { id: 2, name: 'Joint data controllers', optional: true }
       ],
       currentDataControllers: 0,
       stepsRecipients: [

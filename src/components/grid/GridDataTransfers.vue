@@ -83,6 +83,22 @@
                 </ul>
               </div>
             </div>
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipients.jointDataControllers.length > 0">
+              <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
+                <dt class="flex items-center text-sm font-medium text-gray-500">
+                  <UIcon :path="mdiHandshake"/>
+                  Internal departments
+                </dt>
+                <ul role="list">
+                  <li v-for="jointDataController in dataTransfer.dataTransferLegalBasis.recipients.jointDataControllers"
+                      class="flex items-center justify-between text-sm">
+                    <div class="flex-1 flex items-center pb-2">
+                      <span class="flex-1 truncate">- {{ jointDataController.legalPerson.name }}</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </dl>
         </div>
       </li>
@@ -106,6 +122,7 @@ import {
   mdiAccountWrench,
   mdiEarth,
   mdiGavel,
+  mdiHandshake,
   mdiPlusCircle,
   mdiSwapHorizontal
 } from '@mdi/js'

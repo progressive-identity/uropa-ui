@@ -14,12 +14,14 @@
   <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"
           placeholder="ex: URL, internal path to the agreement, BCR, etc. "/>
   <div class="flex justify-start space-x-5">
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processor"
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processors"
                   :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.externalOrganizations" label="External organization"
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.externalOrganizations" label="External organizations"
                   :list="storeData.processingRecord.recipients.externalOrganizations" name-path="legalPerson"/>
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.internalDepartments" label="Internal department"
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.internalDepartments" label="Internal departments"
                   :list="storeData.processingRecord.recipients.internalDepartments"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.jointDataControllers" label="Joint data controllers"
+                  :list="storeData.processingRecord.jointDataControllers" name-path="legalPerson"/>
   </div>
 </template>
 

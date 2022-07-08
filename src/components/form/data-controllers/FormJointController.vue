@@ -16,7 +16,6 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
 import BackButton from '@/components/form/BackButton.vue'
@@ -42,7 +41,7 @@ const props = defineProps({
 function saveJointController() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.jointControllers.push({...props.jointController}))
+        state.processingRecord.jointDataControllers.push({...props.jointController}))
   }
 }
 </script>

@@ -12,7 +12,8 @@
     "recipients": {
       "dataProcessors": [],
       "externalOrganizations": [],
-      "internalDepartments": []
+      "internalDepartments": [],
+      "jointDataControllers": []
     }
   }
 }

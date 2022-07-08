@@ -2,7 +2,7 @@
   <UButton label="New joint controller (optional)" v-on:click="createJointController" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(jointController, index) in processingRecord.jointControllers" :key="index"
+      <li v-for="(jointController, index) in processingRecord.jointDataControllers" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -56,6 +56,7 @@ import UButton from '@/components/basic/UButton.vue'
 import FormJointController from '@/components/form/data-controllers/FormJointController.vue'
 import {mdiFaceManShimmer, mdiFaceWomanShimmer, mdiHandshake, mdiPlusCircle} from '@mdi/js'
 import JointControllerTemplate from '../../data/template/JointControllerTemplate.json'
+import LegalPersonTemplate from '../../data/template/LegalPersonTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
@@ -66,6 +67,7 @@ const storeDisplay = useStoreDisplay()
 
 function createJointController() {
   state.jointController = structuredClone(JointControllerTemplate)
+  state.jointController.legalPerson = structuredClone(LegalPersonTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {
@@ -86,7 +88,7 @@ function editJointController(jointController) {
 
 function deleteJointController(index) {
   storeData.$patch((state) => {
-    state.processingRecord.jointControllers.splice(index, 1)
+    state.processingRecord.jointDataControllers.splice(index, 1)
   })
 }
 
