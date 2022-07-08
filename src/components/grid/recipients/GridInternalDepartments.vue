@@ -1,4 +1,7 @@
 <template>
+  <div class="flex justify-center" v-if="processingRecord.recipients.internalDepartments.length === 0">
+    <p class="form-error">You must have at least one internal department</p>
+  </div>
   <UButton label="New internal department" v-on:click="createInternalDepartment" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
