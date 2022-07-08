@@ -1,3 +1,12 @@
+const dpoStatus = [
+  {
+    name: 'internal'
+  },
+  {
+    name: 'external'
+  }
+]
+
 const collectionMeans = [
   {
     name: 'inferred',
@@ -115,6 +124,7 @@ const timeUnit = [
 ]
 
 export {
+  dpoStatus,
   collectionMeans,
   securityMeasureTypes,
   dataSupports,

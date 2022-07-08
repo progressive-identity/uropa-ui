@@ -2,6 +2,7 @@
   "name": "",
   "email": "",
   "dpo": {
+    "status": "internal",
     "personalInformation": {
       "firstName": "",
       "lastName": "",
