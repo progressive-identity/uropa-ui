@@ -29,7 +29,7 @@ export const useStore = defineStore('stepper', {
       ],
       currentDataControllers: 0,
       stepsRecipients: [
-        { id: 0, name: 'Internal departments', optional: true },
+        { id: 0, name: 'Internal departments', optional: false },
         { id: 1, name: 'Data processors', optional: true },
         { id: 2, name: 'External organizations', optional: true }
       ],
