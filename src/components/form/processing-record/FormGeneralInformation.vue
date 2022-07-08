@@ -8,10 +8,12 @@
           data in the controller system.</p>
       </div>
       <div>
-        <UInput v-model="processingRecord.name" label="Name" placeholder="The name of the processing activity" :required="true"/>
+        <UInput v-model="processingRecord.name" label="Name" placeholder="The name of the processing activity"
+                :required="true"/>
         <UInput v-model="processingRecord.internalId" label="Internal ID"
                 placeholder="The reference of the ROPA"/>
       </div>
+      <USwitch v-model="processingRecord.hasAutomatedDecisionMaking" label="Automated decision making"/>
       <USwitch v-model="formsDisplayed.dpia" label="DPIA"/>
       <FormDpia/>
     </div>
