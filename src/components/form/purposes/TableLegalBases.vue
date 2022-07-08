@@ -31,7 +31,8 @@
                 </div>
               </td>
               <td>
-                <USelectEnums class="pr-4" v-model="legalBasis.type" :list="legalBasisTypes"/>
+                <USelectEnums class="pr-4" v-model="legalBasis.type" :list="legalBasisTypes"
+                              @click="fillEventsType(legalBasis)"/>
               </td>
               <td>
                 <UInput v-model="legalBasis.description" placeholder="ex: consent of the employee"/>
@@ -93,6 +94,7 @@ if (props.purpose?.legalBases?.length === 0) {
 
 function createLegalBasis() {
   props.purpose.legalBases.push({...LegalBasisTemplate})
+  fillEventsType(props.purpose.legalBases.slice(-1)[0])
 }
 
 function deleteLegalBasis(index) {
@@ -106,6 +108,26 @@ function editEventType(eventType) {
       eventType: true
     }
   })
+}
+
+function fillEventsType(legalBasis) {
+  switch (legalBasis.type) {
+    case 'consent':
+      legalBasis.startValidity.name = 'Give consent'
+      legalBasis.stopValidity.name = 'Revoke consent'
+      break
+    case 'contract':
+      legalBasis.startValidity.name = 'Sign contract'
+      legalBasis.stopValidity.name = 'End contract'
+      break
+    case 'vital interest':
+      legalBasis.startValidity.name = 'Discover vital interest threat'
+      legalBasis.stopValidity.name = 'End of vital interest threat'
+      break
+    default:
+      legalBasis.startValidity.name = ''
+      legalBasis.stopValidity.name = ''
+  }
 }
 
 </script>
