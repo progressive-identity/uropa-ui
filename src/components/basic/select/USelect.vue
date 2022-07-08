@@ -84,9 +84,14 @@ const update = (value) => {
 
 const query = ref('')
 const filteredList = computed(() => {
+      const sortedList = props.list.sort(function (a, b) {
+        const nameA = a.name.toUpperCase()
+        const nameB = b.name.toUpperCase()
+        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
+      })
       return query.value === ''
-          ? props.list
-          : props.list.filter((e) => {
+          ? sortedList
+          : sortedList.filter((e) => {
             return e.name.toLowerCase().includes(query.value.toLowerCase())
           })
     }
