@@ -33,39 +33,54 @@
                 {{ dataTransfer.dataTransferLegalBasis.legalBasisType }}
               </dd>
             </div>
-            <div v-if="dataTransfer.dataTransferLegalBasis.recipient.dataProcessor">
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipients.dataProcessors.length > 0">
               <dl class="sm:divide-y sm:divide-gray-200">
                 <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                   <dt class="flex items-center text-sm font-medium text-gray-500">
                     <UIcon :path="mdiAccountWrench"/>
-                    Data processor
+                    Data processors
                   </dt>
-                  <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {{ dataTransfer.dataTransferLegalBasis.recipient.dataProcessor.legalPerson.name }}
-                  </dd>
+                  <ul role="list">
+                    <li v-for="dataProcessor in dataTransfer.dataTransferLegalBasis.recipients.dataProcessors"
+                        class="flex items-center justify-between text-sm">
+                      <div class="flex-1 flex items-center pb-2">
+                        <span class="flex-1 truncate">- {{ dataProcessor.legalPerson.name }}</span>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </dl>
             </div>
-            <div v-if="dataTransfer.dataTransferLegalBasis.recipient.externalOrganization">
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipients.externalOrganizations.length > 0">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiAccountSwitch"/>
-                  External organization
+                  External organizations
                 </dt>
-                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataTransfer.dataTransferLegalBasis.recipient.externalOrganization.legalPerson.name }}
-                </dd>
+                <ul role="list">
+                  <li v-for="externalOrganization in dataTransfer.dataTransferLegalBasis.recipients.externalOrganizations"
+                      class="flex items-center justify-between text-sm">
+                    <div class="flex-1 flex items-center pb-2">
+                      <span class="flex-1 truncate">- {{ externalOrganization.legalPerson.name }}</span>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div v-if="dataTransfer.dataTransferLegalBasis.recipient.internalDepartment">
+            <div v-if="dataTransfer.dataTransferLegalBasis.recipients.internalDepartments.length > 0">
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiAccountGroup"/>
-                  Internal department
+                  Internal departments
                 </dt>
-                <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataTransfer.dataTransferLegalBasis.recipient.internalDepartment.name }}
-                </dd>
+                <ul role="list">
+                  <li v-for="internalDepartment in dataTransfer.dataTransferLegalBasis.recipients.internalDepartments"
+                      class="flex items-center justify-between text-sm">
+                    <div class="flex-1 flex items-center pb-2">
+                      <span class="flex-1 truncate">- {{ internalDepartment.name }}</span>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </dl>

@@ -14,13 +14,12 @@
   <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"
           placeholder="ex: URL, internal path to the agreement, BCR, etc. "/>
   <div class="flex justify-start space-x-5">
-    <!-- TODO at least one recipient required -->
-    <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
-             :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>
-    <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"
-             :list="storeData.processingRecord.recipients.externalOrganizations" name-path="legalPerson"/>
-    <USelect v-model="dataTransferLegalBasis.recipient.internalDepartment" label="Internal department"
-             :list="storeData.processingRecord.recipients.internalDepartments"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processor"
+                  :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.externalOrganizations" label="External organization"
+                  :list="storeData.processingRecord.recipients.externalOrganizations" name-path="legalPerson"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.internalDepartments" label="Internal department"
+                  :list="storeData.processingRecord.recipients.internalDepartments"/>
   </div>
 </template>
 
@@ -32,7 +31,7 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {dataTransferLegalBasisTypes} from '@/data/enums.js'
-import USelect from '@/components/basic/select/USelect.vue'
+import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 
 const storeDisplay = useStoreDisplay()
 const storeData = useStoreData()
