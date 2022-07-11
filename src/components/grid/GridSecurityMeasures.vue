@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center" v-if="ropa.securityMeasures.length === 0">
-    <p class="form-error">You must have at least one security measure</p>
+    <p id="empty-grid" class="form-error">You must have at least one security measure</p>
   </div>
   <UButton label="New security measure" v-on:click="createSecurityMeasure" :icon="mdiPlusCircle"/>
   <div class=" py-5">

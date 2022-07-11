@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center" v-if="ropa.purposes.length === 0">
-    <p class="form-error">You must have at least one purpose</p>
+    <p id="empty-grid" class="form-error">You must have at least one purpose</p>
   </div>
   <UButton label="New purpose" v-on:click="createPurpose" :icon="mdiPlusCircle"/>
   <div class=" py-5">
@@ -69,8 +69,8 @@ import LegalBasisTemplate from '@/data/template/purposes/LegalBasisTemplate.json
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
-const state = reactive({purpose: PurposeTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
+const state = reactive({purpose: PurposeTemplate, edition: false})
 
 // TODO maybe we should do this only once on the application start ?
 PurposeTemplate.legalBasis = structuredClone(LegalBasisTemplate)
@@ -81,7 +81,8 @@ function createPurpose() {
   storeDisplay.$patch({
     formsDisplayed: {
       purpose: true
-    }
+    },
+    isSaveClosed: false
   })
 }
 
@@ -91,7 +92,8 @@ function editPurpose(purpose) {
   storeDisplay.$patch({
     formsDisplayed: {
       purpose: true
-    }
+    },
+    isSaveClosed: false
   })
 }
 

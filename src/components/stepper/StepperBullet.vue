@@ -43,6 +43,8 @@
       </li>
     </ol>
   </nav>
+  <p v-if="!storeDisplay.isSaveClosed" class="form-error flex justify-center">You must click on the save
+    button at the bottom</p>
 </template>
 
 <script setup>
@@ -50,7 +52,7 @@ import {storeToRefs} from 'pinia'
 import {useStore} from '@/store/stepper.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import {isFormValid} from '@/utils/validation.js'
+import {isFormValid, isProgressAllowed} from '@/utils/validation.js'
 import DownloadButton from '@/components/stepper/DownloadButton.vue'
 
 const props = defineProps({
@@ -75,7 +77,7 @@ store.$patch({
 })
 
 async function next() {
-  if (await isFormValid()) {
+  if (await isFormValid() && await isProgressAllowed()) {
     storeDisplay.$reset()
     if (props.modelValue === props.steps.length - 1) {
       store.current++
@@ -108,5 +110,4 @@ function previous() {
     mainNavigationDisplayed: true
   })
 }
-
 </script>

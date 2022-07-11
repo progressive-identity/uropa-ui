@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex justify-center" v-if="storeData.getUniqueDataCategories.length === 0">
-      <p class="form-error">You must have at least one data category</p>
+      <p id="empty-grid" class="form-error">You must have at least one data category</p>
     </div>
     <UButton label="New data category" @click="createDataCategory" :icon="mdiPlusCircle"/>
     <div class="py-5">

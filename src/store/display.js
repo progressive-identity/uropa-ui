@@ -27,7 +27,8 @@ export const useStoreDisplay = defineStore('display', {
         securityMeasure: false,
         dataTransfer: false,
         formValid: true
-      }
+      },
+      isSaveClosed: true
     }
   }
 })

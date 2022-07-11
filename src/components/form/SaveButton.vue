@@ -1,5 +1,5 @@
 <template>
-  <UButton label="Save" @click="save"/>
+  <UButton id="save-button" label="Save" @click="save"/>
 </template>
 
 <script setup>
@@ -14,6 +14,10 @@ const props = defineProps({
     type: Function,
     required: false
   }
+})
+
+storeDisplay.$patch({
+  isSaveClosed: false
 })
 
 async function save() {
