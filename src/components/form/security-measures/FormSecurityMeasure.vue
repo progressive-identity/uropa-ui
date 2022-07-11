@@ -12,7 +12,7 @@
                       class="w-64"/>
       </div>
       <UInput v-model="securityMeasure.description" label="Description" size="xl"/>
-      <UInput v-model="securityMeasure.securityStandard" label="Standard"/>
+      <UInput v-model="securityMeasure.securityStandard" label="Security standard" placeholder="ex: ISO/IEC 27001"/>
     </div>
     <div class="space-x-2 pt-3">
       <BackButton/>
