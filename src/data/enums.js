@@ -123,7 +123,7 @@ const timeUnit = [
 ]
 const sensitiveLegalBases = [
   { name: 'explicit consent' },
-  { name: 'employment social security social protection' },
+  { name: 'employment, social security and social protection' },
   { name: 'vital interests' },
   { name: 'non-for-profit bodies' },
   { name: 'made public by data subject' },
