@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-5" v-if="formsDisplayed.dataSubjectType">
+  <div class="space-y-5" v-if="formsDisplayed.dataSubjectCategory">
     <div>
       <h3>Data subject categories</h3>
       <p class="form-description">The category of individuals whose personal data is processed (ex : employees,
@@ -17,21 +17,23 @@
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
-            <tr v-for="(dataSubjectType, index) in dataCategory.dataSubjectTypes" :key="dataSubjectType.name"
+            <tr v-for="(dataSubjectCategory, index) in dataCategory.dataSubjectCategories"
+                :key="dataSubjectCategory.name"
                 class="text-sm font-medium text-gray-900">
               <td class="pl-2">
                 <div>
-                  <UButton v-if="index === dataCategory?.dataSubjectTypes.length-1" :icon="mdiPlusCircle"
-                           @click="createDataSubjectType"/>
+                  <UButton v-if="index === dataCategory?.dataSubjectCategories.length-1" :icon="mdiPlusCircle"
+                           @click="createDataSubjectCategory"/>
                   <UButton v-else :icon="mdiMinusCircle" type="danger"
-                           @click="deleteDataSubjectType(index)"/>
+                           @click="deleteDataSubjectCategory(index)"/>
                 </div>
               </td>
               <td>
-                <UInput v-model="dataSubjectType.name" placeholder="ex: employees, prospects etc." :required="true"/>
+                <UInput v-model="dataSubjectCategory.name" placeholder="ex: employees, prospects etc."
+                        :required="true"/>
               </td>
               <td>
-                <USwitch v-model="dataSubjectType.isChild"/>
+                <USwitch v-model="dataSubjectCategory.isChild"/>
               </td>
             </tr>
             </tbody>
@@ -43,7 +45,6 @@
 </template>
 <script setup>
 import {storeToRefs} from 'pinia'
-import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
@@ -51,7 +52,6 @@ import USwitch from '@/components/basic/USwitch.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import DataSubjectCategoryTemplate from '@/data/template/data-categories/DataSubjectCategoryTemplate.json'
 
-const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 
@@ -62,16 +62,12 @@ const props = defineProps({
   }
 })
 
-if (props.dataCategory?.dataSubjectTypes?.length === 0) {
-  createDataSubjectType()
+function createDataSubjectCategory() {
+  props.dataCategory.dataSubjectCategories.push({...DataSubjectCategoryTemplate})
 }
 
-function createDataSubjectType() {
-  props.dataCategory.dataSubjectTypes.push({...DataSubjectCategoryTemplate})
-}
-
-function deleteDataSubjectType(index) {
-  props.dataCategory.dataSubjectTypes.splice(index, 1)
+function deleteDataSubjectCategory(index) {
+  props.dataCategory.dataSubjectCategories.splice(index, 1)
 }
 
 </script>

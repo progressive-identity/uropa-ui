@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.dataCategory">
     <div class="space-y-5">
       <UVerticalBar label="Data category" :rotate="formsDisplayed.subDataCategory"
-                    @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+                    @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectCategory)"/>
       <!-- TODO Rename component and create a specific data category form (but how to deal with purposes then ?) -->
       <div class="px-5" v-if="formsDisplayed.subDataCategory">
         <div>
@@ -27,10 +27,10 @@
         </div>
       </div>
       <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"
-                    @click="toggleDisplay(formsDisplayed.subDataCategory, !formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+                    @click="toggleDisplay(formsDisplayed.subDataCategory, !formsDisplayed.dataType, formsDisplayed.dataSubjectCategory)"/>
       <TableDataTypes class="px-5" :data-category="dataCategory"/>
-      <UVerticalBar label="Data subject types" :rotate="formsDisplayed.dataSubjectType"
-                    @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectType)"/>
+      <UVerticalBar label="Data subject categories" :rotate="formsDisplayed.dataSubjectCategory"
+                    @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectCategory)"/>
       <TableDataSubjectCategories class="px-5" :data-category="dataCategory"/>
       <div class="space-x-2 pt-3">
         <BackButton/>
@@ -98,12 +98,12 @@ function saveDataCategory() {
   })
 }
 
-function toggleDisplay(dataCategory, dataType, dataSubjectType) {
+function toggleDisplay(dataCategory, dataType, dataSubjectCategory) {
   storeDisplay.$patch({
     formsDisplayed: {
       subDataCategory: dataCategory,
       dataType,
-      dataSubjectType
+      dataSubjectCategory
     }
   })
 }

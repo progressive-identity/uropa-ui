@@ -46,7 +46,6 @@
 </template>
 <script setup>
 import {storeToRefs} from 'pinia'
-import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
@@ -56,7 +55,6 @@ import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import {collectionMeans} from '/src/data/enums.js'
 import DataTypeTemplate from '@/data/template/data-categories/DataTypeTemplate.json'
 
-const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 
@@ -66,10 +64,6 @@ const props = defineProps({
     required: true
   }
 })
-
-if (props.dataCategory.dataTypes.length === 0) {
-  createDataType()
-}
 
 function createDataType() {
   props.dataCategory.dataTypes.push({...DataTypeTemplate})

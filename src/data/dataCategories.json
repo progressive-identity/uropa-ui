@@ -28,7 +28,7 @@
         "storageLocations": []
       }
     ],
-    "dataSubjectTypes": []
+    "dataSubjectCategories": []
   },
   {
     "name": "Connection data",
@@ -54,7 +54,7 @@
         "storageLocations": []
       }
     ],
-    "dataSubjectTypes": []
+    "dataSubjectCategories": []
   },
   {
     "name": "Personal life",
@@ -80,6 +80,6 @@
         "storageLocations": []
       }
     ],
-    "dataSubjectTypes": []
+    "dataSubjectCategories": []
   }
 ]
