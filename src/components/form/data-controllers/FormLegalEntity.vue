@@ -15,7 +15,7 @@
               <UInput v-model="modelValue.email" label="Email" type="email"
                       placeholder="The contact email of the entity" :required="true"/>
               <UInput v-model="modelValue.registrationNumber" label="Registration number"
-                      placeholder="ex: SIREN, SIRET, etc."/>
+                      placeholder="ex : CRN, SIREN, NIPC, BCE, etc."/>
             </div>
             <FormAddress :postal-address="modelValue.postalAddress"/>
           </div>
