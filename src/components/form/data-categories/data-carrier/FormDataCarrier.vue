@@ -1,9 +1,9 @@
 <template>
   <div v-if="formsDisplayed.dataCarrier">
     <div>
-      <h3>Data source</h3>
-      <p class="form-description">Abstraction of the medium on which personal data is stored. It could be a
-        hard drive on site, a SaaS, or even an archive room.</p>
+      <h3>Data carrier</h3>
+      <p class="form-description">Abstraction of the data carrier on which the personal data is stored. It could be a
+        hard drive on site, a SaaS, or even an archive room..</p>
     </div>
     <div class="py-2">
       <USelect v-model="dataCarrier.country" :list="countries" label="Country" size="s"/>

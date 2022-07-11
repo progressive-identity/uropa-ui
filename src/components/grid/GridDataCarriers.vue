@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UButton label="New data source" v-on:click="createDataLocation" :icon="mdiPlusCircle"/>
+    <UButton label="New data carrier" v-on:click="createDataLocation" :icon="mdiPlusCircle"/>
     <div class="py-5">
       <ul role="list" class="u-grid">
         <li v-for="(storageLocation, index) in storeData.getUniqueDataLocations" :key="index"

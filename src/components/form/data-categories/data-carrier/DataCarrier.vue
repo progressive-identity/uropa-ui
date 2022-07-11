@@ -1,10 +1,10 @@
 <template>
   <div v-if="formsDisplayed.storageLocation">
     <div class="space-y-5">
-      <UVerticalBar label="Data source" :rotate="formsDisplayed.dataCarrier"
+      <UVerticalBar label="Data carrier" :rotate="formsDisplayed.dataCarrier"
                     @click="toggleDisplay(formsDisplayed.subDataLocation, !formsDisplayed.dataCarrier, formsDisplayed.storageDuration)"/>
       <FormDataCarrier class="px-5" :data-carrier="storageLocation.dataCarrier"/>
-      <UVerticalBar label="Data location" :rotate="formsDisplayed.subDataLocation"
+      <UVerticalBar label="Storage location" :rotate="formsDisplayed.subDataLocation"
                     @click="toggleDisplay(!formsDisplayed.subDataLocation, formsDisplayed.dataCarrier, formsDisplayed.storageDuration)"/>
       <FormStorageLocation class="px-5" :storage-location="storageLocation"/>
       <UVerticalBar label="Storage durations" :rotate="formsDisplayed.storageDuration"

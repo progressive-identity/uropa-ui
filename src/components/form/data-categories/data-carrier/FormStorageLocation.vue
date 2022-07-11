@@ -1,8 +1,8 @@
 <template>
   <div v-if="formsDisplayed.subDataLocation">
     <div>
-      <h3>Data location</h3>
-      <p class="form-description">Place where a data item is stored within a data source.</p>
+      <h3>Storage location</h3>
+      <p class="form-description">Place where the data is stored (location or geospatial scope).</p>
     </div>
     <div class="py-2">
       <UInput v-model="storageLocation.description" label="Description" size="xl"/>
