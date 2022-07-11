@@ -88,7 +88,11 @@ const filteredList = computed(() =>
     query.value === ''
         ? props.list
         : props.list.filter((e) => {
-          return e.name.toLowerCase().includes(query.value.toLowerCase())
+          if (props.namePath) {
+            return e[namePath].name.toLowerCase().includes(query.value.toLowerCase())
+          } else {
+            return e.name.toLowerCase().includes(query.value.toLowerCase())
+          }
         })
 )
 
