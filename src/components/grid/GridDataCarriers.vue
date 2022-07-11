@@ -31,7 +31,7 @@
                   Support
                 </dt>
                 <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ storageLocation.dataSupport }}
+                  {{ storageLocation.dataCarrier.dataSupport }}
                 </dd>
               </div>
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
@@ -40,7 +40,7 @@
                   State
                 </dt>
                 <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ storageLocation.storageState }}
+                  {{ storageLocation.dataCarrier.storageState }}
                 </dd>
               </div>
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">

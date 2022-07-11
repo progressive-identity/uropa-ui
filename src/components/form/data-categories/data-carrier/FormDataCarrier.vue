@@ -13,6 +13,10 @@
         <UInput v-model="dataCarrier.storageType" label="Storage type"
                 placeholder="ex: paper binder, postgresql database, etc." size="xl"/>
       </div>
+      <div class="flex justify-start space-x-5">
+        <USelectEnums v-model="dataCarrier.dataSupport" label="Data support" :list="dataSupports" class="w-48"/>
+        <USelectEnums v-model="dataCarrier.storageState" label="Storage state" :list="storageStates" class="w-64"/>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +26,9 @@ import {storeToRefs} from 'pinia/dist/pinia.prod.cjs'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import countries from '@/data/countries.json'
+import {dataSupports, storageStates} from '@/data/enums.js'
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
