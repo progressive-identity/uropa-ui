@@ -25,7 +25,7 @@
 
 <script setup>
 import UIcon from '@/components/basic/UIcon.vue'
-import {mdiGithub, mdiLinkedin, mdiTwitter, mdiWeb} from '@mdi/js'
+import {mdiDiscord, mdiGithub, mdiLinkedin, mdiTwitter, mdiWeb} from '@mdi/js'
 import packageJson from '@/../package.json'
 
 const externalLinks = [
@@ -43,6 +43,11 @@ const externalLinks = [
     name: 'Twitter',
     href: process.env.VUE_APP_URL_TWITTER,
     icon: mdiTwitter
+  },
+  {
+    name: 'Discord',
+    href: process.env.VUE_APP_URL_DISCORD,
+    icon: mdiDiscord
   },
   {
     name: 'GitHub',
