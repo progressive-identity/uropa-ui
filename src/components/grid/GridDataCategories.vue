@@ -86,8 +86,8 @@ import USelect from '@/components/basic/select/USelect.vue'
 import FormDataCategory from '@/components/form/data-categories/data-category/FormDataCategory.vue'
 import {mdiCardAccountDetails, mdiFaceWoman, mdiPlusCircle, mdiScaleBalance, mdiViewGrid} from '@mdi/js'
 import DataCategoryTemplate from '@/data/template/data-categories/DataCategoryTemplate.json'
-import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
-import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
+import DataSubjectCategoryTemplate from '@/data/template/data-categories/DataSubjectCategoryTemplate.json'
+import DataTypeTemplate from '@/data/template/data-categories/DataTypeTemplate.json'
 import predefinedDataCategories from '@/data/dataCategories.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
@@ -119,7 +119,7 @@ async function loadDataCategory() {
       state.dataCategory.dataTypes.push(structuredClone(DataTypeTemplate))
     }
     if (state.dataCategory?.dataSubjectTypes?.length === 0) {
-      state.dataCategory.dataSubjectTypes.push(structuredClone(DataSubjectTypeTemplate))
+      state.dataCategory.dataSubjectTypes.push(structuredClone(DataSubjectCategoryTemplate))
     }
   }
 }

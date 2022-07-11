@@ -26,7 +26,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import FormDpia from '@/components/form/processing-record/FormDpia.vue'
+import FormDpia from '@/components/form/ropa/FormDpia.vue'
 
 const {processingRecord} = useStoreData()
 const storeDisplay = useStoreDisplay()

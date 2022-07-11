@@ -6,7 +6,7 @@
       <FormDataSource class="px-5" :data-source="dataLocation.dataSource"/>
       <UVerticalBar label="Data location" :rotate="formsDisplayed.subDataLocation"
                     @click="toggleDisplay(!formsDisplayed.subDataLocation, formsDisplayed.dataSource, formsDisplayed.storageDuration)"/>
-      <FormDataLocation class="px-5" :data-location="dataLocation"/>
+      <FormStorageLocation class="px-5" :data-location="dataLocation"/>
       <UVerticalBar label="Storage durations" :rotate="formsDisplayed.storageDuration"
                     @click="toggleDisplay(formsDisplayed.subDataLocation, formsDisplayed.dataSource, !formsDisplayed.storageDuration)"/>
       <TableStorageDurations class="px-5" :data-location="dataLocation"/>
@@ -22,10 +22,10 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import FormDataSource from '@/components/form/data-categories/data-source/FormDataSource.vue'
+import FormDataSource from '@/components/form/data-categories/data-carrier/FormDataSource.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
-import TableStorageDurations from '@/components/form/data-categories/data-source/TableStorageDurations.vue'
-import FormDataLocation from '@/components/form/data-categories/data-source/FormDataLocation.vue'
+import TableStorageDurations from '@/components/form/data-categories/data-carrier/TableStorageDurations.vue'
+import FormStorageLocation from '@/components/form/data-categories/data-carrier/FormStorageLocation.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
 

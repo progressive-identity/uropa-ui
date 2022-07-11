@@ -31,10 +31,10 @@
                 <UInput v-model="dataType.name" placeholder="ex: first name, email, IP address, etc." :required="true"/>
               </td>
               <td>
-                <USwitch v-model="dataType.isOptional" />
+                <USwitch v-model="dataType.isOptional"/>
               </td>
               <td>
-                <USelectEnums v-model="dataType.collectionMean"  :list="collectionMeans" :required="true"/>
+                <USelectEnums v-model="dataType.collectionMean" :list="collectionMeans" :required="true"/>
               </td>
             </tr>
             </tbody>
@@ -54,7 +54,7 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import {collectionMeans} from '/src/data/enums.js'
-import DataTypeTemplate from '@/data/template/DataTypeTemplate.json'
+import DataTypeTemplate from '@/data/template/data-categories/DataTypeTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

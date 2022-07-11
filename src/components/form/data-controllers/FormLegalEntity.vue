@@ -6,7 +6,7 @@
           <h3>{{ title }}</h3>
           <p class="form-description">{{ description }}</p>
         </div>
-        <UVerticalBar label="Legal person" :rotate="formsDisplayed.legalPerson"
+        <UVerticalBar label="Legal entity" :rotate="formsDisplayed.legalPerson"
                       @click="toggleDisplay(!formsDisplayed.legalPerson, formsDisplayed.dpo, formsDisplayed.ceo)"/>
         <div class="px-5" v-if="formsDisplayed.legalPerson">
           <div>
@@ -17,7 +17,7 @@
               <UInput v-model="modelValue.registrationNumber" label="Registration number"
                       placeholder="ex: SIREN, SIRET, etc."/>
             </div>
-            <FormPostalAddress :postal-address="modelValue.postalAddress"/>
+            <FormAddress :postal-address="modelValue.postalAddress"/>
           </div>
         </div>
         <UVerticalBar label="Ceo" :rotate="formsDisplayed.ceo" :required="false"
@@ -36,7 +36,7 @@ import {storeToRefs} from 'pinia'
 import {useStoreDisplay} from '@/store/display.js'
 import FormDpo from '@/components/form/data-controllers/FormDpo.vue'
 import FormCeo from '@/components/form/data-controllers/FormCeo.vue'
-import FormPostalAddress from '@/components/form/data-controllers/FormPostalAddress.vue'
+import FormAddress from '@/components/form/data-controllers/FormAddress.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 
@@ -56,7 +56,7 @@ const props = defineProps({
       description: {
         type: String,
         required: false,
-        default: 'A legal person is an entity that process personal data. It\'s usually a company or an organization.'
+        default: 'A legal entity is an entity (natural or legal person) that processes personal data. It can be a company, an organization, an individual etc.'
       }
     }
 )

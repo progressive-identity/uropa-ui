@@ -1,8 +1,9 @@
 <template>
   <div class="space-y-5" v-if="formsDisplayed.dataSubjectType">
     <div>
-      <h3>Data subject types</h3>
-      <p class="form-description">TODO on UROPA</p>
+      <h3>Data subject categories</h3>
+      <p class="form-description">The category of individuals whose personal data is processed (ex : employees,
+        prospects, clients)</p>
     </div>
     <div class="flex flex-col">
       <div class="inline-block min-w-full py-2 align-middle">
@@ -30,7 +31,7 @@
                 <UInput v-model="dataSubjectType.name" placeholder="ex: employees, prospects etc." :required="true"/>
               </td>
               <td>
-                <USwitch v-model="dataSubjectType.isChild" />
+                <USwitch v-model="dataSubjectType.isChild"/>
               </td>
             </tr>
             </tbody>
@@ -48,7 +49,7 @@ import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
-import DataSubjectTypeTemplate from '@/data/template/data-categories/DataSubjectTypeTemplate.json'
+import DataSubjectCategoryTemplate from '@/data/template/data-categories/DataSubjectCategoryTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -66,7 +67,7 @@ if (props.dataCategory?.dataSubjectTypes?.length === 0) {
 }
 
 function createDataSubjectType() {
-  props.dataCategory.dataSubjectTypes.push({...DataSubjectTypeTemplate})
+  props.dataCategory.dataSubjectTypes.push({...DataSubjectCategoryTemplate})
 }
 
 function deleteDataSubjectType(index) {

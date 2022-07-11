@@ -58,7 +58,7 @@
       </ul>
     </div>
     <div id="formDataLocation">
-      <DataSource :data-location="state.dataLocation"/>
+      <DataCarrier :data-location="state.dataLocation"/>
     </div>
   </div>
 </template>
@@ -72,20 +72,20 @@ import UButton from '@/components/basic/UButton.vue'
 import {mdiArchive, mdiDatabase, mdiEarth, mdiFileMarkerOutline, mdiLaptop, mdiPlusCircle} from '@mdi/js'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
-import DataSource from '@/components/form/data-categories/data-source/DataSource.vue'
-import DataLocationTemplate from '../../data/template/data-categories/DataLocationTemplate.json'
-import DataSourceTemplate from '../../data/template/data-categories/DataSourceTemplate.json'
+import DataCarrier from '@/components/form/data-categories/data-carrier/DataCarrier.vue'
+import StorageLocationTemplate from '../../data/template/data-categories/StorageLocationTemplate.json'
+import DataCarrierTemplate from '../../data/template/data-categories/DataCarrierTemplate.json'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataLocation: DataLocationTemplate})
+const state = reactive({dataLocation: StorageLocationTemplate})
 const storeDisplay = useStoreDisplay()
 
 // TODO maybe we should do this only once on the application start ?
-DataLocationTemplate.dataSource = structuredClone(DataSourceTemplate)
+StorageLocationTemplate.dataSource = structuredClone(DataCarrierTemplate)
 
 async function createDataLocation() {
-  state.dataLocation = structuredClone(DataLocationTemplate)
+  state.dataLocation = structuredClone(StorageLocationTemplate)
   state.dataLocation.dataTypes = []
   await scrollToForm()
 }

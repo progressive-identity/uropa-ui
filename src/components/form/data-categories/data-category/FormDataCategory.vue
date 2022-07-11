@@ -30,7 +30,7 @@
       <TableDataTypes class="px-5" :data-category="dataCategory"/>
       <UVerticalBar label="Data subject types" :rotate="formsDisplayed.dataSubjectType"
                     @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectType)"/>
-      <TableDataSubjectTypes class="px-5" :data-category="dataCategory"/>
+      <TableDataSubjectCategories class="px-5" :data-category="dataCategory"/>
       <div class="space-x-2 pt-3">
         <BackButton/>
         <SaveButton :on-save="saveDataCategory"/>
@@ -48,7 +48,7 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import TableDataTypes from '@/components/form/data-categories/data-category/TableDataTypes.vue'
-import TableDataSubjectTypes from '@/components/form/data-categories/data-category/TableDataSubjectTypes.vue'
+import TableDataSubjectCategories from '@/components/form/data-categories/data-category/TableDataSubjectCategories.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'

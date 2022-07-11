@@ -43,7 +43,7 @@
     </ul>
   </div>
   <div>
-    <FormJointController :joint-controller="state.jointController" :edition="state.edition"/>
+    <FormJointDataController :joint-controller="state.jointController" :edition="state.edition"/>
   </div>
 </template>
 
@@ -53,21 +53,21 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
-import FormJointController from '@/components/form/data-controllers/FormJointController.vue'
+import FormJointDataController from '@/components/form/data-controllers/FormJointDataController.vue'
 import {mdiFaceManShimmer, mdiFaceWomanShimmer, mdiHandshake, mdiPlusCircle} from '@mdi/js'
-import JointControllerTemplate from '../../data/template/JointControllerTemplate.json'
-import LegalPersonTemplate from '../../data/template/LegalPersonTemplate.json'
+import JointDataControllerTemplate from '../../data/template/data-controllers/JointDataControllerTemplate.json'
+import LegalEntityTemplate from '../../data/template/data-controllers/LegalEntityTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({jointController: JointControllerTemplate, edition: false})
+const state = reactive({jointController: JointDataControllerTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 function createJointController() {
-  state.jointController = structuredClone(JointControllerTemplate)
-  state.jointController.legalPerson = structuredClone(LegalPersonTemplate)
+  state.jointController = structuredClone(JointDataControllerTemplate)
+  state.jointController.legalPerson = structuredClone(LegalEntityTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

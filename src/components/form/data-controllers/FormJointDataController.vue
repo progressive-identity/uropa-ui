@@ -1,7 +1,7 @@
 <template>
   <div v-if="formsDisplayed.jointController">
-    <FormLegalPerson v-model="jointController.legalPerson" title="Joint controller" description="A joint controller is an entity that process the personal data
-          and jointly determines the purposes and the means of the processing, according to article 26 GDPR."/>
+    <FormLegalEntity v-model="jointController.legalPerson" title="Joint data controller"
+                     description="A joint data controller is an entity that jointly determines the purposes and the means of the processing of the personal data."/>
     <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path"
             placeholder="The path to the binding agreement "
     />
@@ -17,7 +17,7 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
-import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
 

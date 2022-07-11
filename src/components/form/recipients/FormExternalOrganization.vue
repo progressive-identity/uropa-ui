@@ -11,7 +11,7 @@
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
       <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed *"
                     :list="storeData.getUniqueDataCategories"/>
-      <FormLegalPerson v-model="externalOrganization.legalPerson"/>
+      <FormLegalEntity v-model="externalOrganization.legalPerson"/>
     </div>
     <div class="space-x-2" v-if="!nested">
       <BackButton/>
@@ -25,7 +25,7 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
-import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
