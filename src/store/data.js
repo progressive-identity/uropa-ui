@@ -19,7 +19,7 @@ export const useStoreData = defineStore('data', {
         })
     },
     getDataTypesByDataLocation: (state) => {
-      return (dataLocation) =>
+      return (storageLocation) =>
         state.processingRecord.purposes
           .flatMap((purpose) =>
             purpose?.dataCategories.flatMap(
@@ -28,8 +28,8 @@ export const useStoreData = defineStore('data', {
           )
           .filter((dataType) => {
             return (
-              dataType?.dataLocations.find(
-                (e) => e?.dataSource.name === dataLocation?.dataSource.name
+              dataType?.storageLocations.find(
+                (e) => e?.dataCarrier.name === storageLocation?.dataCarrier.name
               ) !== undefined
             )
           })
@@ -58,10 +58,12 @@ function getUniqueDataTypes(state) {
 }
 
 function getUniqueDataLocations(state) {
-  const dataLocations = getUniqueDataTypes(state).flatMap(
-    (dataType) => dataType?.dataLocations
+  const storageLocations = getUniqueDataTypes(state).flatMap(
+    (dataType) => dataType?.storageLocations
   )
   return [
-    ...new Map(dataLocations.map((e) => [e?.dataSource['name'], e])).values()
+    ...new Map(
+      storageLocations.map((e) => [e?.dataCarrier['name'], e])
+    ).values()
   ]
 }

@@ -11,7 +11,7 @@
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
       <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed *"
                     :list="storeData.getUniqueDataCategories"/>
-      <FormLegalEntity v-model="externalOrganization.legalPerson"/>
+      <FormLegalEntity v-model="externalOrganization.legalEntity"/>
     </div>
     <div class="space-x-2" v-if="!nested">
       <BackButton/>

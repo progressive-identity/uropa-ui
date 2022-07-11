@@ -8,32 +8,32 @@
           <div class="flex items-center">
             <h3>
               <UIcon size="24" :path="mdiHandshake"/>
-              {{ jointController.legalPerson.name }}
+              {{ jointController.legalEntity.name }}
             </h3>
           </div>
           <GridButtons @edit="editJointController(jointController)" @delete="deleteJointController(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
-            <div v-if="jointController.legalPerson.dpo.personalInformation.firstName"
+            <div v-if="jointController.legalEntity.dpo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  jointController.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalPerson.dpo.personalInformation.firstName
+                  jointController.legalEntity.dpo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalEntity.dpo.personalInformation.firstName
                 }}
               </dd>
             </div>
-            <div v-if="jointController.legalPerson.ceo.personalInformation.firstName"
+            <div v-if="jointController.legalEntity.ceo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  jointController.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalPerson.ceo.personalInformation.firstName
+                  jointController.legalEntity.ceo.personalInformation.lastName.toUpperCase() + ' ' + jointController.legalEntity.ceo.personalInformation.firstName
                 }}
               </dd>
             </div>
@@ -67,7 +67,7 @@ const storeDisplay = useStoreDisplay()
 
 function createJointController() {
   state.jointController = structuredClone(JointDataControllerTemplate)
-  state.jointController.legalPerson = structuredClone(LegalEntityTemplate)
+  state.jointController.legalEntity = structuredClone(LegalEntityTemplate)
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

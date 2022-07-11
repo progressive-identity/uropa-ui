@@ -3,6 +3,6 @@
   "dataSupport": "digital",
   "path": "",
   "storageState": "production",
-  "dataSource": {},
+  "dataCarrier": {},
   "storageDurations": []
 }

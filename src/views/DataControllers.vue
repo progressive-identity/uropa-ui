@@ -3,7 +3,7 @@
     <UStepperBullet v-model="currentDataControllers" :steps="stepsDataControllers"/>
     <FormLegalEntity title="Data controller"
                      description="A data controller is an entity that determines the purposes and the means of the processing of the personal data."
-                     v-if="currentDataControllers===0" v-model="processingRecord.legalPerson"/>
+                     v-if="currentDataControllers===0" v-model="processingRecord.legalEntity"/>
     <FormRepresentative v-if="currentDataControllers===1" v-model="processingRecord.representative"/>
     <GridJointDataControllers v-if="currentDataControllers===2"/>
   </div>
@@ -22,7 +22,7 @@ import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTem
 
 const {processingRecord} = useStoreData()
 const store = useStore()
-processingRecord.legalPerson = structuredClone(LegalEntityTemplate)
+processingRecord.legalEntity = structuredClone(LegalEntityTemplate)
 processingRecord.representative = structuredClone(LegalEntityTemplate)
 
 const {current, stepsDataControllers, currentDataControllers} = storeToRefs(store)

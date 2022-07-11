@@ -19,7 +19,7 @@ export const useStore = defineStore('stepper', {
       current: -1,
       stepsDataCategories: [
         { id: 0, name: 'Data categories' },
-        { id: 1, name: 'Data sources' }
+        { id: 1, name: 'Data carriers' }
       ],
       currentDataCategories: 0,
       stepsDataControllers: [

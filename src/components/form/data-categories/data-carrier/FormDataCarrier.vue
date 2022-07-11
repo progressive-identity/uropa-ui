@@ -1,16 +1,16 @@
 <template>
-  <div v-if="formsDisplayed.dataSource">
+  <div v-if="formsDisplayed.dataCarrier">
     <div>
       <h3>Data source</h3>
       <p class="form-description">Abstraction of the medium on which personal data is stored. It could be a
         hard drive on site, a SaaS, or even an archive room.</p>
     </div>
     <div class="py-2">
-      <USelect v-model="dataSource.country" :list="countries" label="Country" size="s"/>
+      <USelect v-model="dataCarrier.country" :list="countries" label="Country" size="s"/>
       <div class="flex justify-start space-x-5">
-        <UInput v-model="dataSource.name" label="Name"
+        <UInput v-model="dataCarrier.name" label="Name"
                 placeholder="ex : name of the database, server, etc." size="xl" :required="true"/>
-        <UInput v-model="dataSource.storageType" label="Storage type"
+        <UInput v-model="dataCarrier.storageType" label="Storage type"
                 placeholder="ex: paper binder, postgresql database, etc." size="xl"/>
       </div>
     </div>
@@ -28,7 +28,7 @@ const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 
 const props = defineProps({
-  dataSource: {
+  dataCarrier: {
     type: Object,
     required: true
   }

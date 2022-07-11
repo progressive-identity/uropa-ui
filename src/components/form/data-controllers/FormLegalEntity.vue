@@ -6,9 +6,9 @@
           <h3>{{ title }}</h3>
           <p class="form-description">{{ description }}</p>
         </div>
-        <UVerticalBar label="Legal entity" :rotate="formsDisplayed.legalPerson"
-                      @click="toggleDisplay(!formsDisplayed.legalPerson, formsDisplayed.dpo, formsDisplayed.ceo)"/>
-        <div class="px-5" v-if="formsDisplayed.legalPerson">
+        <UVerticalBar label="Legal entity" :rotate="formsDisplayed.legalEntity"
+                      @click="toggleDisplay(!formsDisplayed.legalEntity, formsDisplayed.dpo, formsDisplayed.ceo)"/>
+        <div class="px-5" v-if="formsDisplayed.legalEntity">
           <div>
             <div class="pt-3 flex justify-start space-x-5">
               <UInput v-model="modelValue.name" label="Name" placeholder="The name of the entity" :required="true"/>
@@ -21,10 +21,10 @@
           </div>
         </div>
         <UVerticalBar label="Ceo" :rotate="formsDisplayed.ceo" :required="false"
-                      @click="toggleDisplay(formsDisplayed.legalPerson, formsDisplayed.dpo, !formsDisplayed.ceo)"/>
+                      @click="toggleDisplay(formsDisplayed.legalEntity, formsDisplayed.dpo, !formsDisplayed.ceo)"/>
         <FormCeo class="px-5" :ceo="modelValue.ceo"/>
         <UVerticalBar label="Dpo" :rotate="formsDisplayed.dpo" :required="false"
-                      @click="toggleDisplay(formsDisplayed.legalPerson, !formsDisplayed.dpo, formsDisplayed.ceo)"/>
+                      @click="toggleDisplay(formsDisplayed.legalEntity, !formsDisplayed.dpo, formsDisplayed.ceo)"/>
         <FormDpo class="px-5" :dpo="modelValue.dpo"/>
       </div>
     </div>
@@ -63,14 +63,14 @@ const props = defineProps({
 
 storeDisplay.$patch({
   formsDisplayed: {
-    legalPerson: true
+    legalEntity: true
   }
 })
 
-function toggleDisplay(legalPerson, dpo, ceo) {
+function toggleDisplay(legalEntity, dpo, ceo) {
   storeDisplay.$patch({
     formsDisplayed: {
-      legalPerson,
+      legalEntity,
       dpo,
       ceo
     }

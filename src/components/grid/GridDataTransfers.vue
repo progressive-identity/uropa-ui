@@ -44,7 +44,7 @@
                     <li v-for="dataProcessor in dataTransfer.dataTransferLegalBasis.recipients.dataProcessors"
                         class="flex items-center justify-between text-sm">
                       <div class="flex-1 flex items-center pb-2">
-                        <span class="flex-1 truncate">- {{ dataProcessor.legalPerson.name }}</span>
+                        <span class="flex-1 truncate">- {{ dataProcessor.legalEntity.name }}</span>
                       </div>
                     </li>
                   </ul>
@@ -61,7 +61,7 @@
                   <li v-for="externalOrganization in dataTransfer.dataTransferLegalBasis.recipients.externalOrganizations"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">- {{ externalOrganization.legalPerson.name }}</span>
+                      <span class="flex-1 truncate">- {{ externalOrganization.legalEntity.name }}</span>
                     </div>
                   </li>
                 </ul>
@@ -93,7 +93,7 @@
                   <li v-for="jointDataController in dataTransfer.dataTransferLegalBasis.recipients.jointDataControllers"
                       class="flex items-center justify-between text-sm">
                     <div class="flex-1 flex items-center pb-2">
-                      <span class="flex-1 truncate">- {{ jointDataController.legalPerson.name }}</span>
+                      <span class="flex-1 truncate">- {{ jointDataController.legalEntity.name }}</span>
                     </div>
                   </li>
                 </ul>

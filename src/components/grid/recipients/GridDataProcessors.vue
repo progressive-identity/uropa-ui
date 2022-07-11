@@ -8,32 +8,32 @@
           <div class="flex items-center">
             <h3>
               <UIcon size="24" :path="mdiAccountWrench"/>
-              {{ dataProcessor.legalPerson.name }}
+              {{ dataProcessor.legalEntity.name }}
             </h3>
           </div>
           <GridButtons @edit="editDataProcessor(dataProcessor)" @delete="deleteDataProcessor(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
-            <div v-if="dataProcessor.legalPerson.dpo.personalInformation.firstName"
+            <div v-if="dataProcessor.legalEntity.dpo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  dataProcessor.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalPerson.dpo.personalInformation.firstName
+                  dataProcessor.legalEntity.dpo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalEntity.dpo.personalInformation.firstName
                 }}
               </dd>
             </div>
-            <div v-if="dataProcessor.legalPerson.ceo.personalInformation.firstName"
+            <div v-if="dataProcessor.legalEntity.ceo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  dataProcessor.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalPerson.ceo.personalInformation.firstName
+                  dataProcessor.legalEntity.ceo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalEntity.ceo.personalInformation.firstName
                 }}
               </dd>
             </div>

@@ -8,7 +8,7 @@
           <div class="flex items-center">
             <h3>
               <UIcon size="24" :path="mdiAccountSwitch"/>
-              {{ externalOrganization.legalPerson.name }}
+              {{ externalOrganization.legalEntity.name }}
             </h3>
           </div>
           <GridButtons @edit="editExternalOrganization(externalOrganization)"
@@ -26,25 +26,25 @@
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalPerson.dpo.personalInformation.firstName"
+            <div v-if="externalOrganization.legalEntity.dpo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  externalOrganization.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalPerson.dpo.personalInformation.firstName
+                  externalOrganization.legalEntity.dpo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalEntity.dpo.personalInformation.firstName
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalPerson.ceo.personalInformation.firstName"
+            <div v-if="externalOrganization.legalEntity.ceo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  externalOrganization.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalPerson.ceo.personalInformation.firstName
+                  externalOrganization.legalEntity.ceo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalEntity.ceo.personalInformation.firstName
                 }}
               </dd>
             </div>

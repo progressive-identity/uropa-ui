@@ -1,6 +1,6 @@
 <template>
   <div v-if="formsDisplayed.jointController">
-    <FormLegalEntity v-model="jointController.legalPerson" title="Joint data controller"
+    <FormLegalEntity v-model="jointController.legalEntity" title="Joint data controller"
                      description="A joint data controller is an entity that jointly determines the purposes and the means of the processing of the personal data."/>
     <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path"
             placeholder="The path to the binding agreement "

@@ -5,7 +5,7 @@ export const useStoreDisplay = defineStore('display', {
     return {
       formsDisplayed: {
         dpia: false,
-        legalPerson: false,
+        legalEntity: false,
         ceo: false,
         dpo: false,
         purpose: false,
@@ -15,9 +15,9 @@ export const useStoreDisplay = defineStore('display', {
         subDataCategory: false,
         dataType: false,
         dataSubjectCategory: false,
-        dataLocation: false,
+        storageLocation: false,
         subDataLocation: false,
-        dataSource: false,
+        dataCarrier: false,
         storageDuration: false,
         eventType: false,
         jointController: false,

@@ -8,7 +8,7 @@
     <div class="pt-3">
       <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed *"
                     :list="storeData.getUniqueDataCategories"/>
-      <FormLegalEntity v-model="dataProcessor.legalPerson"/>
+      <FormLegalEntity v-model="dataProcessor.legalEntity"/>
       <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path"
               placeholder="The path of the binding agreement with processor" size="xl"/>
     </div>

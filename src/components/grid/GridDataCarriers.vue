@@ -3,16 +3,16 @@
     <UButton label="New data source" v-on:click="createDataLocation" :icon="mdiPlusCircle"/>
     <div class="py-5">
       <ul role="list" class="u-grid">
-        <li v-for="(dataLocation, index) in storeData.getUniqueDataLocations" :key="index"
+        <li v-for="(storageLocation, index) in storeData.getUniqueDataLocations" :key="index"
             class="u-grid">
           <div class="relative px-4 py-5">
             <div class="flex items-center">
               <h3>
                 <UIcon size="24" :path="mdiFileMarkerOutline"/>
-                {{ dataLocation.dataSource.name }}
+                {{ storageLocation.dataCarrier.name }}
               </h3>
             </div>
-            <GridButtons @edit="editDataLocation(dataLocation)" @delete="deleteDataLocation(index)"/>
+            <GridButtons @edit="editDataLocation(storageLocation)" @delete="deleteDataLocation(index)"/>
           </div>
           <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">
@@ -22,7 +22,7 @@
                   Country
                 </dt>
                 <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataLocation.dataSource.country.name }}
+                  {{ storageLocation.dataCarrier.country.name }}
                 </dd>
               </div>
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
@@ -31,7 +31,7 @@
                   Support
                 </dt>
                 <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataLocation.dataSupport }}
+                  {{ storageLocation.dataSupport }}
                 </dd>
               </div>
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
@@ -40,7 +40,7 @@
                   State
                 </dt>
                 <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataLocation.storageState }}
+                  {{ storageLocation.storageState }}
                 </dd>
               </div>
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
@@ -49,7 +49,7 @@
                   Type
                 </dt>
                 <dd class="flex items-center mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ dataLocation.dataSource.storageType }}
+                  {{ storageLocation.dataCarrier.storageType }}
                 </dd>
               </div>
             </dl>
@@ -58,7 +58,7 @@
       </ul>
     </div>
     <div id="formDataLocation">
-      <DataCarrier :data-location="state.dataLocation"/>
+      <DataCarrier :storage-location="state.storageLocation"/>
     </div>
   </div>
 </template>
@@ -78,26 +78,26 @@ import DataCarrierTemplate from '../../data/template/data-categories/DataCarrier
 
 const storeData = useStoreData()
 const {processingRecord} = storeToRefs(storeData)
-const state = reactive({dataLocation: StorageLocationTemplate})
+const state = reactive({storageLocation: StorageLocationTemplate})
 const storeDisplay = useStoreDisplay()
 
 // TODO maybe we should do this only once on the application start ?
-StorageLocationTemplate.dataSource = structuredClone(DataCarrierTemplate)
+StorageLocationTemplate.dataCarrier = structuredClone(DataCarrierTemplate)
 
 async function createDataLocation() {
-  state.dataLocation = structuredClone(StorageLocationTemplate)
-  state.dataLocation.dataTypes = []
+  state.storageLocation = structuredClone(StorageLocationTemplate)
+  state.storageLocation.dataTypes = []
   await scrollToForm()
 }
 
-async function editDataLocation(dataLocation) {
-  state.dataLocation = dataLocation
-  state.dataLocation.dataTypes = [...storeData.getDataTypesByDataLocation(dataLocation)]
+async function editDataLocation(storageLocation) {
+  state.storageLocation = storageLocation
+  state.storageLocation.dataTypes = [...storeData.getDataTypesByDataLocation(storageLocation)]
   // TODO to rework
-  state.dataLocation.dataTypes.forEach((dataType, index) => {
-    dataType.path = dataType.dataLocations.find(dataLocation => dataLocation.dataSource.name === state.dataLocation.dataSource.name).path
-    dataType.dataLocations = []
-    state.dataLocation.dataTypes[index] = {...dataType}
+  state.storageLocation.dataTypes.forEach((dataType, index) => {
+    dataType.path = dataType.storageLocations.find(storageLocation => storageLocation.dataCarrier.name === state.storageLocation.dataCarrier.name).path
+    dataType.storageLocations = []
+    state.storageLocation.dataTypes[index] = {...dataType}
   })
   await scrollToForm()
 }
@@ -105,7 +105,7 @@ async function editDataLocation(dataLocation) {
 function deleteDataLocation(index) {
   storeData.$patch((state) => {
     // TODO
-    state.processingRecord.dataLocations.splice(index, 1)
+    state.processingRecord.storageLocations.splice(index, 1)
   })
 }
 
@@ -118,8 +118,8 @@ async function scrollToForm() {
 async function displayForm() {
   storeDisplay.$patch({
     formsDisplayed: {
-      dataLocation: true,
-      dataSource: true
+      storageLocation: true,
+      dataCarrier: true
     }
   })
 }
