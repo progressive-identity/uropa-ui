@@ -93,7 +93,7 @@ if (props.purpose?.legalBases?.length === 0) {
 }
 
 function createLegalBasis() {
-  props.purpose.legalBases.push({...LegalBasisTemplate})
+  props.purpose.legalBases.push(structuredClone(LegalBasisTemplate))
   fillEventsType(props.purpose.legalBases.slice(-1)[0])
 }
 
