@@ -45,7 +45,7 @@ const props = defineProps({
 function saveInternalDepartment() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.recipients.internalDepartments.push({...props.internalDepartment}))
+        state.ropa.recipients.internalDepartments.push({...props.internalDepartment}))
   }
 }
 </script>

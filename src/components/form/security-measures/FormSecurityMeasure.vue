@@ -50,7 +50,7 @@ const props = defineProps({
 function saveSecurityMeasure() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.securityMeasures.push({...props.securityMeasure}))
+        state.ropa.securityMeasures.push({...props.securityMeasure}))
   }
 }
 </script>

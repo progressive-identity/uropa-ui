@@ -28,7 +28,7 @@ async function next() {
     store.current++
     storeDisplay.$reset()
     storeData.$patch({
-      processingRecord: {
+      ropa: {
         updatedAt: new Date()
       }
     })

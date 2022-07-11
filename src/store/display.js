@@ -20,7 +20,7 @@ export const useStoreDisplay = defineStore('display', {
         dataCarrier: false,
         storageDuration: false,
         eventType: false,
-        jointController: false,
+        jointDataController: false,
         internalDepartment: false,
         externalOrganization: false,
         dataProcessor: false,

@@ -8,12 +8,12 @@
           data in the controller system.</p>
       </div>
       <div>
-        <UInput v-model="processingRecord.name" label="Name" placeholder="The name of the processing activity"
+        <UInput v-model="ropa.name" label="Name" placeholder="The name of the processing activity"
                 :required="true"/>
-        <UInput v-model="processingRecord.internalId" label="Internal ID"
+        <UInput v-model="ropa.internalId" label="Internal ID"
                 placeholder="The reference of the ROPA"/>
       </div>
-      <USwitch v-model="processingRecord.hasAutomatedDecisionMaking" label="Automated decision making"/>
+      <USwitch v-model="ropa.hasAutomatedDecisionMaking" label="Automated decision making"/>
       <USwitch v-model="formsDisplayed.dpia" label="DPIA"/>
       <FormDpia/>
     </div>
@@ -28,13 +28,13 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import FormDpia from '@/components/form/ropa/FormDpia.vue'
 
-const {processingRecord} = useStoreData()
+const {ropa} = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 
 storeDisplay.$patch({
   formsDisplayed: {
-    dpia: processingRecord.dpia.description.length > 0
+    dpia: ropa.dpia.description.length > 0
   }
 })
 

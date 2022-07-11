@@ -2,7 +2,7 @@
   <UButton label="New data processor" v-on:click="createDataProcessor" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(dataProcessor, index) in processingRecord.recipients.dataProcessors" :key="index"
+      <li v-for="(dataProcessor, index) in ropa.recipients.dataProcessors" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -67,6 +67,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
+import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
 import {
   mdiAccountWrench,
@@ -75,14 +77,16 @@ import {
   mdiFormatListBulletedSquare,
   mdiPlusCircle
 } from '@mdi/js'
-import DataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
-import GridButtons from '@/components/grid/GridButtons.vue'
-import UIcon from '@/components/basic/UIcon.vue'
+import DataProcessorTemplate from '@/data/template/recipients/DataProcessorTemplate.json'
+import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
+
+// TODO maybe we should do this only once on the application start ?
+DataProcessorTemplate.legalEntity = structuredClone(LegalEntityTemplate)
 
 function createDataProcessor() {
   state.dataProcessor = structuredClone(DataProcessorTemplate)
@@ -106,7 +110,7 @@ function editDataProcessor(dataProcessor) {
 
 function deleteDataProcessor(index) {
   storeData.$patch((state) => {
-    state.processingRecord.recipients.dataProcessors.splice(index, 1)
+    state.ropa.recipients.dataProcessors.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

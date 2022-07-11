@@ -48,7 +48,7 @@ const props = defineProps({
 function saveDataProcessor() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
+        state.ropa.recipients.dataProcessors.push({...props.dataProcessor}))
   }
 }
 </script>

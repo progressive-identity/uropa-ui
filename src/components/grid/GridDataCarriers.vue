@@ -73,11 +73,11 @@ import {mdiArchive, mdiDatabase, mdiEarth, mdiFileMarkerOutline, mdiLaptop, mdiP
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import DataCarrier from '@/components/form/data-categories/data-carrier/DataCarrier.vue'
-import StorageLocationTemplate from '../../data/template/data-categories/StorageLocationTemplate.json'
-import DataCarrierTemplate from '../../data/template/data-categories/DataCarrierTemplate.json'
+import StorageLocationTemplate from '@/data/template/data-categories/StorageLocationTemplate.json'
+import DataCarrierTemplate from '@/data/template/data-categories/DataCarrierTemplate.json'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({storageLocation: StorageLocationTemplate})
 const storeDisplay = useStoreDisplay()
 
@@ -105,7 +105,7 @@ async function editDataLocation(storageLocation) {
 function deleteDataLocation(index) {
   storeData.$patch((state) => {
     // TODO
-    state.processingRecord.storageLocations.splice(index, 1)
+    state.ropa.storageLocations.splice(index, 1)
   })
 }
 

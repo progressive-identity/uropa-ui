@@ -1,11 +1,11 @@
 <template>
-  <div class="flex justify-center" v-if="processingRecord.recipients.internalDepartments.length === 0">
+  <div class="flex justify-center" v-if="ropa.recipients.internalDepartments.length === 0">
     <p class="form-error">You must have at least one internal department</p>
   </div>
   <UButton label="New internal department" v-on:click="createInternalDepartment" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(internalDepartment, index) in processingRecord.recipients.internalDepartments" :key="index"
+      <li v-for="(internalDepartment, index) in ropa.recipients.internalDepartments" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -51,12 +51,12 @@ import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
 import FormInternalDepartment from '@/components/form/recipients/FormInternalDepartment.vue'
 import {mdiAccountGroup, mdiFormatListBulletedSquare, mdiPlusCircle} from '@mdi/js'
-import InternalDepartmentTemplate from '../../../data/template/recipients/InternalDepartmentTemplate.json'
+import InternalDepartmentTemplate from '@/data/template/recipients/InternalDepartmentTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({internalDepartment: InternalDepartmentTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
@@ -82,7 +82,7 @@ function editInternalDepartment(internalDepartment) {
 
 function deleteInternalDepartment(index) {
   storeData.$patch((state) => {
-    state.processingRecord.recipients.internalDepartments.splice(index, 1)
+    state.ropa.recipients.internalDepartments.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

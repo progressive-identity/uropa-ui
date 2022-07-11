@@ -22,7 +22,7 @@
           <USelectEnums v-model="dataCategory.sensitiveLegalBasis" label="Sensitive legal basis"
                         :list="sensitiveLegalBases"/>
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
-                        :list="storeData.processingRecord.purposes" :required="true"/>
+                        :list="storeData.ropa.purposes" :required="true"/>
         </div>
       </div>
       <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"
@@ -82,7 +82,7 @@ storeDisplay.$patch({
 function saveDataCategory() {
   // TODO could probably be reworked
   // We iterate over the purposes in the store
-  storeData.processingRecord.purposes.forEach(purposeStore => {
+  storeData.ropa.purposes.forEach(purposeStore => {
     // We check if the data category is present on the purpose in the store
     const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
     if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {

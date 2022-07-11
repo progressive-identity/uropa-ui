@@ -54,7 +54,7 @@ const props = defineProps({
 function saveExternalOrganization() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.recipients.externalOrganizations.push({...props.externalOrganization}))
+        state.ropa.recipients.externalOrganizations.push({...props.externalOrganization}))
   }
 }
 </script>

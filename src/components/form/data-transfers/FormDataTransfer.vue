@@ -24,7 +24,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
-import countries from './../../../data/countries.json'
+import countries from '@/data/countries.json'
 import FormDataTransferLegalBasis from '@/components/form/data-transfers/FormDataTransferLegalBasis.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
@@ -48,7 +48,7 @@ const props = defineProps({
 function saveDataTransfer() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.dataTransfers.push({...props.dataTransfer}))
+        state.ropa.dataTransfers.push({...props.dataTransfer}))
   }
 }
 </script>

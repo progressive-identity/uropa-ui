@@ -2,7 +2,7 @@
   <UButton label="New data transfer" v-on:click="createDataTransfer" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(dataTransfer, index) in processingRecord.dataTransfers" :key="index"
+      <li v-for="(dataTransfer, index) in ropa.dataTransfers" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -126,12 +126,12 @@ import {
   mdiPlusCircle,
   mdiSwapHorizontal
 } from '@mdi/js'
-import DataTransferTemplate from '../../data/template/DataTransferTemplate.json'
+import DataTransferTemplate from '@/data/template/DataTransferTemplate.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({dataTransfer: DataTransferTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
@@ -158,7 +158,7 @@ function editDataTransfer(dataTransfer) {
 
 function deleteDataTransfer(index) {
   storeData.$patch((state) => {
-    state.processingRecord.dataTransfers.splice(index, 1)
+    state.ropa.dataTransfers.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

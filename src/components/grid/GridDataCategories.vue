@@ -131,11 +131,11 @@ async function editDataCategory(dataCategory) {
 }
 
 async function deleteDataCategory(dataCategoryToDelete) {
-  storeData.processingRecord?.purposes.forEach((purpose, indexPurpose) => {
+  storeData.ropa?.purposes.forEach((purpose, indexPurpose) => {
     purpose?.dataCategories.forEach((dataCategory, indexDataCategory) => {
       if (dataCategory.name === dataCategoryToDelete.name) {
         storeData.$patch((state) => {
-          state.processingRecord.purposes[indexPurpose].dataCategories.splice(indexDataCategory, 1)
+          state.ropa.purposes[indexPurpose].dataCategories.splice(indexDataCategory, 1)
         })
       }
     })

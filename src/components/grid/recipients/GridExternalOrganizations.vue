@@ -2,7 +2,7 @@
   <UButton label="New external organization" v-on:click="createExternalOrganization" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(externalOrganization, index) in processingRecord.recipients.externalOrganizations" :key="index"
+      <li v-for="(externalOrganization, index) in ropa.recipients.externalOrganizations" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
@@ -78,6 +78,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
+import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
 import {
   mdiAccountSwitch,
@@ -87,14 +89,16 @@ import {
   mdiFormatListBulletedSquare,
   mdiPlusCircle
 } from '@mdi/js'
-import ExternalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
-import GridButtons from '@/components/grid/GridButtons.vue'
-import UIcon from '@/components/basic/UIcon.vue'
+import ExternalOrganizationTemplate from '@/data/template/recipients/ExternalOrganizationTemplate.json'
+import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({externalOrganization: ExternalOrganizationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
+
+// TODO maybe we should do this only once on the application start ?
+ExternalOrganizationTemplate.legalEntity = structuredClone(LegalEntityTemplate)
 
 function createExternalOrganization() {
   state.externalOrganization = structuredClone(ExternalOrganizationTemplate)
@@ -118,7 +122,7 @@ function editExternalOrganization(externalOrganization) {
 
 function deleteExternalOrganization(index) {
   storeData.$patch((state) => {
-    state.processingRecord.recipients.externalOrganizations.splice(index, 1)
+    state.ropa.recipients.externalOrganizations.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

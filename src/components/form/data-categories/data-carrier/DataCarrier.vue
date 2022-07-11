@@ -45,7 +45,7 @@ const props = defineProps({
 
 function saveDataLocation() {
   // We get all the data types in the store
-  const storeDataTypes = storeData.processingRecord.purposes.flatMap(purpose =>
+  const storeDataTypes = storeData.ropa.purposes.flatMap(purpose =>
       purpose?.dataCategories.flatMap(dataCategory =>
           dataCategory?.dataTypes.flat())
   )

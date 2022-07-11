@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
-import RopaTemplate from '../data/template/RopaTemplate.json'
+import RopaTemplate from '@/data/template/RopaTemplate.json'
+
+const ropa = structuredClone(RopaTemplate)
 
 export const useStoreData = defineStore('data', {
   state: () => {
-    return { processingRecord: structuredClone(RopaTemplate) }
+    return { ropa }
   },
   getters: {
     getUniqueDataCategories: (state) => getUniqueDataCategories(state),
@@ -11,7 +13,7 @@ export const useStoreData = defineStore('data', {
     getUniqueDataLocations: (state) => getUniqueDataLocations(state),
     getPurposesByDataCategory: (state) => {
       return (dataCategory) =>
-        state.processingRecord.purposes.filter((purpose) => {
+        state.ropa.purposes.filter((purpose) => {
           return (
             purpose.dataCategories.find((e) => e.name === dataCategory.name) !==
             undefined
@@ -20,7 +22,7 @@ export const useStoreData = defineStore('data', {
     },
     getDataTypesByDataLocation: (state) => {
       return (storageLocation) =>
-        state.processingRecord.purposes
+        state.ropa.purposes
           .flatMap((purpose) =>
             purpose?.dataCategories.flatMap(
               (dataCategory) => dataCategory?.dataTypes
@@ -36,15 +38,13 @@ export const useStoreData = defineStore('data', {
     },
     getOtherMainPurpose: (state) => {
       return (purpose) =>
-        state.processingRecord?.purposes.find(
-          (e) => e.isMain && purpose.name !== e.name
-        )
+        state.ropa?.purposes.find((e) => e.isMain && purpose.name !== e.name)
     }
   }
 })
 
 function getUniqueDataCategories(state) {
-  const dataCategories = state.processingRecord.purposes.flatMap(
+  const dataCategories = state.ropa.purposes.flatMap(
     (purpose) => purpose?.dataCategories
   )
   return [...new Map(dataCategories.map((e) => [e['name'], e])).values()]

@@ -26,7 +26,7 @@
 <script setup>
 import UIcon from '@/components/basic/UIcon.vue'
 import {mdiGithub, mdiLinkedin, mdiTwitter, mdiWeb} from '@mdi/js'
-import packageJson from './../../../package.json'
+import packageJson from '@/../package.json'
 
 const externalLinks = [
   {

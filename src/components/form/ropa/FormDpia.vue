@@ -23,7 +23,7 @@ import {storeToRefs} from 'pinia'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 
-const {processingRecord: {dpia}} = useStoreData()
+const {ropa: {dpia}} = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 </script>

@@ -3,8 +3,8 @@
     <UStepperBullet v-model="currentDataControllers" :steps="stepsDataControllers"/>
     <FormLegalEntity title="Data controller"
                      description="A data controller is an entity that determines the purposes and the means of the processing of the personal data."
-                     v-if="currentDataControllers===0" v-model="processingRecord.legalEntity"/>
-    <FormRepresentative v-if="currentDataControllers===1" v-model="processingRecord.representative"/>
+                     v-if="currentDataControllers===0" v-model="ropa.legalEntity"/>
+    <FormRepresentative v-if="currentDataControllers===1" v-model="ropa.representative"/>
     <GridJointDataControllers v-if="currentDataControllers===2"/>
   </div>
 </template>
@@ -19,12 +19,10 @@ import FormRepresentative from '@/components/form/data-controllers/FormRepresent
 import GridJointDataControllers from '@/components/grid/GridJointDataControllers.vue'
 import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
-
-const {processingRecord} = useStoreData()
 const store = useStore()
-processingRecord.legalEntity = structuredClone(LegalEntityTemplate)
-processingRecord.representative = structuredClone(LegalEntityTemplate)
-
 const {current, stepsDataControllers, currentDataControllers} = storeToRefs(store)
+const {ropa} = useStoreData()
+ropa.legalEntity = structuredClone(LegalEntityTemplate)
+ropa.representative = structuredClone(LegalEntityTemplate)
 
 </script>

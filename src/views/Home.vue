@@ -2,7 +2,7 @@
   <section class="px-20 py-20">
     <StepperProcessingRecord/>
     <StepperNavigation/>
-    <Welcome class="flex h-full items-center justify-center px-20"/>
+    <Welcome/>
     <GeneralInformation/>
     <DataControllers/>
     <Purposes/>
