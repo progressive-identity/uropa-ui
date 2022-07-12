@@ -73,10 +73,10 @@ const storeDisplay = useStoreDisplay()
 const state = reactive({purpose: PurposeTemplate, edition: false})
 
 // TODO maybe we should do this only once on the application start ?
-PurposeTemplate.legalBasis = structuredClone(LegalBasisTemplate)
+PurposeTemplate.legalBasis = JSON.parse(JSON.stringify(LegalBasisTemplate))
 
 function createPurpose() {
-  state.purpose = structuredClone(PurposeTemplate)
+  state.purpose = JSON.parse(JSON.stringify(PurposeTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

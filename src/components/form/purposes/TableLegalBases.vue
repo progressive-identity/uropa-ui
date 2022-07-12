@@ -78,8 +78,8 @@ const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({eventType: EventTypeTemplate})
 
 // TODO maybe we should do this only once on the application start ?
-LegalBasisTemplate.startValidity = structuredClone(EventTypeTemplate)
-LegalBasisTemplate.stopValidity = structuredClone(EventTypeTemplate)
+LegalBasisTemplate.startValidity = JSON.parse(JSON.stringify(EventTypeTemplate))
+LegalBasisTemplate.stopValidity = JSON.parse(JSON.stringify(EventTypeTemplate))
 
 const props = defineProps({
   purpose: {
@@ -93,7 +93,7 @@ if (props.purpose?.legalBases?.length === 0) {
 }
 
 function createLegalBasis() {
-  props.purpose.legalBases.push(structuredClone(LegalBasisTemplate))
+  props.purpose.legalBases.push(JSON.parse(JSON.stringify(LegalBasisTemplate)))
   fillEventsType(props.purpose.legalBases.slice(-1)[0])
 }
 

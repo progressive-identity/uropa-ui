@@ -86,7 +86,7 @@ if (props.storageLocation?.storageDurations?.length === 0) {
 
 function createStorageDuration() {
   //TODO create and use eventTemplate
-  props.storageLocation.storageDurations.push(structuredClone(StorageDurationTemplate))
+  props.storageLocation.storageDurations.push(JSON.parse(JSON.stringify(StorageDurationTemplate)))
 }
 
 function deleteStorageDuration(index) {

@@ -86,10 +86,10 @@ const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
 // TODO maybe we should do this only once on the application start ?
-DataProcessorTemplate.legalEntity = structuredClone(LegalEntityTemplate)
+DataProcessorTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 function createDataProcessor() {
-  state.dataProcessor = structuredClone(DataProcessorTemplate)
+  state.dataProcessor = JSON.parse(JSON.stringify(DataProcessorTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

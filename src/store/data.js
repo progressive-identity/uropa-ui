@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import RopaTemplate from '@/data/template/RopaTemplate.json'
 
-const ropa = structuredClone(RopaTemplate)
+const ropa = JSON.parse(JSON.stringify(RopaTemplate))
 
 export const useStoreData = defineStore('data', {
   state: () => {

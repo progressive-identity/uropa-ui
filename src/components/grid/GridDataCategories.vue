@@ -98,11 +98,11 @@ const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({dataCategory: DataCategoryTemplate, purposes: []})
 
 // TODO maybe we should do this only once on the application start ?
-DataCategoryTemplate.dataTypes.push(structuredClone(DataTypeTemplate))
-DataCategoryTemplate.dataSubjectCategories.push(structuredClone(DataSubjectCategoryTemplate))
+DataCategoryTemplate.dataTypes.push(JSON.parse(JSON.stringify(DataTypeTemplate)))
+DataCategoryTemplate.dataSubjectCategories.push(JSON.parse(JSON.stringify(DataSubjectCategoryTemplate)))
 
 async function createDataCategory() {
-  state.dataCategory = structuredClone(DataCategoryTemplate)
+  state.dataCategory = JSON.parse(JSON.stringify(DataCategoryTemplate))
   state.purposes = []
   await scrollToForm()
 }

@@ -137,7 +137,7 @@ const storeDisplay = useStoreDisplay()
 
 
 function createDataTransfer() {
-  state.dataTransfer = structuredClone(DataTransferTemplate)
+  state.dataTransfer = JSON.parse(JSON.stringify(DataTransferTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

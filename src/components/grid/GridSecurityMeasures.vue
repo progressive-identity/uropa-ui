@@ -67,7 +67,7 @@ const storeDisplay = useStoreDisplay()
 
 
 function createSecurityMeasure() {
-  state.securityMeasure = structuredClone(SecurityMeasureTemplate)
+  state.securityMeasure = JSON.parse(JSON.stringify(SecurityMeasureTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

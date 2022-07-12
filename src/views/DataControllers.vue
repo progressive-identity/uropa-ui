@@ -22,7 +22,7 @@ import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTem
 const store = useStore()
 const {current, stepsDataControllers, currentDataControllers} = storeToRefs(store)
 const {ropa} = useStoreData()
-ropa.legalEntity = structuredClone(LegalEntityTemplate)
-ropa.representative = structuredClone(LegalEntityTemplate)
+ropa.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
+ropa.representative = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 </script>

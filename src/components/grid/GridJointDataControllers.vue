@@ -66,8 +66,8 @@ const state = reactive({jointDataController: JointDataControllerTemplate, editio
 const storeDisplay = useStoreDisplay()
 
 function createJointDataController() {
-  state.jointDataController = structuredClone(JointDataControllerTemplate)
-  state.jointDataController.legalEntity = structuredClone(LegalEntityTemplate)
+  state.jointDataController = JSON.parse(JSON.stringify(JointDataControllerTemplate))
+  state.jointDataController.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

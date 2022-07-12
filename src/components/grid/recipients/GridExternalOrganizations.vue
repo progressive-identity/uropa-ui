@@ -98,10 +98,10 @@ const state = reactive({externalOrganization: ExternalOrganizationTemplate, edit
 const storeDisplay = useStoreDisplay()
 
 // TODO maybe we should do this only once on the application start ?
-ExternalOrganizationTemplate.legalEntity = structuredClone(LegalEntityTemplate)
+ExternalOrganizationTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 function createExternalOrganization() {
-  state.externalOrganization = structuredClone(ExternalOrganizationTemplate)
+  state.externalOrganization = JSON.parse(JSON.stringify(ExternalOrganizationTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

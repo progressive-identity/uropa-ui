@@ -61,7 +61,7 @@ const state = reactive({internalDepartment: InternalDepartmentTemplate, edition:
 const storeDisplay = useStoreDisplay()
 
 function createInternalDepartment() {
-  state.internalDepartment = structuredClone(InternalDepartmentTemplate)
+  state.internalDepartment = JSON.parse(JSON.stringify(InternalDepartmentTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {

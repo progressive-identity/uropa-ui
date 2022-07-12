@@ -82,10 +82,10 @@ const state = reactive({storageLocation: StorageLocationTemplate})
 const storeDisplay = useStoreDisplay()
 
 // TODO maybe we should do this only once on the application start ?
-StorageLocationTemplate.dataCarrier = structuredClone(DataCarrierTemplate)
+StorageLocationTemplate.dataCarrier = JSON.parse(JSON.stringify(DataCarrierTemplate))
 
 async function createDataLocation() {
-  state.storageLocation = structuredClone(StorageLocationTemplate)
+  state.storageLocation = JSON.parse(JSON.stringify(StorageLocationTemplate))
   state.storageLocation.dataTypes = []
   await scrollToForm()
 }
