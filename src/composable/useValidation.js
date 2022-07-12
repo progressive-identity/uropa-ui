@@ -23,7 +23,7 @@ export function validate(state, props, value) {
  */
 function refreshCookies() {
   const storeData = useStoreData()
-  $cookies.set('uropa_processing_record', storeData.ropa, '30d')
+  $cookies.set('uropa_ropa', storeData.ropa, '30d')
 }
 
 function writeError(state, errorMessage) {

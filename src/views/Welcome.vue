@@ -40,17 +40,17 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
-const state = reactive({isCookie: $cookies.isKey('uropa_processing_record')})
+const state = reactive({isCookie: $cookies.isKey('uropa_ropa')})
 
 if (state.isCookie) {
 // When loading the application we put the cookie content, if present, in the store
   storeData.$patch({
-    ropa: $cookies.get('uropa_processing_record')
+    ropa: $cookies.get('uropa_ropa')
   })
 }
 
 async function resetProcessingRecord() {
-  $cookies.remove('uropa_processing_record')
+  $cookies.remove('uropa_ropa')
   await startProcessingRecord()
 }
 
@@ -63,12 +63,12 @@ async function startProcessingRecord(data = null) {
     storeData.$patch({
       ropa: JSON.parse(data)
     })
-  } else if (!$cookies.isKey('uropa_processing_record')) {
+  } else if (!$cookies.isKey('uropa_ropa')) {
     storeData.$patch({
       ropa: RopaTemplate
     })
   }
   // TODO externalize some variables in a file as constants
-  $cookies.set('uropa_processing_record', storeData.ropa, '30d')
+  $cookies.set('uropa_ropa', storeData.ropa, '30d')
 }
 </script>
