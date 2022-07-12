@@ -7,9 +7,9 @@ https://uropa.alias.dev/
 This website is an interface to helping you fill your ROPAs (Record Of Processing Activities). It uses
 the [UROPA format](https://github.com/uropa-project/uropa) made by a legal team specialized in the GDPR.
 
-![TODO Preview1](https://github.com/progressive-identity/uropa-ui/public/preview-1.png)
-![TODO Preview2](https://github.com/progressive-identity/uropa-ui/public/preview-2.png)
-![TODO Preview3](https://github.com/progressive-identity/uropa-ui/public/preview-3.png)
+![TODO Preview1](https://github.com/progressive-identity/uropa-ui/blob/staging/public/preview-1.png)
+![TODO Preview2](https://github.com/progressive-identity/uropa-ui/blob/staging/public/preview-2.png)
+![TODO Preview3](https://github.com/progressive-identity/uropa-ui/blob/staging/public/preview-3.png)
 
 ---
 
