@@ -5,7 +5,7 @@ UROPA UI
 https://uropa.alias.dev/
 
 This website is an interface to helping you fill your ROPAs (Record Of Processing Activities). It uses
-the [UROPA format](https://github.com/uropa-project/uropa) made by a legal team specialized in the GDPR.
+the [UROPA format](https://github.com/uropa-project/uropa) made by legal experts specialised in data protection law.
 
 ![TODO Preview1](https://github.com/progressive-identity/uropa-ui/blob/staging/public/preview-1.png)
 ![TODO Preview2](https://github.com/progressive-identity/uropa-ui/blob/staging/public/preview-2.png)
@@ -16,8 +16,9 @@ the [UROPA format](https://github.com/uropa-project/uropa) made by a legal team 
 ## Features
 
 - Generate a JSON file using the [UROPA format](https://github.com/uropa-project/uropa)
-- The UROPA format has been made with a legal team specialized in the [GDPR](https://gdpr-info.eu/)
-- By using this format you are making sure to have a complete ROPA
+- The UROPA format has been made with legal experts specialised in data protection law
+- By using this format you are making sure to have a complete and machine-readable ROPA (which mean it can be used by
+  various software)
 - Help you fill your ROPAs faster with automatic completion or predefined models
 - Contains more than 10+ templates for you to start from (soon)
 - Multi-languages : English, French (soon), Spanish (soon)
@@ -34,7 +35,7 @@ at `support@gdpr.dev`.
 
 ## Setup
 
-We suggest you to use the solution already hosted [here](https://uropa.alias.dev/).
+We strongly suggest you to use the solution already hosted [here](https://uropa.alias.dev/).
 By using it you are guarantees to always be on the latest version and benefit from the new features and fixes.
 We store absolutely NOTHING and there's no third party involved.
 
