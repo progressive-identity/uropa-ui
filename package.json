@@ -14,13 +14,17 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.6",
+    "axios": "^0.27.2",
     "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.8.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "lodash": "^4.17.21",
+    "marked": "^4.0.18",
     "pinia": "^2.0.14",
     "vue": "^3.2.13",
-    "vue-cookies": "^1.8.1"
+    "vue-cookies": "^1.8.1",
+    "vue-router": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
