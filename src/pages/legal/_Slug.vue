@@ -37,9 +37,9 @@ onBeforeRouteUpdate(async (to) => {
  */
 async function fetchContent(slug) {
   const res = await fetchTextFromSlug(slug)
-  pageContent.value.title = res?.title ? marked.parse(res.title) : ''
+  pageContent.value.title = res?.title
   pageContent.value.content = res?.content ? marked.parse(res.content) : ''
-  pageContent.value.effectiveDate = res?.effectiveDate ? marked.parse(res.effectiveDate) : ''
+  pageContent.value.effectiveDate = res?.effectiveDate
 }
 
 /**
