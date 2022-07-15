@@ -6,7 +6,7 @@
         hard drive on site, a SaaS, or even an archive room..</p>
     </div>
     <div class="py-2">
-      <USelect v-model="dataCarrier.country" :list="countries" label="Country" size="s"/>
+      <USelect v-model="dataCarrier.country" :list="countries" label="Country" :required="true" size="s"/>
       <div class="flex justify-start space-x-5">
         <UInput v-model="dataCarrier.name" label="Name"
                 placeholder="ex : name of the database, server, etc." size="xl" :required="true"/>
