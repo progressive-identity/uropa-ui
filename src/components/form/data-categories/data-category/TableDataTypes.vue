@@ -28,7 +28,7 @@
                 </div>
               </td>
               <td>
-                <UInput v-model="dataType.name" placeholder="ex: first name, email, IP address, etc." :required="true"/>
+                <UInput v-model="dataType.name" placeholder="ex: first name" :required="true"/>
               </td>
               <td>
                 <USwitch v-model="dataType.isOptional"/>

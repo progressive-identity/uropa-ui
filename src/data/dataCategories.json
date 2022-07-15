@@ -1,85 +1,333 @@
 [
   {
-    "name": "Identity",
+    "name": "Contact Details",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "Address",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Email",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Phone number",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Billing details",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "Tax identification number (NIF)",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Amount charged",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Date",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "IBAN",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Professional Life",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "Resume (CV)",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Professional status",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Education",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Training",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Distinctions",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Diplomas",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Financial information",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "Salary",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Financial situation",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Bank details",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Income",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Assets",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Debts and expenses",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Solvency",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Internet Browsing Data",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "IP session cookies",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "User cookies",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Third-party cookies",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Browsing data",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Device fingerprinting",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Measurement of website access",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Life habits",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "Consumption of alcohol and tobacco",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Consumption of good and services",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Travel details",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Social contacts",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Possessions",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Complaints, incidents or accidents",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Physical Health Data",
     "isSensitive": true,
+    "sensitiveLegalBasis": "explicit consent",
     "dataTypes": [
       {
-        "name": "First name",
+        "name": "Medical record",
         "collectionMean": "collected",
-        "isOptional": true,
+        "isOptional": false,
         "storageLocations": []
       },
       {
-        "name": "Last name",
+        "name": "Medical Report",
         "collectionMean": "collected",
-        "isOptional": true,
+        "isOptional": false,
         "storageLocations": []
       },
       {
-        "name": "Birthdate",
+        "name": "Diagnosis",
         "collectionMean": "collected",
-        "isOptional": true,
+        "isOptional": false,
         "storageLocations": []
       },
       {
-        "name": "Postal address",
+        "name": "Treatment",
         "collectionMean": "collected",
-        "isOptional": true,
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Test Result",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Disability or Infirmity",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Diet",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Special health requirements related to the management of a trip or accommodation",
+        "collectionMean": "collected",
+        "isOptional": false,
         "storageLocations": []
       }
     ],
-    "dataSubjectCategories": []
-  },
-  {
-    "name": "Connection data",
-    "collectionMean": "collected",
-    "isSensitive": false,
-    "dataTypes": [
+    "dataSubjectCategories": [
       {
-        "name": "IP address",
-        "collectionMean": "collected",
-        "isOptional": true,
-        "storageLocations": []
-      },
-      {
-        "name": "Timestamps",
-        "collectionMean": "collected",
-        "isOptional": true,
-        "storageLocations": []
-      },
-      {
-        "name": "Cookies",
-        "collectionMean": "collected",
-        "isOptional": true,
-        "storageLocations": []
+        "name": "",
+        "isChild": false
       }
-    ],
-    "dataSubjectCategories": []
-  },
-  {
-    "name": "Personal life",
-    "collectionMean": "collected",
-    "isSensitive": false,
-    "dataTypes": [
-      {
-        "name": "Marital status",
-        "collectionMean": "collected",
-        "isOptional": true,
-        "storageLocations": []
-      },
-      {
-        "name": "Children",
-        "collectionMean": "collected",
-        "isOptional": true,
-        "storageLocations": []
-      },
-      {
-        "name": "Lifestyle information",
-        "collectionMean": "collected",
-        "isOptional": true,
-        "storageLocations": []
-      }
-    ],
-    "dataSubjectCategories": []
+    ]
   }
 ]
