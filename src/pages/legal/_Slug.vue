@@ -1,8 +1,8 @@
 <template>
   <div>
-    <article class="px-20">
+    <article class="prose mx-auto mt-10">
       <!-- FIXME the style will probably need more work, that'll be done once the calls will return real content -->
-      <h1 v-html="pageContent.title"/>
+      <h1>{{ pageContent.title }}</h1>
       <main v-html="pageContent.content"/>
       <p v-if="pageContent.effectiveDate">
         Effective date: <span v-html="pageContent.effectiveDate"/>
@@ -52,8 +52,7 @@ async function fetchTextFromSlug(slug) {
     params: {
       _locale: 'en',
       type: getTypeFromSlug(slug),
-      // // TODO change to uropa once it's available
-      site: 'phantomUI'
+      site: 'uropaUI'
     }
   })
   return getLatestEffectiveVersion(response)

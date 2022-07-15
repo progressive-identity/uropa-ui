@@ -2,7 +2,7 @@
   <div class="flex flex-col h-screen justify-between">
     <UropaNavBar class="h-14"/>
     <Suspense>
-      <router-view class="mb-auto px-20 py-20"/>
+      <router-view class="mb-auto py-20"/>
       <template #fallback>
         <div class="py-20 px-20">Loading...</div>
       </template>

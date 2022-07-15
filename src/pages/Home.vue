@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="px-20">
     <StepperProcessingRecord/>
     <StepperNavigation/>
     <Welcome/>
