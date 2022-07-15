@@ -14,7 +14,7 @@
 import {ref} from 'vue'
 import {onBeforeRouteUpdate, useRoute} from 'vue-router'
 import axios from 'axios'
-import {get} from 'lodash'
+import {get, isEmpty} from 'lodash'
 import {marked} from 'marked'
 import {legalResources} from '@/utils/constants/legalTextConstants.js'
 
@@ -22,7 +22,7 @@ const pageContent = ref({})
 const route = useRoute()
 
 // first initialization
-if (!pageContent.value.length > 0) {
+if (isEmpty(pageContent.value)) {
   await fetchContent(route.params.slug)
 }
 
