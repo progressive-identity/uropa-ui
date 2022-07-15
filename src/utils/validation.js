@@ -10,6 +10,15 @@ export async function isFormValid() {
   return !document.getElementById('error')
 }
 
+export async function isProgressAllowed() {
+  if (process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG))
+    return true
+  // TODO maybe use $refs https://vuejs.org/guide/essentials/template-refs.html#ref-on-component
+  const saveButton = document.getElementById('save-button')
+  const emptyGrid = document.getElementById('empty-grid')
+  return !emptyGrid && !saveButton
+}
+
 // TODO should use is_js https://www.npmjs.com/package/is_js
 export function isEmpty(value) {
   return !value || value.length === 0

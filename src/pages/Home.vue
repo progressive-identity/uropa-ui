@@ -1,10 +1,10 @@
 <template>
-  <section class="px-20 py-20">
+  <section class="px-20">
     <StepperProcessingRecord/>
     <StepperNavigation/>
-    <Welcome class="flex h-full items-center justify-center px-20"/>
+    <Welcome/>
     <GeneralInformation/>
-    <LegalPerson/>
+    <DataControllers/>
     <Purposes/>
     <DataCategories/>
     <Recipients/>
@@ -18,7 +18,7 @@
 import StepperProcessingRecord from '@/components/stepper/StepperProcessingRecord.vue'
 import StepperNavigation from '@/components/stepper/StepperNavigation.vue'
 import JsonContent from '@/views/JsonContent.vue'
-import LegalPerson from '@/views/LegalPerson.vue'
+import DataControllers from '@/views/DataControllers.vue'
 import GeneralInformation from '@/views/GeneralInformation.vue'
 import Purposes from '@/views/Purposes.vue'
 import DataCategories from '@/views/DataCategories.vue'

@@ -1,0 +1,25 @@
+{
+  "name": "",
+  "internalId": "",
+  "createdAt": "",
+  "updatedAt": "",
+  "legalEntity": {},
+  "representative": {},
+  "jointDataControllers": [],
+  "purposes": [],
+  "recipients": {
+    "internalDepartments": [],
+    "externalOrganizations": [],
+    "dataProcessors": []
+  },
+  "securityMeasures": [],
+  "dataTransfers": [],
+  "hasAutomatedDecisionMaking": false,
+  "dpia": {
+    "hasPriorConsultation": false,
+    "description": "",
+    "stopDate": "",
+    "path": ""
+  },
+  "uropaVersion": ""
+}

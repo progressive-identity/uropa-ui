@@ -8,7 +8,7 @@
     <div class="pt-3">
       <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed *"
                     :list="storeData.getUniqueDataCategories"/>
-      <FormLegalPerson v-model="dataProcessor.legalPerson"/>
+      <FormLegalEntity v-model="dataProcessor.legalEntity"/>
       <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path"
               placeholder="The path of the binding agreement with processor" size="xl"/>
     </div>
@@ -25,7 +25,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
-import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
 
@@ -48,7 +48,7 @@ const props = defineProps({
 function saveDataProcessor() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.recipients.dataProcessors.push({...props.dataProcessor}))
+        state.ropa.recipients.dataProcessors.push({...props.dataProcessor}))
   }
 }
 </script>

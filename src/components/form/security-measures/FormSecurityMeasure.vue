@@ -12,6 +12,7 @@
                       class="w-64"/>
       </div>
       <UInput v-model="securityMeasure.description" label="Description" size="xl"/>
+      <UInput v-model="securityMeasure.securityStandard" label="Security standard" placeholder="ex: ISO/IEC 27001"/>
     </div>
     <div class="space-x-2 pt-3">
       <BackButton/>
@@ -49,7 +50,7 @@ const props = defineProps({
 function saveSecurityMeasure() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.securityMeasures.push({...props.securityMeasure}))
+        state.ropa.securityMeasures.push({...props.securityMeasure}))
   }
 }
 </script>

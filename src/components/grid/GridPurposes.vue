@@ -1,11 +1,11 @@
 <template>
-  <div class="flex justify-center" v-if="processingRecord.purposes.length === 0">
-    <p class="form-error">You must have at least one purpose</p>
+  <div class="flex justify-center" v-if="ropa.purposes.length === 0">
+    <p id="empty-grid" class="form-error">You must have at least one purpose</p>
   </div>
   <UButton label="New purpose" v-on:click="createPurpose" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(purpose, index) in processingRecord.purposes" :key="index"
+      <li v-for="(purpose, index) in ropa.purposes" :key="index"
           class="u-grid">
         <div class="align-top text-gray-900 font-medium py-2">
           <p v-if="purpose.isMain" class="w-full truncate hover:text-clip text-center">MAIN</p>
@@ -64,24 +64,25 @@ import UIcon from '@/components/basic/UIcon.vue'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
 import {mdiPlusCircle, mdiScaleBalance, mdiTarget, mdiText} from '@mdi/js'
-import PurposeTemplate from '../../data/template/purposes/PurposeTemplate.json'
-import LegalBasisTemplate from '../../data/template/purposes/LegalBasisTemplate.json'
+import PurposeTemplate from '@/data/template/purposes/PurposeTemplate.json'
+import LegalBasisTemplate from '@/data/template/purposes/LegalBasisTemplate.json'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
-const state = reactive({purpose: PurposeTemplate, edition: false})
+const {ropa} = storeToRefs(storeData)
 const storeDisplay = useStoreDisplay()
+const state = reactive({purpose: PurposeTemplate, edition: false})
 
 // TODO maybe we should do this only once on the application start ?
-PurposeTemplate.legalBasis = structuredClone(LegalBasisTemplate)
+PurposeTemplate.legalBasis = JSON.parse(JSON.stringify(LegalBasisTemplate))
 
 function createPurpose() {
-  state.purpose = structuredClone(PurposeTemplate)
+  state.purpose = JSON.parse(JSON.stringify(PurposeTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {
       purpose: true
-    }
+    },
+    isSaveClosed: false
   })
 }
 
@@ -91,13 +92,14 @@ function editPurpose(purpose) {
   storeDisplay.$patch({
     formsDisplayed: {
       purpose: true
-    }
+    },
+    isSaveClosed: false
   })
 }
 
 function deletePurpose(index) {
   storeData.$patch((state) => {
-    state.processingRecord.purposes.splice(index, 1)
+    state.ropa.purposes.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

@@ -4,7 +4,7 @@
       <span v-if="required && label.length > 0"> *</span>
     </label>
     <input :type="type" :value="modelValue"
-           @change="$emit('update:modelValue', $event.target.value); validate(state, props, $event.target.value);"
+           @change="$emit('update:modelValue', $event.target.value.trim()); validate(state, props, $event.target.value);"
            :class="classes"
            :placeholder="placeholder"/>
     <UIcon v-if="modelValue.length > 0" :path="mdiClose"

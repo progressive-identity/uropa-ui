@@ -1,5 +1,6 @@
 {
   "name": "",
   "description": "",
-  "securityMeasureType": "technical"
+  "securityMeasureType": "technical",
+  "securityStandard": ""
 }

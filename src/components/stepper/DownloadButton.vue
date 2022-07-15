@@ -1,5 +1,5 @@
 <template>
-      <UButton :icon="mdiDownload" @click="saveToJsonFile(processingRecord)"/>
+  <UButton :icon="mdiDownload" @click="saveToJsonFile(ropa)"/>
 </template>
 
 <script setup>
@@ -8,6 +8,6 @@ import UButton from '@/components/basic/UButton.vue'
 import {saveToJsonFile} from '@/utils/file.js'
 import {mdiDownload} from '@mdi/js'
 
-const {processingRecord} = useStoreData()
+const {ropa} = useStoreData()
 
 </script>

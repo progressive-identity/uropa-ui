@@ -6,6 +6,8 @@
       <UButton type="primary" v-on:click="next" v-if="current === stepsProcessingRecord.length-1" label="Finish"/>
       <DownloadButton/>
     </div>
+    <p v-if="!storeDisplay.isSaveClosed" class="form-error flex justify-center">You must click on the save
+      button at the bottom</p>
   </div>
 </template>
 <script setup>
@@ -14,7 +16,7 @@ import {useStore} from '@/store/stepper.js'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
-import {isFormValid} from '@/utils/validation.js'
+import {isFormValid, isProgressAllowed} from '@/utils/validation.js'
 import DownloadButton from '@/components/stepper/DownloadButton.vue'
 
 const store = useStore()
@@ -24,11 +26,11 @@ const storeDisplay = useStoreDisplay()
 
 
 async function next() {
-  if (await isFormValid()) {
+  if (await isFormValid() && await isProgressAllowed()) {
     store.current++
     storeDisplay.$reset()
     storeData.$patch({
-      processingRecord: {
+      ropa: {
         updatedAt: new Date()
       }
     })

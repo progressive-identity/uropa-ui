@@ -1,6 +1,8 @@
 {
   "name": "",
+  "dataSupport": "digital",
   "storageType": "",
+  "storageState": "production",
   "country": {
     "name": "",
     "iso": ""

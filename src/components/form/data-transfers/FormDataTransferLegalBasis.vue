@@ -14,13 +14,14 @@
   <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"
           placeholder="ex: URL, internal path to the agreement, BCR, etc. "/>
   <div class="flex justify-start space-x-5">
-    <!-- TODO at least one recipient required -->
-    <USelect v-model="dataTransferLegalBasis.recipient.dataProcessor" label="Data processor"
-             :list="storeData.processingRecord.recipients.dataProcessors" name-path="legalPerson"/>
-    <USelect v-model="dataTransferLegalBasis.recipient.externalOrganization" label="External organization"
-             :list="storeData.processingRecord.recipients.externalOrganizations" name-path="legalPerson"/>
-    <USelect v-model="dataTransferLegalBasis.recipient.internalDepartment" label="Internal department"
-             :list="storeData.processingRecord.recipients.internalDepartments"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processors"
+                  :list="storeData.ropa.recipients.dataProcessors" name-path="legalEntity"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.externalOrganizations" label="External organizations"
+                  :list="storeData.ropa.recipients.externalOrganizations" name-path="legalEntity"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.internalDepartments" label="Internal departments"
+                  :list="storeData.ropa.recipients.internalDepartments"/>
+    <UMultiSelect v-model="dataTransferLegalBasis.recipients.jointDataControllers" label="Joint data controllers"
+                  :list="storeData.ropa.jointDataControllers" name-path="legalEntity"/>
   </div>
 </template>
 
@@ -32,7 +33,7 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {dataTransferLegalBasisTypes} from '@/data/enums.js'
-import USelect from '@/components/basic/select/USelect.vue'
+import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 
 const storeDisplay = useStoreDisplay()
 const storeData = useStoreData()

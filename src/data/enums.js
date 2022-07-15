@@ -1,3 +1,12 @@
+const dpoStatus = [
+  {
+    name: 'internal'
+  },
+  {
+    name: 'external'
+  }
+]
+
 const collectionMeans = [
   {
     name: 'inferred',
@@ -110,16 +119,29 @@ const timeUnit = [
   },
   {
     name: 'hours'
-  },
-  {}
+  }
+]
+const sensitiveLegalBases = [
+  { name: 'explicit consent' },
+  { name: 'employment, social security and social protection' },
+  { name: 'vital interests' },
+  { name: 'non-for-profit bodies' },
+  { name: 'made public by data subject' },
+  { name: 'legal claims or judicial acts' },
+  { name: 'reasons of subtantial public interest' },
+  { name: 'health or social care' },
+  { name: 'public health' },
+  { name: 'archiving research and statistics' }
 ]
 
 export {
+  dpoStatus,
   collectionMeans,
   securityMeasureTypes,
   dataSupports,
   storageStates,
   dataTransferLegalBasisTypes,
   legalBasisTypes,
-  timeUnit
+  timeUnit,
+  sensitiveLegalBases
 }

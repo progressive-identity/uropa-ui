@@ -20,11 +20,11 @@
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
-            <tr v-for="(storageDuration, index) in dataLocation.storageDurations" :key="storageDuration"
+            <tr v-for="(storageDuration, index) in storageLocation.storageDurations" :key="storageDuration"
                 class="text-sm text-gray-900 space-x-2">
               <td class="pl-2">
                 <div>
-                  <UButton v-if="index === dataLocation?.storageDurations.length-1" :icon="mdiPlusCircle"
+                  <UButton v-if="index === storageLocation?.storageDurations.length-1" :icon="mdiPlusCircle"
                            @click="createStorageDuration"/>
                   <UButton v-else :icon="mdiMinusCircle" type="danger"
                            @click="deleteStorageDuration(index)"/>
@@ -61,8 +61,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
-import FormEventType from '@/components/form/data-categories/data-source/FormEventType.vue'
-import ButtonEventType from '@/components/form/data-categories/data-source/ButtonEventType.vue'
+import FormEventType from '@/components/form/data-categories/data-carrier/FormEventType.vue'
+import ButtonEventType from '@/components/form/data-categories/data-carrier/ButtonEventType.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import {storageStates} from '/src/data/enums.js'
 import EventTypeTemplate from '@/data/template/EventTypeTemplate.json'
@@ -74,23 +74,23 @@ const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({eventType: EventTypeTemplate})
 
 const props = defineProps({
-  dataLocation: {
+  storageLocation: {
     type: Object,
     required: true
   }
 })
 
-if (props.dataLocation?.storageDurations?.length === 0) {
+if (props.storageLocation?.storageDurations?.length === 0) {
   createStorageDuration()
 }
 
 function createStorageDuration() {
   //TODO create and use eventTemplate
-  props.dataLocation.storageDurations.push({...StorageDurationTemplate})
+  props.storageLocation.storageDurations.push(JSON.parse(JSON.stringify(StorageDurationTemplate)))
 }
 
 function deleteStorageDuration(index) {
-  props.dataLocation.storageDurations.splice(index, 1)
+  props.storageLocation.storageDurations.splice(index, 1)
 }
 
 function editEventType(eventType) {

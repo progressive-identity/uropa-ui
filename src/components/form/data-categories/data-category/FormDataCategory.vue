@@ -2,7 +2,7 @@
   <div v-if="formsDisplayed.dataCategory">
     <div class="space-y-5">
       <UVerticalBar label="Data category" :rotate="formsDisplayed.subDataCategory"
-                    @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+                    @click="toggleDisplay(!formsDisplayed.subDataCategory, formsDisplayed.dataType, formsDisplayed.dataSubjectCategory)"/>
       <!-- TODO Rename component and create a specific data category form (but how to deal with purposes then ?) -->
       <div class="px-5" v-if="formsDisplayed.subDataCategory">
         <div>
@@ -15,20 +15,23 @@
         </div>
         <div>
           <USwitch v-model="dataCategory.isSensitive" label="sensitive"/>
+          <USelectEnums v-if="dataCategory.isSensitive" v-model="dataCategory.sensitiveLegalBasis"
+                        label="Sensitive legal basis"
+                        :list="sensitiveLegalBases"/>
         </div>
         <div class="py-2">
           <UInput v-model="dataCategory.name" label="Name" placeholder="ex : identity, connection data, etc."
                   :required="true"/>
           <UMultiSelect v-model="state.purposes" label="Purposes concerned"
-                        :list="storeData.processingRecord.purposes" :required="true"/>
+                        :list="storeData.ropa.purposes" :required="true"/>
         </div>
       </div>
       <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"
-                    @click="toggleDisplay(formsDisplayed.subDataCategory, !formsDisplayed.dataType, formsDisplayed.dataSubjectType)"/>
+                    @click="toggleDisplay(formsDisplayed.subDataCategory, !formsDisplayed.dataType, formsDisplayed.dataSubjectCategory)"/>
       <TableDataTypes class="px-5" :data-category="dataCategory"/>
-      <UVerticalBar label="Data subject types" :rotate="formsDisplayed.dataSubjectType"
-                    @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectType)"/>
-      <TableDataSubjectTypes class="px-5" :data-category="dataCategory"/>
+      <UVerticalBar label="Data subject categories" :rotate="formsDisplayed.dataSubjectCategory"
+                    @click="toggleDisplay(formsDisplayed.subDataCategory, formsDisplayed.dataType, !formsDisplayed.dataSubjectCategory)"/>
+      <TableDataSubjectCategories class="px-5" :data-category="dataCategory"/>
       <div class="space-x-2 pt-3">
         <BackButton/>
         <SaveButton :on-save="saveDataCategory"/>
@@ -46,10 +49,12 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import TableDataTypes from '@/components/form/data-categories/data-category/TableDataTypes.vue'
-import TableDataSubjectTypes from '@/components/form/data-categories/data-category/TableDataSubjectTypes.vue'
+import TableDataSubjectCategories from '@/components/form/data-categories/data-category/TableDataSubjectCategories.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
+import USelectEnums from '@/components/basic/select/USelectEnums.vue'
+import {sensitiveLegalBases} from '@/data/enums.js'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -78,7 +83,7 @@ storeDisplay.$patch({
 function saveDataCategory() {
   // TODO could probably be reworked
   // We iterate over the purposes in the store
-  storeData.processingRecord.purposes.forEach(purposeStore => {
+  storeData.ropa.purposes.forEach(purposeStore => {
     // We check if the data category is present on the purpose in the store
     const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
     if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {
@@ -93,12 +98,12 @@ function saveDataCategory() {
   })
 }
 
-function toggleDisplay(dataCategory, dataType, dataSubjectType) {
+function toggleDisplay(dataCategory, dataType, dataSubjectCategory) {
   storeDisplay.$patch({
     formsDisplayed: {
       subDataCategory: dataCategory,
       dataType,
-      dataSubjectType
+      dataSubjectCategory
     }
   })
 }

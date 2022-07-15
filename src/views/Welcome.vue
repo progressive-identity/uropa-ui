@@ -1,6 +1,6 @@
 <template>
   <div v-if="current === -1">
-    <div>
+    <div class="flex h-full items-center justify-center px-20">
       <div class="max-w-2xl mx-auto space-y-5">
         <div class="flex justify-center">
           <UButton :icon="mdiClipboardEditOutline"
@@ -34,23 +34,23 @@ import {useStoreData} from '@/store/data.js'
 import UButton from '@/components/basic/UButton.vue'
 import UFilePicker from '@/components/basic/UFilePicker.vue'
 import {mdiClipboardEditOutline} from '@mdi/js'
-import ProcessingRecordTemplate from '../data/template/ProcessingRecordTemplate.json'
+import RopaTemplate from '@/data/template/RopaTemplate.json'
 
 const store = useStore()
 const {current} = storeToRefs(store)
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
-const state = reactive({isCookie : $cookies.isKey('uropa_processing_record')})
+const {ropa} = storeToRefs(storeData)
+const state = reactive({isCookie: $cookies.isKey('uropa_ropa')})
 
 if (state.isCookie) {
 // When loading the application we put the cookie content, if present, in the store
   storeData.$patch({
-    processingRecord: $cookies.get('uropa_processing_record')
+    ropa: $cookies.get('uropa_ropa')
   })
 }
 
 async function resetProcessingRecord() {
-  $cookies.remove('uropa_processing_record')
+  $cookies.remove('uropa_ropa')
   await startProcessingRecord()
 }
 
@@ -61,14 +61,14 @@ async function startProcessingRecord(data = null) {
   })
   if (data) {
     storeData.$patch({
-      processingRecord: JSON.parse(data)
+      ropa: JSON.parse(data)
     })
-  } else if (!$cookies.isKey('uropa_processing_record')) {
+  } else if (!$cookies.isKey('uropa_ropa')) {
     storeData.$patch({
-      processingRecord: ProcessingRecordTemplate
+      ropa: RopaTemplate
     })
   }
   // TODO externalize some variables in a file as constants
-  $cookies.set('uropa_processing_record', storeData.processingRecord, '30d')
+  $cookies.set('uropa_ropa', storeData.ropa, '30d')
 }
 </script>

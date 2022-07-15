@@ -31,7 +31,8 @@
                 </div>
               </td>
               <td>
-                <USelectEnums class="pr-4" v-model="legalBasis.type" :list="legalBasisTypes"/>
+                <USelectEnums class="pr-4" v-model="legalBasis.type" :list="legalBasisTypes"
+                              @click="fillEventsType(legalBasis)"/>
               </td>
               <td>
                 <UInput v-model="legalBasis.description" placeholder="ex: consent of the employee"/>
@@ -63,8 +64,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import FormEventType from '@/components/form/data-categories/data-source/FormEventType.vue'
-import ButtonEventType from '@/components/form/data-categories/data-source/ButtonEventType.vue'
+import FormEventType from '@/components/form/data-categories/data-carrier/FormEventType.vue'
+import ButtonEventType from '@/components/form/data-categories/data-carrier/ButtonEventType.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import {legalBasisTypes} from '/src/data/enums.js'
@@ -77,8 +78,8 @@ const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({eventType: EventTypeTemplate})
 
 // TODO maybe we should do this only once on the application start ?
-LegalBasisTemplate.startValidity = structuredClone(EventTypeTemplate)
-LegalBasisTemplate.stopValidity = structuredClone(EventTypeTemplate)
+LegalBasisTemplate.startValidity = JSON.parse(JSON.stringify(EventTypeTemplate))
+LegalBasisTemplate.stopValidity = JSON.parse(JSON.stringify(EventTypeTemplate))
 
 const props = defineProps({
   purpose: {
@@ -92,7 +93,8 @@ if (props.purpose?.legalBases?.length === 0) {
 }
 
 function createLegalBasis() {
-  props.purpose.legalBases.push({...LegalBasisTemplate})
+  props.purpose.legalBases.push(JSON.parse(JSON.stringify(LegalBasisTemplate)))
+  fillEventsType(props.purpose.legalBases.slice(-1)[0])
 }
 
 function deleteLegalBasis(index) {
@@ -106,6 +108,26 @@ function editEventType(eventType) {
       eventType: true
     }
   })
+}
+
+function fillEventsType(legalBasis) {
+  switch (legalBasis.type) {
+    case 'consent':
+      legalBasis.startValidity.name = 'Give consent'
+      legalBasis.stopValidity.name = 'Revoke consent'
+      break
+    case 'contract':
+      legalBasis.startValidity.name = 'Sign contract'
+      legalBasis.stopValidity.name = 'End contract'
+      break
+    case 'vital interest':
+      legalBasis.startValidity.name = 'Discover vital interest threat'
+      legalBasis.stopValidity.name = 'End of vital interest threat'
+      break
+    default:
+      legalBasis.startValidity.name = ''
+      legalBasis.stopValidity.name = ''
+  }
 }
 
 </script>

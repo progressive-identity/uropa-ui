@@ -1,7 +1,9 @@
 {
   "name": "",
   "email": "",
+  "registrationNumber": "",
   "dpo": {
+    "status": "internal",
     "personalInformation": {
       "firstName": "",
       "lastName": "",

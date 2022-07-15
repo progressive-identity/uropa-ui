@@ -6,7 +6,7 @@
         person) and the legal basis.</p>
     </div>
     <div class="pt-3">
-      <USelect v-model="dataTransfer.country" :list="countries" label="Country" size="s"/>
+      <USelect v-model="dataTransfer.country" :list="countries" label="Country" size="s" :required="true"/>
       <UInput v-model="dataTransfer.description" label="Description" size="xl"
               placeholder="ex : transfer operated to host the processed data" :required="true"/>
       <FormDataTransferLegalBasis :data-transfer-legal-basis="dataTransfer.dataTransferLegalBasis"/>
@@ -24,7 +24,7 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelect from '@/components/basic/select/USelect.vue'
-import countries from './../../../data/countries.json'
+import countries from '@/data/countries.json'
 import FormDataTransferLegalBasis from '@/components/form/data-transfers/FormDataTransferLegalBasis.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
@@ -48,7 +48,7 @@ const props = defineProps({
 function saveDataTransfer() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.dataTransfers.push({...props.dataTransfer}))
+        state.ropa.dataTransfers.push({...props.dataTransfer}))
   }
 }
 </script>

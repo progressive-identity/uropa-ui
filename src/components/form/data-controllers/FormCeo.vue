@@ -2,7 +2,7 @@
   <div class="space-y-6" v-if="formsDisplayed.ceo">
     <div>
       <h3>CEO</h3>
-      <p class="form-description">The highest-ranking person of the legal person.</p>
+      <p class="form-description">The highest-ranking person of the legal entity.</p>
     </div>
     <div>
       <UInput v-model="ceo.professionalTitle" label="Professional title"

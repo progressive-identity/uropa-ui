@@ -2,13 +2,13 @@
   <UButton label="New external organization" v-on:click="createExternalOrganization" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(externalOrganization, index) in processingRecord.recipients.externalOrganizations" :key="index"
+      <li v-for="(externalOrganization, index) in ropa.recipients.externalOrganizations" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
             <h3>
               <UIcon size="24" :path="mdiAccountSwitch"/>
-              {{ externalOrganization.legalPerson.name }}
+              {{ externalOrganization.legalEntity.name }}
             </h3>
           </div>
           <GridButtons @edit="editExternalOrganization(externalOrganization)"
@@ -26,25 +26,25 @@
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalPerson.dpo.personalInformation.firstName"
+            <div v-if="externalOrganization.legalEntity.dpo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  externalOrganization.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalPerson.dpo.personalInformation.firstName
+                  externalOrganization.legalEntity.dpo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalEntity.dpo.personalInformation.firstName
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalPerson.ceo.personalInformation.firstName"
+            <div v-if="externalOrganization.legalEntity.ceo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  externalOrganization.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalPerson.ceo.personalInformation.firstName
+                  externalOrganization.legalEntity.ceo.personalInformation.lastName.toUpperCase() + ' ' + externalOrganization.legalEntity.ceo.personalInformation.firstName
                 }}
               </dd>
             </div>
@@ -78,6 +78,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
+import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 import FormExternalOrganization from '@/components/form/recipients/FormExternalOrganization.vue'
 import {
   mdiAccountSwitch,
@@ -87,17 +89,19 @@ import {
   mdiFormatListBulletedSquare,
   mdiPlusCircle
 } from '@mdi/js'
-import ExternalOrganizationTemplate from '../../../data/template/recipients/ExternalOrganizationTemplate.json'
-import GridButtons from '@/components/grid/GridButtons.vue'
-import UIcon from '@/components/basic/UIcon.vue'
+import ExternalOrganizationTemplate from '@/data/template/recipients/ExternalOrganizationTemplate.json'
+import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({externalOrganization: ExternalOrganizationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
+// TODO maybe we should do this only once on the application start ?
+ExternalOrganizationTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
+
 function createExternalOrganization() {
-  state.externalOrganization = structuredClone(ExternalOrganizationTemplate)
+  state.externalOrganization = JSON.parse(JSON.stringify(ExternalOrganizationTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {
@@ -118,7 +122,7 @@ function editExternalOrganization(externalOrganization) {
 
 function deleteExternalOrganization(index) {
   storeData.$patch((state) => {
-    state.processingRecord.recipients.externalOrganizations.splice(index, 1)
+    state.ropa.recipients.externalOrganizations.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

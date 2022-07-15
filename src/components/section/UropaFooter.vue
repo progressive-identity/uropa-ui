@@ -2,18 +2,17 @@
   <footer class="p-4 text-gray-400">
     <div class="max-w-7xl mx-auto space-y-4">
       <div class="flex justify-center space-x-12">
-        <a v-for="link in legalLinks" :key="link.name" :href="link.href" class="hover:text-gray-500">
-          {{ link.name }}
-        </a>
+        <router-link v-for="link in legalResources" :key="link.label" :to="link" class="hover:text-gray-500">
+          {{ link.label }}
+        </router-link>
       </div>
       <div class="flex justify-center space-x-6">
-        <a v-for="link in externalLinks" :key="link.name" target="_blank" :href="link.href" class="hover:text-gray-500">
+        <a v-for="link in externalLinks" :key="link.name" target="_blank" :href="link" class="hover:text-gray-500">
           <UIcon
               :path="link.icon" :size="24"/>
         </a>
       </div>
       <div>
-        <!-- TODO see with Aurelien what to put here-->
         <p class="text-center text-base">&copy; 2022 CODE IS LAW.</p>
       </div>
     </div>
@@ -25,8 +24,9 @@
 
 <script setup>
 import UIcon from '@/components/basic/UIcon.vue'
-import {mdiGithub, mdiLinkedin, mdiTwitter, mdiWeb} from '@mdi/js'
-import packageJson from './../../../package.json'
+import {mdiDiscord, mdiGithub, mdiLinkedin, mdiTwitter, mdiWeb} from '@mdi/js'
+import packageJson from '@/../package.json'
+import {legalResources} from '@/utils/constants/legalTextConstants.js'
 
 const externalLinks = [
   {
@@ -45,25 +45,14 @@ const externalLinks = [
     icon: mdiTwitter
   },
   {
+    name: 'Discord',
+    href: process.env.VUE_APP_URL_DISCORD,
+    icon: mdiDiscord
+  },
+  {
     name: 'GitHub',
     href: process.env.VUE_APP_URL_GITHUB_UROPA,
     icon: mdiGithub
-  }
-]
-const legalLinks = [
-//TODO see with Aurelien what to put in there
-//TODO see with Jules what's the best way to handle these pages in our SPA
-  {
-    name: 'Privacy policy',
-    href: '#'
-  },
-  {
-    name: 'Legal Notice',
-    href: '#'
-  },
-  {
-    name: 'Terms of Services',
-    href: '#'
   }
 ]
 

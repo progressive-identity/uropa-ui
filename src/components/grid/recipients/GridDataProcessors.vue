@@ -2,38 +2,38 @@
   <UButton label="New data processor" v-on:click="createDataProcessor" :icon="mdiPlusCircle"/>
   <div class=" py-5">
     <ul role="list" class="u-grid">
-      <li v-for="(dataProcessor, index) in processingRecord.recipients.dataProcessors" :key="index"
+      <li v-for="(dataProcessor, index) in ropa.recipients.dataProcessors" :key="index"
           class="u-grid">
         <div class="relative px-4 py-5">
           <div class="flex items-center">
             <h3>
               <UIcon size="24" :path="mdiAccountWrench"/>
-              {{ dataProcessor.legalPerson.name }}
+              {{ dataProcessor.legalEntity.name }}
             </h3>
           </div>
           <GridButtons @edit="editDataProcessor(dataProcessor)" @delete="deleteDataProcessor(index)"/>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
-            <div v-if="dataProcessor.legalPerson.dpo.personalInformation.firstName"
+            <div v-if="dataProcessor.legalEntity.dpo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  dataProcessor.legalPerson.dpo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalPerson.dpo.personalInformation.firstName
+                  dataProcessor.legalEntity.dpo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalEntity.dpo.personalInformation.firstName
                 }}
               </dd>
             </div>
-            <div v-if="dataProcessor.legalPerson.ceo.personalInformation.firstName"
+            <div v-if="dataProcessor.legalEntity.ceo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{
-                  dataProcessor.legalPerson.ceo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalPerson.ceo.personalInformation.firstName
+                  dataProcessor.legalEntity.ceo.personalInformation.lastName.toUpperCase() + ' ' + dataProcessor.legalEntity.ceo.personalInformation.firstName
                 }}
               </dd>
             </div>
@@ -67,6 +67,8 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import {storeToRefs} from 'pinia'
 import UButton from '@/components/basic/UButton.vue'
+import GridButtons from '@/components/grid/GridButtons.vue'
+import UIcon from '@/components/basic/UIcon.vue'
 import FormDataProcessor from '@/components/form/recipients/FormDataProcessor.vue'
 import {
   mdiAccountWrench,
@@ -75,17 +77,19 @@ import {
   mdiFormatListBulletedSquare,
   mdiPlusCircle
 } from '@mdi/js'
-import DataProcessorTemplate from '../../../data/template/recipients/DataProcessorTemplate.json'
-import GridButtons from '@/components/grid/GridButtons.vue'
-import UIcon from '@/components/basic/UIcon.vue'
+import DataProcessorTemplate from '@/data/template/recipients/DataProcessorTemplate.json'
+import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
-const {processingRecord} = storeToRefs(storeData)
+const {ropa} = storeToRefs(storeData)
 const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
 
+// TODO maybe we should do this only once on the application start ?
+DataProcessorTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
+
 function createDataProcessor() {
-  state.dataProcessor = structuredClone(DataProcessorTemplate)
+  state.dataProcessor = JSON.parse(JSON.stringify(DataProcessorTemplate))
   state.edition = false
   storeDisplay.$patch({
     formsDisplayed: {
@@ -106,7 +110,7 @@ function editDataProcessor(dataProcessor) {
 
 function deleteDataProcessor(index) {
   storeData.$patch((state) => {
-    state.processingRecord.recipients.dataProcessors.splice(index, 1)
+    state.ropa.recipients.dataProcessors.splice(index, 1)
   })
   storeDisplay.$patch({
     formsDisplayed: {

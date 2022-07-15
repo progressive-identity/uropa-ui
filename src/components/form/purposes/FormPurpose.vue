@@ -73,7 +73,7 @@ function savePurpose() {
 
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.purposes.push({...props.purpose}))
+        state.ropa.purposes.push({...props.purpose}))
   }
 }
 

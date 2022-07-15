@@ -1,9 +1,9 @@
 <template>
-  <FormLegalPerson v-model="modelValue" title="Representative (optional)"/>
+  <FormLegalEntity v-model="modelValue" title="Representative (optional)"/>
 </template>
 
 <script setup>
-import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
 
 const props = defineProps({
   modelValue: {

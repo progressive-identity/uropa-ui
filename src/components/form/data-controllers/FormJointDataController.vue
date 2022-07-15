@@ -1,13 +1,13 @@
 <template>
-  <div v-if="formsDisplayed.jointController">
-    <FormLegalPerson v-model="jointController.legalPerson" title="Joint controller" description="A joint controller is an entity that process the personal data
-          and jointly determines the purposes and the means of the processing, according to article 26 GDPR."/>
-    <UInput :model-value="jointController.legalAgreementPath" label="Legal agreement path"
+  <div v-if="formsDisplayed.jointDataController">
+    <FormLegalEntity v-model="jointDataController.legalEntity" title="Joint data controller"
+                     description="A joint data controller is an entity that jointly determines the purposes and the means of the processing of the personal data."/>
+    <UInput :model-value="jointDataController.legalAgreementPath" label="Legal agreement path"
             placeholder="The path to the binding agreement "
     />
     <div class="space-x-2 pt-3">
       <BackButton/>
-      <SaveButton :on-save="saveJointController"/>
+      <SaveButton :on-save="saveJointDataController"/>
     </div>
   </div>
 </template>
@@ -16,9 +16,8 @@
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
-import UButton from '@/components/basic/UButton.vue'
 import UInput from '@/components/basic/UInput.vue'
-import FormLegalPerson from '@/components/form/data-controllers/FormLegalPerson.vue'
+import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
 
@@ -28,7 +27,7 @@ const {formsDisplayed} = storeToRefs(storeDisplay)
 
 
 const props = defineProps({
-  jointController: {
+  jointDataController: {
     type: Object,
     required: true
   },
@@ -39,10 +38,10 @@ const props = defineProps({
   }
 })
 
-function saveJointController() {
+function saveJointDataController() {
   if (!props.edition) {
     storeData.$patch((state) =>
-        state.processingRecord.jointControllers.push({...props.jointController}))
+        state.ropa.jointDataControllers.push({...props.jointDataController}))
   }
 }
 </script>

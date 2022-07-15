@@ -10,11 +10,13 @@
       <nav-bar-item
           type="hidden lg:flex"
       >
-        <img @click="toHome"
-             alt="Alias"
-             class="object-contain h-12"
-             src="/logo_codeislaw.png"
-        >
+        <a href="/">
+          <img @click="toHome"
+               alt="Alias"
+               class="object-contain h-12"
+               src="/logo_codeislaw.png"
+          >
+        </a>
       </nav-bar-item>
     </div>
     <div class="flex items-center justify-center w-full text-2xl text-primary-700 font-extrabold">
@@ -82,7 +84,7 @@ const store = useStore()
 const {current} = storeToRefs(store)
 const gitHubUrl = process.env.VUE_APP_URL_GITHUB_UROPAUI
 
-const languages = ['Français', 'English (soon)', 'Español (soon)', 'Deutsch (soon)']
+const languages = ['English', 'Français (soon)', 'Español (soon)', 'Deutsch (soon)']
 
 function toHome() {
   store.$patch({
