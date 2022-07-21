@@ -1,0 +1,11 @@
+{
+  "address1": "",
+  "address2": "",
+  "city": "",
+  "zipCode": "",
+  "state": "",
+  "country": {
+    "name": "",
+    "iso": ""
+  }
+}

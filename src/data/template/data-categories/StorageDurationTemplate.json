@@ -1,27 +1,6 @@
 {
   "storageState": "production",
-  "startEvent": {
-    "name": "",
-    "description": "",
-    "countdown": {
-      "timeUnit": "",
-      "duration": ""
-    }
-  },
-  "stopEvent": {
-    "name": "",
-    "description": "",
-    "countdown": {
-      "timeUnit": "",
-      "duration": ""
-    }
-  },
-  "interruptEvent": {
-    "name": "",
-    "description": "",
-    "countdown": {
-      "timeUnit": "",
-      "duration": ""
-    }
-  }
+  "startEvent": {},
+  "stopEvent": {},
+  "interruptEvent": {}
 }
