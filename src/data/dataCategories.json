@@ -329,5 +329,104 @@
         "isChild": false
       }
     ]
+  },
+  {
+    "name": "Identity",
+    "isSensitive": true,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "First name",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Last name",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Birthdate",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Postal address",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Connection data",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "IP address",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Timestamps",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Cookies",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
+  },
+  {
+    "name": "Personal life",
+    "isSensitive": false,
+    "sensitiveLegalBasis": "explicit consent",
+    "dataTypes": [
+      {
+        "name": "Marital status",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Children",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      },
+      {
+        "name": "Lifestyle information",
+        "collectionMean": "collected",
+        "isOptional": false,
+        "storageLocations": []
+      }
+    ],
+    "dataSubjectCategories": [
+      {
+        "name": "",
+        "isChild": false
+      }
+    ]
   }
 ]
