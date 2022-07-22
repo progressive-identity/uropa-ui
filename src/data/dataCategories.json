@@ -332,7 +332,7 @@
   },
   {
     "name": "Identity",
-    "isSensitive": true,
+    "isSensitive": false,
     "sensitiveLegalBasis": "explicit consent",
     "dataTypes": [
       {
