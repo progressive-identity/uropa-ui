@@ -67,7 +67,8 @@ function modifyList(element, index) {
   if (!state.checkBoxes[index]) {
     props.modelValue.push(element)
   } else {
-    update(props.modelValue.filter(e => e.name !== element.name))
+    const existingIndex = props.modelValue.findIndex(e => e.name === element.name)
+    props.modelValue.splice(existingIndex, 1)
   }
 }
 
