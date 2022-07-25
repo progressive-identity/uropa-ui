@@ -65,7 +65,7 @@ onUpdated(() => {
 
 function initCheckboxes() {
   props.list.forEach((elementFromList, index) => {
-    state.checkBoxes[index] = !!props.modelValue.find(elementFromModel => getName(elementFromModel) === getName(elementFromList))
+    state.checkBoxes[index] = props.modelValue.some(elementFromModel => getName(elementFromModel) === getName(elementFromList))
   })
 }
 
