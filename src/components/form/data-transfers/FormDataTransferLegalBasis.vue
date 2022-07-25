@@ -14,14 +14,14 @@
   <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"
           placeholder="ex: URL, internal path to the agreement, BCR, etc. "/>
   <div class="flex justify-start space-x-5">
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processors"
-                  :list="storeData.ropa.recipients.dataProcessors" name-path="legalEntity"/>
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.externalOrganizations" label="External organizations"
-                  :list="storeData.ropa.recipients.externalOrganizations" name-path="legalEntity"/>
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.internalDepartments" label="Internal departments"
-                  :list="storeData.ropa.recipients.internalDepartments"/>
-    <UMultiSelect v-model="dataTransferLegalBasis.recipients.jointDataControllers" label="Joint data controllers"
-                  :list="storeData.ropa.jointDataControllers" name-path="legalEntity"/>
+    <UCheckboxes v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processors"
+                 :list="storeData.ropa.recipients.dataProcessors" name-path="legalEntity"/>
+    <UCheckboxes v-model="dataTransferLegalBasis.recipients.externalOrganizations" label="External organizations"
+                 :list="storeData.ropa.recipients.externalOrganizations" name-path="legalEntity"/>
+    <UCheckboxes v-model="dataTransferLegalBasis.recipients.internalDepartments" label="Internal departments"
+                 :list="storeData.ropa.recipients.internalDepartments"/>
+    <UCheckboxes v-model="dataTransferLegalBasis.recipients.jointDataControllers" label="Joint data controllers"
+                 :list="storeData.ropa.jointDataControllers" name-path="legalEntity"/>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {dataTransferLegalBasisTypes} from '@/data/enums.js'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
+import UCheckboxes from '@/components/basic/UCheckboxes.vue'
 
 const storeDisplay = useStoreDisplay()
 const storeData = useStoreData()

@@ -7,8 +7,8 @@
     </div>
     <div class="pt-3">
       <UInput v-model="internalDepartment.name" label="Name" placeholder="ex : marketing, HR, etc." :required="true"/>
-      <UMultiSelect v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed *"
-                    :list="storeData.getUniqueDataCategories"/>
+      <UCheckboxes v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
+                   :list="storeData.getUniqueDataCategories" :required="true"/>
     </div>
     <div class="space-x-2 pt-3">
       <BackButton/>
@@ -22,9 +22,9 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
+import UCheckboxes from '@/components/basic/UCheckboxes.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
