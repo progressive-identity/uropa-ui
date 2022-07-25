@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup>
-import {onMounted, reactive} from 'vue'
+import {onMounted, onUpdated, reactive} from 'vue'
 import {validate} from '@/composable/useValidation.js'
 
 const props = defineProps({
@@ -58,11 +58,14 @@ onMounted(() => {
   initCheckboxes()
 })
 
+// FIXME not ideal in term of performance
+onUpdated(() => {
+  initCheckboxes()
+})
+
 function initCheckboxes() {
   props.list.forEach((elementFromList, index) => {
-    if (props.modelValue.find(elementFromModel => getName(elementFromModel) === getName(elementFromList))) {
-      state.checkBoxes[index] = true
-    }
+    state.checkBoxes[index] = !!props.modelValue.find(elementFromModel => getName(elementFromModel) === getName(elementFromList))
   })
 }
 
