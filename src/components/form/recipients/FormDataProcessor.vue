@@ -7,7 +7,7 @@
     </div>
     <div class="pt-3">
       <UCheckboxes v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"
-                   :list="storeData.getUniqueDataCategories" :required="true"/>
+                   :list="storeData.getUniqueDataCategoriesCurated" :required="true"/>
       <FormLegalEntity v-model="dataProcessor.legalEntity"/>
       <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path"
               placeholder="The path of the binding agreement with processor" size="xl"/>

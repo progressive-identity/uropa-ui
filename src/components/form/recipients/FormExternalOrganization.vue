@@ -10,7 +10,7 @@
               placeholder="ex : affiliate, holding, head quarter, etc." :required="true"/>
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
       <UCheckboxes v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
-                   :list="storeData.getUniqueDataCategories" :required="true"/>
+                   :list="storeData.getUniqueDataCategoriesCurated" :required="true"/>
       <FormLegalEntity v-model="externalOrganization.legalEntity"/>
     </div>
     <div class="space-x-2" v-if="!nested">

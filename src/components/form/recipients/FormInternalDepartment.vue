@@ -7,8 +7,9 @@
     </div>
     <div class="pt-3">
       <UInput v-model="internalDepartment.name" label="Name" placeholder="ex : marketing, HR, etc." :required="true"/>
+      {{ internalDepartment.dataCategoriesDisclosed }}
       <UCheckboxes v-model="internalDepartment.dataCategoriesDisclosed" label="Data categories disclosed"
-                   :list="storeData.getUniqueDataCategories" :required="true"/>
+                   :list="storeData.getUniqueDataCategoriesCurated" :required="true"/>
     </div>
     <div class="space-x-2 pt-3">
       <BackButton/>

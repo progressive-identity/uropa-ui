@@ -27,14 +27,14 @@ function curateRopa(ropa) {
   )
 }
 
-function curateDataCategories(dataCategories) {
+export function curateDataCategories(dataCategories) {
   dataCategories.forEach((dataCategory) => {
     delete dataCategory.dataTypes
     delete dataCategory.dataSubjectCategories
   })
 }
 
-function curateRecipients(recipients) {
+export function curateRecipients(recipients) {
   recipients.dataProcessors.forEach((e) => {
     delete e.dataCategoriesDisclosed
     curateLegalEntity(e.legalEntity)
@@ -48,7 +48,7 @@ function curateRecipients(recipients) {
   )
 }
 
-function curateLegalEntity(legalEntity) {
+export function curateLegalEntity(legalEntity) {
   if (legalEntity.ceo.personalInformation.firstName.length === 0) {
     delete legalEntity.ceo
   }

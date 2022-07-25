@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import RopaTemplate from '@/data/template/RopaTemplate.json'
+import { curateDataCategories } from '@/composable/useCuration.js'
 
 const ropa = JSON.parse(JSON.stringify(RopaTemplate))
 
@@ -9,6 +10,8 @@ export const useStoreData = defineStore('data', {
   },
   getters: {
     getUniqueDataCategories: (state) => getUniqueDataCategories(state),
+    getUniqueDataCategoriesCurated: (state) =>
+      getUniqueDataCategoriesCurated(state),
     getUniqueDataTypes: (state) => getUniqueDataTypes(state),
     getUniqueDataLocations: (state) => getUniqueDataLocations(state),
     getPurposesByDataCategory: (state) => {
@@ -48,6 +51,13 @@ function getUniqueDataCategories(state) {
     (purpose) => purpose?.dataCategories
   )
   return [...new Map(dataCategories.map((e) => [e['name'], e])).values()]
+}
+
+function getUniqueDataCategoriesCurated(state) {
+  const dataCategories = getUniqueDataCategories(state)
+  const dataCategoriesCurated = JSON.parse(JSON.stringify(dataCategories))
+  curateDataCategories(dataCategoriesCurated)
+  return dataCategoriesCurated
 }
 
 function getUniqueDataTypes(state) {
