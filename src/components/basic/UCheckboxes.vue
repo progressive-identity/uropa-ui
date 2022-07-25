@@ -1,19 +1,19 @@
 <template>
   <div class="block py-2">
     <label for="name" class="u-label">{{ label }}
-      <span v-if="required && label.length > 0"> *</span>
+      <span v-if="required && label.length > 0"> (at least one mut be checked)</span>
     </label>
     <p v-if="!state.valid" v-for="error in state.errors" class="form-error" id="error">{{ error }}</p>
     <fieldset class="py-2 space-y-5">
       <div v-for="(element, index) in list" class="relative flex items-start">
         <div class="flex items-center h-5">
-          <input :id="element.name" :name="element.name" v-model="state.checkBoxes[index]" type="checkbox"
+          <input :id="getName(element)" :name="getName(element)" v-model="state.checkBoxes[index]" type="checkbox"
                  @click="modifyList(element, index)"
                  @change="validate(state, props, modelValue)"
                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"/>
         </div>
         <div class="ml-3 text-sm">
-          <label :for="element.name" class="text-sm">{{ element.name }}</label>
+          <label :for="getName(element)" class="text-sm">{{ getName(element) }}</label>
         </div>
       </div>
     </fieldset>
@@ -60,7 +60,7 @@ onMounted(() => {
 
 function initCheckboxes() {
   props.list.forEach((elementFromList, index) => {
-    if (props.modelValue.find(elementFromModel => elementFromModel.name === elementFromList.name)) {
+    if (props.modelValue.find(elementFromModel => getName(elementFromModel) === getName(elementFromList))) {
       state.checkBoxes[index] = true
     }
   })
@@ -70,9 +70,18 @@ function modifyList(element, index) {
   if (!state.checkBoxes[index]) {
     props.modelValue.push(element)
   } else {
-    const existingIndex = props.modelValue.findIndex(e => e.name === element.name)
+    const existingIndex = props.modelValue.findIndex(e => getName(e) === getName(element))
     props.modelValue.splice(existingIndex, 1)
   }
 }
+
+function getName(element) {
+  if (props.namePath) {
+    return element[props.namePath].name
+  } else {
+    return element.name
+  }
+}
+
 
 </script>
