@@ -1,9 +1,9 @@
 <template>
-  <UButton :icon="mdiDownload" @click="saveToJsonFile(state.json)"/>
+  <UButton :icon="mdiDownload" @click="download()"/>
 </template>
 
 <script setup>
-import {onMounted, reactive} from 'vue'
+import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import UButton from '@/components/basic/UButton.vue'
@@ -16,7 +16,7 @@ const {ropa} = storeToRefs(storeData)
 
 const state = reactive({json: ''})
 
-onMounted(() => {
-  state.json = getCuratedRopa(ropa.value)
-})
+function download() {
+  saveToJsonFile(getCuratedRopa(ropa.value))
+}
 </script>

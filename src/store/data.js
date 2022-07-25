@@ -6,7 +6,7 @@ const ropa = JSON.parse(JSON.stringify(RopaTemplate))
 
 export const useStoreData = defineStore('data', {
   state: () => {
-    return { ropa }
+    return { ropa, curatedRopa: '' }
   },
   getters: {
     getUniqueDataCategories: (state) => getUniqueDataCategories(state),
