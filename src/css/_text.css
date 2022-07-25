@@ -5,5 +5,5 @@
 }
 
 .form-error {
-    @apply mt-1 text-sm text-red-600;
+    @apply mt-1 text-sm text-red-600 font-normal;
 }
