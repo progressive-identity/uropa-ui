@@ -23,7 +23,7 @@
           <UInput v-model="dataCategory.name" label="Name" placeholder="ex : identity, connection data, etc."
                   :required="true"/>
           <UCheckboxes v-model="props.purposes" label="Check the purposes concerned (at least one required)"
-                       :list="storeData.ropa.purposes"/>
+                       :list="storeData.ropa.purposes" :required="true"/>
         </div>
       </div>
       <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"
