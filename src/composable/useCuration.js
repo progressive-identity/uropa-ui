@@ -49,10 +49,20 @@ export function curateRecipients(recipients) {
 }
 
 export function curateLegalEntity(legalEntity) {
-  if (legalEntity.ceo.personalInformation.firstName.length === 0) {
+  if (
+    legalEntity.ceo &&
+    legalEntity.ceo.personalInformation.firstName.length === 0
+  ) {
     delete legalEntity.ceo
   }
-  if (legalEntity.dpo.personalInformation.firstName.length === 0) {
+  if (
+    legalEntity.dpo &&
+    legalEntity.dpo.personalInformation.firstName.length === 0
+  ) {
     delete legalEntity.dpo
+  } else {
+    if (legalEntity.dpo && legalEntity.dpo.status === 'internal') {
+      delete legalEntity.dpo.postalAddress
+    }
   }
 }

@@ -26,8 +26,9 @@
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalEntity.dpo.personalInformation.firstName"
-                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+            <div
+                v-if="externalOrganization.legalEntity.dpo && externalOrganization.legalEntity.dpo.personalInformation.firstName"
+                class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
@@ -37,8 +38,9 @@
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalEntity.ceo.personalInformation.firstName"
-                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+            <div
+                v-if="externalOrganization.legalEntity.ceo && externalOrganization.legalEntity.ceo.personalInformation.firstName"
+                class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO

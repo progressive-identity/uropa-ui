@@ -32,6 +32,7 @@
 </template>
 
 <script setup>
+import {onBeforeMount} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreDisplay} from '@/store/display.js'
 import FormDpo from '@/components/form/data-controllers/FormDpo.vue'
@@ -39,6 +40,8 @@ import FormCeo from '@/components/form/data-controllers/FormCeo.vue'
 import FormAddress from '@/components/form/data-controllers/FormAddress.vue'
 import UInput from '@/components/basic/UInput.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
+import CeoTemplate from '@/data/template/data-controllers/CeoTemplate.json'
+import DpoTemplate from '@/data/template/data-controllers/DpoTemplate.json'
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
@@ -60,6 +63,16 @@ const props = defineProps({
       }
     }
 )
+
+// Since we can remove these properties during the curation, we may need to add them back
+onBeforeMount(() => {
+  if (!props.modelValue.ceo) {
+    props.modelValue.ceo = JSON.parse(JSON.stringify(CeoTemplate))
+  }
+  if (!props.modelValue.dpo) {
+    props.modelValue.dpo = JSON.parse(JSON.stringify(DpoTemplate))
+  }
+})
 
 storeDisplay.$patch({
   formsDisplayed: {
