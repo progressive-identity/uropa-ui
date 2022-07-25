@@ -27,7 +27,7 @@ const {ropa} = storeToRefs(storeData)
 const {current} = storeToRefs(store)
 const state = reactive({json: ''})
 
-onMounted((ropa) => {
+onMounted(() => {
   if (ropa) {
     state.json = getCuratedRopa(ropa.value)
   }

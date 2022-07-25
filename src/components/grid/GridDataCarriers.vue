@@ -74,15 +74,11 @@ import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import DataCarrier from '@/components/form/data-categories/data-carrier/DataCarrier.vue'
 import StorageLocationTemplate from '@/data/template/data-categories/StorageLocationTemplate.json'
-import DataCarrierTemplate from '@/data/template/data-categories/DataCarrierTemplate.json'
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
 const state = reactive({storageLocation: StorageLocationTemplate})
 const storeDisplay = useStoreDisplay()
-
-// TODO maybe we should do this only once on the application start ?
-StorageLocationTemplate.dataCarrier = JSON.parse(JSON.stringify(DataCarrierTemplate))
 
 async function createDataLocation() {
   state.storageLocation = JSON.parse(JSON.stringify(StorageLocationTemplate))

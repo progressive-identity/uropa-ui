@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia'
 import RopaTemplate from '@/data/template/RopaTemplate.json'
-import packageJson from '@/../package.json'
 
-RopaTemplate.uropaVersion = `${packageJson.version}`
 const ropa = JSON.parse(JSON.stringify(RopaTemplate))
 
 export const useStoreData = defineStore('data', {

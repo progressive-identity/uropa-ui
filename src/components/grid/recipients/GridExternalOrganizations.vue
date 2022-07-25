@@ -90,15 +90,11 @@ import {
   mdiPlusCircle
 } from '@mdi/js'
 import ExternalOrganizationTemplate from '@/data/template/recipients/ExternalOrganizationTemplate.json'
-import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
 const state = reactive({externalOrganization: ExternalOrganizationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-// TODO maybe we should do this only once on the application start ?
-ExternalOrganizationTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 function createExternalOrganization() {
   state.externalOrganization = JSON.parse(JSON.stringify(ExternalOrganizationTemplate))

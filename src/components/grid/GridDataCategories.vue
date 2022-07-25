@@ -89,17 +89,11 @@ import predefinedDataCategories from '@/data/dataCategories.json'
 import GridButtons from '@/components/grid/GridButtons.vue'
 import UIcon from '@/components/basic/UIcon.vue'
 import DataCategoryTemplate from '@/data/template/data-categories/DataCategoryTemplate.json'
-import DataTypeTemplate from '@/data/template/data-categories/DataTypeTemplate.json'
-import DataSubjectCategoryTemplate from '@/data/template/data-categories/DataSubjectCategoryTemplate.json'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({dataCategory: DataCategoryTemplate, purposes: []})
-
-// TODO maybe we should do this only once on the application start ?
-DataCategoryTemplate.dataTypes.push(JSON.parse(JSON.stringify(DataTypeTemplate)))
-DataCategoryTemplate.dataSubjectCategories.push(JSON.parse(JSON.stringify(DataSubjectCategoryTemplate)))
 
 async function createDataCategory() {
   state.dataCategory = JSON.parse(JSON.stringify(DataCategoryTemplate))

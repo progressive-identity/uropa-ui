@@ -78,15 +78,11 @@ import {
   mdiPlusCircle
 } from '@mdi/js'
 import DataProcessorTemplate from '@/data/template/recipients/DataProcessorTemplate.json'
-import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
 const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-// TODO maybe we should do this only once on the application start ?
-DataProcessorTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 function createDataProcessor() {
   state.dataProcessor = JSON.parse(JSON.stringify(DataProcessorTemplate))
