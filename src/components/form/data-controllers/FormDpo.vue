@@ -7,7 +7,7 @@
     <div class="space-y-3">
       <USelectEnums v-model="dpo.status" :list="dpoStatus" label="Status" :required="true" class="s"/>
       <FormPersonalInformation :personal-information="dpo.personalInformation"/>
-      <FormAddress :postal-address="dpo.postalAddress"/>
+      <FormAddress v-if="dpo.status==='external'" :postal-address="dpo.postalAddress"/>
     </div>
   </div>
 </template>
