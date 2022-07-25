@@ -5,8 +5,8 @@
       <p class="form-description">Place where the data is stored (location or geospatial scope).</p>
     </div>
     <div class="py-2">
-      <UMultiSelect v-model="storageLocation.dataTypes" label="Data types stored"
-                    :list="uniqueDataTypes"/>
+      <UCheckboxes v-model="storageLocation.dataTypes" label="Data types stored"
+                   :list="uniqueDataTypes" :required="true"/>
       <UInput v-for="dataType in storageLocation.dataTypes" v-model="dataType.path"
               :label="`Path for ${dataType.name}`" size="xl"/>
     </div>
@@ -18,7 +18,7 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
+import UCheckboxes from '@/components/basic/UCheckboxes.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
