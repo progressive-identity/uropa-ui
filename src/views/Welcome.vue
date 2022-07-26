@@ -4,7 +4,7 @@
       <div class="max-w-2xl mx-auto space-y-5">
         <div class="flex justify-center">
           <UButton :icon="mdiClipboardEditOutline"
-                   label="Start a new processing record" @click="resetProcessingRecord()"/>
+                   label="Start a new record of processing activities" @click="resetProcessingRecord()"/>
         </div>
         <div v-if="state.isCookie" class="space-y-5">
           <div class="flex justify-center text-xl font-medium text-gray-700">
@@ -12,14 +12,14 @@
           </div>
           <div class="flex justify-center">
             <UButton :icon="mdiClipboardEditOutline"
-                     label="Continue your processing record" @click="startProcessingRecord()"/>
+                     label="Continue your record of processing activities" @click="startProcessingRecord()"/>
           </div>
         </div>
         <div class="flex justify-center text-xl font-medium text-gray-700">
           OR
         </div>
         <div class="flex justify-center">
-          <UFilePicker label="Import an existing one" accept=".json" :onUpload="startProcessingRecord"/>
+          <UFilePicker label="Import an existing Uropa file" accept=".json" :onUpload="startProcessingRecord"/>
         </div>
       </div>
     </div>
