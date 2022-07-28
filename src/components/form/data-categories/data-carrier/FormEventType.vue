@@ -6,10 +6,12 @@
         example, it can be an event triggering the beginning of the validity of the legal basis, or the end of a data
         retention period.</p>
     </div>
+    <!--    <USelect v-if="existingEventTypes.length > 0" v-model="eventType"-->
+    <!--             :list="existingEventTypes" label="Copy an existing one"/>-->
     <UInput v-model="eventType.name" label="Name" placeholder="ex: user logs in" :required="true"/>
     <UInput v-model="eventType.description" label="Description" size="xl" placeholder="ex : user revoked its consent"/>
-    <USwitch v-model="state.displayCountdown" label="Triggered by a countdown" @click="resetCountdown()"/>
-    <div v-if="state.displayCountdown">
+    <USelectEnums :list="triggerType" v-model="eventType.triggerType"/>
+    <div v-if="eventType.triggerType === 'countdown'">
       <USelectEnums v-model="eventType.countdown.timeUnit" label="Time unit" :list="timeUnit"/>
       <UInput v-model="eventType.countdown.duration" label="Duration" size="s" type="number"/>
     </div>
@@ -19,14 +21,16 @@
 <script setup>
 import {reactive} from 'vue'
 import {storeToRefs} from 'pinia/dist/pinia.prod.cjs'
+import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
-import USwitch from '@/components/basic/USwitch.vue'
-import {timeUnit} from '/src/data/enums.js'
+import {timeUnit, triggerType} from '/src/data/enums.js'
 
+const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
+// const existingEventTypes = storeData.getCopyExistingEventTypes
 
 const props = defineProps({
   eventType: {
@@ -36,14 +40,4 @@ const props = defineProps({
 })
 
 const state = reactive({displayCountdown: true})
-
-function resetCountdown() {
-  if (state.displayCountdown) {
-    props.eventType.countdown.duration = 1
-    props.eventType.countdown.timeUnit= 'months'
-  } else {
-    props.eventType.countdown.duration = 0
-    props.eventType.countdown.timeUnit= ''
-  }
-}
 </script>
