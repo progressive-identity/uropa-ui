@@ -42,7 +42,8 @@ export const useStoreData = defineStore('data', {
     getOtherMainPurpose: (state) => {
       return (purpose) =>
         state.ropa?.purposes.find((e) => e.isMain && purpose.name !== e.name)
-    }
+    },
+    getCopyExistingEventTypes: (state) => getCopyExistingEventTypes(state)
   }
 })
 
@@ -76,4 +77,24 @@ function getUniqueDataLocations(state) {
       storageLocations.map((e) => [e?.dataCarrier['name'], e])
     ).values()
   ]
+}
+
+function getCopyExistingEventTypes(state) {
+  const eventTypes = state.ropa?.purposes.map(
+    (e) => e.legalBasis.startValidity
+  )
+  eventTypes.push(state.ropa?.purposes.map((e) => e.legalBasis.stopValidity))
+  getUniqueDataTypes(state).forEach((dataType) => {
+    dataType.storageLocations.forEach((location) => {
+      location.storageDurations.forEach((duration) => {
+        eventTypes.push(duration.startEvent)
+        eventTypes.push(duration.stopEvent)
+        eventTypes.push(duration.interruptEvent)
+      })
+    })
+  })
+  const eventTypesCopy = JSON.parse(
+    JSON.stringify(eventTypes.filter((e) => e?.name?.length > 0))
+  )
+  return [...new Map(eventTypesCopy.map((e) => [e['name'], e])).values()]
 }

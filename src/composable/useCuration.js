@@ -25,6 +25,26 @@ function curateRopa(ropa) {
   ropa.recipients.internalDepartments.forEach((e) =>
     curateDataCategories(e.dataCategoriesDisclosed)
   )
+  ropa.purposes.forEach((purpose) =>
+    purpose.legalBases.forEach((legalBasis) => {
+      curateEventType(legalBasis.startValidity)
+      curateEventType(legalBasis.stopValidity)
+    })
+  )
+  // FIXME too many loops
+  ropa.purposes.forEach((purpose) =>
+    purpose.dataCategories.forEach((dataCategory) => {
+      dataCategory.dataTypes.forEach((dataType) => {
+        dataType.storageLocations.forEach((storageLocation) => {
+          storageLocation.storageDurations.forEach((storageDuration) => {
+            curateEventType(storageDuration.startEvent)
+            curateEventType(storageDuration.stopEvent)
+            curateEventType(storageDuration.interruptEvent)
+          })
+        })
+      })
+    })
+  )
 }
 
 export function curateDataCategories(dataCategories) {
@@ -64,5 +84,11 @@ export function curateLegalEntity(legalEntity) {
     if (legalEntity.dpo && legalEntity.dpo.status === 'internal') {
       delete legalEntity.dpo.postalAddress
     }
+  }
+}
+
+export function curateEventType(eventType) {
+  if (eventType?.triggerType === 'no countdown') {
+    delete eventType.triggerType
   }
 }
