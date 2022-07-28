@@ -36,7 +36,7 @@
 
 <script setup>
 import {computed, reactive, ref} from 'vue'
-import {validate} from '@/composable/useValidation.js'
+import {validate} from '@/composables/useValidation.js'
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid'
 import {Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions} from '@headlessui/vue'
 

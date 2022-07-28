@@ -19,7 +19,7 @@ import {useStoreDisplay} from '@/store/display.js'
 import UButton from '@/components/basic/UButton.vue'
 import {isFormValid, isProgressAllowed} from '@/utils/validation.js'
 import DownloadButton from '@/components/stepper/DownloadButton.vue'
-import {getCuratedRopa} from '@/composable/useCuration.js'
+import {getCuratedRopa} from '@/composables/useCuration.js'
 
 const store = useStore()
 const storeData = useStoreData()

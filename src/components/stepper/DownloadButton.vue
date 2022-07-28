@@ -7,7 +7,7 @@ import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import UButton from '@/components/basic/UButton.vue'
-import {getCuratedRopa} from '@/composable/useCuration.js'
+import {getCuratedRopa} from '@/composables/useCuration.js'
 import {saveToJsonFile} from '@/utils/file.js'
 import {mdiDownload} from '@mdi/js'
 

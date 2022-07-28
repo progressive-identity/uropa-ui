@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import RopaTemplate from '@/data/template/RopaTemplate.json'
-import { curateDataCategories } from '@/composable/useCuration.js'
+import { curateDataCategories } from '@/composables/useCuration.js'
 
 const ropa = JSON.parse(JSON.stringify(RopaTemplate))
 

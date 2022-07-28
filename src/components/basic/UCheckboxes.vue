@@ -21,7 +21,7 @@
 </template>
 <script setup>
 import {onMounted, onUpdated, reactive} from 'vue'
-import {validate} from '@/composable/useValidation.js'
+import {validate} from '@/composables/useValidation.js'
 
 const props = defineProps({
   label: {
