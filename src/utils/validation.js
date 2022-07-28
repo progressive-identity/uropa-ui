@@ -1,3 +1,6 @@
+// This file manage the validation of the forms
+// TODO add descriptions on functions
+
 export async function isFormValid() {
   if (process.env.VUE_APP_DEBUG && JSON.parse(process.env.VUE_APP_DEBUG))
     return true
