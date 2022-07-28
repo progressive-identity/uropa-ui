@@ -1,3 +1,4 @@
+// FIXME I'm not sure this file should be in composable
 export function getCuratedRopa(ropa) {
   const clone = JSON.parse(JSON.stringify(ropa))
   curateRopa(clone)
@@ -6,7 +7,7 @@ export function getCuratedRopa(ropa) {
 
 function curateRopa(ropa) {
   curateLegalEntity(ropa.dataController)
-  if (ropa.representative.name.length === 0) {
+  if (ropa.representative && ropa.representative.name.length === 0) {
     delete ropa.representative
   } else {
     curateLegalEntity(ropa.representative)
@@ -69,6 +70,7 @@ export function curateRecipients(recipients) {
 }
 
 export function curateLegalEntity(legalEntity) {
+  if (!legalEntity) return
   if (
     legalEntity.ceo &&
     legalEntity.ceo.personalInformation.firstName.length === 0
