@@ -91,6 +91,6 @@ export function curateLegalEntity(legalEntity) {
 
 export function curateEventType(eventType) {
   if (eventType?.triggerType === 'no countdown') {
-    delete eventType.triggerType
+    delete eventType.countdown
   }
 }
