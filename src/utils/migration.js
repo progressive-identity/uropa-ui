@@ -5,14 +5,14 @@ import packageJson from '../../package.json'
  * Migrate the file to the current version
  * @param ropa the json file to migrate
  */
-export async function migrateUropaFile(ropa) {
+export function getUpdatedRopaFile(ropa) {
   const { uropaVersion } = ropa
   if (uropaVersion !== packageJson.version) {
     if (uropaVersion === '1.0.0') {
       from100To110(ropa)
     }
   }
-  console.log('123', ropa)
+  return ropa
 }
 
 /**
