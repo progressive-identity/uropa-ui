@@ -9,8 +9,8 @@
       <UInput v-model="externalOrganization.organizationStatus" label="Organization status"
               placeholder="ex : affiliate, holding, head quarter, etc." :required="true"/>
       <UInput v-model="externalOrganization.description" label="Description" size="xl"/>
-      <UMultiSelect v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed *"
-                    :list="storeData.getUniqueDataCategories"/>
+      <UCheckboxes v-model="externalOrganization.dataCategoriesDisclosed" label="Data categories disclosed"
+                   :list="storeData.getUniqueDataCategoriesCurated" :required="true"/>
       <FormLegalEntity v-model="externalOrganization.legalEntity"/>
     </div>
     <div class="space-x-2" v-if="!nested">
@@ -26,9 +26,9 @@ import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
+import UCheckboxes from '@/components/basic/UCheckboxes.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

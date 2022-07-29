@@ -6,8 +6,8 @@
         processed. Useful to manage authorisations, contracts and other legal instruments.</p>
     </div>
     <div class="pt-3">
-      <UMultiSelect v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed *"
-                    :list="storeData.getUniqueDataCategories"/>
+      <UCheckboxes v-model="dataProcessor.dataCategoriesDisclosed" label="Data categories disclosed"
+                   :list="storeData.getUniqueDataCategoriesCurated" :required="true"/>
       <FormLegalEntity v-model="dataProcessor.legalEntity"/>
       <UInput v-model="dataProcessor.processorAgreementPath" label="Agreement path"
               placeholder="The path of the binding agreement with processor" size="xl"/>
@@ -24,10 +24,10 @@ import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import FormLegalEntity from '@/components/form/data-controllers/FormLegalEntity.vue'
 import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
+import UCheckboxes from '@/components/basic/UCheckboxes.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()

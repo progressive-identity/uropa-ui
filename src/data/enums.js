@@ -134,6 +134,15 @@ const sensitiveLegalBases = [
   { name: 'archiving research and statistics' }
 ]
 
+const triggerType = [
+  {
+    name: 'countdown'
+  },
+  {
+    name: 'no countdown'
+  }
+]
+
 export {
   dpoStatus,
   collectionMeans,
@@ -143,5 +152,6 @@ export {
   dataTransferLegalBasisTypes,
   legalBasisTypes,
   timeUnit,
-  sensitiveLegalBases
+  sensitiveLegalBases,
+  triggerType
 }

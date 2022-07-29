@@ -15,7 +15,7 @@
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
           <dl class="sm:divide-y sm:divide-gray-200">
-            <div v-if="dataProcessor.legalEntity.dpo.personalInformation.firstName"
+            <div v-if="dataProcessor.legalEntity.dpo && dataProcessor.legalEntity.dpo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
@@ -26,7 +26,7 @@
                 }}
               </dd>
             </div>
-            <div v-if="dataProcessor.legalEntity.ceo.personalInformation.firstName"
+            <div v-if="dataProcessor.legalEntity.ceo && dataProcessor.legalEntity.ceo.personalInformation.firstName"
                  class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
@@ -78,15 +78,11 @@ import {
   mdiPlusCircle
 } from '@mdi/js'
 import DataProcessorTemplate from '@/data/template/recipients/DataProcessorTemplate.json'
-import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
 const state = reactive({dataProcessor: DataProcessorTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-// TODO maybe we should do this only once on the application start ?
-DataProcessorTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 function createDataProcessor() {
   state.dataProcessor = JSON.parse(JSON.stringify(DataProcessorTemplate))

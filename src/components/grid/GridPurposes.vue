@@ -65,15 +65,11 @@ import GridButtons from '@/components/grid/GridButtons.vue'
 import FormPurpose from '@/components/form/purposes/FormPurpose.vue'
 import {mdiPlusCircle, mdiScaleBalance, mdiTarget, mdiText} from '@mdi/js'
 import PurposeTemplate from '@/data/template/purposes/PurposeTemplate.json'
-import LegalBasisTemplate from '@/data/template/purposes/LegalBasisTemplate.json'
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
 const storeDisplay = useStoreDisplay()
 const state = reactive({purpose: PurposeTemplate, edition: false})
-
-// TODO maybe we should do this only once on the application start ?
-PurposeTemplate.legalBasis = JSON.parse(JSON.stringify(LegalBasisTemplate))
 
 function createPurpose() {
   state.purpose = JSON.parse(JSON.stringify(PurposeTemplate))

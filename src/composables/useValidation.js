@@ -21,8 +21,10 @@ export function validate(state, props, value) {
 /**
  * Overwrite the cookie that contains the current ropa.
  */
-function refreshCookies() {
+// FIXME should probably in a separate file
+export function refreshCookies() {
   const storeData = useStoreData()
+  // TODO externalize some variables in a file as constants
   $cookies.set('uropa_ropa', storeData.ropa, '30d')
 }
 

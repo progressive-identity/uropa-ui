@@ -22,8 +22,8 @@
         <div class="py-2">
           <UInput v-model="dataCategory.name" label="Name" placeholder="ex : identity, connection data, etc."
                   :required="true"/>
-          <UMultiSelect v-model="state.purposes" label="Purposes concerned"
-                        :list="storeData.ropa.purposes" :required="true"/>
+          <UCheckboxes v-model="props.purposes" label="Check the purposes concerned (at least one required)"
+                       :list="storeData.ropa.purposes" :required="true"/>
         </div>
       </div>
       <UVerticalBar label="Data types" :rotate="formsDisplayed.dataType"
@@ -41,13 +41,11 @@
 </template>
 
 <script setup>
-import {reactive} from 'vue'
 import {storeToRefs} from 'pinia'
 import {useStoreData} from '@/store/data.js'
 import {useStoreDisplay} from '@/store/display.js'
 import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
-import UMultiSelect from '@/components/basic/select/UMultiSelect.vue'
 import TableDataTypes from '@/components/form/data-categories/data-category/TableDataTypes.vue'
 import TableDataSubjectCategories from '@/components/form/data-categories/data-category/TableDataSubjectCategories.vue'
 import UVerticalBar from '@/components/basic/UVerticalBar.vue'
@@ -55,6 +53,7 @@ import BackButton from '@/components/form/BackButton.vue'
 import SaveButton from '@/components/form/SaveButton.vue'
 import USelectEnums from '@/components/basic/select/USelectEnums.vue'
 import {sensitiveLegalBases} from '@/data/enums.js'
+import UCheckboxes from '@/components/basic/UCheckboxes.vue'
 
 const storeData = useStoreData()
 const storeDisplay = useStoreDisplay()
@@ -71,9 +70,6 @@ const props = defineProps({
   }
 })
 
-// props are readonly
-const state = reactive({purposes: props.purposes})
-
 storeDisplay.$patch({
   formsDisplayed: {
     subDataCategory: true
@@ -86,7 +82,7 @@ function saveDataCategory() {
   storeData.ropa.purposes.forEach(purposeStore => {
     // We check if the data category is present on the purpose in the store
     const dataCategoryPresent = purposeStore.dataCategories.filter(e => e.name === props.dataCategory.name).length > 0
-    if (state.purposes.filter(e => e.name === purposeStore.name).length > 0) {
+    if (props.purposes.filter(e => e.name === purposeStore.name).length > 0) {
       if (!dataCategoryPresent) {
         // If the purpose is among those chosen and that the data category is not already present, then we add it
         purposeStore.dataCategories.push({...props.dataCategory})

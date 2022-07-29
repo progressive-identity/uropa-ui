@@ -16,7 +16,7 @@
 
 <script setup>
 import {computed, reactive} from 'vue'
-import {validate} from '@/composable/useValidation.js'
+import {validate} from '@/composables/useValidation.js'
 import UIcon from '@/components/basic/UIcon.vue'
 import {mdiClose} from '@mdi/js'
 

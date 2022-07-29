@@ -26,8 +26,9 @@
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalEntity.dpo.personalInformation.firstName"
-                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+            <div
+                v-if="externalOrganization.legalEntity.dpo && externalOrganization.legalEntity.dpo.personalInformation.firstName"
+                class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceManShimmer"/>
                 DPO
@@ -37,8 +38,9 @@
                 }}
               </dd>
             </div>
-            <div v-if="externalOrganization.legalEntity.ceo.personalInformation.firstName"
-                 class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+            <div
+                v-if="externalOrganization.legalEntity.ceo && externalOrganization.legalEntity.ceo.personalInformation.firstName"
+                class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="flex items-center text-sm font-medium text-gray-500">
                 <UIcon :path="mdiFaceWomanShimmer"/>
                 CEO
@@ -90,15 +92,11 @@ import {
   mdiPlusCircle
 } from '@mdi/js'
 import ExternalOrganizationTemplate from '@/data/template/recipients/ExternalOrganizationTemplate.json'
-import LegalEntityTemplate from '@/data/template/data-controllers/LegalEntityTemplate.json'
 
 const storeData = useStoreData()
 const {ropa} = storeToRefs(storeData)
 const state = reactive({externalOrganization: ExternalOrganizationTemplate, edition: false})
 const storeDisplay = useStoreDisplay()
-
-// TODO maybe we should do this only once on the application start ?
-ExternalOrganizationTemplate.legalEntity = JSON.parse(JSON.stringify(LegalEntityTemplate))
 
 function createExternalOrganization() {
   state.externalOrganization = JSON.parse(JSON.stringify(ExternalOrganizationTemplate))

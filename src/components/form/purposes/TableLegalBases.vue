@@ -77,10 +77,6 @@ const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
 const state = reactive({eventType: EventTypeTemplate})
 
-// TODO maybe we should do this only once on the application start ?
-LegalBasisTemplate.startValidity = JSON.parse(JSON.stringify(EventTypeTemplate))
-LegalBasisTemplate.stopValidity = JSON.parse(JSON.stringify(EventTypeTemplate))
-
 const props = defineProps({
   purpose: {
     type: Object,

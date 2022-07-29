@@ -1,6 +1,7 @@
 {
   "name": "",
   "description": "",
+  "triggerType": "no countdown",
   "countdown": {
     "timeUnit": "years",
     "duration": ""
