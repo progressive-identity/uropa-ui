@@ -51,6 +51,7 @@ import UInput from '@/components/basic/UInput.vue'
 import USwitch from '@/components/basic/USwitch.vue'
 import {mdiMinusCircle, mdiPlusCircle} from '@mdi/js'
 import DataSubjectCategoryTemplate from '@/data/template/data-categories/DataSubjectCategoryTemplate.json'
+import {onMounted} from 'vue'
 
 const storeDisplay = useStoreDisplay()
 const {formsDisplayed} = storeToRefs(storeDisplay)
@@ -61,6 +62,13 @@ const props = defineProps({
     required: true
   }
 })
+
+onMounted(() => {
+  if (props.dataCategory.dataSubjectCategories.length === 0) {
+    createDataSubjectCategory()
+  }
+})
+
 
 function createDataSubjectCategory() {
   props.dataCategory.dataSubjectCategories.push({...DataSubjectCategoryTemplate})
