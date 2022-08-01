@@ -128,7 +128,7 @@ const sensitiveLegalBases = [
   { name: 'non-for-profit bodies' },
   { name: 'made public by data subject' },
   { name: 'legal claims or judicial acts' },
-  { name: 'reasons of subtantial public interest' },
+  { name: 'reasons of substantial public interest' },
   { name: 'health or social care' },
   { name: 'public health' },
   { name: 'archiving research and statistics' }
