@@ -12,7 +12,7 @@
   <UInput v-model="dataTransferLegalBasis.description" label="Description" size="xl"
           placeholder="ex: standard contractual clauses" :required="true"/>
   <UInput v-model="dataTransferLegalBasis.source" label="Source" size="xl" type="url"
-          placeholder="ex: URL, internal path to the agreement, BCR, etc. "/>
+          placeholder="ex: URL, internal path to the agreement, BCR, etc."/>
   <div class="flex justify-start space-x-5">
     <UCheckboxes v-model="dataTransferLegalBasis.recipients.dataProcessors" label="Data processors"
                  :list="storeData.ropa.recipients.dataProcessors" name-path="legalEntity"/>

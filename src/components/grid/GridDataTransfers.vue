@@ -87,7 +87,7 @@
               <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 ">
                 <dt class="flex items-center text-sm font-medium text-gray-500">
                   <UIcon :path="mdiHandshake"/>
-                  Internal departments
+                  Joint data controllers
                 </dt>
                 <ul role="list">
                   <li v-for="jointDataController in dataTransfer.dataTransferLegalBasis.recipients.jointDataControllers"

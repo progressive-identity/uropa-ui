@@ -3,7 +3,7 @@
     <FormLegalEntity v-model="jointDataController.legalEntity" title="Joint data controller"
                      description="A joint data controller is an entity that jointly determines the purposes and the means of the processing of the personal data."/>
     <UInput :model-value="jointDataController.legalAgreementPath" label="Legal agreement path"
-            placeholder="The path to the binding agreement "
+            placeholder="The path to the binding agreement"
     />
     <div class="space-x-2 pt-3">
       <BackButton/>

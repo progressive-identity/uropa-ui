@@ -3,7 +3,7 @@
     <div>
       <h3>Internal department</h3>
       <p class="form-description">Information about the internal department that is a recipient of the data
-        processed. Useful to manage authorization at the level of the organization</p>
+        processed. Useful to manage authorization at the level of the organization.</p>
     </div>
     <div class="pt-3">
       <UInput v-model="internalDepartment.name" label="Name" placeholder="ex : marketing, HR, etc." :required="true"/>
